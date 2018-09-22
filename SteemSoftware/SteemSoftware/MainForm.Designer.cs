@@ -197,7 +197,7 @@ namespace SteemSoftware
             this.rememberWindowlocationToolStripMenuItem.Name = "rememberWindowlocationToolStripMenuItem";
             this.rememberWindowlocationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.rememberWindowlocationToolStripMenuItem.Text = "Remember window &location";
-            this.rememberWindowlocationToolStripMenuItem.Click += new System.EventHandler(this.OnRememberWindowlocationToolStripMenuItemClick);
+            this.rememberWindowlocationToolStripMenuItem.Click += new System.EventHandler(this.OnRememberWindowLocationToolStripMenuItemClick);
             // 
             // rememberWindowsizeToolStripMenuItem
             // 
@@ -206,7 +206,7 @@ namespace SteemSoftware
             this.rememberWindowsizeToolStripMenuItem.Name = "rememberWindowsizeToolStripMenuItem";
             this.rememberWindowsizeToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.rememberWindowsizeToolStripMenuItem.Text = "Remember window &size";
-            this.rememberWindowsizeToolStripMenuItem.Click += new System.EventHandler(this.OnRememberWindowsizeToolStripMenuItemClick);
+            this.rememberWindowsizeToolStripMenuItem.Click += new System.EventHandler(this.OnRememberWindowSizeToolStripMenuItemClick);
             // 
             // descriptionLabel
             // 

@@ -1,4 +1,8 @@
-﻿#region Using directives
+﻿// <copyright file="AssemblyInfo.cs" company="SteemSoftware">
+//     CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication
+//     https://creativecommons.org/publicdomain/zero/1.0/legalcode
+// </copyright>
+#region Using directives
 
 using System;
 using System.Reflection;

@@ -90,6 +90,7 @@ namespace SteemSoftware
         	this.categoryListBox.Size = new System.Drawing.Size(101, 233);
         	this.categoryListBox.Sorted = true;
         	this.categoryListBox.TabIndex = 0;
+        	this.categoryListBox.SelectedIndexChanged += new System.EventHandler(this.OnCategoryListBoxSelectedIndexChanged);
         	// 
         	// mainStatusStrip
         	// 

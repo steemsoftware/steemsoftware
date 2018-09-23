@@ -182,5 +182,36 @@ namespace SteemSoftware
         {
             // TODO: Add code
         }
+
+        /// <summary>
+        /// Handles the category list box selected index changed event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnCategoryListBoxSelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Check for last selected index match
+            if (this.categoryListBox.SelectedIndex == this.lastCategorySelectedIndex)
+            {
+                // Halt flow
+                return;
+            }
+
+            // Set last category selected index
+            this.lastCategorySelectedIndex = this.categoryListBox.SelectedIndex;
+
+            // Clear functionality list box
+            this.functionalityListView.Items.Clear();
+
+            // Clear description rich text box
+            this.descriptionRichTextBox.Clear();
+
+            // Iterate module info dictionary
+            foreach (var item in this.moduleInfoDictionary[this.categoryListBox.SelectedItem.ToString()])
+            {
+                // Add current module
+                this.functionalityListView.Items.Add(this.GetListViewItemWithModuleInfoTag(item));
+            }
+        }
     }
 }

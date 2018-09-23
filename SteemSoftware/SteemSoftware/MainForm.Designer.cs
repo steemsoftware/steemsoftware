@@ -288,6 +288,7 @@ namespace SteemSoftware
         	this.functionalityListView.TabIndex = 7;
         	this.functionalityListView.UseCompatibleStateImageBehavior = false;
         	this.functionalityListView.View = System.Windows.Forms.View.List;
+        	this.functionalityListView.SelectedIndexChanged += new System.EventHandler(this.OnFunctionalityListViewSelectedIndexChanged);
         	// 
         	// customizeToolStripMenuItem
         	// 

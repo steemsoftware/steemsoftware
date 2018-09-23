@@ -16,6 +16,21 @@ namespace SteemSoftware
     public partial class MainForm : Form
     {
         /// <summary>
+        /// The module info dictionary.
+        /// </summary>
+        private Dictionary<string, List<ModuleInfo>> moduleInfoDictionary = new Dictionary<string, List<ModuleInfo>>();
+
+        /// <summary>
+        /// The module form list.
+        /// </summary>
+        private List<Form> moduleFormList = new List<Form>();
+
+        /// <summary>
+        /// The index of the last selected category.
+        /// </summary>
+        private int lastCategorySelectedIndex = -1;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.MainForm"/> class.
         /// </summary>
         public MainForm()

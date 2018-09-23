@@ -99,27 +99,6 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the double click launch tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnDoubleClickLaunchToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO: Add code
-        }
-
-        /// <summary>
-        /// Handles the launch centered tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnLaunchCenteredToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // Toggle check state
-            this.launchcenteredToolStripMenuItem.Checked = !this.launchcenteredToolStripMenuItem.Checked;
-        }
-
-        /// <summary>
         /// Handles the launch button click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
@@ -179,36 +158,6 @@ namespace SteemSoftware
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
         private void OnSteemitcomTagToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO: Add code
-        }
-
-        /// <summary>
-        /// Handles the remember window location tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnRememberWindowLocationToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO: Add code
-        }
-
-        /// <summary>
-        /// Handles the remember window size tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnRememberWindowSizeToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO: Add code
-        }
-
-        /// <summary>
-        /// Handles the ask on exit tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnAskOnExitToolStripMenuItemClick(object sender, EventArgs e)
         {
             // TODO: Add code
         }

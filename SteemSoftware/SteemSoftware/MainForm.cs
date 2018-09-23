@@ -57,6 +57,23 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Gets the list view item with module info tag.
+        /// </summary>
+        /// <returns>The list view item with module info tag.</returns>
+        /// <param name="moduleInfo">Module info.</param>
+        private ListViewItem GetListViewItemWithModuleInfoTag(ModuleInfo moduleInfo)
+        {
+            // New list view item
+            var listViewItem = new ListViewItem(moduleInfo.Name);
+
+            // Set its tag
+            listViewItem.Tag = moduleInfo;
+
+            // Return it
+            return listViewItem;
+        }
+
+        /// <summary>
         /// Handles the new tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>

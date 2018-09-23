@@ -37,6 +37,23 @@ namespace SteemSoftware
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            /* Set module info dictionary */
+
+            // Video
+            this.moduleInfoDictionary.Add("Video", new List<ModuleInfo>()
+            {
+                new ModuleInfo("YouTube Downloader", "Download videos from YouTube.com", typeof(YouTubeDownloaderForm)),
+            });
+
+            /* Set categories */
+
+            // Iterate categories
+            foreach (var category in this.moduleInfoDictionary.Keys)
+            {
+                // Add current one
+                this.categoryListBox.Items.Add(category);
+            }
         }
 
         /// <summary>

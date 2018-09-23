@@ -115,7 +115,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnLaunchCenteredToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Toggle check state
+            this.launchcenteredToolStripMenuItem.Checked = !this.launchcenteredToolStripMenuItem.Checked;
         }
 
         /// <summary>
@@ -226,7 +227,7 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>s
         private void OnFunctionalityListViewSelectedIndexChanged(object sender, EventArgs e)
         {
-            // Check there is a selected item
+            // Check for any selected item
             if (this.functionalityListView.SelectedItems.Count > 0)
             {
                 // Set description

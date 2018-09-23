@@ -126,7 +126,31 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnLaunchButtonClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Check for a selected item
+            if (this.functionalityListView.SelectedItems.Count > 0)
+            {
+                // Set module type
+                ModuleInfo moduleType = (ModuleInfo)this.functionalityListView.SelectedItems[0].Tag;
+
+                // Cast to form
+                Form moduleForm = (Form)Activator.CreateInstance(moduleType.FormType);
+
+                // Set icon
+                moduleForm.Icon = this.Icon;
+
+                // Add to module form list
+                this.moduleFormList.Add(moduleForm);
+
+                // Check if must center
+                if (this.launchcenteredToolStripMenuItem.Checked)
+                {
+                    // Center module form
+                    moduleForm.StartPosition = FormStartPosition.CenterScreen;
+                }
+
+                // Show form                                 
+                moduleForm.Show();
+            }
         }
 
         /// <summary>

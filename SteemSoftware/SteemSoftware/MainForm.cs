@@ -267,7 +267,7 @@ namespace SteemSoftware
         private void OnToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             // Set clicked item
-            var clickedItem = ((ToolStripMenuItem)e.ClickedItem);
+            var clickedItem = (ToolStripMenuItem)e.ClickedItem;
 
             // Toggle check state
             clickedItem.Checked = !clickedItem.Checked;

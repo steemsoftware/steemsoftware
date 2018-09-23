@@ -248,15 +248,29 @@ namespace SteemSoftware
         /// Handles the functionality list view selected index changed event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>s
+        /// <param name="e">Event arguments.</param>
         private void OnFunctionalityListViewSelectedIndexChanged(object sender, EventArgs e)
         {
-            // Check for any selected item
+            // Check for a selected item
             if (this.functionalityListView.SelectedItems.Count > 0)
             {
                 // Set description
                 this.descriptionRichTextBox.Text = ((ModuleInfo)this.functionalityListView.SelectedItems[0].Tag).Description;
             }
+        }
+
+        /// <summary>
+        /// Handles the tool strip menu item drop down item clicked event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            // Set clicked item
+            var clickedItem = ((ToolStripMenuItem)e.ClickedItem);
+
+            // Toggle check state
+            clickedItem.Checked = !clickedItem.Checked;
         }
     }
 }

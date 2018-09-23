@@ -188,8 +188,9 @@ namespace SteemSoftware
         	        	        	this.rememberWindowsizeToolStripMenuItem,
         	        	        	this.askOnExitToolStripMenuItem});
         	this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-        	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+        	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.optionsToolStripMenuItem.Text = "&Options";
+        	this.optionsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
         	// 
         	// rememberWindowlocationToolStripMenuItem
         	// 
@@ -198,7 +199,6 @@ namespace SteemSoftware
         	this.rememberWindowlocationToolStripMenuItem.Name = "rememberWindowlocationToolStripMenuItem";
         	this.rememberWindowlocationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
         	this.rememberWindowlocationToolStripMenuItem.Text = "Remember window &location";
-        	this.rememberWindowlocationToolStripMenuItem.Click += new System.EventHandler(this.OnRememberWindowLocationToolStripMenuItemClick);
         	// 
         	// rememberWindowsizeToolStripMenuItem
         	// 
@@ -207,7 +207,6 @@ namespace SteemSoftware
         	this.rememberWindowsizeToolStripMenuItem.Name = "rememberWindowsizeToolStripMenuItem";
         	this.rememberWindowsizeToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
         	this.rememberWindowsizeToolStripMenuItem.Text = "Remember window &size";
-        	this.rememberWindowsizeToolStripMenuItem.Click += new System.EventHandler(this.OnRememberWindowSizeToolStripMenuItemClick);
         	// 
         	// askOnExitToolStripMenuItem
         	// 
@@ -216,7 +215,6 @@ namespace SteemSoftware
         	this.askOnExitToolStripMenuItem.Name = "askOnExitToolStripMenuItem";
         	this.askOnExitToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
         	this.askOnExitToolStripMenuItem.Text = "&Ask on exit";
-        	this.askOnExitToolStripMenuItem.Click += new System.EventHandler(this.OnAskOnExitToolStripMenuItemClick);
         	// 
         	// descriptionLabel
         	// 
@@ -296,8 +294,9 @@ namespace SteemSoftware
         	        	        	this.doubleClickLaunchToolStripMenuItem,
         	        	        	this.launchcenteredToolStripMenuItem});
         	this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-        	this.customizeToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+        	this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.customizeToolStripMenuItem.Text = "&Customize";
+        	this.customizeToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
         	// 
         	// doubleClickLaunchToolStripMenuItem
         	// 
@@ -306,14 +305,12 @@ namespace SteemSoftware
         	this.doubleClickLaunchToolStripMenuItem.Name = "doubleClickLaunchToolStripMenuItem";
         	this.doubleClickLaunchToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
         	this.doubleClickLaunchToolStripMenuItem.Text = "&Double click launch";
-        	this.doubleClickLaunchToolStripMenuItem.Click += new System.EventHandler(this.OnDoubleClickLaunchToolStripMenuItemClick);
         	// 
         	// launchcenteredToolStripMenuItem
         	// 
         	this.launchcenteredToolStripMenuItem.Name = "launchcenteredToolStripMenuItem";
         	this.launchcenteredToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
         	this.launchcenteredToolStripMenuItem.Text = "Launch &centered";
-        	this.launchcenteredToolStripMenuItem.Click += new System.EventHandler(this.OnLaunchCenteredToolStripMenuItemClick);
         	// 
         	// toolsToolStripMenuItem
         	// 

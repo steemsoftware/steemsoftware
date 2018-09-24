@@ -92,6 +92,9 @@ namespace SteemSoftware
                 moduleForm.Close();
             }
 
+            // Reset category selected index
+            this.categoryListBox.SelectedIndex = -1;
+
             // Reset last category selected index
             this.lastCategorySelectedIndex = -1;
 
@@ -184,8 +187,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnCategoryListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            // Check for last selected index match
-            if (this.categoryListBox.SelectedIndex == this.lastCategorySelectedIndex)
+            // Check for last selected index match or no selected item
+            if (this.categoryListBox.SelectedIndex == this.lastCategorySelectedIndex || this.categoryListBox.SelectedIndex == -1)
             {
                 // Halt flow
                 return;

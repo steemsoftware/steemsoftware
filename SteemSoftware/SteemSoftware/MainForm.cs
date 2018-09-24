@@ -85,7 +85,21 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Close all open module forms
+            foreach (var moduleForm in this.moduleFormList)
+            {
+                // Close
+                moduleForm.Close();
+            }
+
+            // Reset last category selected index
+            this.lastCategorySelectedIndex = -1;
+
+            // Clear functionality list box
+            this.functionalityListView.Items.Clear();
+
+            // Clear description rich text box
+            this.descriptionRichTextBox.Clear();
         }
 
         /// <summary>

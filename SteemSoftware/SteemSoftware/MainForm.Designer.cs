@@ -188,7 +188,7 @@ namespace SteemSoftware
         	        	        	this.rememberWindowsizeToolStripMenuItem,
         	        	        	this.askOnExitToolStripMenuItem});
         	this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-        	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
         	this.optionsToolStripMenuItem.Text = "&Options";
         	this.optionsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
         	// 
@@ -287,6 +287,7 @@ namespace SteemSoftware
         	this.functionalityListView.UseCompatibleStateImageBehavior = false;
         	this.functionalityListView.View = System.Windows.Forms.View.List;
         	this.functionalityListView.SelectedIndexChanged += new System.EventHandler(this.OnFunctionalityListViewSelectedIndexChanged);
+        	this.functionalityListView.DoubleClick += new System.EventHandler(this.OnFunctionalityListViewDoubleClick);
         	// 
         	// customizeToolStripMenuItem
         	// 
@@ -294,7 +295,7 @@ namespace SteemSoftware
         	        	        	this.doubleClickLaunchToolStripMenuItem,
         	        	        	this.launchcenteredToolStripMenuItem});
         	this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-        	this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.customizeToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
         	this.customizeToolStripMenuItem.Text = "&Customize";
         	this.customizeToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
         	// 

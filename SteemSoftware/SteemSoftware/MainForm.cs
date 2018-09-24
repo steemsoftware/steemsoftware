@@ -221,5 +221,20 @@ namespace SteemSoftware
             // Toggle check state
             clickedItem.Checked = !clickedItem.Checked;
         }
+
+        /// <summary>
+        /// Handles the functionality list view double click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnFunctionalityListViewDoubleClick(object sender, EventArgs e)
+        {
+            // Query check state
+            if (this.doubleClickLaunchToolStripMenuItem.Checked)
+            {
+                // Simulate launch button click
+                this.launchButton.PerformClick();
+            }
+        }
     }
 }

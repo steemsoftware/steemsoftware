@@ -444,6 +444,7 @@ namespace SteemSoftware
         	this.Name = "MainForm";
         	this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         	this.Text = "SteemSoftware";
+        	this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
         	this.mainStatusStrip.ResumeLayout(false);
         	this.mainStatusStrip.PerformLayout();
         	this.mainTableLayoutPanel.ResumeLayout(false);

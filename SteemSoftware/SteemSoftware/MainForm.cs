@@ -236,5 +236,45 @@ namespace SteemSoftware
                 this.launchButton.PerformClick();
             }
         }
+
+        /// <summary>
+        /// Mains the form form closing.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void MainFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Test ask on exit check state
+            if (!this.askOnExitToolStripMenuItem.Checked)
+            {
+                // Halt flow
+                return;
+            }
+
+            // Open module count
+            var openModuleCount = 0;
+
+            // Check for open module forms
+            foreach (var moduleForm in this.moduleFormList)
+            {
+                // Check for not disposed
+                if (!moduleForm.IsDisposed)
+                {
+                    // Increment open module count
+                    openModuleCount++;
+                }
+            }
+
+            // Check for open module windows
+            if (openModuleCount > 0)
+            {
+                // Ask user for confirmation
+                if (MessageBox.Show("This action will close " + openModuleCount + " open module" + (openModuleCount > 1 ? "s" : string.Empty) + ". Continue?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    // Set cancel
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

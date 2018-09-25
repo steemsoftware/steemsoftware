@@ -32,6 +32,28 @@ namespace SteemSoftware
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            /* Handle download events */
+
+            // Set download progress changed event handler
+            this.webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(this.OnDownloadProgressChanged);
+        }
+
+        /// <summary>
+        /// Handles the download progress changed event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            // Display progress
+            this.mainToolStripStatusLabel.Text = "Progress: " + e.ProgressPercentage.ToString() + "%";
+
+            // Clear status label
+            if (e.ProgressPercentage == 100)
+            {
+                this.mainToolStripStatusLabel.Text = string.Empty;
+            }
         }
 
         /// <summary>

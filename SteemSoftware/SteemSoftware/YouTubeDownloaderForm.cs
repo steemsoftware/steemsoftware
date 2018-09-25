@@ -51,7 +51,11 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnCutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Copy current video text to clipboard
+            Clipboard.SetText(this.videoTextBox.Text);
+
+            // Clear video text box
+            this.videoTextBox.Clear();
         }
 
         /// <summary>

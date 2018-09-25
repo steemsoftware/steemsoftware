@@ -323,7 +323,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Show about message
+            MessageBox.Show("SteemSoftware v" + this.semanticVersion + Environment.NewLine + Environment.NewLine + "Week #39 @ September 2018", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

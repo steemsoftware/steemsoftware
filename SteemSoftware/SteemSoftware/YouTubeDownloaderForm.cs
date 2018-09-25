@@ -6,6 +6,7 @@ namespace SteemSoftware
 {
     // Directives
     using System;
+    using System.ComponentModel;
     using System.Drawing;
     using System.Net;
     using System.Windows.Forms;
@@ -35,8 +36,25 @@ namespace SteemSoftware
 
             /* Handle download events */
 
+            // Set download file completed event handler
+            this.webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(this.OnDownloadFileCompleted);
+
             // Set download progress changed event handler
             this.webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(this.OnDownloadProgressChanged);
+        }
+
+        /// <summary>
+        /// Handles the download file completed event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            // Inform user
+            this.mainToolStripStatusLabel.Text = "Video download complete";
+
+            // Enable download button
+            this.downloadButton.Enabled = true;
         }
 
         /// <summary>

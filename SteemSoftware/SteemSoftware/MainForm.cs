@@ -179,7 +179,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSteemitcomTagToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Open tag on steemit
+            Process.Start("https://steemit.com/trending/steemsoftware");
         }
 
         /// <summary>

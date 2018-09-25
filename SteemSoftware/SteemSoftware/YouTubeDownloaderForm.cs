@@ -18,12 +18,12 @@ namespace SteemSoftware
         /// <summary>
         /// The web client.
         /// </summary>
-        WebClient webClient = new WebClient();
+        private WebClient webClient = new WebClient();
 
         /// <summary>
         /// The last selected path.
         /// </summary>
-        string lastSelectedPath = string.Empty;
+        private string lastSelectedPath = string.Empty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.YouTubeDownloaderForm"/> class.

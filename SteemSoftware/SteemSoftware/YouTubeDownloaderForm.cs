@@ -7,6 +7,7 @@ namespace SteemSoftware
     // Directives
     using System;
     using System.Drawing;
+    using System.Net;
     using System.Windows.Forms;
 
     /// <summary>
@@ -14,6 +15,16 @@ namespace SteemSoftware
     /// </summary>
     public partial class YouTubeDownloaderForm : Form
     {
+        /// <summary>
+        /// The web client.
+        /// </summary>
+        WebClient webClient = new WebClient();
+
+        /// <summary>
+        /// The last selected path.
+        /// </summary>
+        string lastSelectedPath = string.Empty;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.YouTubeDownloaderForm"/> class.
         /// </summary>

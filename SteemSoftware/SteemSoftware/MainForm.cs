@@ -9,6 +9,7 @@ namespace SteemSoftware
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
+    using System.Reflection;
     using System.Windows.Forms;
 
     /// <summary>
@@ -32,12 +33,28 @@ namespace SteemSoftware
         private int lastCategorySelectedIndex = -1;
 
         /// <summary>
+        /// The assembly version.
+        /// </summary>
+        private Version assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
+        /// <summary>
+        /// The semantic version.
+        /// </summary>
+        private string semanticVersion = string.Empty;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.MainForm"/> class.
         /// </summary>
         public MainForm()
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            // Set semantic version
+            this.semanticVersion = this.assemblyVersion.Major + "." + this.assemblyVersion.Minor + "." + this.assemblyVersion.Build;
+
+            // Append semantic version to form title
+            this.Text += " " + this.semanticVersion;
 
             /* Set module info lists */
 
@@ -297,6 +314,16 @@ namespace SteemSoftware
                     e.Cancel = true;
                 }
             }
+        }
+
+        /// <summary>
+        /// Handles the about tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO: Add code
         }
     }
 }

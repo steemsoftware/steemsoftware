@@ -91,7 +91,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // About Youtube Downloader
+            MessageBox.Show("YouTube Downloader v0.1.0" + Environment.NewLine + Environment.NewLine + "Week #39 @ September 2018", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

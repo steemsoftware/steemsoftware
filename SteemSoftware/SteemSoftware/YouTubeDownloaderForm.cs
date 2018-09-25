@@ -72,7 +72,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnPasteToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Check for clipboard text
+            if (Clipboard.GetText().Length > 0)
+            {
+                // Clear video text box
+                this.videoTextBox.Clear();
+
+                // Paste from clipboard
+                this.videoTextBox.Text = Clipboard.GetText();
+            }
         }
 
         /// <summary>

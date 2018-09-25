@@ -169,7 +169,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnBusyorgTagToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Open tag on busy
+            Process.Start("https://busy.org/trending/steemsoftware");
         }
 
         /// <summary>

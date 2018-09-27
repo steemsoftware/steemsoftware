@@ -48,7 +48,11 @@ namespace SteemSoftware
         public double Progress
         {
             // Getter
-            get => this.progress;
+            get
+            {
+                // Return progress
+                return this.progress;
+            }
 
             // Setter
             private set
@@ -320,6 +324,43 @@ namespace SteemSoftware
         {
             // About Youtube Downloader
             MessageBox.Show("YouTube Downloader v0.1.0" + Environment.NewLine + Environment.NewLine + "Week #39 @ September 2018", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Handles the video text box enter event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnVideoTextBoxEnter(object sender, EventArgs e)
+        {
+            // Confirm check status
+            if (this.pasteOnFocusToolStripMenuItem.Checked)
+            {
+                // Check for something in the clipboard
+                if (Clipboard.GetText().Length > 0)
+                {
+                    // Check for something different
+                    if (Clipboard.GetText() != this.videoTextBox.Text)
+                    {
+                        // Paste
+                        this.videoTextBox.Text = Clipboard.GetText();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the options tool strip menu item drop down item clicked event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnOptionsToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            // Set clicked item
+            var clickedItem = (ToolStripMenuItem)e.ClickedItem;
+
+            // Toggle check state
+            clickedItem.Checked = !clickedItem.Checked;
         }
     }
 }

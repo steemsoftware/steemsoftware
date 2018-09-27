@@ -13,6 +13,8 @@ namespace SteemSoftware
     using System.Net;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
+    using CGS;
+    using VideoLibrary;
 
     /// <summary>
     /// YouTube downloader form.
@@ -124,8 +126,10 @@ namespace SteemSoftware
             // Set status
             this.mainToolStripStatusLabel.Text = "Processing id \"" + id.ToString() + "\".";
 
-            // Fetch video info
+            /* TODO Get video */
 
+            // Enable download button
+            this.downloadButton.Enabled = true;
         }
 
         /// <summary>

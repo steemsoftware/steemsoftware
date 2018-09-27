@@ -6,9 +6,12 @@ namespace SteemSoftware
 {
     // Directives
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Drawing;
+    using System.IO;
     using System.Net;
+    using System.Text.RegularExpressions;
     using System.Windows.Forms;
 
     /// <summary>
@@ -16,11 +19,6 @@ namespace SteemSoftware
     /// </summary>
     public partial class YouTubeDownloaderForm : Form
     {
-        /// <summary>
-        /// The web client.
-        /// </summary>
-        private WebClient webClient = new WebClient();
-
         /// <summary>
         /// The last selected path.
         /// </summary>
@@ -33,45 +31,6 @@ namespace SteemSoftware
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
-
-            /* Handle download events */
-
-            // Set download file completed event handler
-            this.webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(this.OnDownloadFileCompleted);
-
-            // Set download progress changed event handler
-            this.webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(this.OnDownloadProgressChanged);
-        }
-
-        /// <summary>
-        /// Handles the download file completed event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnDownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            // Inform user
-            this.mainToolStripStatusLabel.Text = "Video download complete";
-
-            // Enable download button
-            this.downloadButton.Enabled = true;
-        }
-
-        /// <summary>
-        /// Handles the download progress changed event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            // Display progress
-            this.mainToolStripStatusLabel.Text = "Progress: " + e.ProgressPercentage.ToString() + "%";
-
-            // Clear status label
-            if (e.ProgressPercentage == 100)
-            {
-                this.mainToolStripStatusLabel.Text = string.Empty;
-            }
         }
 
         /// <summary>
@@ -81,7 +40,92 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnDownloadButtonClick(object sender, EventArgs e)
         {
-            // TODO: Add code
+            // Check for valid video text length
+            if (this.videoTextBox.Text.Length == 0)
+            {
+                // Set status
+                this.mainToolStripStatusLabel.Text = "Please enter video to fetch";
+
+                // Halt flow
+                return;
+            }
+
+            // Declare id variable
+            var id = string.Empty;
+
+            // Set video text
+            var videoText = this.videoTextBox.Text;
+
+            // Try to parse URI
+            try
+            {
+                // Set video uri
+                var videoUri = new Uri(videoText);
+
+                // Set id according to input format
+                if (videoUri.DnsSafeHost.ToLowerInvariant().Contains("youtube.com"))
+                {
+                    // Trim initial "?"
+                    var videoUriQueryString = videoUri.Query.TrimStart('?');
+
+                    // TODO Check for "v" value in query string [Refactor with "ParseQueryString()"]
+                    foreach (var queryPart in videoUriQueryString.Split('&'))
+                    {
+                        // Split to variable
+                        var queryKeyValue = queryPart.Split('=');
+
+                        // Check if it's "v", then check for valid length
+                        if (queryKeyValue[0] == "v" && queryKeyValue.Length == 2 && !string.IsNullOrWhiteSpace(queryKeyValue[1]))
+                        {
+                            // Assign id
+                            id = queryKeyValue[1];
+
+                            // Halt flow
+                            break;
+                        }
+                    }
+                }
+                else if (videoUri.DnsSafeHost.ToLowerInvariant().Contains("youtu.be"))
+                {
+                    // Shortened, check base directory
+                    if (videoUri.Segments.Length == 2)
+                    {
+                        // Set base directory as video id
+                        id = videoUri.Segments[1].TrimEnd('/');
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Assume video text is ID
+                id = videoText;
+            }
+
+            // Validate ID ([0-9A-Za-z_-])
+            if (!Regex.IsMatch(id, "^[a-zA-Z0-9_-]*$"))
+            {
+                // Invalid, set id to empty string
+                id = string.Empty;
+            }
+
+            // Check for valid length
+            if (id.Length == 0)
+            {
+                // Set status
+                this.mainToolStripStatusLabel.Text = "No valid video ID to fetch";
+
+                // Halt flow
+                return;
+            }
+
+            // Disable download button
+            this.downloadButton.Enabled = false;
+
+            // Set status
+            this.mainToolStripStatusLabel.Text = "Processing id \"" + id.ToString() + "\".";
+
+            // Fetch video info
+
         }
 
         /// <summary>

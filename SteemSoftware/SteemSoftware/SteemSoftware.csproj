@@ -7,7 +7,6 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SteemSoftware</RootNamespace>
     <AssemblyName>SteemSoftware</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <ApplicationIcon>assets\img\steemsoftware-icon_2018-09-18_derivative-from_diamond-158431_by-user_OpenClipart-Vectors_on_www-pixabay-com.ico</ApplicationIcon>
     <NoWin32Manifest>False</NoWin32Manifest>

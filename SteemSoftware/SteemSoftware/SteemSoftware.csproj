@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
     </Reference>
+    <Reference Include="libvideo">
+      <HintPath>..\..\..\..\..\NET\NuGet\libvideo\VideoLibrary.2.0.0\lib\netstandard1.1\libvideo.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainForm.cs" />

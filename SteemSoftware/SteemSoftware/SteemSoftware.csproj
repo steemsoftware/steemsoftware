@@ -46,6 +46,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
     </Reference>
+    <Reference Include="YoutubeExplode">
+      <HintPath>..\..\..\..\..\NET\NuGet\YouTubeExplode\YoutubeExplode.4.3.3\lib\net45\YoutubeExplode.dll</HintPath>
+    </Reference>
+    <Reference Include="AngleSharp">
+      <HintPath>..\..\..\..\..\NET\NuGet\YouTubeExplode\AngleSharp.0.9.9.1\lib\net45\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\NET\NuGet\YouTubeExplode\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainForm.cs" />

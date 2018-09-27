@@ -12,7 +12,10 @@ namespace SteemSoftware
     using System.IO;
     using System.Net;
     using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
+    using YoutubeExplode;
+    using YoutubeExplode.Models.MediaStreams;
 
     /// <summary>
     /// YouTube downloader form.
@@ -25,12 +28,37 @@ namespace SteemSoftware
         private string lastSelectedPath = string.Empty;
 
         /// <summary>
+        /// The progress.
+        /// </summary>
+        private double progress;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.YouTubeDownloaderForm"/> class.
         /// </summary>
         public YouTubeDownloaderForm()
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// Gets the progress.
+        /// </summary>
+        /// <value>The progress.</value>
+        public double Progress
+        {
+            // Getter
+            get => this.progress;
+
+            // Setter
+            private set
+            {
+                // Set progress
+                this.progress = (double)value;
+
+                // Inform user about progress 
+                this.mainToolStripStatusLabel.Text = $"Download progress: {(100.0 * this.progress).ToString("N0")}%";
+            }
         }
 
         /// <summary>
@@ -122,9 +150,108 @@ namespace SteemSoftware
             this.downloadButton.Enabled = false;
 
             // Set status
-            this.mainToolStripStatusLabel.Text = "Processing id \"" + id.ToString() + "\".";
+            this.mainToolStripStatusLabel.Text = $"Processing id \"{id}\"";
 
-            /* TODO Get video */
+            /* Get video */
+
+            // Download video async
+            Task videoDownloadTask = this.DownloadVideoAsync(id);
+        }
+
+        /// <summary>
+        /// Downloads the video async.
+        /// </summary>
+        /// <returns>The video async.</returns>
+        /// <param name="id">The identifier.</param>
+        private async Task DownloadVideoAsync(string id)
+        {
+            // YouTube Client
+            var youTubeClient = new YoutubeClient();
+
+            // Safe title
+            var safeTitle = string.Empty;
+
+            // Inform user
+            this.mainToolStripStatusLabel.Text = "Obtaining video info...";
+
+            // Get video info
+            try
+            {
+                // Get video info
+                var videoInfo = await youTubeClient.GetVideoAsync(id);
+
+                // Set safe tifle
+                safeTitle = string.Join(string.Empty, videoInfo.Title.Split(Path.GetInvalidFileNameChars()));
+            }
+            catch (Exception)
+            {
+                // Inform user
+                this.mainToolStripStatusLabel.Text = "Video info fetch error";
+
+                // Halt flow
+                goto ErrorExit;
+            }
+
+            // Inform user
+            this.mainToolStripStatusLabel.Text = "Obtaining media stream info...";
+
+            // Download video
+            try
+            {
+                // Get media stream info set
+                var mediaStreamInfoSet = await youTubeClient.GetVideoMediaStreamInfosAsync(id);
+
+                // Get highest quality muxed stream info
+                var muxedStreamInfo = mediaStreamInfoSet.Muxed.WithHighestVideoQuality();
+
+                // Set file name
+                var videoFileName = $"{safeTitle}-{id}.{muxedStreamInfo.Container.GetFileExtension()}";
+
+                // New folder browser dialog
+                using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+                {
+                    // Show new folder button
+                    folderBrowserDialog.ShowNewFolderButton = true;
+
+                    // Set last selected path
+                    folderBrowserDialog.SelectedPath = this.lastSelectedPath;
+
+                    // Inform user
+                    this.mainToolStripStatusLabel.Text = "Obtaining destination folder...";
+
+                    // Show the FolderBrowserDialog and check for path
+                    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        // Disable download button
+                        this.downloadButton.Enabled = false;
+
+                        // Set last selected path
+                        this.lastSelectedPath = folderBrowserDialog.SelectedPath;
+
+                        // Set progress handler
+                        var progressHandler = new Progress<double>(p => this.Progress = p);
+
+                        // Save the file
+                        await youTubeClient.DownloadMediaStreamAsync(muxedStreamInfo, Path.Combine(folderBrowserDialog.SelectedPath, videoFileName), progressHandler);
+
+                        // Inform user
+                        this.mainToolStripStatusLabel.Text = "Video download complete";
+                    }
+                    else
+                    {
+                        // TODO Back to square one [Implement SetStatus(msgid) where msgid is unique to avoid redundancies, keeping it DRY]
+                        this.mainToolStripStatusLabel.Text = "Waiting for video...";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Inform user
+                this.mainToolStripStatusLabel.Text = "Video download error";
+            }
+
+        // The error exit label
+        ErrorExit:
 
             // Enable download button
             this.downloadButton.Enabled = true;

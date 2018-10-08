@@ -119,11 +119,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // Close all open module forms
-            foreach (var moduleForm in this.moduleFormList)
+            // Confirm open module close
+            if (this.ConfirmOpenModuleClose())
             {
-                // Close
-                moduleForm.Close();
+                // Close all open module forms
+                foreach (var moduleForm in this.moduleFormList)
+                {
+                    // Close
+                    moduleForm.Close();
+                }
             }
 
             // Reset category selected index

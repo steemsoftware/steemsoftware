@@ -128,19 +128,19 @@ namespace SteemSoftware
                     // Close
                     moduleForm.Close();
                 }
+
+                // Reset category selected index
+                this.categoryListBox.SelectedIndex = -1;
+
+                // Reset last category selected index
+                this.lastCategorySelectedIndex = -1;
+
+                // Clear functionality list box
+                this.functionalityListView.Items.Clear();
+
+                // Clear description rich text box
+                this.descriptionRichTextBox.Clear();
             }
-
-            // Reset category selected index
-            this.categoryListBox.SelectedIndex = -1;
-
-            // Reset last category selected index
-            this.lastCategorySelectedIndex = -1;
-
-            // Clear functionality list box
-            this.functionalityListView.Items.Clear();
-
-            // Clear description rich text box
-            this.descriptionRichTextBox.Clear();
         }
 
         /// <summary>

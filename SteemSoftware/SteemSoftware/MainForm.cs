@@ -9,6 +9,7 @@ namespace SteemSoftware
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
+    using System.IO;
     using System.Reflection;
     using System.Windows.Forms;
 
@@ -47,6 +48,9 @@ namespace SteemSoftware
         /// </summary>
         public MainForm()
         {
+            // Set load from lib directory resolve event handler
+            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(LoadAssemblyFromLibDirectory);
+
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
 
@@ -77,6 +81,18 @@ namespace SteemSoftware
                 // Add current one
                 this.categoryListBox.Items.Add(category);
             }
+        }
+
+        /// <summary>
+        /// Loads the assembly from lib directory.
+        /// </summary>
+        /// <returns>The assembly from lib directory.</returns>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="args">Event arguments.</param>
+        private Assembly LoadAssemblyFromLibDirectory(object sender, ResolveEventArgs args)
+        {
+            // Return loaded assembly
+            return Assembly.LoadFrom(Path.Combine(Path.Combine(Application.StartupPath, "Lib"), args.Name));
         }
 
         /// <summary>
@@ -291,6 +307,27 @@ namespace SteemSoftware
             }
 
             // Open module count
+            var openModuleCount = GetOpenModuleCount();
+
+            // Check for open module windows
+            if (openModuleCount > 0)
+            {
+                // Ask user for confirmation
+                if (MessageBox.Show("This action will close " + openModuleCount + " open module" + (openModuleCount > 1 ? "s" : string.Empty) + ". Continue?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    // Set cancel
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the open module count.
+        /// </summary>
+        /// <returns>The open module count.</returns>
+        private int GetOpenModuleCount()
+        {
+            // Open module count
             var openModuleCount = 0;
 
             // Check for open module forms
@@ -304,16 +341,8 @@ namespace SteemSoftware
                 }
             }
 
-            // Check for open module windows
-            if (openModuleCount > 0)
-            {
-                // Ask user for confirmation
-                if (MessageBox.Show("This action will close " + openModuleCount + " open module" + (openModuleCount > 1 ? "s" : string.Empty) + ". Continue?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    // Set cancel
-                    e.Cancel = true;
-                }
-            }
+            // Return the open module count
+            return openModuleCount;
         }
 
         /// <summary>

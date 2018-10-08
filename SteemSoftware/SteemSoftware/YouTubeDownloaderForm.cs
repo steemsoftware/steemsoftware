@@ -82,63 +82,8 @@ namespace SteemSoftware
                 return;
             }
 
-            // Declare id variable
-            var id = string.Empty;
-
-            // Set video text
-            var videoText = this.videoTextBox.Text;
-
-            // Try to parse URI
-            try
-            {
-                // Set video uri
-                var videoUri = new Uri(videoText);
-
-                // Set id according to input format
-                if (videoUri.DnsSafeHost.ToLowerInvariant().Contains("youtube.com"))
-                {
-                    // Trim initial "?"
-                    var videoUriQueryString = videoUri.Query.TrimStart('?');
-
-                    // TODO Check for "v" value in query string [Refactor with "ParseQueryString()"]
-                    foreach (var queryPart in videoUriQueryString.Split('&'))
-                    {
-                        // Split to variable
-                        var queryKeyValue = queryPart.Split('=');
-
-                        // Check if it's "v", then check for valid length
-                        if (queryKeyValue[0] == "v" && queryKeyValue.Length == 2 && !string.IsNullOrWhiteSpace(queryKeyValue[1]))
-                        {
-                            // Assign id
-                            id = queryKeyValue[1];
-
-                            // Halt flow
-                            break;
-                        }
-                    }
-                }
-                else if (videoUri.DnsSafeHost.ToLowerInvariant().Contains("youtu.be"))
-                {
-                    // Shortened, check base directory
-                    if (videoUri.Segments.Length == 2)
-                    {
-                        // Set base directory as video id
-                        id = videoUri.Segments[1].TrimEnd('/');
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                // Assume video text is ID
-                id = videoText;
-            }
-
-            // Validate ID ([0-9A-Za-z_-])
-            if (!Regex.IsMatch(id, "^[a-zA-Z0-9_-]*$"))
-            {
-                // Invalid, set id to empty string
-                id = string.Empty;
-            }
+            // Set video id
+            var id = this.GetVideoId(this.videoTextBox.Text);
 
             // Check for valid length
             if (id.Length == 0)
@@ -342,8 +287,12 @@ namespace SteemSoftware
                     // Check for something different
                     if (Clipboard.GetText() != this.videoTextBox.Text)
                     {
-                        // Paste
-                        this.videoTextBox.Text = Clipboard.GetText();
+                        // Check video id
+                        if (this.GetVideoId(Clipboard.GetText()).Length > 0)
+                        {
+                            // Paste
+                            this.videoTextBox.Text = Clipboard.GetText();
+                        }
                     }
                 }
             }
@@ -361,6 +310,76 @@ namespace SteemSoftware
 
             // Toggle check state
             clickedItem.Checked = !clickedItem.Checked;
+        }
+
+        /// <summary>
+        /// Gets the video identifier.
+        /// </summary>
+        /// <returns>The video identifier.</returns>
+        /// <param name="videoText">Video text.</param>
+        private string GetVideoId(string videoText)
+        {
+            // Declare video id
+            var id = string.Empty;
+
+            // Try to parse URI
+            try
+            {
+                // Set video uri
+                var videoUri = new Uri(videoText);
+
+                // Set id according to input format
+                if (videoUri.DnsSafeHost.ToLowerInvariant().Contains("youtube.com"))
+                {
+                    // Trim initial "?"
+                    var videoUriQueryString = videoUri.Query.TrimStart('?');
+
+                    // TODO Check for "v" value in query string [Refactor with "ParseQueryString()"]
+                    foreach (var queryPart in videoUriQueryString.Split('&'))
+                    {
+                        // Split to variable
+                        var queryKeyValue = queryPart.Split('=');
+
+                        // Check if it's "v", then check for valid length
+                        if (queryKeyValue[0] == "v" && queryKeyValue.Length == 2 && !string.IsNullOrWhiteSpace(queryKeyValue[1]))
+                        {
+                            // Assign id
+                            id = queryKeyValue[1];
+
+                            // Halt flow
+                            break;
+                        }
+                    }
+                }
+                else if (videoUri.DnsSafeHost.ToLowerInvariant().Contains("youtu.be"))
+                {
+                    // Shortened, check base directory
+                    if (videoUri.Segments.Length == 2)
+                    {
+                        // Set base directory as video id
+                        id = videoUri.Segments[1].TrimEnd('/');
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Check video text length
+                if (videoText.Length == 11)
+                {
+                    // Assume video text is ID
+                    id = videoText;
+                }
+            }
+
+            // Validate ID ([0-9A-Za-z_-])
+            if (!Regex.IsMatch(id, "^[a-zA-Z0-9_-]*$"))
+            {
+                // Invalid, set id to empty string
+                id = string.Empty;
+            }
+
+            // Return video id
+            return id;
         }
     }
 }

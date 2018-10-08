@@ -6,6 +6,7 @@ namespace SteemSoftware
 {
     // Directives
     using System;
+    using System.IO;
     using System.Windows.Forms;
 
     /// <summary>
@@ -20,8 +21,13 @@ namespace SteemSoftware
         [STAThread]
         private static void Main(string[] args)
         {
+            // Enable visual styles
             Application.EnableVisualStyles();
+
+            // Set compatible text rendering default
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Run application
             Application.Run(new MainForm());
         }
     }

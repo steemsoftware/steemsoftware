@@ -306,19 +306,32 @@ namespace SteemSoftware
                 return;
             }
 
+            // Check for open module windows
+            if (!this.ConfirmOpenModuleClose())
+            {
+                // Set cancel
+                e.Cancel = true;
+            }
+        }
+
+        /// <summary>
+        /// Confirms the open module close.
+        /// </summary>
+        /// <returns><c>true</c>, if open module close was confirmed, <c>false</c> otherwise.</returns>
+        private bool ConfirmOpenModuleClose()
+        {
             // Open module count
             var openModuleCount = GetOpenModuleCount();
 
-            // Check for open module windows
-            if (openModuleCount > 0)
+            // // Check for open modules, if so, ask user for confirmation
+            if (openModuleCount == 0 || MessageBox.Show($"This action will close {openModuleCount} open module{(openModuleCount > 1 ? "s" : string.Empty)}. Continue?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                // Ask user for confirmation
-                if (MessageBox.Show("This action will close " + openModuleCount + " open module" + (openModuleCount > 1 ? "s" : string.Empty) + ". Continue?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    // Set cancel
-                    e.Cancel = true;
-                }
+                // True
+                return true;
             }
+
+            // False
+            return false;
         }
 
         /// <summary>

@@ -49,7 +49,7 @@ namespace SteemSoftware
         public MainForm()
         {
             // Set load from lib directory resolve event handler
-            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(LoadAssemblyFromLibDirectory);
+            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(this.LoadAssemblyFromLibDirectory);
 
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
@@ -120,7 +120,7 @@ namespace SteemSoftware
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Confirm open module close
-            if (this.ConfirmOpenModuleClose())
+            if (!this.askOnNewToolStripMenuItem.Checked || this.ConfirmOpenModuleClose())
             {
                 // Close all open module forms
                 foreach (var moduleForm in this.moduleFormList)
@@ -325,9 +325,9 @@ namespace SteemSoftware
         private bool ConfirmOpenModuleClose()
         {
             // Open module count
-            var openModuleCount = GetOpenModuleCount();
+            var openModuleCount = this.GetOpenModuleCount();
 
-            // // Check for open modules, if so, ask user for confirmation
+            // Check for open modules, if so, ask user for confirmation
             if (openModuleCount == 0 || MessageBox.Show($"This action will close {openModuleCount} open module{(openModuleCount > 1 ? "s" : string.Empty)}. Continue?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 // True

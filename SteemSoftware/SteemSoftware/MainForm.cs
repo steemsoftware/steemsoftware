@@ -325,11 +325,11 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Mains the form form closing.
+        /// Handles the main form form closing event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void MainFormFormClosing(object sender, FormClosingEventArgs e)
+        private void OnMainFormFormClosing(object sender, FormClosingEventArgs e)
         {
             // Ask on exit
             if (this.askOnExitToolStripMenuItem.Checked && !this.ConfirmOpenModuleClose())

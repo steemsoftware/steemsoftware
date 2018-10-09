@@ -50,8 +50,8 @@ namespace SteemSoftware
             this.functionalityLabel = new System.Windows.Forms.Label();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.askOnNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rememberWindowlocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rememberWindowsizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rememberWindowLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rememberWindowSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.askOnExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.descriptionRichTextBox = new System.Windows.Forms.RichTextBox();
@@ -187,8 +187,8 @@ namespace SteemSoftware
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
                                     this.askOnNewToolStripMenuItem,
-                                    this.rememberWindowlocationToolStripMenuItem,
-                                    this.rememberWindowsizeToolStripMenuItem,
+                                    this.rememberWindowLocationToolStripMenuItem,
+                                    this.rememberWindowSizeToolStripMenuItem,
                                     this.askOnExitToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
@@ -205,19 +205,19 @@ namespace SteemSoftware
             // 
             // rememberWindowlocationToolStripMenuItem
             // 
-            this.rememberWindowlocationToolStripMenuItem.Checked = true;
-            this.rememberWindowlocationToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rememberWindowlocationToolStripMenuItem.Name = "rememberWindowlocationToolStripMenuItem";
-            this.rememberWindowlocationToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.rememberWindowlocationToolStripMenuItem.Text = "Remember window &location";
+            this.rememberWindowLocationToolStripMenuItem.Checked = true;
+            this.rememberWindowLocationToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rememberWindowLocationToolStripMenuItem.Name = "rememberWindowlocationToolStripMenuItem";
+            this.rememberWindowLocationToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.rememberWindowLocationToolStripMenuItem.Text = "Remember window &location";
             // 
             // rememberWindowsizeToolStripMenuItem
             // 
-            this.rememberWindowsizeToolStripMenuItem.Checked = true;
-            this.rememberWindowsizeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rememberWindowsizeToolStripMenuItem.Name = "rememberWindowsizeToolStripMenuItem";
-            this.rememberWindowsizeToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.rememberWindowsizeToolStripMenuItem.Text = "Remember window &size";
+            this.rememberWindowSizeToolStripMenuItem.Checked = true;
+            this.rememberWindowSizeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rememberWindowSizeToolStripMenuItem.Name = "rememberWindowsizeToolStripMenuItem";
+            this.rememberWindowSizeToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.rememberWindowSizeToolStripMenuItem.Text = "Remember window &size";
             // 
             // askOnExitToolStripMenuItem
             // 
@@ -470,8 +470,8 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripMenuItem steemitcomTagToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem busyorgTagToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem launchcenteredToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rememberWindowsizeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rememberWindowlocationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rememberWindowSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rememberWindowLocationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem doubleClickLaunchToolStripMenuItem;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;

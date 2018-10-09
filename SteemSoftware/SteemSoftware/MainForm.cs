@@ -10,6 +10,7 @@ namespace SteemSoftware
     using System.Diagnostics;
     using System.Drawing;
     using System.IO;
+    using System.Linq;
     using System.Reflection;
     using System.Windows.Forms;
 
@@ -42,6 +43,11 @@ namespace SteemSoftware
         /// The semantic version.
         /// </summary>
         private string semanticVersion = string.Empty;
+
+        /// <summary>
+        /// The steem software data.
+        /// </summary>
+        private SteemSoftwareData steemSoftwareData = new SteemSoftwareData();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.MainForm"/> class.
@@ -297,25 +303,65 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Gets all menu item checked state dictionary.
+        /// </summary>
+        /// <param name="toolStripMenuItem">Tool strip menu item.</param>
+        /// <param name="menuItemCheckedStateDictionary">Menu item checked state dictionary.</param>
+        private void GetAllMenuItemCheckedStateDictionary(ToolStripMenuItem toolStripMenuItem, Dictionary<string, bool> menuItemCheckedStateDictionary)
+        {
+            // Iterate tool strip menu items
+            toolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().ToList().ForEach(dropDownItem =>
+            {
+                // Add to dictionary
+                menuItemCheckedStateDictionary.Add(dropDownItem.Name, dropDownItem.Checked);
+
+                // Check for more drop down items
+                if (dropDownItem.HasDropDownItems)
+                {
+                    // Use recursion
+                    GetAllMenuItemCheckedStateDictionary(dropDownItem, menuItemCheckedStateDictionary);
+                }
+            });
+        }
+
+        /// <summary>
         /// Mains the form form closing.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
         private void MainFormFormClosing(object sender, FormClosingEventArgs e)
         {
-            // Test ask on exit check state
-            if (!this.askOnExitToolStripMenuItem.Checked)
+            // Ask on exit
+            if (this.askOnExitToolStripMenuItem.Checked && !this.ConfirmOpenModuleClose())
+            {
+                // Set cancel
+                e.Cancel = true;
+            }
+
+            // Skip saving data
+            if (e.Cancel)
             {
                 // Halt flow
                 return;
             }
 
-            // Check for open module windows
-            if (!this.ConfirmOpenModuleClose())
+            /* Save data */
+
+            // Check if must save window size
+            if (this.rememberWindowSizeToolStripMenuItem.Checked)
             {
-                // Set cancel
-                e.Cancel = true;
+                // Save window size
+                this.steemSoftwareData.WindowSize = this.Size;
             }
+
+            // Check if must save window location
+            if (this.rememberWindowLocationToolStripMenuItem.Checked)
+            {
+                // Save window location
+                this.steemSoftwareData.WindowLocation = this.Location;
+            }
+
+            // Save menu items checked state
         }
 
         /// <summary>

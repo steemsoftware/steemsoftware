@@ -12,6 +12,7 @@ namespace SteemSoftware
     /// <summary>
     /// Steem software data.
     /// </summary>
+    [Serializable]
     public class SteemSoftwareData
     {
         /// <summary>

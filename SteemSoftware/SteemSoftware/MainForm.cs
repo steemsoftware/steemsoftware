@@ -12,7 +12,10 @@ namespace SteemSoftware
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
     using System.Windows.Forms;
+    using System.Xml.Serialization;
 
     /// <summary>
     /// Description of MainForm.
@@ -48,6 +51,11 @@ namespace SteemSoftware
         /// The steem software data.
         /// </summary>
         private SteemSoftwareData steemSoftwareData = new SteemSoftwareData();
+
+        /// <summary>
+        /// The steem software data file path.
+        /// </summary>
+        private string steemSoftwareDataFilePath = Path.Combine(Path.Combine(Application.StartupPath, "Data"), "SteemSoftwareData.bin");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.MainForm"/> class.
@@ -87,6 +95,10 @@ namespace SteemSoftware
                 // Add current one
                 this.categoryListBox.Items.Add(category);
             }
+
+            /* Create directories */
+
+            // Data
         }
 
         /// <summary>
@@ -345,23 +357,40 @@ namespace SteemSoftware
                 return;
             }
 
-            /* Save data */
+            /* Set window data */
 
-            // Check if must save window size
+            // Check if must remember window size
             if (this.rememberWindowSizeToolStripMenuItem.Checked)
             {
-                // Save window size
+                // Set window size
                 this.steemSoftwareData.WindowSize = this.Size;
             }
 
-            // Check if must save window location
+            // Check if must remember window location
             if (this.rememberWindowLocationToolStripMenuItem.Checked)
             {
-                // Save window location
+                // Set window location
                 this.steemSoftwareData.WindowLocation = this.Location;
             }
 
-            // Save menu items checked state
+            /* Set menu items checked state */
+
+            // Declare checked state dictionary
+            var menuItemCheckedStateDictionary = new Dictionary<string, bool>();
+
+            // Populate checked state dictionary
+            this.GetAllMenuItemCheckedStateDictionary(this.toolsToolStripMenuItem, menuItemCheckedStateDictionary);
+
+            // Set menu item checked state dictionary on class
+            this.steemSoftwareData.MenuItemCheckedStateDictionary = menuItemCheckedStateDictionary;
+
+            /* Save to bin file */
+            Directory.CreateDirectory(Path.Combine(Application.StartupPath, "Data"));
+
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(this.steemSoftwareDataFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, this.steemSoftwareData);
+            stream.Close();
         }
 
         /// <summary>
@@ -415,8 +444,12 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // Show about message
-            MessageBox.Show("SteemSoftware v" + this.semanticVersion + Environment.NewLine + Environment.NewLine + "Week #39 @ September 2018", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Show about form
+            var aboutForm = new AboutForm();
+
+            aboutForm.ShowDialog();
+
+            // MessageBox.Show("SteemSoftware v" + this.semanticVersion + Environment.NewLine + Environment.NewLine + "Week #39 @ September 2018", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -18,10 +18,30 @@ namespace SteemSoftware
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.AboutForm"/> class.
         /// </summary>
-        public AboutForm()
+        /// <param name="formTitle">Form title.</param>
+        /// <param name="moduleTitle">Module title.</param>
+        /// <param name="moduleInfo">Module info.</param>
+        /// <param name="moduleLicenseText">Module license text.</param>
+        /// <param name="moduleIcon">Module icon.</param>
+        public AboutForm(string formTitle, string moduleTitle, string moduleInfo, string moduleLicenseText, Image moduleIcon)
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            // Set form title
+            this.Text = formTitle;
+
+            // Set module title
+            this.moduleTitleLabel.Text = moduleTitle;
+
+            // Set module info
+            this.moduleInfoLabel.Text = moduleInfo;
+
+            // Set module license text
+            this.moduleLicenseRichTextBox.Text = moduleLicenseText;
+
+            // Set module icon
+            this.moduleIconPictureBox.Image = moduleIcon;
         }
 
         /// <summary>

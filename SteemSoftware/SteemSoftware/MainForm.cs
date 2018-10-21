@@ -53,9 +53,14 @@ namespace SteemSoftware
         private SteemSoftwareData steemSoftwareData = new SteemSoftwareData();
 
         /// <summary>
+        /// The data directory dictionary.
+        /// </summary>
+        private Dictionary<string, string> dataDirectoryDictionary = null;
+
+        /// <summary>
         /// The steem software data file path.
         /// </summary>
-        private string steemSoftwareDataFilePath = Path.Combine(Path.Combine(Application.StartupPath, "Data"), "SteemSoftwareData.bin");
+        private string steemSoftwareDataFilePath = null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.MainForm"/> class.
@@ -68,13 +73,39 @@ namespace SteemSoftware
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
 
+            /* Data directories and data file */
+
+            // Set data directory path
+            var dataDirectoryPath = Path.Combine(Application.StartupPath, "Data");
+
+            // Set data directory dictionary
+            this.dataDirectoryDictionary = new Dictionary<string, string>()
+            {
+                ["Data"] = dataDirectoryPath,
+                ["Libraries"] = Path.Combine(dataDirectoryPath, "Libraries"),
+                ["License"] = Path.Combine(dataDirectoryPath, "License"),
+                ["Settings"] = Path.Combine(dataDirectoryPath, "Settings"),
+            };
+
+            // Iterate data directories
+            foreach (var currentDataDirectory in this.dataDirectoryDictionary.Values)
+            {
+                // Create current directory
+                Directory.CreateDirectory(currentDataDirectory);
+            }
+
+            // Set data file path
+            this.steemSoftwareDataFilePath = Path.Combine(dataDirectoryPath, "SteemSoftwareData.bin");
+
+            /* Semantic versioning */
+
             // Set semantic version
             this.semanticVersion = this.assemblyVersion.Major + "." + this.assemblyVersion.Minor + "." + this.assemblyVersion.Build;
 
             // Append semantic version to form title
             this.Text += " " + this.semanticVersion;
 
-            /* Set module info lists */
+            /* Module info lists */
 
             // Video
             var videoModuleInfoList = new List<ModuleInfo>()
@@ -82,7 +113,7 @@ namespace SteemSoftware
                 new ModuleInfo("YouTube Downloader", "Download videos from YouTube.com", typeof(YouTubeDownloaderForm)),
             };
 
-            /* Set module info dictionary */
+            /* Module info dictionary */
 
             // Video
             this.moduleInfoDictionary.Add("Video", videoModuleInfoList);
@@ -95,10 +126,6 @@ namespace SteemSoftware
                 // Add current one
                 this.categoryListBox.Items.Add(category);
             }
-
-            /* Create directories */
-
-            // Data
         }
 
         /// <summary>
@@ -385,8 +412,6 @@ namespace SteemSoftware
             this.steemSoftwareData.MenuItemCheckedStateDictionary = menuItemCheckedStateDictionary;
 
             /* Save to bin file */
-            Directory.CreateDirectory(Path.Combine(Application.StartupPath, "Data"));
-
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(this.steemSoftwareDataFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, this.steemSoftwareData);
@@ -444,12 +469,17 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Set about form
+            var aboutForm = new AboutForm(
+                "About SteemSoftware",
+                $"SteemSoftware {this.semanticVersion}",
+                "Week #41 @ October 2018",
+                "CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication\nhttps://creativecommons.org/publicdomain/zero/1.0/legalcode",
+                this.Icon.ToBitmap()
+            );
+
             // Show about form
-            var aboutForm = new AboutForm();
-
             aboutForm.ShowDialog();
-
-            // MessageBox.Show("SteemSoftware v" + this.semanticVersion + Environment.NewLine + Environment.NewLine + "Week #39 @ September 2018", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

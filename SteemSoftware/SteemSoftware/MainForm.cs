@@ -95,7 +95,7 @@ namespace SteemSoftware
             }
 
             // Set data file path
-            this.steemSoftwareDataFilePath = Path.Combine(dataDirectoryPath, "SteemSoftwareData.bin");
+            this.steemSoftwareDataFilePath = Path.Combine(this.dataDirectoryDictionary["Settings"], "SteemSoftwareData.bin");
 
             /* Semantic versioning */
 
@@ -137,7 +137,7 @@ namespace SteemSoftware
         private Assembly LoadAssemblyFromLibDirectory(object sender, ResolveEventArgs args)
         {
             // Return loaded assembly
-            return Assembly.LoadFrom(Path.Combine(Path.Combine(Application.StartupPath, "Lib"), args.Name));
+            return Assembly.LoadFrom(Path.Combine(Path.Combine(Application.StartupPath, "Libraries"), args.Name));
         }
 
         /// <summary>

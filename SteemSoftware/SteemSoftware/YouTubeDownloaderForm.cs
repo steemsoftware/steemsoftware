@@ -213,11 +213,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnCutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // Copy current video text to clipboard
-            Clipboard.SetText(this.videoTextBox.Text);
+            // Check for video text
+            if (this.videoTextBox.Text.Length > 0)
+            {
+                // Copy current video text to clipboard
+                Clipboard.SetText(this.videoTextBox.Text);
 
-            // Clear video text box
-            this.videoTextBox.Clear();
+                // Clear video text box
+                this.videoTextBox.Clear();
+            }
         }
 
         /// <summary>
@@ -227,8 +231,12 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnCopyToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // Copy current video text to clipboard
-            Clipboard.SetText(this.videoTextBox.Text);
+            // Check for video text
+            if (this.videoTextBox.Text.Length > 0)
+            {
+                // Copy current video text to clipboard
+                Clipboard.SetText(this.videoTextBox.Text);
+            }
         }
 
         /// <summary>

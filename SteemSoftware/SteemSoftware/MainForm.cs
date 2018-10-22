@@ -140,7 +140,8 @@ namespace SteemSoftware
 
                 /* Restore menu items' check state */
 
-
+                // Set menu items checked state
+                this.SetAllMenuItemCheckedStateByDictionary(this.toolsToolStripMenuItem, this.steemSoftwareData.MenuItemCheckedStateDictionary);
 
                 /* Set window location and size */
 
@@ -530,10 +531,9 @@ namespace SteemSoftware
             var aboutForm = new AboutForm(
                 "About SteemSoftware",
                 $"SteemSoftware {this.semanticVersion}",
-                "Week #41 @ October 2018",
-                "CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication\nhttps://creativecommons.org/publicdomain/zero/1.0/legalcode",
-                this.Icon.ToBitmap()
-            );
+                "Week #42 @ October 2018",
+                $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}https://creativecommons.org/publicdomain/zero/1.0/legalcode",
+                this.Icon.ToBitmap());
 
             // Show about form
             aboutForm.ShowDialog();

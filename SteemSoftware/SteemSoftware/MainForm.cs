@@ -126,6 +126,41 @@ namespace SteemSoftware
                 // Add current one
                 this.categoryListBox.Items.Add(category);
             }
+
+            /* Read steem software data from binary file */
+
+            // Check for steem software data binary file
+            if (File.Exists(this.steemSoftwareDataFilePath))
+            {
+                // Read steem software data from binary file
+                IFormatter formatter = new BinaryFormatter();
+                Stream binaryFileStream = new FileStream(this.steemSoftwareDataFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                this.steemSoftwareData = (SteemSoftwareData)formatter.Deserialize(binaryFileStream);
+                binaryFileStream.Close();
+
+                /* Restore menu items' check state */
+
+
+
+                /* Set window location and size */
+
+                // Check for location checked state
+                if (this.rememberWindowLocationToolStripMenuItem.Checked)
+                {
+                    // Set start position to manual
+                    this.StartPosition = FormStartPosition.Manual;
+
+                    // Set window location
+                    this.Location = this.steemSoftwareData.WindowLocation;
+                }
+
+                // Check for size check state
+                if (this.rememberWindowLocationToolStripMenuItem.Checked)
+                {
+                    // Set window size
+                    this.Size = this.steemSoftwareData.WindowSize;
+                }
+            }
         }
 
         /// <summary>
@@ -364,6 +399,28 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Sets all menu item checked state by dictionary.
+        /// </summary>
+        /// <param name="toolStripMenuItem">Tool strip menu item.</param>
+        /// <param name="menuItemCheckedStateDictionary">Menu item checked state dictionary.</param>
+        private void SetAllMenuItemCheckedStateByDictionary(ToolStripMenuItem toolStripMenuItem, Dictionary<string, bool> menuItemCheckedStateDictionary)
+        {
+            // Iterate tool strip menu items
+            toolStripMenuItem.DropDownItems.OfType<ToolStripMenuItem>().ToList().ForEach(dropDownItem =>
+            {
+                // Set checked state by dictionary
+                dropDownItem.Checked = menuItemCheckedStateDictionary[dropDownItem.Name];
+
+                // Check for more drop down items
+                if (dropDownItem.HasDropDownItems)
+                {
+                    // Use recursion
+                    SetAllMenuItemCheckedStateByDictionary(dropDownItem, menuItemCheckedStateDictionary);
+                }
+            });
+        }
+
+        /// <summary>
         /// Handles the main form form closing event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
@@ -411,7 +468,7 @@ namespace SteemSoftware
             // Set menu item checked state dictionary on class
             this.steemSoftwareData.MenuItemCheckedStateDictionary = menuItemCheckedStateDictionary;
 
-            /* Save to bin file */
+            /* Save steem software data to binary file */
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(this.steemSoftwareDataFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, this.steemSoftwareData);

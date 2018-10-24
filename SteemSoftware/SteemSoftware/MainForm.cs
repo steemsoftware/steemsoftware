@@ -8,14 +8,12 @@ namespace SteemSoftware
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Formatters.Binary;
     using System.Windows.Forms;
-    using System.Xml.Serialization;
 
     /// <summary>
     /// Description of MainForm.
@@ -67,7 +65,7 @@ namespace SteemSoftware
         /// </summary>
         public MainForm()
         {
-            // Set load from lib directory resolve event handler
+            // Set load from library directory resolve event handler
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(this.LoadAssemblyFromLibDirectory);
 
             // The InitializeComponent() call is required for Windows Forms designer support.
@@ -172,8 +170,24 @@ namespace SteemSoftware
         /// <param name="args">Event arguments.</param>
         private Assembly LoadAssemblyFromLibDirectory(object sender, ResolveEventArgs args)
         {
-            // Return loaded assembly
-            return Assembly.LoadFrom(Path.Combine(Path.Combine(Application.StartupPath, "Libraries"), args.Name));
+            // Set assembly name
+            var assemblyName = new AssemblyName(args.Name).Name;
+
+            // Set assembly file path
+            var assemblyFilePath = Path.Combine(this.dataDirectoryDictionary["Libraries"], $"{assemblyName}.dll");
+
+            // Check for assembly file 
+            if (File.Exists(assemblyFilePath))
+            {
+                // Load assembly
+                var loadedAssembly = Assembly.LoadFrom(assemblyFilePath);
+
+                // Return loaded assembly
+                return loadedAssembly;
+            }
+
+            // Default return
+            return args.RequestingAssembly;
         }
 
         /// <summary>
@@ -527,12 +541,17 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Set license text
+            var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
+                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
+                $"Notice: Libraries have separate licenses. Please exercise due diligence.";
+
             // Set about form
             var aboutForm = new AboutForm(
                 "About SteemSoftware",
                 $"SteemSoftware {this.semanticVersion}",
                 "Week #42 @ October 2018",
-                $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}https://creativecommons.org/publicdomain/zero/1.0/legalcode",
+                licenseText,
                 this.Icon.ToBitmap());
 
             // Show about form

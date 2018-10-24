@@ -6,11 +6,7 @@ namespace SteemSoftware
 {
     // Directives
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Drawing;
     using System.IO;
-    using System.Net;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using System.Windows.Forms;
@@ -174,6 +170,9 @@ namespace SteemSoftware
                         // Disable download button
                         this.downloadButton.Enabled = false;
 
+                        // Inform user
+                        this.mainToolStripStatusLabel.Text = "Downloading video to folder...";
+
                         // Set last selected path
                         this.lastSelectedPath = folderBrowserDialog.SelectedPath;
 
@@ -275,12 +274,19 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // License text
+            var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
+                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
+                $"Youtube Explode:{Environment.NewLine}https://github.com/Tyrrrz/YoutubeExplode/blob/master/License.txt{Environment.NewLine}{Environment.NewLine}" +
+                $"AngleSharp:{Environment.NewLine}https://raw.githubusercontent.com/AngleSharp/AngleSharp/master/LICENSE{Environment.NewLine}{Environment.NewLine}" +
+                $"Newtonsoft.Json{Environment.NewLine}https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md";
+
             // Set about form
             var aboutForm = new AboutForm(
                 "About YouTube Downloader",
                 $"YouTube Downloader 0.1.0",
                 "Week #42 @ October 2018",
-                $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}Youtube Explode:{Environment.NewLine}https://github.com/Tyrrrz/YoutubeExplode/blob/master/License.txt",
+                    licenseText,
                 this.Icon.ToBitmap());
 
             // Show about form

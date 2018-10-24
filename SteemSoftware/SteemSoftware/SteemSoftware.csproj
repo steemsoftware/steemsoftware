@@ -1,22 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-    <ProjectGuid>{AF75B651-ABD5-4484-B49A-F867BD78D471}</ProjectGuid>
+    <ProjectGuid>{84DF18A6-40E8-4CF5-A073-BCAC83B66C92}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SteemSoftware</RootNamespace>
     <AssemblyName>SteemSoftware</AssemblyName>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <ApplicationIcon>assets\img\steemsoftware-icon_2018-09-18_derivative-from_diamond-158431_by-user_OpenClipart-Vectors_on_www-pixabay-com.ico</ApplicationIcon>
-    <NoWin32Manifest>False</NoWin32Manifest>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <Description>Public domain software supported by means of the Steem cryptocurrency.</Description>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ApplicationIcon>Assets\img\steemsoftware-icon_2018-09-18_derivative-from_diamond-158431_by-user_OpenClipart-Vectors_on_www-pixabay-com.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>True</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -35,6 +33,8 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
     </Reference>
@@ -46,14 +46,14 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
     </Reference>
-    <Reference Include="YoutubeExplode">
-      <HintPath>..\..\..\..\..\NET\NuGet\YouTubeExplode\YoutubeExplode.4.3.3\lib\net45\YoutubeExplode.dll</HintPath>
-    </Reference>
     <Reference Include="AngleSharp">
-      <HintPath>..\..\..\..\..\NET\NuGet\YouTubeExplode\AngleSharp.0.9.9.1\lib\net45\AngleSharp.dll</HintPath>
+      <HintPath>Libraries\AngleSharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\NET\NuGet\YouTubeExplode\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="YoutubeExplode">
+      <HintPath>Libraries\YoutubeExplode.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +65,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuleInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ModuleInfo.cs" />
     <Compile Include="YouTubeDownloaderForm.cs" />
     <Compile Include="YouTubeDownloaderForm.Designer.cs">
       <DependentUpon>YouTubeDownloaderForm.cs</DependentUpon>
@@ -76,6 +76,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Libraries\AngleSharp.dll" />
+    <None Include="Libraries\Newtonsoft.Json.dll" />
+    <None Include="Libraries\YoutubeExplode.dll" />
+    <None Include="Assets\img\steemsoftware-icon_2018-09-18_derivative-from_diamond-158431_by-user_OpenClipart-Vectors_on_www-pixabay-com.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
@@ -87,6 +91,16 @@
     <EmbeddedResource Include="YouTubeDownloaderForm.resx">
       <DependentUpon>YouTubeDownloaderForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libraries\" />
+    <Folder Include="License\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Assets\img\" />
+    <Folder Include="License\AngleSharp\" />
+    <Folder Include="License\Newtonsoft.Json\" />
+    <Folder Include="License\YoutubeExplode\" />
+    <Folder Include="License\SteemSoftware\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

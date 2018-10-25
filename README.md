@@ -23,7 +23,7 @@ Linux/Mac users can run it using latest [Mono runtime](https://www.mono-project.
 
 You can download latest SteemSoftware version from our releases page:
 
-* https://github.com/steemsoftware/steemsoftware/releases
+* [Github.com/steemsoftware/steemsoftware/releases](https://github.com/steemsoftware/steemsoftware/releases)
 
 ## Setup:
 

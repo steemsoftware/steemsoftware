@@ -4,7 +4,7 @@ Public domain software sponsored by means of the steem cryptocurrency.
 
 ## Screenshot:
 
-![SteemSoftware screenshot](https://i.imgsafe.org/0f/0f8d3dc821.png  "SteemSoftware screenshot")
+![SteemSoftware screenshot](https://i.imgsafe.org/14/148703f312.png  "SteemSoftware screenshot")
 
 ## Headquarters:
 
@@ -29,11 +29,17 @@ You can download latest SteemSoftware version from our releases page:
 
 Just unzip and execute **SteemSoftware.exe**
 
+![SteemSoftware Setup](https://i.imgsafe.org/14/1487629ac1.png  "SteemSoftware Setup")
+
 ## Usage:
 
 1. Pick category.
 1. Set functionality.
 1. Hit launch.
+
+
+[![SteemSoftware Instructions](http://img.youtube.com/vi/3vEDgLQ3OdM/0.jpg)](http://www.youtube.com/watch?v=3vEDgLQ3OdM "SteemSoftware Instructions")
+(Click for [YouTube video](http://www.youtube.com/watch?v=3vEDgLQ3OdM "SteemSoftware Instructions"))
 
 ## Releases:
 

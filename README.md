@@ -4,7 +4,7 @@ Public domain software sponsored by means of the steem cryptocurrency.
 
 ## Screenshot:
 
-![SteemSoftware screenshot](https://i.imgsafe.org/14/148703f312.png  "SteemSoftware screenshot")
+[![SteemSoftware screenshot](https://i.imgsafe.org/14/148703f312.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
 
 ## Headquarters:
 

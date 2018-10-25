@@ -65,9 +65,6 @@ namespace SteemSoftware
         /// </summary>
         public MainForm()
         {
-            // Set load from library directory resolve event handler
-            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(this.LoadAssemblyFromLibDirectory);
-
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
 
@@ -94,6 +91,11 @@ namespace SteemSoftware
 
             // Set data file path
             this.steemSoftwareDataFilePath = Path.Combine(this.dataDirectoryDictionary["Settings"], "SteemSoftwareData.bin");
+
+            /* Assembly resolve event handler */
+
+            // Set load from library directory resolve event handler
+            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(this.LoadAssemblyFromLibDirectory);
 
             /* Semantic versioning */
 

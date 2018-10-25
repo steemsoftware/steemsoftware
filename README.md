@@ -38,7 +38,7 @@ Just unzip and execute **SteemSoftware.exe**
 1. Hit launch.
 
 
-[![SteemSoftware Instructions](http://img.youtube.com/vi/3vEDgLQ3OdM/0.jpg)](http://www.youtube.com/watch?v=3vEDgLQ3OdM "SteemSoftware Instructions")
+[![SteemSoftware Instructions](http://img.youtube.com/vi/3vEDgLQ3OdM/0.jpg)](http://www.youtube.com/watch?v=3vEDgLQ3OdM "SteemSoftware Instructions")  
 (Click for [YouTube video](http://www.youtube.com/watch?v=3vEDgLQ3OdM "SteemSoftware Instructions"))
 
 ## Releases:

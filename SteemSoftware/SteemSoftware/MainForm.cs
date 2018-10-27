@@ -107,6 +107,12 @@ namespace SteemSoftware
 
             /* Module info lists */
 
+            // Security
+            var securityModuleInfoList = new List<ModuleInfo>()
+            {
+                new ModuleInfo("Strong Password Generator", "Generate strong passwords with the click of a button.", typeof(StrongPasswordGeneratorForm)),
+            };
+
             // Video
             var videoModuleInfoList = new List<ModuleInfo>()
             {
@@ -114,6 +120,9 @@ namespace SteemSoftware
             };
 
             /* Module info dictionary */
+
+            // Security
+            this.moduleInfoDictionary.Add("Security", securityModuleInfoList);
 
             // Video
             this.moduleInfoDictionary.Add("Video", videoModuleInfoList);

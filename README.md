@@ -21,13 +21,13 @@ Linux/Mac users can run it using latest [Mono runtime](https://www.mono-project.
 
 ## Download:
 
-You can download latest SteemSoftware version from our releases page:
+**Direct link:** [SteemSoftware_v0-2-0.zip](https://github.com/steemsoftware/steemsoftware/releases/download/v0.2.0/SteemSoftware_v0-2-0.zip)
 
-* [Github.com/steemsoftware/steemsoftware/releases](https://github.com/steemsoftware/steemsoftware/releases)
+[![2018-10-27_steemsoftware_v0-2-0_strong-password-generator](https://user-images.githubusercontent.com/38300167/47608294-2d9abd80-d9f9-11e8-9792-1aa6cdba3908.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.2.0/SteemSoftware_v0-2-0.zip)
 
 ## Setup:
 
-Just unzip and execute **SteemSoftware.exe**
+Unzip and execute **SteemSoftware.exe**
 
 ![SteemSoftware Setup](https://i.imgsafe.org/14/1487629ac1.png  "SteemSoftware Setup")
 
@@ -42,6 +42,8 @@ Just unzip and execute **SteemSoftware.exe**
 (Click for [YouTube video](http://www.youtube.com/watch?v=tE2uNauyT1A "SteemSoftware Instructions"))
 
 ## Releases:
+
+You can track SteemSoftware versions in our [**releases** page](https://github.com/steemsoftware/steemsoftware/releases).
 
 * v0.2.0 - Strong Password Generator
 * v0.1.0 – YouTube Downloader

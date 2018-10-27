@@ -1,10 +1,10 @@
 # SteemSoftware
 
-Public domain software sponsored by means of the steem cryptocurrency.
+Public domain software supported by means of the steem cryptocurrency.
 
 ## Screenshot:
 
-[![SteemSoftware screenshot](https://i.imgsafe.org/14/148703f312.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
+[![SteemSoftware screenshot](https://i.imgsafe.org/4a/4af8b49823.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
 
 ## Headquarters:
 
@@ -38,9 +38,10 @@ Just unzip and execute **SteemSoftware.exe**
 1. Hit launch.
 
 
-[![SteemSoftware Instructions](http://img.youtube.com/vi/3vEDgLQ3OdM/0.jpg)](http://www.youtube.com/watch?v=3vEDgLQ3OdM "SteemSoftware Instructions")  
-(Click for [YouTube video](http://www.youtube.com/watch?v=3vEDgLQ3OdM "SteemSoftware Instructions"))
+[![SteemSoftware instructions](http://img.youtube.com/vi/tE2uNauyT1A/0.jpg)](http://www.youtube.com/watch?v=tE2uNauyT1A "SteemSoftware instructions")  
+(Click for [YouTube video](http://www.youtube.com/watch?v=tE2uNauyT1A "SteemSoftware Instructions"))
 
 ## Releases:
 
+* v0.2.0 - Strong Password Generator
 * v0.1.0 – YouTube Downloader

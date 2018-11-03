@@ -306,25 +306,25 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the busy.org tag tool strip menu item click event.
+        /// Handles the busy.org blog tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnBusyorgTagToolStripMenuItemClick(object sender, EventArgs e)
+        private void OnBusyorgBlogToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Open tag on busy
-            Process.Start("https://busy.org/trending/steemsoftware");
+            Process.Start("https://busy.org/@steemsoftware");
         }
 
         /// <summary>
-        /// Handles the steemit.com tag tool strip menu item click event.
+        /// Handles the steemit.com blog strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnSteemitcomTagToolStripMenuItemClick(object sender, EventArgs e)
+        private void OnSteemitcomBlogToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Open tag on steemit
-            Process.Start("https://steemit.com/trending/steemsoftware");
+            Process.Start("https://steemit.com/@steemsoftware");
         }
 
         /// <summary>

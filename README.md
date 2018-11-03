@@ -8,10 +8,10 @@ Public domain software supported by means of the steem cryptocurrency.
 
 ## Headquarters:
 
-The #steemsoftware tag on the steem blockchain is our base of operations.
+Our blog in the steem blockchain is our base of operations.
 
-* [Busy.org/trending/steemsoftware](https://busy.org/trending/steemsoftware) 
-* [Steemit.com/trending/steemsoftware](https://steemit.com/trending/steemsoftware)
+* [Busy.org/@steemsoftware](https://busy.org/@steemsoftware) 
+* [Steemit.com/@steemsoftware](https://steemit.com/@steemsoftware)
 
 ## System requirements:
 

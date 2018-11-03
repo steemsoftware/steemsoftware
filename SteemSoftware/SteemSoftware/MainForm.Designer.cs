@@ -43,8 +43,8 @@ namespace SteemSoftware
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.githubRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.busyorgTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.steemitcomTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.busyorgBlogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.steemitcomBlogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.functionalityLabel = new System.Windows.Forms.Label();
@@ -126,8 +126,8 @@ namespace SteemSoftware
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
                                     this.githubRepositoryToolStripMenuItem,
                                     this.toolStripSeparator3,
-                                    this.busyorgTagToolStripMenuItem,
-                                    this.steemitcomTagToolStripMenuItem,
+                                    this.busyorgBlogToolStripMenuItem,
+                                    this.steemitcomBlogToolStripMenuItem,
                                     this.toolStripSeparator5,
                                     this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -146,19 +146,19 @@ namespace SteemSoftware
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(166, 6);
             // 
-            // busyorgTagToolStripMenuItem
+            // busyorgBlogToolStripMenuItem
             // 
-            this.busyorgTagToolStripMenuItem.Name = "busyorgTagToolStripMenuItem";
-            this.busyorgTagToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.busyorgTagToolStripMenuItem.Text = "&Busy.org tag";
-            this.busyorgTagToolStripMenuItem.Click += new System.EventHandler(this.OnBusyorgTagToolStripMenuItemClick);
+            this.busyorgBlogToolStripMenuItem.Name = "busyorgBlogToolStripMenuItem";
+            this.busyorgBlogToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.busyorgBlogToolStripMenuItem.Text = "&Busy.org tag";
+            this.busyorgBlogToolStripMenuItem.Click += new System.EventHandler(this.OnBusyorgBlogToolStripMenuItemClick);
             // 
-            // steemitcomTagToolStripMenuItem
+            // steemitcomBlogToolStripMenuItem
             // 
-            this.steemitcomTagToolStripMenuItem.Name = "steemitcomTagToolStripMenuItem";
-            this.steemitcomTagToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.steemitcomTagToolStripMenuItem.Text = "&Steemit.com tag";
-            this.steemitcomTagToolStripMenuItem.Click += new System.EventHandler(this.OnSteemitcomTagToolStripMenuItemClick);
+            this.steemitcomBlogToolStripMenuItem.Name = "steemitcomBlogToolStripMenuItem";
+            this.steemitcomBlogToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.steemitcomBlogToolStripMenuItem.Text = "&Steemit.com tag";
+            this.steemitcomBlogToolStripMenuItem.Click += new System.EventHandler(this.OnSteemitcomBlogToolStripMenuItemClick);
             // 
             // toolStripSeparator5
             // 
@@ -467,8 +467,8 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripMenuItem askOnExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem askOnNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem steemitcomTagToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem busyorgTagToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem steemitcomBlogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem busyorgBlogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem launchcenteredToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rememberWindowSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rememberWindowLocationToolStripMenuItem;

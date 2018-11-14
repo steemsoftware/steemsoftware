@@ -106,7 +106,12 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnOpenFileButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Show open file dialog
+            if (this.mainOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Process files
+                this.ProcessFiles(this.mainOpenFileDialog.FileNames);
+            }
         }
 
         /// <summary>
@@ -152,7 +157,7 @@ namespace SteemSoftware
                 }
 
                 // Update status
-                this.statusToolStripStatusLabel.Text = $"Saved {processedFiles} number files.";
+                this.statusToolStripStatusLabel.Text = $"Saved {processedFiles} number file{(processedFiles > 1 ? "s" : string.Empty)}";
             }
             catch (Exception)
             {

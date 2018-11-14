@@ -45,5 +45,5 @@ Unzip and execute **SteemSoftware.exe**
 
 You can track SteemSoftware versions in our [**releases** page](https://github.com/steemsoftware/steemsoftware/releases).
 
-* v0.2.0 - Strong Password Generator
+* v0.2.0 – Strong Password Generator
 * v0.1.0 – YouTube Downloader

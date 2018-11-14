@@ -107,6 +107,12 @@ namespace SteemSoftware
 
             /* Module info lists */
 
+            // File
+            var fileModuleInfoList = new List<ModuleInfo>()
+            {
+                new ModuleInfo("File Number Extractor", "Extracts numbers present in files.", typeof(FileNumberExtractorForm)),
+            };
+
             // Security
             var securityModuleInfoList = new List<ModuleInfo>()
             {
@@ -120,6 +126,9 @@ namespace SteemSoftware
             };
 
             /* Module info dictionary */
+
+            // File
+            this.moduleInfoDictionary.Add("File", fileModuleInfoList);
 
             // Security
             this.moduleInfoDictionary.Add("Security", securityModuleInfoList);
@@ -561,7 +570,7 @@ namespace SteemSoftware
             var aboutForm = new AboutForm(
                 "About SteemSoftware",
                 $"SteemSoftware {this.semanticVersion}",
-                "Week #42 @ October 2018",
+                "Week #46 @ November 2018",
                 licenseText,
                 this.Icon.ToBitmap());
 

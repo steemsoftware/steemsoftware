@@ -57,7 +57,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Open file button
+            this.openFileButton.PerformClick();
         }
 
         /// <summary>

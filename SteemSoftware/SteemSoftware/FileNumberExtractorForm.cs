@@ -6,7 +6,11 @@ namespace SteemSoftware
 {
     // Directives
     using System;
-    using System.Drawing;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
     using System.Windows.Forms;
 
     /// <summary>
@@ -14,6 +18,16 @@ namespace SteemSoftware
     /// </summary>
     public partial class FileNumberExtractorForm : Form
     {
+        /// <summary>
+        /// The name of the module.
+        /// </summary>
+        private string moduleName = "File Number Extractor";
+
+        /// <summary>
+        /// The semantic version.
+        /// </summary>
+        private string semanticVersion = "0.1.0";
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.FileNumberExtractorForm"/> class.
         /// </summary>
@@ -30,7 +44,20 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Set license text
+            var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
+                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}";
+
+            // Set about form
+            var aboutForm = new AboutForm(
+                $"About {this.moduleName}",
+                $"{this.moduleName} {this.semanticVersion}",
+                "Week #46 @ October 2018",
+                licenseText,
+                this.Icon.ToBitmap());
+
+            // Show about form
+            aboutForm.ShowDialog();
         }
 
         /// <summary>
@@ -90,6 +117,47 @@ namespace SteemSoftware
         private void OnBrowseForFolderButtonClick(object sender, EventArgs e)
         {
             // TODO Add code
+        }
+
+        /// <summary>
+        /// Extracts the numbers from file.
+        /// </summary>
+        /// <returns>The numbers from file.</returns>
+        /// <param name="filePath">File path.</param>
+        /// <param name="fileSuffix">File suffix.</param>
+        private string ExtractNumbersFromFile(string filePath, string fileSuffix)
+        {
+            // Try to extract numbers from file
+            try
+            {
+                // Read all lines to file lines
+                var fileLines = File.ReadAllLines(filePath);
+
+                // Declare number string builder
+                var numberStringBuilder = new StringBuilder();
+
+                // Extract numbers from lines
+                foreach (var line in fileLines)
+                {
+                    // Set current line numbers
+                    var lineNumbers = string.Join(" ", Regex.Matches(line, @"-?\d+").Cast<Match>().Select(m => m.Value));
+
+                    // Check for non-empty
+                    if (lineNumbers.Length > 0)
+                    {
+                        // Append current line numbers
+                        numberStringBuilder.AppendLine(lineNumbers);
+                    }
+                }
+
+                // Return extracted numbers
+                return numberStringBuilder.ToString();
+            }
+            catch (Exception)
+            {
+                // Default
+                return string.Empty;
+            }
         }
     }
 }

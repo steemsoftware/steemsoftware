@@ -19,6 +19,16 @@ namespace SteemSoftware
     public partial class YouTubeDownloaderForm : Form
     {
         /// <summary>
+        /// The name of the module.
+        /// </summary>
+        private string moduleName = "YouTube Downloader";
+
+        /// <summary>
+        /// The semantic version.
+        /// </summary>
+        private string semanticVersion = "0.1.1";
+
+        /// <summary>
         /// The last selected path.
         /// </summary>
         private string lastSelectedPath = string.Empty;
@@ -128,7 +138,7 @@ namespace SteemSoftware
                 // Set safe tifle
                 safeTitle = string.Join(string.Empty, videoInfo.Title.Split(Path.GetInvalidFileNameChars()));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Inform user
                 this.mainToolStripStatusLabel.Text = "Video info fetch error";
@@ -283,10 +293,10 @@ namespace SteemSoftware
 
             // Set about form
             var aboutForm = new AboutForm(
-                "About YouTube Downloader",
-                $"YouTube Downloader 0.1.0",
-                "Week #42 @ October 2018",
-                    licenseText,
+                $"About {this.moduleName}",
+                $"{this.moduleName} {this.semanticVersion}",
+                "Week #46 @ October 2018",
+                licenseText,
                 this.Icon.ToBitmap());
 
             // Show about form

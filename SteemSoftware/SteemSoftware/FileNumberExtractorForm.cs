@@ -40,7 +40,14 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Reset suffix text box
+            this.suffixTextBox.Text = "_numbers";
+
+            // Reset extension text box
+            this.extensionTextBox.Text = "txt,text";
+
+            // Reset status message
+            this.statusToolStripStatusLabel.Text = "Browse for file or folder";
         }
 
         /// <summary>

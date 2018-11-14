@@ -20,7 +20,7 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.StatusStrip mainStatusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel statusToolStripStatusLabel;
         private System.Windows.Forms.FolderBrowserDialog mainFolderBrowserDialog;
         private System.Windows.Forms.OpenFileDialog mainOpenFileDialog;
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
@@ -66,7 +66,7 @@ namespace SteemSoftware
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.mainOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -154,7 +154,7 @@ namespace SteemSoftware
             // mainStatusStrip
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                    this.toolStripStatusLabel1});
+                                    this.statusToolStripStatusLabel});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 172);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(284, 22);
@@ -162,9 +162,9 @@ namespace SteemSoftware
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(130, 17);
-            this.toolStripStatusLabel1.Text = "Browse for file or folder";
+            this.statusToolStripStatusLabel.Name = "statusToolStripStatusLabel";
+            this.statusToolStripStatusLabel.Size = new System.Drawing.Size(130, 17);
+            this.statusToolStripStatusLabel.Text = "Browse for file or folder";
             // 
             // mainOpenFileDialog
             // 

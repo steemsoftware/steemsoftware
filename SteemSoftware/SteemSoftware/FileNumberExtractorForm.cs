@@ -120,6 +120,48 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Processes the files.
+        /// </summary>
+        /// <param name="filePathArray">File path array.</param>
+        private void ProcessFiles(string[] filePathArray)
+        {
+            // Processed files counter
+            var processedFiles = 0;
+
+            // Try to save extracted numbers to file
+            try
+            {
+                // Process files
+                foreach (var filePath in filePathArray)
+                {
+                    // Get file numbers
+                    var fileNumbers = this.ExtractNumbersFromFile(filePath, this.suffixTextBox.Text);
+
+                    // Chek for non-empty
+                    if (fileNumbers.Length > 0)
+                    {
+                        // Set numbers file path
+                        var numberFilePath = Path.Combine(Path.GetDirectoryName(filePath), $"{Path.GetFileNameWithoutExtension(filePath)}{this.suffixTextBox.Text}{Path.GetExtension(filePath)}");
+
+                        // Save extracted file numbers
+                        File.WriteAllText(numberFilePath, fileNumbers);
+
+                        // Rise processed files counter
+                        processedFiles++;
+                    }
+                }
+
+                // Update status
+                this.statusToolStripStatusLabel.Text = $"Saved {processedFiles} number files.";
+            }
+            catch (Exception)
+            {
+                // Update status
+                this.statusToolStripStatusLabel.Text = "Error when processing files.";
+            }
+        }
+
+        /// <summary>
         /// Extracts the numbers from file.
         /// </summary>
         /// <returns>The numbers from file.</returns>

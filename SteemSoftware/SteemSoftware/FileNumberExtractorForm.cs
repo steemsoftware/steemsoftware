@@ -121,7 +121,30 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnBrowseForFolderButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Show folder browser dialog
+            if (this.mainFolderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                // File path list
+                var filePathList = new List<string>();
+
+                // File extension list
+                var fileExtensionList = new List<string>();
+
+                // Populate file extension list
+                foreach (var extension in this.extensionTextBox.Text.Split(','))
+                {
+                    // Add extension to list
+                    fileExtensionList.Add($"{(extension.StartsWith(".", StringComparison.InvariantCulture) ? "" : ".")}{extension}");
+                }
+
+                // Collect target files
+                var targetFiles = Directory.GetFiles(this.mainFolderBrowserDialog.SelectedPath, "*.*", SearchOption.TopDirectoryOnly)
+                                           .Where(s => fileExtensionList.Contains(Path.GetExtension(s)))
+                                           .ToArray();
+
+                // Process target files
+                this.ProcessFiles(targetFiles);
+            }
         }
 
         /// <summary>

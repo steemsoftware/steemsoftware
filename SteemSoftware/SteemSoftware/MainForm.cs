@@ -107,6 +107,12 @@ namespace SteemSoftware
 
             /* Module info lists */
 
+            // Compression
+            var compressionModuleInfoList = new List<ModuleInfo>()
+            {
+                new ModuleInfo("Compress Directory", "Compress directory to ZIP file. Expand from Zip too.", typeof(CompressDirectoryForm)),
+            };
+
             // File
             var fileModuleInfoList = new List<ModuleInfo>()
             {
@@ -126,6 +132,9 @@ namespace SteemSoftware
             };
 
             /* Module info dictionary */
+
+            // Compression
+            this.moduleInfoDictionary.Add("Compression", compressionModuleInfoList);
 
             // File
             this.moduleInfoDictionary.Add("File", fileModuleInfoList);

@@ -138,7 +138,7 @@ namespace SteemSoftware
                 // Set safe tifle
                 safeTitle = string.Join(string.Empty, videoInfo.Title.Split(Path.GetInvalidFileNameChars()));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Inform user
                 this.mainToolStripStatusLabel.Text = "Video info fetch error";

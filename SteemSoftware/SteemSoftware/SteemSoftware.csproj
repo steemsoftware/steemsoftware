@@ -62,6 +62,10 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompressDirectoryForm.cs" />
+    <Compile Include="CompressDirectoryForm.Designer.cs">
+      <DependentUpon>CompressDirectoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileNumberExtractorForm.cs" />
     <Compile Include="FileNumberExtractorForm.Designer.cs">
       <DependentUpon>FileNumberExtractorForm.cs</DependentUpon>
@@ -93,6 +97,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompressDirectoryForm.resx">
+      <DependentUpon>CompressDirectoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FileNumberExtractorForm.resx">
       <DependentUpon>FileNumberExtractorForm.cs</DependentUpon>

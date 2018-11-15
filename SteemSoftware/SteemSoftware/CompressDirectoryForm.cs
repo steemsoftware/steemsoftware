@@ -24,7 +24,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Ons the about tool strip menu item click.
+        /// Handles the about tool strip menu item click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -34,7 +34,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Ons the exit tool strip menu item click.
+        /// Handles the exit tool strip menu item click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -44,7 +44,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Ons the compress button click.
+        /// Handles the compress button click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -54,7 +54,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Ons the open tool strip menu item click.
+        /// Handles the open tool strip menu item click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -64,13 +64,34 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Ons the browse tool strip menu item click.
+        /// Handles the browse tool strip menu item click.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
         private void OnBrowseToolStripMenuItemClick(object sender, EventArgs e)
         {
             // TODO Add code
+        }
+
+        /// <summary>
+        /// Handles the compression level tool strip menu item drop down item clicked.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnCompressionLevelToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            // Uncheck all drop down items
+            foreach (var item in this.compressionLevelToolStripMenuItem.DropDownItems)
+            {
+                // Uncheck current item
+                ((ToolStripMenuItem)item).Checked = false;
+            }
+
+            // Set clicked item
+            var clickedItem = (ToolStripMenuItem)e.ClickedItem;
+
+            // Toggle check state
+            clickedItem.Checked = !clickedItem.Checked;
         }
     }
 }

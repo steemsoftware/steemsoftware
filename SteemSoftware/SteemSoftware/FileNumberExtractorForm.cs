@@ -52,7 +52,7 @@ namespace SteemSoftware
             var aboutForm = new AboutForm(
                 $"About {this.moduleName}",
                 $"{this.moduleName} {this.semanticVersion}",
-                "Week #46 @ October 2018",
+                "Week #46 @ November 2018",
                 licenseText,
                 this.Icon.ToBitmap());
 

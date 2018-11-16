@@ -7,7 +7,9 @@ namespace SteemSoftware
     // Directives
     using System;
     using System.Drawing;
+    using System.IO;
     using System.Windows.Forms;
+    using Ionic.Zip;
 
     /// <summary>
     /// Description of CompressDirectoryForm.
@@ -35,7 +37,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the about tool strip menu item click.
+        /// Handles the about tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -61,7 +63,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the exit tool strip menu item click.
+        /// Handles the exit tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -72,17 +74,57 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the compress button click.
+        /// Handles the compress button click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
         private void OnCompressButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Show folder browser dialog
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK && this.folderBrowserDialog.SelectedPath.Length > 0)
+            {
+                // Directory name
+                var directoryName = new DirectoryInfo(this.folderBrowserDialog.SelectedPath).Name;
+
+                // Set file name
+                this.saveFileDialog.FileName = $"{directoryName}.zip";
+
+                // Open save file dialog
+                if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
+                {
+                    // Compress directory to zip file
+                    try
+                    {
+                        // Use zip file
+                        using (var zip = new ZipFile())
+                        {
+                            // Check if must add root directory
+                            if (this.addDirectoryRootToolStripMenuItem.Checked)
+                            {
+                                // Add directory to zip file with root
+                                zip.AddDirectory(this.folderBrowserDialog.SelectedPath, directoryName);
+                            }
+                            else
+                            {
+                                // Add directory to zip file, no root
+                                zip.AddDirectory(this.folderBrowserDialog.SelectedPath);
+                            }
+
+                            // Save to zip file
+                            zip.Save(this.saveFileDialog.FileName);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // Inform user
+                        this.statusToolStripStatusLabel.Text = "Error!";
+                    }
+                }
+            }
         }
 
         /// <summary>
-        /// Handles the open tool strip menu item click.
+        /// Handles the open tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -92,7 +134,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the browse tool strip menu item click.
+        /// Handles the browse tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -102,7 +144,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the compression level tool strip menu item drop down item clicked.
+        /// Handles the compression level tool strip menu item drop down item clicked event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -119,7 +161,28 @@ namespace SteemSoftware
             var clickedItem = (ToolStripMenuItem)e.ClickedItem;
 
             // Toggle check state
-            clickedItem.Checked = !clickedItem.Checked;
+            clickedItem.Checked = true;
+        }
+
+        /// <summary>
+        /// Handles the add directory root tool strip menu item click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnAddDirectoryRootToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Toggle check state
+            this.addDirectoryRootToolStripMenuItem.Checked = !this.addDirectoryRootToolStripMenuItem.Checked;
+        }
+
+        /// <summary>
+        /// Handles the expand button click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnExpandButtonClick(object sender, EventArgs e)
+        {
+            // TODO Add code
         }
     }
 }

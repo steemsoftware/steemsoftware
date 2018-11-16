@@ -150,14 +150,14 @@ namespace SteemSoftware
             // 
             this.busyorgBlogToolStripMenuItem.Name = "busyorgBlogToolStripMenuItem";
             this.busyorgBlogToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.busyorgBlogToolStripMenuItem.Text = "&Busy.org tag";
+            this.busyorgBlogToolStripMenuItem.Text = "&Busy.org blog";
             this.busyorgBlogToolStripMenuItem.Click += new System.EventHandler(this.OnBusyorgBlogToolStripMenuItemClick);
             // 
             // steemitcomBlogToolStripMenuItem
             // 
             this.steemitcomBlogToolStripMenuItem.Name = "steemitcomBlogToolStripMenuItem";
             this.steemitcomBlogToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.steemitcomBlogToolStripMenuItem.Text = "&Steemit.com tag";
+            this.steemitcomBlogToolStripMenuItem.Text = "&Steemit.com blog";
             this.steemitcomBlogToolStripMenuItem.Click += new System.EventHandler(this.OnSteemitcomBlogToolStripMenuItemClick);
             // 
             // toolStripSeparator5

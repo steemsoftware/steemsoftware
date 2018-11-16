@@ -56,6 +56,9 @@
     <Reference Include="YoutubeExplode">
       <HintPath>Libraries\YoutubeExplode.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetZip">
+      <HintPath>Libraries\DotNetZip.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs" />
@@ -93,6 +96,8 @@
     <None Include="Libraries\Newtonsoft.Json.dll" />
     <None Include="Libraries\YoutubeExplode.dll" />
     <None Include="Assets\img\steemsoftware-icon_2018-09-18_derivative-from_diamond-158431_by-user_OpenClipart-Vectors_on_www-pixabay-com.ico" />
+    <None Include="License\DotNetZip\LICENSE" />
+    <None Include="Libraries\DotNetZip.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">

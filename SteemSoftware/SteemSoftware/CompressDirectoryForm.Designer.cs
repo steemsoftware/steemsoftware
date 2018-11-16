@@ -41,6 +41,12 @@ namespace SteemSoftware
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compressionLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fastestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noCompressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addDirectoryRootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
@@ -54,11 +60,6 @@ namespace SteemSoftware
             this.expandLabel = new System.Windows.Forms.Label();
             this.expandButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.compressionLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fastestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noCompressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.mainTableLayoutPanel.SuspendLayout();
@@ -117,6 +118,55 @@ namespace SteemSoftware
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.OnExitToolStripMenuItemClick);
             // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.compressionLevelToolStripMenuItem,
+                                    this.addDirectoryRootToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // compressionLevelToolStripMenuItem
+            // 
+            this.compressionLevelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.fastestToolStripMenuItem,
+                                    this.noCompressionToolStripMenuItem,
+                                    this.optimalToolStripMenuItem});
+            this.compressionLevelToolStripMenuItem.Name = "compressionLevelToolStripMenuItem";
+            this.compressionLevelToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.compressionLevelToolStripMenuItem.Text = "&Compression level";
+            this.compressionLevelToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnCompressionLevelToolStripMenuItemDropDownItemClicked);
+            // 
+            // fastestToolStripMenuItem
+            // 
+            this.fastestToolStripMenuItem.Name = "fastestToolStripMenuItem";
+            this.fastestToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.fastestToolStripMenuItem.Text = "&Fastest";
+            // 
+            // noCompressionToolStripMenuItem
+            // 
+            this.noCompressionToolStripMenuItem.Name = "noCompressionToolStripMenuItem";
+            this.noCompressionToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.noCompressionToolStripMenuItem.Text = "&No compression";
+            // 
+            // optimalToolStripMenuItem
+            // 
+            this.optimalToolStripMenuItem.Checked = true;
+            this.optimalToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.optimalToolStripMenuItem.Name = "optimalToolStripMenuItem";
+            this.optimalToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.optimalToolStripMenuItem.Text = "&Optimal";
+            // 
+            // addDirectoryRootToolStripMenuItem
+            // 
+            this.addDirectoryRootToolStripMenuItem.Checked = true;
+            this.addDirectoryRootToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.addDirectoryRootToolStripMenuItem.Name = "addDirectoryRootToolStripMenuItem";
+            this.addDirectoryRootToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.addDirectoryRootToolStripMenuItem.Text = "&Add directory root";
+            this.addDirectoryRootToolStripMenuItem.Click += new System.EventHandler(this.OnAddDirectoryRootToolStripMenuItemClick);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -153,6 +203,15 @@ namespace SteemSoftware
             this.statusToolStripStatusLabel.Size = new System.Drawing.Size(57, 17);
             this.statusToolStripStatusLabel.Text = "Waiting...";
             // 
+            // folderBrowserDialog
+            // 
+            this.folderBrowserDialog.Description = "Set target directory";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "zip";
+            this.saveFileDialog.Filter = "Zip Files (*.zip)|*.zip|All files (*.*)|*.*";
+            // 
             // mainTableLayoutPanel
             // 
             this.mainTableLayoutPanel.ColumnCount = 2;
@@ -180,7 +239,7 @@ namespace SteemSoftware
             this.compressButton.Location = new System.Drawing.Point(106, 3);
             this.compressButton.Name = "compressButton";
             this.compressButton.Size = new System.Drawing.Size(201, 42);
-            this.compressButton.TabIndex = 0;
+            this.compressButton.TabIndex = 1;
             this.compressButton.Text = "&Browse for folder";
             this.compressButton.UseVisualStyleBackColor = true;
             this.compressButton.Click += new System.EventHandler(this.OnCompressButtonClick);
@@ -192,7 +251,7 @@ namespace SteemSoftware
             this.targetLabel.Location = new System.Drawing.Point(3, 0);
             this.targetLabel.Name = "targetLabel";
             this.targetLabel.Size = new System.Drawing.Size(97, 48);
-            this.targetLabel.TabIndex = 4;
+            this.targetLabel.TabIndex = 0;
             this.targetLabel.Text = "&Compress:";
             this.targetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -203,7 +262,7 @@ namespace SteemSoftware
             this.expandLabel.Location = new System.Drawing.Point(3, 48);
             this.expandLabel.Name = "expandLabel";
             this.expandLabel.Size = new System.Drawing.Size(97, 48);
-            this.expandLabel.TabIndex = 5;
+            this.expandLabel.TabIndex = 2;
             this.expandLabel.Text = "&Expand:";
             this.expandLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -216,48 +275,15 @@ namespace SteemSoftware
             this.expandButton.Location = new System.Drawing.Point(106, 51);
             this.expandButton.Name = "expandButton";
             this.expandButton.Size = new System.Drawing.Size(201, 42);
-            this.expandButton.TabIndex = 6;
+            this.expandButton.TabIndex = 3;
             this.expandButton.Text = "&Open zip file";
             this.expandButton.UseVisualStyleBackColor = true;
+            this.expandButton.Click += new System.EventHandler(this.OnExpandButtonClick);
             // 
-            // optionsToolStripMenuItem
+            // openFileDialog
             // 
-            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                    this.compressionLevelToolStripMenuItem});
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            // 
-            // compressionLevelToolStripMenuItem
-            // 
-            this.compressionLevelToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                    this.fastestToolStripMenuItem,
-                                    this.noCompressionToolStripMenuItem,
-                                    this.optimalToolStripMenuItem});
-            this.compressionLevelToolStripMenuItem.Name = "compressionLevelToolStripMenuItem";
-            this.compressionLevelToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.compressionLevelToolStripMenuItem.Text = "&Compression level";
-            this.compressionLevelToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnCompressionLevelToolStripMenuItemDropDownItemClicked);
-            // 
-            // fastestToolStripMenuItem
-            // 
-            this.fastestToolStripMenuItem.Name = "fastestToolStripMenuItem";
-            this.fastestToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.fastestToolStripMenuItem.Text = "&Fastest";
-            // 
-            // noCompressionToolStripMenuItem
-            // 
-            this.noCompressionToolStripMenuItem.Name = "noCompressionToolStripMenuItem";
-            this.noCompressionToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.noCompressionToolStripMenuItem.Text = "&No compression";
-            // 
-            // optimalToolStripMenuItem
-            // 
-            this.optimalToolStripMenuItem.Checked = true;
-            this.optimalToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.optimalToolStripMenuItem.Name = "optimalToolStripMenuItem";
-            this.optimalToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.optimalToolStripMenuItem.Text = "&Optimal";
+            this.openFileDialog.DefaultExt = "zip";
+            this.openFileDialog.Filter = "Zip Files (*.zip)|*.zip|All files (*.*)|*.*";
             // 
             // CompressDirectoryForm
             // 
@@ -278,6 +304,7 @@ namespace SteemSoftware
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem addDirectoryRootToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optimalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noCompressionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fastestToolStripMenuItem;

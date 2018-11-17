@@ -95,7 +95,7 @@ namespace SteemSoftware
                     var progressValue = 100;
 
                     // Set status message
-                    var statusMessage = "Compressed!";
+                    var statusMessage = string.Empty;
 
                     // Compress directory to zip file
                     try
@@ -159,6 +159,9 @@ namespace SteemSoftware
 
                             // Save to zip file
                             zip.Save(this.saveFileDialog.FileName);
+
+                            // Set status message
+                            statusMessage = $"Compressed {zip.Entries.Count} file{(zip.Entries.Count > 1 ? "s" : string.Empty)}!";
                         }
                     }
                     catch (Exception)
@@ -204,14 +207,14 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the compression level tool strip menu item drop down item clicked event.
+        /// Handles the tool strip menu item drop down item clicked event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
-        private void OnCompressionLevelToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void OnToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             // Uncheck all drop down items
-            foreach (var item in this.compressionLevelToolStripMenuItem.DropDownItems)
+            foreach (var item in ((ToolStripMenuItem)sender).DropDownItems)
             {
                 // Uncheck current item
                 ((ToolStripMenuItem)item).Checked = false;
@@ -225,7 +228,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the add directory root tool strip menu item click.
+        /// Handles the add directory root tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -236,7 +239,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the expand button click.
+        /// Handles the expand button click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
@@ -252,7 +255,7 @@ namespace SteemSoftware
                     var progressValue = 100;
 
                     // Set status message
-                    var statusMessage = "Expanded!";
+                    var statusMessage = string.Empty;
 
                     // Compress directory to zip file
                     try
@@ -263,8 +266,20 @@ namespace SteemSoftware
                             // Set extract progress event handler
                             zip.ExtractProgress += this.ExtractProgress;
 
-                            // TODO Extract all files [Let user set ExtractExistingFileAction mode]
-                            zip.ExtractAll(this.folderBrowserDialog.SelectedPath, ExtractExistingFileAction.OverwriteSilently);
+                            // Set extract existing file action mode
+                            if (this.skipToolStripMenuItem.Checked)
+                            {
+                                // Extract all files, skip existing
+                                zip.ExtractAll(this.folderBrowserDialog.SelectedPath, ExtractExistingFileAction.DoNotOverwrite);
+                            }
+                            else
+                            {
+                                // Extract all files, overwriting existing
+                                zip.ExtractAll(this.folderBrowserDialog.SelectedPath, ExtractExistingFileAction.OverwriteSilently);
+                            }
+
+                            // TODO Set status message [Decrement final count according to skipped files]
+                            statusMessage = $"Expanded {zip.Entries.Count} file{(zip.Entries.Count > 1 ? "s" : string.Empty)}!";
                         }
                     }
                     catch (Exception)
@@ -307,7 +322,7 @@ namespace SteemSoftware
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event parameters.</param>
-        public void ExtractProgress(object sender, ExtractProgressEventArgs e)
+        private void ExtractProgress(object sender, ExtractProgressEventArgs e)
         {
             // Check event type
             if (e.EventType == ZipProgressEventType.Extracting_AfterExtractEntry)

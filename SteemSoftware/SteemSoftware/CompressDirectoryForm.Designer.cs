@@ -61,6 +61,9 @@ namespace SteemSoftware
             this.expandLabel = new System.Windows.Forms.Label();
             this.expandButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.extractExistingFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.skipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overwriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.mainTableLayoutPanel.SuspendLayout();
@@ -123,6 +126,7 @@ namespace SteemSoftware
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
                                     this.compressionLevelToolStripMenuItem,
+                                    this.extractExistingFileToolStripMenuItem,
                                     this.addDirectoryRootToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -137,7 +141,7 @@ namespace SteemSoftware
             this.compressionLevelToolStripMenuItem.Name = "compressionLevelToolStripMenuItem";
             this.compressionLevelToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.compressionLevelToolStripMenuItem.Text = "&Compression level";
-            this.compressionLevelToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnCompressionLevelToolStripMenuItemDropDownItemClicked);
+            this.compressionLevelToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
             // 
             // fastestToolStripMenuItem
             // 
@@ -286,6 +290,30 @@ namespace SteemSoftware
             this.openFileDialog.DefaultExt = "zip";
             this.openFileDialog.Filter = "Zip Files (*.zip)|*.zip|All files (*.*)|*.*";
             // 
+            // extractExistingFileToolStripMenuItem
+            // 
+            this.extractExistingFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.skipToolStripMenuItem,
+                                    this.overwriteToolStripMenuItem});
+            this.extractExistingFileToolStripMenuItem.Name = "extractExistingFileToolStripMenuItem";
+            this.extractExistingFileToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.extractExistingFileToolStripMenuItem.Text = "&Extract existing file";
+            this.extractExistingFileToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
+            // 
+            // skipToolStripMenuItem
+            // 
+            this.skipToolStripMenuItem.Name = "skipToolStripMenuItem";
+            this.skipToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.skipToolStripMenuItem.Text = "&Skip";
+            // 
+            // overwriteToolStripMenuItem
+            // 
+            this.overwriteToolStripMenuItem.Checked = true;
+            this.overwriteToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.overwriteToolStripMenuItem.Name = "overwriteToolStripMenuItem";
+            this.overwriteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.overwriteToolStripMenuItem.Text = "&Overwrite";
+            // 
             // CompressDirectoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,6 +333,9 @@ namespace SteemSoftware
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem overwriteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem skipToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem extractExistingFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addDirectoryRootToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optimalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noCompressionToolStripMenuItem;

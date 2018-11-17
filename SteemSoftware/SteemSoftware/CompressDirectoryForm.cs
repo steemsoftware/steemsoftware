@@ -26,7 +26,6 @@ namespace SteemSoftware
         /// </summary>
         private string semanticVersion = "0.1.0";
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.CompressDirectoryForm"/> class.
         /// </summary>
@@ -92,12 +91,21 @@ namespace SteemSoftware
                 // Open save file dialog
                 if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
                 {
+                    // Set progress value
+                    var progressValue = 100;
+
+                    // Set status message
+                    var statusMessage = "Success!";
+
                     // Compress directory to zip file
                     try
                     {
                         // Use zip file
                         using (var zip = new ZipFile())
                         {
+                            // Set extract progress event handler
+                            zip.SaveProgress += this.SaveProgress;
+
                             // Check if must add root directory
                             if (this.addDirectoryRootToolStripMenuItem.Checked)
                             {
@@ -116,8 +124,19 @@ namespace SteemSoftware
                     }
                     catch (Exception)
                     {
+                        // Set progress value
+                        progressValue = 0;
+
+                        // Set status message
+                        statusMessage = "Error.";
+                    }
+                    finally
+                    {
+                        // Set progress bar value
+                        this.progressToolStripProgressBar.Value = progressValue;
+
                         // Inform user
-                        this.statusToolStripStatusLabel.Text = "Error!";
+                        this.statusToolStripStatusLabel.Text = statusMessage;
                     }
                 }
             }
@@ -183,6 +202,21 @@ namespace SteemSoftware
         private void OnExpandButtonClick(object sender, EventArgs e)
         {
             // TODO Add code
+        }
+
+        /// <summary>
+        /// Handles the save progress event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void SaveProgress(object sender, SaveProgressEventArgs e)
+        {
+            // Check event type
+            if (e.EventType == ZipProgressEventType.Saving_AfterWriteEntry)
+            {
+                // Update tool strip progress bar
+                this.progressToolStripProgressBar.Value = (int)(e.EntriesSaved * 100 / e.EntriesTotal);
+            }
         }
     }
 }

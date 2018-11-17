@@ -95,7 +95,7 @@ namespace SteemSoftware
                     var progressValue = 100;
 
                     // Set status message
-                    var statusMessage = "Success!";
+                    var statusMessage = "Compressed!";
 
                     // Compress directory to zip file
                     try
@@ -242,7 +242,49 @@ namespace SteemSoftware
         /// <param name="e">Event parameters.</param>
         private void OnExpandButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Show folder browser dialog
+                if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK && this.folderBrowserDialog.SelectedPath.Length > 0)
+                {
+                    // Set progress value
+                    var progressValue = 100;
+
+                    // Set status message
+                    var statusMessage = "Expanded!";
+
+                    // Compress directory to zip file
+                    try
+                    {
+                        // Use zip file
+                        using (var zip = ZipFile.Read(this.openFileDialog.FileName))
+                        {
+                            // Set extract progress event handler
+                            zip.ExtractProgress += this.ExtractProgress;
+
+                            // TODO Extract all files [Let user set ExtractExistingFileAction mode]
+                            zip.ExtractAll(this.folderBrowserDialog.SelectedPath, ExtractExistingFileAction.OverwriteSilently);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // Set progress value
+                        progressValue = 0;
+
+                        // Set status message
+                        statusMessage = "Error.";
+                    }
+                    finally
+                    {
+                        // Set progress bar value
+                        this.progressToolStripProgressBar.Value = progressValue;
+
+                        // Inform user
+                        this.statusToolStripStatusLabel.Text = statusMessage;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -257,6 +299,21 @@ namespace SteemSoftware
             {
                 // Update tool strip progress bar
                 this.progressToolStripProgressBar.Value = (int)(e.EntriesSaved * 100 / e.EntriesTotal);
+            }
+        }
+
+        /// <summary>
+        /// Handles the extract progress event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        public void ExtractProgress(object sender, ExtractProgressEventArgs e)
+        {
+            // Check event type
+            if (e.EventType == ZipProgressEventType.Extracting_AfterExtractEntry)
+            {
+                // Update tool strip progress bar
+                this.progressToolStripProgressBar.Value = (int)(e.EntriesExtracted * 100 / e.EntriesTotal);
             }
         }
     }

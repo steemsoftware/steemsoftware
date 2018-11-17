@@ -36,43 +36,6 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the about tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event parameters.</param>
-        private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // Set license text
-            var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
-                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
-            $"Icons from wpclipart.com are in the public domain:{Environment.NewLine}" +
-            $"package x generic @ https://www.wpclipart.com/computer/icons/file_type/mimetypes/package_x_generic.png.html{Environment.NewLine}" +
-            $"folder @ https://www.wpclipart.com/computer/icons/folders/tango_folders/folder.png.html";
-
-            // Set about form
-            var aboutForm = new AboutForm(
-                $"About {this.moduleName}",
-                $"{this.moduleName} {this.semanticVersion}",
-                "Week #46 @ November 2018",
-                licenseText,
-                this.Icon.ToBitmap());
-
-            // Show about form
-            aboutForm.ShowDialog();
-        }
-
-        /// <summary>
-        /// Handles the exit tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event parameters.</param>
-        private void OnExitToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // Close module
-            this.Close();
-        }
-
-        /// <summary>
         /// Handles the compress button click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
@@ -170,7 +133,7 @@ namespace SteemSoftware
                         progressValue = 0;
 
                         // Set status message
-                        statusMessage = "Error.";
+                        statusMessage = "Compress error.";
                     }
                     finally
                     {
@@ -182,60 +145,6 @@ namespace SteemSoftware
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Handles the open tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event parameters.</param>
-        private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // Perform click on expand button
-            this.expandButton.PerformClick();
-        }
-
-        /// <summary>
-        /// Handles the browse tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event parameters.</param>
-        private void OnBrowseToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // Perform click on compress button
-            this.compressButton.PerformClick();
-        }
-
-        /// <summary>
-        /// Handles the tool strip menu item drop down item clicked event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event parameters.</param>
-        private void OnToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            // Uncheck all drop down items
-            foreach (var item in ((ToolStripMenuItem)sender).DropDownItems)
-            {
-                // Uncheck current item
-                ((ToolStripMenuItem)item).Checked = false;
-            }
-
-            // Set clicked item
-            var clickedItem = (ToolStripMenuItem)e.ClickedItem;
-
-            // Toggle check state
-            clickedItem.Checked = true;
-        }
-
-        /// <summary>
-        /// Handles the add directory root tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event parameters.</param>
-        private void OnAddDirectoryRootToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // Toggle check state
-            this.addDirectoryRootToolStripMenuItem.Checked = !this.addDirectoryRootToolStripMenuItem.Checked;
         }
 
         /// <summary>
@@ -288,7 +197,7 @@ namespace SteemSoftware
                         progressValue = 0;
 
                         // Set status message
-                        statusMessage = "Error.";
+                        statusMessage = "Expand error.";
                     }
                     finally
                     {
@@ -300,6 +209,99 @@ namespace SteemSoftware
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Handles the about tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Set license text
+            var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
+                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
+                $"DotNetZip license{Environment.NewLine}" +
+                $"https://raw.githubusercontent.com/haf/DotNetZip.Semverd/master/LICENSE{Environment.NewLine}{Environment.NewLine}" +
+            $"Icons from wpclipart.com are in the public domain:{Environment.NewLine}" +
+            $"package x generic @ https://www.wpclipart.com/computer/icons/file_type/mimetypes/package_x_generic.png.html{Environment.NewLine}" +
+            $"folder @ https://www.wpclipart.com/computer/icons/folders/tango_folders/folder.png.html";
+
+            // Set about form
+            var aboutForm = new AboutForm(
+                $"About {this.moduleName}",
+                $"{this.moduleName} {this.semanticVersion}",
+                "Week #46 @ November 2018",
+                licenseText,
+                this.Icon.ToBitmap());
+
+            // Show about form
+            aboutForm.ShowDialog();
+        }
+
+        /// <summary>
+        /// Handles the browse tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnBrowseToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Perform click on compress button
+            this.compressButton.PerformClick();
+        }
+
+        /// <summary>
+        /// Handles the open tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Perform click on expand button
+            this.expandButton.PerformClick();
+        }
+
+        /// <summary>
+        /// Handles the exit tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnExitToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Close module
+            this.Close();
+        }
+
+        /// <summary>
+        /// Handles the tool strip menu item drop down item clicked event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            // Uncheck all drop down items
+            foreach (var item in ((ToolStripMenuItem)sender).DropDownItems)
+            {
+                // Uncheck current item
+                ((ToolStripMenuItem)item).Checked = false;
+            }
+
+            // Set clicked item
+            var clickedItem = (ToolStripMenuItem)e.ClickedItem;
+
+            // Toggle check state
+            clickedItem.Checked = true;
+        }
+
+        /// <summary>
+        /// Handles the add directory root tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void OnAddDirectoryRootToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Toggle check state
+            this.addDirectoryRootToolStripMenuItem.Checked = !this.addDirectoryRootToolStripMenuItem.Checked;
         }
 
         /// <summary>

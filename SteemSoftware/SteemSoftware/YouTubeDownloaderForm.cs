@@ -26,7 +26,7 @@ namespace SteemSoftware
         /// <summary>
         /// The semantic version.
         /// </summary>
-        private string semanticVersion = "0.1.1";
+        private string semanticVersion = "0.1.2";
 
         /// <summary>
         /// The last selected path.
@@ -171,6 +171,9 @@ namespace SteemSoftware
                     // Set last selected path
                     folderBrowserDialog.SelectedPath = this.lastSelectedPath;
 
+                    // Set description
+                    folderBrowserDialog.Description = "Set download destination";
+
                     // Inform user
                     this.mainToolStripStatusLabel.Text = "Obtaining destination folder...";
 
@@ -295,7 +298,7 @@ namespace SteemSoftware
             var aboutForm = new AboutForm(
                 $"About {this.moduleName}",
                 $"{this.moduleName} {this.semanticVersion}",
-                "Week #46 @ October 2018",
+                "Week #46 @ November 2018",
                 licenseText,
                 this.Icon.ToBitmap());
 

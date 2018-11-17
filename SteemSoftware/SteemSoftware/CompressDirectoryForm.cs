@@ -188,7 +188,8 @@ namespace SteemSoftware
         /// <param name="e">Event parameters.</param>
         private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Perform click on expand button
+            this.expandButton.PerformClick();
         }
 
         /// <summary>

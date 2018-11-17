@@ -23,7 +23,7 @@ Linux/Mac users can run it using the latest [Mono runtime](https://www.mono-proj
 
 **Direct link:** [SteemSoftware_v0-4-0.zip](https://github.com/steemsoftware/steemsoftware/releases/download/v0.4.0/SteemSoftware_v0-4-0.zip)
 
-[![File Number Extractor](https://i.imgsafe.org/03/03161cda17.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.3.0/SteemSoftware_v0-3-0.zip)
+[![Latest module](https://i.imgsafe.org/03/03161cda17.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.4.0/SteemSoftware_v0-4-0.zip)
 
 ## Setup:
 

@@ -199,7 +199,8 @@ namespace SteemSoftware
         /// <param name="e">Event parameters.</param>
         private void OnBrowseToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Perform click on compress button
+            this.compressButton.PerformClick();
         }
 
         /// <summary>

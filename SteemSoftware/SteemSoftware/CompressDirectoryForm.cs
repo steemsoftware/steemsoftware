@@ -103,8 +103,47 @@ namespace SteemSoftware
                         // Use zip file
                         using (var zip = new ZipFile())
                         {
-                            // Set extract progress event handler
+                            // Set save progress event handler
                             zip.SaveProgress += this.SaveProgress;
+
+                            // Set compression level
+                            foreach (ToolStripMenuItem item in this.compressionLevelToolStripMenuItem.DropDownItems)
+                            {
+                                // Test for checked
+                                if (item.Checked)
+                                {
+                                    // Switch name
+                                    switch (item.Name)
+                                    {
+                                        // Optimal
+                                        case "optimalToolStripMenuItem":
+
+                                            // Set to best
+                                            zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
+
+                                            // Halt flow
+                                            break;
+
+                                        // No compression
+                                        case "noCompressionToolStripMenuItem":
+
+                                            // Set to none
+                                            zip.CompressionLevel = Ionic.Zlib.CompressionLevel.None;
+
+                                            // Halt flow
+                                            break;
+
+                                        // Fastest
+                                        case "fastestToolStripMenuItem":
+
+                                            // Set to best speed
+                                            zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestSpeed;
+
+                                            // Halt flow
+                                            break;
+                                    }
+                                }
+                            }
 
                             // Check if must add root directory
                             if (this.addDirectoryRootToolStripMenuItem.Checked)

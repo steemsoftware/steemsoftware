@@ -4,7 +4,7 @@ Request-driven Public domain software suite supported by means of the steem cryp
 
 ## Screenshot:
 
-[![SteemSoftware screenshot](https://i.imgsafe.org/d2/d265938149.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
+[![SteemSoftware screenshot](https://i.imgsafe.org/03/0316213f2d.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
 
 ## Headquarters:
 
@@ -21,9 +21,9 @@ Linux/Mac users can run it using the latest [Mono runtime](https://www.mono-proj
 
 ## Download:
 
-**Direct link:** [SteemSoftware_v0-3-0.zip](https://github.com/steemsoftware/steemsoftware/releases/download/v0.3.0/SteemSoftware_v0-3-0.zip)
+**Direct link:** [SteemSoftware_v0-4-0.zip](https://github.com/steemsoftware/steemsoftware/releases/download/v0.4.0/SteemSoftware_v0-4-0.zip)
 
-[![File Number Extractor](https://i.imgsafe.org/d2/d26593db7a.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.3.0/SteemSoftware_v0-3-0.zip)
+[![File Number Extractor](https://i.imgsafe.org/03/03161cda17.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.3.0/SteemSoftware_v0-3-0.zip)
 
 ## Setup:
 
@@ -37,13 +37,14 @@ Unzip and execute **SteemSoftware.exe**
 1. Set functionality.
 1. Hit launch.
 
-[![SteemSoftware instructions](http://img.youtube.com/vi/_sFXGzepfWw/0.jpg)](http://www.youtube.com/watch?v=_sFXGzepfWw "SteemSoftware instructions")  
-(Click for [YouTube video](http://www.youtube.com/watch?v=_sFXGzepfWw "SteemSoftware Instructions"))
+[![SteemSoftware instructions](http://img.youtube.com/vi/dw3e5vCD-Ew/0.jpg)](http://www.youtube.com/watch?v=dw3e5vCD-Ew "SteemSoftware instructions")  
+(Click for [YouTube video](http://www.youtube.com/watch?v=dw3e5vCD-Ew "SteemSoftware Instructions"))
 
 ## Releases:
 
 You can track SteemSoftware versions in our [**releases** page](https://github.com/steemsoftware/steemsoftware/releases).
 
+* v0.4.0 – Compress Directory
 * v0.3.0 – File Number Extractor
 * v0.2.0 – Strong Password Generator
 * v0.1.0 – YouTube Downloader

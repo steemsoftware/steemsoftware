@@ -107,6 +107,12 @@ namespace SteemSoftware
 
             /* Module info lists */
 
+            // Audio
+            var audioModuleInfoList = new List<ModuleInfo>()
+            {
+                new ModuleInfo("YouTube MultiPlaylist Jukebox", "Audio-only Jukebox for YouTube playlists and videos.", typeof(YoutubeMultiplaylistJukeboxForm)),
+            };
+
             // Compression
             var compressionModuleInfoList = new List<ModuleInfo>()
             {
@@ -132,6 +138,9 @@ namespace SteemSoftware
             };
 
             /* Module info dictionary */
+
+            // Audio
+            this.moduleInfoDictionary.Add("Audio", audioModuleInfoList);
 
             // Compression
             this.moduleInfoDictionary.Add("Compression", compressionModuleInfoList);

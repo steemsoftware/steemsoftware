@@ -89,6 +89,10 @@
       <DependentUpon>YouTubeDownloaderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SteemSoftwareData.cs" />
+    <Compile Include="YoutubeMultiplaylistJukeboxForm.cs" />
+    <Compile Include="YoutubeMultiplaylistJukeboxForm.Designer.cs">
+      <DependentUpon>YoutubeMultiplaylistJukeboxForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="YouTubeDownloaderForm.resx">
       <DependentUpon>YouTubeDownloaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YoutubeMultiplaylistJukeboxForm.resx">
+      <DependentUpon>YoutubeMultiplaylistJukeboxForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

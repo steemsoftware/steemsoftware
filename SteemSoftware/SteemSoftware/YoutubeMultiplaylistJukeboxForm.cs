@@ -395,9 +395,66 @@ namespace SteemSoftware
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnShuffledButtonClick(object sender, EventArgs e)
+        private async void OnShuffledButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Check for lines
+            if (this.listTextBox.Lines.Length == 0)
+            {
+                // Halt flow
+                return;
+            }
+
+            /* Prepare for fetch */
+
+            // Trigger code before fetch
+            this.FetchBeforeCode();
+
+            /* Populate jukebox play list */
+
+            // Get video lists list (sequentially)
+            var videoListList = await this.GetVideoLists(true);
+
+            // Populate sequentially
+            for (int i = 0; i < videoListList.Count; i++)
+            {
+                // Iterate video lists
+                for (int v = 0; v < videoListList[i].Count; v++)
+                {
+                    // Add current video to jukebox playlist
+                    this.jukeboxPlayList.Add(videoListList[i][v]);
+                }
+            }
+
+            /* Shuffle jukebox play list */
+
+            // Declare random 
+            var rnd = new Random();
+
+            // Shuffle with linq
+            this.jukeboxPlayList = this.jukeboxPlayList.OrderBy(x => rnd.Next(0, this.jukeboxPlayList.Count)).ToList();
+
+            /* Populate play list view */
+
+            // Iterate jukebox playlist items
+            for (int i = 0; i < this.jukeboxPlayList.Count; i++)
+            {
+                // Set video
+                var video = this.jukeboxPlayList[i];
+
+                // Set listview item 
+                var videoItem = new ListViewItem(new[] { video.Title, video.Author });
+
+                // Add video as tag
+                videoItem.Tag = video;
+
+                // Add to play list view
+                this.playListView.Items.Add(videoItem);
+            }
+
+            /* Post-fetch */
+
+            // Trigger code before fetch
+            this.FetchAfterCode();
         }
 
         /// <summary>

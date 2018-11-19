@@ -172,7 +172,7 @@ namespace SteemSoftware
 
             /* Populate jukebox play list */
 
-            // Get video lists list (sequential)
+            // Get video lists list (sequentially)
             var videoListList = await this.GetVideoLists(true);
 
             // Populate sequentially
@@ -188,7 +188,7 @@ namespace SteemSoftware
 
             /* Populate play list view */
 
-            // Iterate jukebox playlist
+            // Iterate jukebox playlist items
             for (int i = 0; i < this.jukeboxPlayList.Count; i++)
             {
                 // Set video

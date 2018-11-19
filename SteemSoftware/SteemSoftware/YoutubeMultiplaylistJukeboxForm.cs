@@ -152,65 +152,6 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the sequential button click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private async void OnSequentialButtonClick(object sender, EventArgs e)
-        {
-            // Check for lines
-            if (this.listTextBox.Lines.Length == 0)
-            {
-                // Halt flow
-                return;
-            }
-
-            /* Prepare for fetch */
-
-            // Trigger code before fetch
-            this.FetchBeforeCode();
-
-            /* Populate jukebox play list */
-
-            // Get video lists list (sequentially)
-            var videoListList = await this.GetVideoLists(true);
-
-            // Populate sequentially
-            for (int i = 0; i < videoListList.Count; i++)
-            {
-                // Iterate video lists
-                for (int v = 0; v < videoListList[i].Count; v++)
-                {
-                    // Add current video to jukebox playlist
-                    this.jukeboxPlayList.Add(videoListList[i][v]);
-                }
-            }
-
-            /* Populate play list view */
-
-            // Iterate jukebox playlist items
-            for (int i = 0; i < this.jukeboxPlayList.Count; i++)
-            {
-                // Set video
-                var video = this.jukeboxPlayList[i];
-
-                // Set listview item 
-                var videoItem = new ListViewItem(new[] { video.Title, video.Author });
-
-                // Add video as tag
-                videoItem.Tag = video;
-
-                // Add to play list view
-                this.playListView.Items.Add(videoItem);
-            }
-
-            /* Post-fetch */
-
-            // Trigger code before fetch
-            this.FetchAfterCode();
-        }
-
-        /// <summary>
         /// Gets the video lists.
         /// </summary>
         /// <returns>The video lists.</returns>
@@ -219,6 +160,9 @@ namespace SteemSoftware
         {
             // Declare video lists list
             var videoListList = new List<List<Video>>();
+
+            // Declare alternating video list
+            var alternatingVideoList = new List<Video>();
 
             // Declare youtube client
             var client = new YoutubeClient();
@@ -297,8 +241,19 @@ namespace SteemSoftware
                         // Set video
                         var video = await client.GetVideoAsync(id);
 
-                        // Add current video as list
-                        videoListList.Add(new List<Video> { video });
+                        /* Process sequential or alternating*/
+
+                        // Check for sequential flag
+                        if (sequential)
+                        {
+                            // Add current video as list
+                            videoListList.Add(new List<Video> { video });
+                        }
+                        else
+                        {
+                            // Add to alternating video list
+                            alternatingVideoList.Add(video);
+                        }
                     }
                     finally
                     {
@@ -307,6 +262,24 @@ namespace SteemSoftware
 
                     // Next iteration
                     continue;
+                }
+            }
+
+            /* Append or prepend alternating video list */
+
+            // Check if it's alternating
+            if (!sequential)
+            {
+                // Check for alternate first
+                if (this.alternatefirstToolStripMenuItem.Checked)
+                {
+                    // Prepend
+                    videoListList.Insert(0, alternatingVideoList);
+                }
+                else
+                {
+                    // Append
+                    videoListList.Add(alternatingVideoList);
                 }
             }
 
@@ -384,6 +357,66 @@ namespace SteemSoftware
 
             // Shuffled button
             this.shuffledButton.Enabled = enabledState;
+        }
+
+
+        /// <summary>
+        /// Handles the sequential button click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private async void OnSequentialButtonClick(object sender, EventArgs e)
+        {
+            // Check for lines
+            if (this.listTextBox.Lines.Length == 0)
+            {
+                // Halt flow
+                return;
+            }
+
+            /* Prepare for fetch */
+
+            // Trigger code before fetch
+            this.FetchBeforeCode();
+
+            /* Populate jukebox play list */
+
+            // Get video lists list (sequentially)
+            var videoListList = await this.GetVideoLists(true);
+
+            // Populate sequentially
+            for (int i = 0; i < videoListList.Count; i++)
+            {
+                // Iterate video lists
+                for (int v = 0; v < videoListList[i].Count; v++)
+                {
+                    // Add current video to jukebox playlist
+                    this.jukeboxPlayList.Add(videoListList[i][v]);
+                }
+            }
+
+            /* Populate play list view */
+
+            // Iterate jukebox playlist items
+            for (int i = 0; i < this.jukeboxPlayList.Count; i++)
+            {
+                // Set video
+                var video = this.jukeboxPlayList[i];
+
+                // Set listview item 
+                var videoItem = new ListViewItem(new[] { video.Title, video.Author });
+
+                // Add video as tag
+                videoItem.Tag = video;
+
+                // Add to play list view
+                this.playListView.Items.Add(videoItem);
+            }
+
+            /* Post-fetch */
+
+            // Trigger code before fetch
+            this.FetchAfterCode();
         }
 
         /// <summary>

@@ -40,8 +40,6 @@ namespace SteemSoftware
         private System.Windows.Forms.TextBox listTextBox;
         private System.Windows.Forms.Button sequentialButton;
         private System.Windows.Forms.Button shuffledButton;
-        private System.Windows.Forms.ToolStripMenuItem cacheToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clearCacheToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addedVideosToolStripMenuItem;
         private System.Windows.Forms.ListView playListView;
         private System.Windows.Forms.Label jukeboxPlaylistLabel;
@@ -120,8 +118,6 @@ namespace SteemSoftware
             this.videosToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.videosToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.customValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearCacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
@@ -195,7 +191,6 @@ namespace SteemSoftware
             // 
             // openToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
@@ -210,7 +205,6 @@ namespace SteemSoftware
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
@@ -248,7 +242,7 @@ namespace SteemSoftware
             this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.cutToolStripMenuItem.Text = "Cu&t";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.OnCutToolStripMenuItemClick);
             // 
@@ -258,7 +252,7 @@ namespace SteemSoftware
             this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.copyToolStripMenuItem.Text = "&Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.OnCopyToolStripMenuItemClick);
             // 
@@ -268,19 +262,20 @@ namespace SteemSoftware
             this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.pasteToolStripMenuItem.Text = "&Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.OnPasteToolStripMenuItemClick);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(161, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.selectAllToolStripMenuItem.Text = "Select &All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.OnSelectAllToolStripMenuItemClick);
             // 
@@ -288,8 +283,7 @@ namespace SteemSoftware
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addedVideosToolStripMenuItem,
-            this.addedlistsToolStripMenuItem,
-            this.cacheToolStripMenuItem});
+            this.addedlistsToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "&Options";
@@ -383,20 +377,6 @@ namespace SteemSoftware
             this.customValueToolStripMenuItem.Name = "customValueToolStripMenuItem";
             this.customValueToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.customValueToolStripMenuItem.Text = "&Custom value";
-            // 
-            // cacheToolStripMenuItem
-            // 
-            this.cacheToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearCacheToolStripMenuItem});
-            this.cacheToolStripMenuItem.Name = "cacheToolStripMenuItem";
-            this.cacheToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.cacheToolStripMenuItem.Text = "&Cache";
-            // 
-            // clearCacheToolStripMenuItem
-            // 
-            this.clearCacheToolStripMenuItem.Name = "clearCacheToolStripMenuItem";
-            this.clearCacheToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.clearCacheToolStripMenuItem.Text = "&Clear cache";
             // 
             // helpToolStripMenuItem
             // 
@@ -533,7 +513,7 @@ namespace SteemSoftware
             this.shuffledButton.Name = "shuffledButton";
             this.shuffledButton.Size = new System.Drawing.Size(92, 29);
             this.shuffledButton.TabIndex = 5;
-            this.shuffledButton.Text = "&Shuffled";
+            this.shuffledButton.Text = "S&huffled";
             this.shuffledButton.UseVisualStyleBackColor = true;
             this.shuffledButton.Click += new System.EventHandler(this.OnShuffledButtonClick);
             // 
@@ -566,6 +546,7 @@ namespace SteemSoftware
             this.playListView.TabIndex = 0;
             this.playListView.UseCompatibleStateImageBehavior = false;
             this.playListView.View = System.Windows.Forms.View.Details;
+            this.playListView.SelectedIndexChanged += new System.EventHandler(this.OnPlayListViewSelectedIndexChanged);
             // 
             // titleColumnHeader
             // 

@@ -241,7 +241,7 @@ namespace SteemSoftware
                         // Set video
                         var video = await client.GetVideoAsync(id);
 
-                        /* Process sequential or alternating*/
+                        /* Process sequential or alternating */
 
                         // Check for sequential flag
                         if (sequential)
@@ -440,17 +440,35 @@ namespace SteemSoftware
 
             /* Populate jukebox play list */
 
-            // Get video lists list (sequentially)
+            // Get video lists list (alternating)
             var videoListList = await this.GetVideoLists(false);
 
-            // Populate alternating lists
-            for (int i = 0; i < videoListList.Count; i++)
+            // Declare max video list count
+            var maxVideoListCount = 0;
+
+            // Iterate video lists
+            foreach (var videoList in videoListList)
+            {
+                // Check if must set
+                if (videoList.Count < maxVideoListCount)
+                {
+                    // Set max item count
+                    maxVideoListCount = videoList.Count;
+                }
+            }
+
+            // Iterate up to max video list count
+            for (int i = 0; i < maxVideoListCount; i++)
             {
                 // Iterate video lists
-                for (int v = 0; v < videoListList[i].Count; v++)
+                for (int l = 0; l < videoListList.Count; l++)
                 {
-                    // Add current video to jukebox playlist
-                    this.jukeboxPlayList.Add(videoListList[i][v]);
+                    // Check if current list has enough items
+                    if (videoListList[l].Count <= maxVideoListCount)
+                    {
+                        // Add current video to jukebox playlist
+                        this.jukeboxPlayList.Add(videoListList[l][i]);
+                    }
                 }
             }
 
@@ -671,6 +689,16 @@ namespace SteemSoftware
         private void OnLastButtonClick(object sender, EventArgs e)
         {
             // TODO Add code
+        }
+
+        /// <summary>
+        /// Ons the play list view selected index changed.
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">E.</param>
+        private void OnPlayListViewSelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

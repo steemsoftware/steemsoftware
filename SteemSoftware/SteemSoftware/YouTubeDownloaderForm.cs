@@ -354,67 +354,33 @@ namespace SteemSoftware
         /// <param name="videoText">Video text.</param>
         private string GetVideoId(string videoText)
         {
-            // Declare video id
-            var id = string.Empty;
+            // Check length for video id
+            if (videoText.Length == 11)
+            {
+                // Assume video
+                videoText = $"https://www.youtube.com/watch?v={videoText}";
+            }
 
-            // Try to parse URI
+            // Try to parse
             try
             {
-                // Set video uri
-                var videoUri = new Uri(videoText);
+                // Declare video id
+                string videoId;
 
-                // Set id according to input format
-                if (videoUri.DnsSafeHost.ToLowerInvariant().Contains("youtube.com"))
+                // Try to set id
+                if (YoutubeClient.TryParseVideoId(videoText, out videoId))
                 {
-                    // Trim initial "?"
-                    var videoUriQueryString = videoUri.Query.TrimStart('?');
-
-                    // TODO Check for "v" value in query string [Refactor with "ParseQueryString()"]
-                    foreach (var queryPart in videoUriQueryString.Split('&'))
-                    {
-                        // Split to variable
-                        var queryKeyValue = queryPart.Split('=');
-
-                        // Check if it's "v", then check for valid length
-                        if (queryKeyValue[0] == "v" && queryKeyValue.Length == 2 && !string.IsNullOrWhiteSpace(queryKeyValue[1]))
-                        {
-                            // Assign id
-                            id = queryKeyValue[1];
-
-                            // Halt flow
-                            break;
-                        }
-                    }
-                }
-                else if (videoUri.DnsSafeHost.ToLowerInvariant().Contains("youtu.be"))
-                {
-                    // Shortened, check base directory
-                    if (videoUri.Segments.Length == 2)
-                    {
-                        // Set base directory as video id
-                        id = videoUri.Segments[1].TrimEnd('/');
-                    }
+                    // Return parsed video id
+                    return videoId;
                 }
             }
-            catch (Exception)
+            finally
             {
-                // Check video text length
-                if (videoText.Length == 11)
-                {
-                    // Assume video text is ID
-                    id = videoText;
-                }
+                // Let it fall through
             }
 
-            // Validate ID ([0-9A-Za-z_-])
-            if (!Regex.IsMatch(id, "^[a-zA-Z0-9_-]*$"))
-            {
-                // Invalid, set id to empty string
-                id = string.Empty;
-            }
-
-            // Return video id
-            return id;
+            // Return empty string
+            return string.Empty;
         }
     }
 }

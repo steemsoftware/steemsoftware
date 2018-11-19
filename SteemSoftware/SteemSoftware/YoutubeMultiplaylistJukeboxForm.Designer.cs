@@ -14,7 +14,7 @@ namespace SteemSoftware
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.StatusStrip mainStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripProgressBar progressToolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusToolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
@@ -66,6 +66,8 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripMenuItem customValueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alternatefirstToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alternatelastToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader titleColumnHeader;
+        private System.Windows.Forms.ColumnHeader authorColumnHeader;
 
         /// <summary>
         /// Disposes resources used by the form.
@@ -107,6 +109,8 @@ namespace SteemSoftware
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addedVideosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alternatefirstToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alternatelastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addedlistsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fetchAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.videosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,7 +126,7 @@ namespace SteemSoftware
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.progressToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -133,6 +137,8 @@ namespace SteemSoftware
             this.shuffledButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.playListView = new System.Windows.Forms.ListView();
+            this.titleColumnHeader = new System.Windows.Forms.ColumnHeader();
+            this.authorColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.jukeboxPlaylistLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.firstButton = new System.Windows.Forms.Button();
@@ -144,8 +150,6 @@ namespace SteemSoftware
             this.playPauseButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.alternatefirstToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alternatelastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -296,9 +300,23 @@ namespace SteemSoftware
             this.alternatefirstToolStripMenuItem,
             this.alternatelastToolStripMenuItem});
             this.addedVideosToolStripMenuItem.Name = "addedVideosToolStripMenuItem";
-            this.addedVideosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addedVideosToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.addedVideosToolStripMenuItem.Text = "&Added videos";
             this.addedVideosToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
+            // 
+            // alternatefirstToolStripMenuItem
+            // 
+            this.alternatefirstToolStripMenuItem.Name = "alternatefirstToolStripMenuItem";
+            this.alternatefirstToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.alternatefirstToolStripMenuItem.Text = "Alternate &first";
+            // 
+            // alternatelastToolStripMenuItem
+            // 
+            this.alternatelastToolStripMenuItem.Checked = true;
+            this.alternatelastToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.alternatelastToolStripMenuItem.Name = "alternatelastToolStripMenuItem";
+            this.alternatelastToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.alternatelastToolStripMenuItem.Text = "Alternate &last";
             // 
             // addedlistsToolStripMenuItem
             // 
@@ -312,7 +330,7 @@ namespace SteemSoftware
             this.videosToolStripMenuItem5,
             this.customValueToolStripMenuItem});
             this.addedlistsToolStripMenuItem.Name = "addedlistsToolStripMenuItem";
-            this.addedlistsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addedlistsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.addedlistsToolStripMenuItem.Text = "Added &lists";
             this.addedlistsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
             // 
@@ -371,7 +389,7 @@ namespace SteemSoftware
             this.cacheToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearCacheToolStripMenuItem});
             this.cacheToolStripMenuItem.Name = "cacheToolStripMenuItem";
-            this.cacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cacheToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.cacheToolStripMenuItem.Text = "&Cache";
             // 
             // clearCacheToolStripMenuItem
@@ -399,7 +417,7 @@ namespace SteemSoftware
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripProgressBar1,
+            this.progressToolStripProgressBar,
             this.statusToolStripStatusLabel});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 331);
             this.mainStatusStrip.Name = "mainStatusStrip";
@@ -412,10 +430,10 @@ namespace SteemSoftware
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
-            // toolStripProgressBar1
+            // progressToolStripProgressBar
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.progressToolStripProgressBar.Name = "progressToolStripProgressBar";
+            this.progressToolStripProgressBar.Size = new System.Drawing.Size(100, 16);
             // 
             // statusToolStripStatusLabel
             // 
@@ -478,8 +496,10 @@ namespace SteemSoftware
             this.listTextBox.Location = new System.Drawing.Point(3, 28);
             this.listTextBox.Multiline = true;
             this.listTextBox.Name = "listTextBox";
+            this.listTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.listTextBox.Size = new System.Drawing.Size(285, 81);
             this.listTextBox.TabIndex = 2;
+            this.listTextBox.WordWrap = false;
             // 
             // alternatingButton
             // 
@@ -536,12 +556,26 @@ namespace SteemSoftware
             // 
             // playListView
             // 
+            this.playListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.titleColumnHeader,
+            this.authorColumnHeader});
             this.playListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.playListView.Location = new System.Drawing.Point(3, 28);
             this.playListView.Name = "playListView";
             this.playListView.Size = new System.Drawing.Size(285, 82);
             this.playListView.TabIndex = 0;
             this.playListView.UseCompatibleStateImageBehavior = false;
+            this.playListView.View = System.Windows.Forms.View.Details;
+            // 
+            // titleColumnHeader
+            // 
+            this.titleColumnHeader.Text = "Title";
+            this.titleColumnHeader.Width = 150;
+            // 
+            // authorColumnHeader
+            // 
+            this.authorColumnHeader.Text = "Author";
+            this.authorColumnHeader.Width = 150;
             // 
             // jukeboxPlaylistLabel
             // 
@@ -667,20 +701,6 @@ namespace SteemSoftware
             // 
             this.openFileDialog.DefaultExt = "txt";
             this.openFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
-            // 
-            // alternatefirstToolStripMenuItem
-            // 
-            this.alternatefirstToolStripMenuItem.Name = "alternatefirstToolStripMenuItem";
-            this.alternatefirstToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.alternatefirstToolStripMenuItem.Text = "Alternate &first";
-            // 
-            // alternatelastToolStripMenuItem
-            // 
-            this.alternatelastToolStripMenuItem.Checked = true;
-            this.alternatelastToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.alternatelastToolStripMenuItem.Name = "alternatelastToolStripMenuItem";
-            this.alternatelastToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.alternatelastToolStripMenuItem.Text = "Alternate &last";
             // 
             // YoutubeMultiplaylistJukeboxForm
             // 

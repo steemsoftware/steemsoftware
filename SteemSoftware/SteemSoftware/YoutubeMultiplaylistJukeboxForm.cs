@@ -9,9 +9,12 @@ namespace SteemSoftware
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
     using Microsoft.VisualBasic;
     using YoutubeExplode;
+    using YoutubeExplode.Models;
 
     /// <summary>
     /// Description of YoutubeMultiplaylistJukeboxForm.
@@ -31,7 +34,7 @@ namespace SteemSoftware
         /// <summary>
         /// The jukebox play list.
         /// </summary>
-        private List<string> jukeboxPlayList = new List<string>();
+        private List<Video> jukeboxPlayList = new List<Video>();
 
         /// <summary>
         /// The playlist max video count. 0 = Fetch all.
@@ -153,9 +156,228 @@ namespace SteemSoftware
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnSequentialButtonClick(object sender, EventArgs e)
+        private async void OnSequentialButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Check for lines
+            if (this.listTextBox.Lines.Length == 0)
+            {
+                // Halt flow
+                return;
+            }
+
+            /* Prepare for fetch */
+
+            // Trigger code before fetch
+            this.FetchBeforeCode();
+
+            /* Populate jukebox play list */
+
+            // Get video lists list (sequential)
+            var videoListList = await this.GetVideoLists(true);
+
+            // Populate sequentially
+            for (int i = 0; i < videoListList.Count; i++)
+            {
+                // Iterate video lists
+                for (int v = 0; v < videoListList[i].Count; v++)
+                {
+                    // Add current video to jukebox playlist
+                    this.jukeboxPlayList.Add(videoListList[i][v]);
+                }
+            }
+
+            /* Populate play list view */
+
+            // Iterate jukebox playlist
+            for (int i = 0; i < this.jukeboxPlayList.Count; i++)
+            {
+                // Set video
+                var video = this.jukeboxPlayList[i];
+
+                // Set listview item 
+                var videoItem = new ListViewItem(new[] { video.Title, video.Author });
+
+                // Add video as tag
+                videoItem.Tag = video;
+
+                // Add to play list view
+                this.playListView.Items.Add(videoItem);
+            }
+
+            /* Post-fetch */
+
+            // Trigger code before fetch
+            this.FetchAfterCode();
+        }
+
+        /// <summary>
+        /// Gets the video lists.
+        /// </summary>
+        /// <returns>The video lists.</returns>
+        /// <param name="sequential">If set to <c>true</c> sequential.</param>
+        private async Task<List<List<Video>>> GetVideoLists(bool sequential)
+        {
+            // Declare video lists list
+            var videoListList = new List<List<Video>>();
+
+            // Declare youtube client
+            var client = new YoutubeClient();
+
+            // Iterate lines
+            for (int l = 0; l < this.listTextBox.Lines.Length; l++)
+            {
+                // Set line
+                var line = this.listTextBox.Lines[l];
+
+                // Check there's something to work with
+                if (line.Length < 11)
+                {
+                    // Skip iteration
+                    continue;
+                }
+                else if (line.Length == 11)
+                {
+                    // Assume video
+                    line = $"https://www.youtube.com/watch?v={line}";
+                }
+                else
+                {
+                    // Assume playlist
+                    line = $"https://www.youtube.com/playlist?list={line}";
+                }
+
+                // Declare id
+                var id = string.Empty;
+
+                /* Add playlist */
+
+                // Try to parse playlist id
+                if (YoutubeClient.TryParsePlaylistId(line, out id))
+                {
+                    try
+                    {
+                        // Fetch playlist
+                        var playlist = await client.GetPlaylistAsync(id);
+
+                        // Set (custom) max video count
+                        var maxVideoCount = (this.playlistMaxVideoCount == 0 ? playlist.Videos.Count : this.playlistMaxVideoCount);
+
+                        // Add videos to jukebox playlist
+                        for (int v = 0; v < Math.Min(maxVideoCount, playlist.Videos.Count); v++)
+                        {
+                            // Add current video
+                            this.jukeboxPlayList.Add(playlist.Videos[v]);
+                        }
+                    }
+                    finally
+                    {
+                        // Let it fall through
+                    }
+
+                    // Next iteration
+                    continue;
+                }
+
+                /* Add video */
+
+                // Try to parse video id
+                if (YoutubeClient.TryParseVideoId(line, out id))
+                {
+                    try
+                    {
+                        // Set video
+                        var video = await client.GetVideoAsync(id);
+
+                        // Add current video
+                        this.jukeboxPlayList.Add(video);
+                    }
+                    finally
+                    {
+                        // Let it fall through
+                    }
+
+                    // Next iteration
+                    continue;
+                }
+
+                // Update progress bar
+                this.progressToolStripProgressBar.Value = (int)(l + 1 * 100 / this.listTextBox.Lines.Length);
+            }
+
+            // Return video lists list
+            return videoListList;
+        }
+
+        /// <summary>
+        /// Code before fetch.
+        /// </summary>
+        private void FetchBeforeCode()
+        {
+            // Disable controls
+            this.DisableEnableControls(false);
+
+            // Update status
+            this.statusToolStripStatusLabel.Text = "Fetching video data...";
+
+            // Reset progress bar
+            this.progressToolStripProgressBar.Value = 0;
+
+            // Clear jukebox play list
+            this.jukeboxPlayList.Clear();
+
+            // Clear play list items
+            this.playListView.Items.Clear();
+
+            // Clear playing now text box
+            this.nowPlayingTextBox.Clear();
+        }
+
+        /// <summary>
+        /// Code after fetch.
+        /// </summary>
+        private void FetchAfterCode()
+        {
+            // Enable controls
+            this.DisableEnableControls(true);
+
+            // Check there's something 
+            if (this.playListView.Items.Count > 0)
+            {
+                // Set now playing text box to first video
+                this.nowPlayingTextBox.Text = "1";
+
+                // Set play list selected item to first
+                this.playListView.Items[0].Selected = true;
+                this.playListView.Items[0].EnsureVisible();
+
+                // Set progress bar value
+                this.progressToolStripProgressBar.Value = 100;
+
+                // Update status
+                this.statusToolStripStatusLabel.Text = $"Fetched {this.playListView.Items.Count} videos.";
+
+                // Focus play button
+                this.playPauseButton.Focus();
+            }
+        }
+
+        /// <summary>
+        /// Disables or enables form controls.
+        /// </summary>
+        /// <param name="enabledState">If set to <c>true</c> enabled state.</param>
+        private void DisableEnableControls(bool enabledState)
+        {
+            // Text box
+            this.listTextBox.Enabled = enabledState;
+
+            // Sequential button
+            this.sequentialButton.Enabled = enabledState;
+
+            // Alternating button
+            this.alternatingButton.Enabled = enabledState;
+
+            // Shuffled button
+            this.shuffledButton.Enabled = enabledState;
         }
 
         /// <summary>

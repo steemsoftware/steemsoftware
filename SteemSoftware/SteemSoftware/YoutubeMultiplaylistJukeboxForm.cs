@@ -6,14 +6,38 @@ namespace SteemSoftware
 {
     // Directives
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
+    using System.Linq;
     using System.Windows.Forms;
+    using Microsoft.VisualBasic;
+    using YoutubeExplode;
 
     /// <summary>
     /// Description of YoutubeMultiplaylistJukeboxForm.
     /// </summary>
     public partial class YoutubeMultiplaylistJukeboxForm : Form
     {
+        /// <summary>
+        /// The name of the module.
+        /// </summary>
+        private string moduleName = "YouTube MultiPlaylist Jukebox";
+
+        /// <summary>
+        /// The semantic version.
+        /// </summary>
+        private string semanticVersion = "0.1.0";
+
+        /// <summary>
+        /// The jukebox play list.
+        /// </summary>
+        private List<string> jukeboxPlayList = new List<string>();
+
+        /// <summary>
+        /// The playlist max video count. 0 = Fetch all.
+        /// </summary>
+        private int playlistMaxVideoCount = 0;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.YoutubeMultiplaylistJukeboxForm"/> class.
         /// </summary>
@@ -155,13 +179,71 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the added videos tool strip menu item drop down item clicked event.
+        /// Handles the tool strip menu item drop down item clicked event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnAddedVideosToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void OnToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            // TODO Add code
+            // Uncheck all drop down items
+            foreach (var item in ((ToolStripMenuItem)sender).DropDownItems)
+            {
+                // Uncheck current item
+                ((ToolStripMenuItem)item).Checked = false;
+            }
+
+            // Set clicked item
+            var clickedItem = (ToolStripMenuItem)e.ClickedItem;
+
+            // Toggle check state
+            clickedItem.Checked = true;
+
+            /* Act upon owner item name */
+
+            // Check for added lists
+            if (clickedItem.OwnerItem.Name == "addedlistsToolStripMenuItem")
+            {
+                // Switch clicked item text
+                switch (clickedItem.Text.Split('(')[0])
+                {
+                    // Fetch all
+                    case "&Fetch all":
+
+                        // Set to zero
+                        this.playlistMaxVideoCount = 0;
+
+                        // Halt flow
+                        break;
+
+                    // Custom value
+                    case "&Custom value":
+
+                        // Declare custom value
+                        int customValue;
+
+                        // Try to parse
+                        if (int.TryParse(Interaction.InputBox("Set max video count. 0 = Fetch all.", "Playlist max", this.playlistMaxVideoCount.ToString(), -1, -1), out customValue))
+                        {
+                            // Set custom value
+                            this.playlistMaxVideoCount = customValue;
+
+                            // Update item text
+                            clickedItem.Text = $"&Custom value ({customValue})";
+                        }
+
+                        // Halt flow
+                        break;
+
+                    // Numerical
+                    default:
+
+                        // Set suggested number
+                        this.playlistMaxVideoCount = int.Parse(clickedItem.Text.Split(' ')[0]);
+
+                        // Halt flow
+                        break;
+                }
+            }
         }
 
         /// <summary>

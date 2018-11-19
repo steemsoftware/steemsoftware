@@ -43,8 +43,6 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripMenuItem cacheToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearCacheToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addedVideosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem firstToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lastToolStripMenuItem;
         private System.Windows.Forms.ListView playListView;
         private System.Windows.Forms.Label jukeboxPlaylistLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -56,9 +54,18 @@ namespace SteemSoftware
         private System.Windows.Forms.Button loopButton;
         private System.Windows.Forms.Button playPauseButton;
         private System.Windows.Forms.ToolStripMenuItem addedlistsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setMaxItemsToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ToolStripMenuItem fetchAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem videosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem videosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem videosToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem videosToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem videosToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem videosToolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem customValueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alternatefirstToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alternatelastToolStripMenuItem;
 
         /// <summary>
         /// Disposes resources used by the form.
@@ -100,10 +107,15 @@ namespace SteemSoftware
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addedVideosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.firstToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addedlistsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setMaxItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fetchAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.videosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.videosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.videosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.videosToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.videosToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.videosToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.customValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearCacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,6 +144,8 @@ namespace SteemSoftware
             this.playPauseButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.alternatefirstToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alternatelastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -279,47 +293,85 @@ namespace SteemSoftware
             // addedVideosToolStripMenuItem
             // 
             this.addedVideosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.firstToolStripMenuItem,
-            this.lastToolStripMenuItem});
+            this.alternatefirstToolStripMenuItem,
+            this.alternatelastToolStripMenuItem});
             this.addedVideosToolStripMenuItem.Name = "addedVideosToolStripMenuItem";
-            this.addedVideosToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.addedVideosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addedVideosToolStripMenuItem.Text = "&Added videos";
-            this.addedVideosToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnAddedVideosToolStripMenuItemDropDownItemClicked);
-            // 
-            // firstToolStripMenuItem
-            // 
-            this.firstToolStripMenuItem.Name = "firstToolStripMenuItem";
-            this.firstToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
-            this.firstToolStripMenuItem.Text = "&First";
-            // 
-            // lastToolStripMenuItem
-            // 
-            this.lastToolStripMenuItem.Checked = true;
-            this.lastToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.lastToolStripMenuItem.Name = "lastToolStripMenuItem";
-            this.lastToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
-            this.lastToolStripMenuItem.Text = "&Last";
+            this.addedVideosToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
             // 
             // addedlistsToolStripMenuItem
             // 
             this.addedlistsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setMaxItemsToolStripMenuItem});
+            this.fetchAllToolStripMenuItem,
+            this.videosToolStripMenuItem,
+            this.videosToolStripMenuItem1,
+            this.videosToolStripMenuItem2,
+            this.videosToolStripMenuItem3,
+            this.videosToolStripMenuItem4,
+            this.videosToolStripMenuItem5,
+            this.customValueToolStripMenuItem});
             this.addedlistsToolStripMenuItem.Name = "addedlistsToolStripMenuItem";
-            this.addedlistsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.addedlistsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addedlistsToolStripMenuItem.Text = "Added &lists";
+            this.addedlistsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnToolStripMenuItemDropDownItemClicked);
             // 
-            // setMaxItemsToolStripMenuItem
+            // fetchAllToolStripMenuItem
             // 
-            this.setMaxItemsToolStripMenuItem.Name = "setMaxItemsToolStripMenuItem";
-            this.setMaxItemsToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.setMaxItemsToolStripMenuItem.Text = "&Set max items";
+            this.fetchAllToolStripMenuItem.Checked = true;
+            this.fetchAllToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.fetchAllToolStripMenuItem.Name = "fetchAllToolStripMenuItem";
+            this.fetchAllToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.fetchAllToolStripMenuItem.Text = "&Fetch all";
+            // 
+            // videosToolStripMenuItem
+            // 
+            this.videosToolStripMenuItem.Name = "videosToolStripMenuItem";
+            this.videosToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.videosToolStripMenuItem.Text = "10 videos";
+            // 
+            // videosToolStripMenuItem1
+            // 
+            this.videosToolStripMenuItem1.Name = "videosToolStripMenuItem1";
+            this.videosToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.videosToolStripMenuItem1.Text = "20 videos";
+            // 
+            // videosToolStripMenuItem2
+            // 
+            this.videosToolStripMenuItem2.Name = "videosToolStripMenuItem2";
+            this.videosToolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.videosToolStripMenuItem2.Text = "30 videos";
+            // 
+            // videosToolStripMenuItem3
+            // 
+            this.videosToolStripMenuItem3.Name = "videosToolStripMenuItem3";
+            this.videosToolStripMenuItem3.Size = new System.Drawing.Size(147, 22);
+            this.videosToolStripMenuItem3.Text = "40 videos";
+            // 
+            // videosToolStripMenuItem4
+            // 
+            this.videosToolStripMenuItem4.Name = "videosToolStripMenuItem4";
+            this.videosToolStripMenuItem4.Size = new System.Drawing.Size(147, 22);
+            this.videosToolStripMenuItem4.Text = "50 videos";
+            // 
+            // videosToolStripMenuItem5
+            // 
+            this.videosToolStripMenuItem5.Name = "videosToolStripMenuItem5";
+            this.videosToolStripMenuItem5.Size = new System.Drawing.Size(147, 22);
+            this.videosToolStripMenuItem5.Text = "100 videos";
+            // 
+            // customValueToolStripMenuItem
+            // 
+            this.customValueToolStripMenuItem.Name = "customValueToolStripMenuItem";
+            this.customValueToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.customValueToolStripMenuItem.Text = "&Custom value";
             // 
             // cacheToolStripMenuItem
             // 
             this.cacheToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearCacheToolStripMenuItem});
             this.cacheToolStripMenuItem.Name = "cacheToolStripMenuItem";
-            this.cacheToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.cacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cacheToolStripMenuItem.Text = "&Cache";
             // 
             // clearCacheToolStripMenuItem
@@ -615,6 +667,20 @@ namespace SteemSoftware
             // 
             this.openFileDialog.DefaultExt = "txt";
             this.openFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
+            // 
+            // alternatefirstToolStripMenuItem
+            // 
+            this.alternatefirstToolStripMenuItem.Name = "alternatefirstToolStripMenuItem";
+            this.alternatefirstToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alternatefirstToolStripMenuItem.Text = "Alternate &first";
+            // 
+            // alternatelastToolStripMenuItem
+            // 
+            this.alternatelastToolStripMenuItem.Checked = true;
+            this.alternatelastToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.alternatelastToolStripMenuItem.Name = "alternatelastToolStripMenuItem";
+            this.alternatelastToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alternatelastToolStripMenuItem.Text = "Alternate &last";
             // 
             // YoutubeMultiplaylistJukeboxForm
             // 

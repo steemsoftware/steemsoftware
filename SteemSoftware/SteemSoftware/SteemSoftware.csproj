@@ -59,6 +59,7 @@
     <Reference Include="DotNetZip">
       <HintPath>Libraries\DotNetZip.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs" />

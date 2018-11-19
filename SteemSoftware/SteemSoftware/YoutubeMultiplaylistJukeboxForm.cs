@@ -226,6 +226,9 @@ namespace SteemSoftware
             // Iterate lines
             for (int l = 0; l < this.listTextBox.Lines.Length; l++)
             {
+                // Update progress bar
+                this.progressToolStripProgressBar.Value = (int)(l + 1 * 100 / this.listTextBox.Lines.Length);
+
                 // Set line
                 var line = this.listTextBox.Lines[l];
 
@@ -299,9 +302,6 @@ namespace SteemSoftware
                     // Next iteration
                     continue;
                 }
-
-                // Update progress bar
-                this.progressToolStripProgressBar.Value = (int)(l + 1 * 100 / this.listTextBox.Lines.Length);
             }
 
             // Return video lists list

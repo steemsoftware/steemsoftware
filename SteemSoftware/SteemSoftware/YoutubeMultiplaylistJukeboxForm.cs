@@ -170,9 +170,6 @@ namespace SteemSoftware
             // Iterate lines
             for (int l = 0; l < this.listTextBox.Lines.Length; l++)
             {
-                // Update progress bar
-                this.progressToolStripProgressBar.Value = (int)(l + 1 * 100 / this.listTextBox.Lines.Length);
-
                 // Set line
                 var line = this.listTextBox.Lines[l];
 
@@ -228,7 +225,7 @@ namespace SteemSoftware
                     }
 
                     // Next iteration
-                    continue;
+                    goto continueNext;
                 }
 
                 /* Add video */
@@ -261,8 +258,14 @@ namespace SteemSoftware
                     }
 
                     // Next iteration
-                    continue;
+                    goto continueNext;
                 }
+
+            // Continue next label
+            continueNext:
+
+                // Update progress bar
+                this.progressToolStripProgressBar.Value = (int)(l + 1 * 100 / this.listTextBox.Lines.Length);
             }
 
             /* Append or prepend alternating video list */
@@ -387,7 +390,7 @@ namespace SteemSoftware
             // Populate sequentially
             for (int i = 0; i < videoListList.Count; i++)
             {
-                // Iterate video lists
+                // Iterate video list items
                 for (int v = 0; v < videoListList[i].Count; v++)
                 {
                     // Add current video to jukebox playlist
@@ -450,24 +453,24 @@ namespace SteemSoftware
             foreach (var videoList in videoListList)
             {
                 // Check if must set
-                if (videoList.Count < maxVideoListCount)
+                if (videoList.Count > maxVideoListCount)
                 {
                     // Set max item count
                     maxVideoListCount = videoList.Count;
                 }
             }
 
-            // Iterate up to max video list count
-            for (int i = 0; i < maxVideoListCount; i++)
+            // Iterate index to max video count
+            for (int index = 0; index < maxVideoListCount; index++)
             {
                 // Iterate video lists
                 for (int l = 0; l < videoListList.Count; l++)
                 {
-                    // Check if current list has enough items
-                    if (videoListList[l].Count <= maxVideoListCount)
+                    // Check if current list has enough count
+                    if (videoListList[l].Count > index)
                     {
                         // Add current video to jukebox playlist
-                        this.jukeboxPlayList.Add(videoListList[l][i]);
+                        this.jukeboxPlayList.Add(videoListList[l][index]);
                     }
                 }
             }
@@ -523,7 +526,7 @@ namespace SteemSoftware
             // Populate sequentially
             for (int i = 0; i < videoListList.Count; i++)
             {
-                // Iterate video lists
+                // Iterate video list items
                 for (int v = 0; v < videoListList[i].Count; v++)
                 {
                     // Add current video to jukebox playlist

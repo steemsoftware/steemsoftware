@@ -85,7 +85,12 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnCopyToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Check text box length
+            if (this.listTextBox.Text.Length > 0)
+            {
+                // Copy current text to clipboard
+                Clipboard.SetText(this.listTextBox.Text);
+            }
         }
 
         /// <summary>

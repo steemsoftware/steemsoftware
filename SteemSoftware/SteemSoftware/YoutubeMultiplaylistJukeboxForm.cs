@@ -57,7 +57,27 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // License text
+            var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
+                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
+                $"Youtube Explode:{Environment.NewLine}https://github.com/Tyrrrz/YoutubeExplode/blob/master/License.txt{Environment.NewLine}{Environment.NewLine}" +
+                $"AngleSharp:{Environment.NewLine}https://raw.githubusercontent.com/AngleSharp/AngleSharp/master/LICENSE{Environment.NewLine}{Environment.NewLine}" +
+                $"Newtonsoft.Json{Environment.NewLine}https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md{Environment.NewLine}{Environment.NewLine}" +
+                $"Base icons by user k-images @ Pixabay.com (CC0 1.0){Environment.NewLine}" +
+                $"https://pixabay.com/en/music-play-pause-icons-next-back-1956799/{Environment.NewLine}{Environment.NewLine}" +
+                $"Loop icon by user IO-Images @ Pixabay.com (CC0 1.0){Environment.NewLine}" +
+                $"https://pixabay.com/en/infinity-loop-eight-endless-1179938/";
+
+            // Set about form
+            var aboutForm = new AboutForm(
+                $"About {this.moduleName}",
+                $"{this.moduleName} {this.semanticVersion}",
+                "Week #47 @ November 2018",
+                licenseText,
+                this.Icon.ToBitmap());
+
+            // Show about form
+            aboutForm.ShowDialog();
         }
 
         /// <summary>

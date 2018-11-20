@@ -155,10 +155,10 @@ namespace SteemSoftware
             // mainMenuStrip
             // 
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.optionsToolStripMenuItem,
-            this.helpToolStripMenuItem});
+                                    this.fileToolStripMenuItem,
+                                    this.editToolStripMenuItem,
+                                    this.optionsToolStripMenuItem,
+                                    this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(297, 24);
@@ -167,9 +167,9 @@ namespace SteemSoftware
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.exitToolStripMenuItem});
+                                    this.newToolStripMenuItem,
+                                    this.toolStripSeparator2,
+                                    this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
@@ -199,11 +199,11 @@ namespace SteemSoftware
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.selectAllToolStripMenuItem});
+                                    this.cutToolStripMenuItem,
+                                    this.copyToolStripMenuItem,
+                                    this.pasteToolStripMenuItem,
+                                    this.toolStripSeparator4,
+                                    this.selectAllToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "&Edit";
@@ -254,8 +254,8 @@ namespace SteemSoftware
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addedVideosToolStripMenuItem,
-            this.addedlistsToolStripMenuItem});
+                                    this.addedVideosToolStripMenuItem,
+                                    this.addedlistsToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "&Options";
@@ -263,8 +263,8 @@ namespace SteemSoftware
             // addedVideosToolStripMenuItem
             // 
             this.addedVideosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alternatefirstToolStripMenuItem,
-            this.alternatelastToolStripMenuItem});
+                                    this.alternatefirstToolStripMenuItem,
+                                    this.alternatelastToolStripMenuItem});
             this.addedVideosToolStripMenuItem.Name = "addedVideosToolStripMenuItem";
             this.addedVideosToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.addedVideosToolStripMenuItem.Text = "&Added videos";
@@ -287,14 +287,14 @@ namespace SteemSoftware
             // addedlistsToolStripMenuItem
             // 
             this.addedlistsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fetchAllToolStripMenuItem,
-            this.videosToolStripMenuItem,
-            this.videosToolStripMenuItem1,
-            this.videosToolStripMenuItem2,
-            this.videosToolStripMenuItem3,
-            this.videosToolStripMenuItem4,
-            this.videosToolStripMenuItem5,
-            this.customValueToolStripMenuItem});
+                                    this.fetchAllToolStripMenuItem,
+                                    this.videosToolStripMenuItem,
+                                    this.videosToolStripMenuItem1,
+                                    this.videosToolStripMenuItem2,
+                                    this.videosToolStripMenuItem3,
+                                    this.videosToolStripMenuItem4,
+                                    this.videosToolStripMenuItem5,
+                                    this.customValueToolStripMenuItem});
             this.addedlistsToolStripMenuItem.Name = "addedlistsToolStripMenuItem";
             this.addedlistsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.addedlistsToolStripMenuItem.Text = "Added &lists";
@@ -353,7 +353,7 @@ namespace SteemSoftware
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+                                    this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
@@ -368,8 +368,8 @@ namespace SteemSoftware
             // mainStatusStrip
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.progressToolStripProgressBar,
-            this.statusToolStripStatusLabel});
+                                    this.progressToolStripProgressBar,
+                                    this.statusToolStripStatusLabel});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 331);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(297, 22);
@@ -503,8 +503,8 @@ namespace SteemSoftware
             // playListView
             // 
             this.playListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.titleColumnHeader,
-            this.authorColumnHeader});
+                                    this.titleColumnHeader,
+                                    this.authorColumnHeader});
             this.playListView.ContextMenuStrip = this.jukeboxContextMenuStrip;
             this.playListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.playListView.FullRowSelect = true;
@@ -531,9 +531,9 @@ namespace SteemSoftware
             // jukeboxContextMenuStrip
             // 
             this.jukeboxContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playToolStripMenuItem,
-            this.nextToolStripMenuItem,
-            this.prevToolStripMenuItem});
+                                    this.playToolStripMenuItem,
+                                    this.nextToolStripMenuItem,
+                                    this.prevToolStripMenuItem});
             this.jukeboxContextMenuStrip.Name = "jukeboxContextMenuStrip";
             this.jukeboxContextMenuStrip.Size = new System.Drawing.Size(99, 70);
             // 
@@ -710,7 +710,6 @@ namespace SteemSoftware
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
         private System.Windows.Forms.ToolStripMenuItem prevToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nextToolStripMenuItem;

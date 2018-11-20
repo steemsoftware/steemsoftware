@@ -94,6 +94,34 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Handles the paste tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnPasteToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Check for clipboard text
+            if (Clipboard.GetText().Length > 0)
+            {
+                // Clear text box
+                this.listTextBox.Clear();
+
+                // Paste from clipboard
+                this.listTextBox.Text = Clipboard.GetText();
+            }
+        }
+
+        /// <summary>
+        /// Handles the select all tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnSelectAllToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
         /// Handles the new tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
@@ -131,26 +159,6 @@ namespace SteemSoftware
         {
             // Close module
             this.Close();
-        }
-
-        /// <summary>
-        /// Handles the paste tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnPasteToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
-        }
-
-        /// <summary>
-        /// Handles the select all tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnSelectAllToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
         }
 
         /// <summary>

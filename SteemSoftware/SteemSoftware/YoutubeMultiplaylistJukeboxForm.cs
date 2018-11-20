@@ -267,8 +267,8 @@ namespace SteemSoftware
 
             /* Append or prepend alternating video list */
 
-            // Check if it's alternating
-            if (!sequential)
+            // Check if it's alternating AND there are videos
+            if (!sequential && alternatingVideoList.Count > 0)
             {
                 // Check for alternate first
                 if (this.alternatefirstToolStripMenuItem.Checked)
@@ -442,6 +442,9 @@ namespace SteemSoftware
 
             // Get video lists list (alternating)
             var videoListList = await this.GetVideoLists(false);
+
+            //#
+            MessageBox.Show($"videoListList.Count: {videoListList.Count}");
 
             // Declare max video list count
             var maxVideoListCount = 0;

@@ -118,7 +118,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSelectAllToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Select all list text
+            this.listTextBox.SelectAll();
         }
 
         /// <summary>

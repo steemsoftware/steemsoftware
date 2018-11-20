@@ -443,9 +443,6 @@ namespace SteemSoftware
             // Get video lists list (alternating)
             var videoListList = await this.GetVideoLists(false);
 
-            //#
-            MessageBox.Show($"videoListList.Count: {videoListList.Count}");
-
             // Declare max video list count
             var maxVideoListCount = 0;
 

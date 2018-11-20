@@ -45,7 +45,6 @@ namespace SteemSoftware
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button lastButton;
         private System.Windows.Forms.TextBox nowPlayingTextBox;
-        private System.Windows.Forms.Button loopButton;
         private System.Windows.Forms.Button playPauseButton;
         private System.Windows.Forms.ToolStripMenuItem addedlistsToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
@@ -139,8 +138,8 @@ namespace SteemSoftware
             this.nextButton = new System.Windows.Forms.Button();
             this.lastButton = new System.Windows.Forms.Button();
             this.nowPlayingTextBox = new System.Windows.Forms.TextBox();
-            this.loopButton = new System.Windows.Forms.Button();
             this.playPauseButton = new System.Windows.Forms.Button();
+            this.loopCheckBox = new System.Windows.Forms.CheckBox();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainMenuStrip.SuspendLayout();
@@ -587,8 +586,8 @@ namespace SteemSoftware
             this.tableLayoutPanel4.Controls.Add(this.nextButton, 5, 0);
             this.tableLayoutPanel4.Controls.Add(this.lastButton, 6, 0);
             this.tableLayoutPanel4.Controls.Add(this.nowPlayingTextBox, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.loopButton, 4, 0);
             this.tableLayoutPanel4.Controls.Add(this.playPauseButton, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.loopCheckBox, 4, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 113);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -653,18 +652,6 @@ namespace SteemSoftware
             this.nowPlayingTextBox.TabIndex = 5;
             this.nowPlayingTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // loopButton
-            // 
-            this.loopButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loopButton.Image = ((System.Drawing.Image)(resources.GetObject("loopButton.Image")));
-            this.loopButton.Location = new System.Drawing.Point(167, 3);
-            this.loopButton.Name = "loopButton";
-            this.loopButton.Size = new System.Drawing.Size(35, 29);
-            this.loopButton.TabIndex = 11;
-            this.loopButton.UseVisualStyleBackColor = true;
-            this.loopButton.Click += new System.EventHandler(this.OnLoopButtonClick);
-            // 
             // playPauseButton
             // 
             this.playPauseButton.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -675,6 +662,20 @@ namespace SteemSoftware
             this.playPauseButton.TabIndex = 6;
             this.playPauseButton.UseVisualStyleBackColor = true;
             this.playPauseButton.Click += new System.EventHandler(this.OnPlayPauseButtonClick);
+            // 
+            // loopCheckBox
+            // 
+            this.loopCheckBox.Appearance = System.Windows.Forms.Appearance.Button;
+            this.loopCheckBox.AutoCheck = false;
+            this.loopCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loopCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.loopCheckBox.Image = ((System.Drawing.Image)(resources.GetObject("loopCheckBox.Image")));
+            this.loopCheckBox.Location = new System.Drawing.Point(167, 3);
+            this.loopCheckBox.Name = "loopCheckBox";
+            this.loopCheckBox.Size = new System.Drawing.Size(35, 29);
+            this.loopCheckBox.TabIndex = 11;
+            this.loopCheckBox.UseVisualStyleBackColor = true;
+            this.loopCheckBox.Click += new System.EventHandler(this.OnLoopCheckBoxClick);
             // 
             // saveFileDialog
             // 
@@ -711,6 +712,7 @@ namespace SteemSoftware
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+        private System.Windows.Forms.CheckBox loopCheckBox;
         private System.Windows.Forms.ToolStripMenuItem prevToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playToolStripMenuItem;

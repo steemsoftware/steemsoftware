@@ -42,6 +42,16 @@ namespace SteemSoftware
         private int playlistMaxVideoCount = 0;
 
         /// <summary>
+        /// The loop mode. 0 = none, 1 = list, 2 = video.
+        /// </summary>
+        private int loopMode = 0;
+
+        /// <summary>
+        /// The resources.
+        /// </summary>
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YoutubeMultiplaylistJukeboxForm));
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.YoutubeMultiplaylistJukeboxForm"/> class.
         /// </summary>
         public YoutubeMultiplaylistJukeboxForm()
@@ -666,13 +676,54 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the loop button click event.
+        /// Handles the loop check box click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnLoopButtonClick(object sender, EventArgs e)
+        private void OnLoopCheckBoxClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Switch loop mode
+            switch (this.loopMode)
+            {
+                // From none
+                case 0:
+
+                    // Rise loop mode
+                    this.loopMode++;
+
+                    // Check loop check box
+                    this.loopCheckBox.Checked = true;
+
+                    // Halt flow
+                    break;
+
+                // From list
+                case 1:
+
+                    // Rise loop mode
+                    this.loopMode++;
+
+                    // Change check box image
+                    this.loopCheckBox.Image = ((System.Drawing.Image)(resources.GetObject("loopOne15b.Image")));
+
+                    // Halt flow
+                    break;
+
+                // Video
+                case 2:
+
+                    // Reset loop mode
+                    this.loopMode = 0;
+
+                    // Reset check box image 
+                    this.loopCheckBox.Image = ((System.Drawing.Image)(resources.GetObject("loopCheckBox.Image")));
+
+                    // Uncheck loop check box
+                    this.loopCheckBox.Checked = false;
+
+                    // Halt flow
+                    break;
+            }
         }
 
         /// <summary>

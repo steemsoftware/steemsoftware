@@ -13,14 +13,10 @@ namespace SteemSoftware
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.StatusStrip mainStatusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar progressToolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusToolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
@@ -90,13 +86,11 @@ namespace SteemSoftware
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YoutubeMultiplaylistJukeboxForm));
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,7 +115,6 @@ namespace SteemSoftware
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -135,6 +128,10 @@ namespace SteemSoftware
             this.playListView = new System.Windows.Forms.ListView();
             this.titleColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.authorColumnHeader = new System.Windows.Forms.ColumnHeader();
+            this.jukeboxContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prevToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jukeboxPlaylistLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.firstButton = new System.Windows.Forms.Button();
@@ -151,6 +148,7 @@ namespace SteemSoftware
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.jukeboxContextMenuStrip.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,9 +168,6 @@ namespace SteemSoftware
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.toolStripSeparator,
-            this.saveToolStripMenuItem,
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -185,42 +180,19 @@ namespace SteemSoftware
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.OnNewToolStripMenuItemClick);
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.openToolStripMenuItem.Text = "&Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.OnOpenToolStripMenuItemClick);
-            // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.OnSaveToolStripMenuItemClick);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.OnExitToolStripMenuItemClick);
             // 
@@ -396,7 +368,6 @@ namespace SteemSoftware
             // mainStatusStrip
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
             this.progressToolStripProgressBar,
             this.statusToolStripStatusLabel});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 331);
@@ -404,11 +375,6 @@ namespace SteemSoftware
             this.mainStatusStrip.Size = new System.Drawing.Size(297, 22);
             this.mainStatusStrip.TabIndex = 1;
             this.mainStatusStrip.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // progressToolStripProgressBar
             // 
@@ -478,7 +444,7 @@ namespace SteemSoftware
             this.listTextBox.Name = "listTextBox";
             this.listTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.listTextBox.Size = new System.Drawing.Size(285, 81);
-            this.listTextBox.TabIndex = 2;
+            this.listTextBox.TabIndex = 0;
             this.listTextBox.WordWrap = false;
             // 
             // alternatingButton
@@ -488,7 +454,7 @@ namespace SteemSoftware
             this.alternatingButton.Location = new System.Drawing.Point(99, 115);
             this.alternatingButton.Name = "alternatingButton";
             this.alternatingButton.Size = new System.Drawing.Size(91, 29);
-            this.alternatingButton.TabIndex = 3;
+            this.alternatingButton.TabIndex = 2;
             this.alternatingButton.Text = "&Alternating";
             this.alternatingButton.UseVisualStyleBackColor = true;
             this.alternatingButton.Click += new System.EventHandler(this.OnAlternatingButtonClick);
@@ -500,7 +466,7 @@ namespace SteemSoftware
             this.sequentialButton.Location = new System.Drawing.Point(3, 115);
             this.sequentialButton.Name = "sequentialButton";
             this.sequentialButton.Size = new System.Drawing.Size(90, 29);
-            this.sequentialButton.TabIndex = 4;
+            this.sequentialButton.TabIndex = 1;
             this.sequentialButton.Text = "&Sequential";
             this.sequentialButton.UseVisualStyleBackColor = true;
             this.sequentialButton.Click += new System.EventHandler(this.OnSequentialButtonClick);
@@ -512,7 +478,7 @@ namespace SteemSoftware
             this.shuffledButton.Location = new System.Drawing.Point(196, 115);
             this.shuffledButton.Name = "shuffledButton";
             this.shuffledButton.Size = new System.Drawing.Size(92, 29);
-            this.shuffledButton.TabIndex = 5;
+            this.shuffledButton.TabIndex = 3;
             this.shuffledButton.Text = "S&huffled";
             this.shuffledButton.UseVisualStyleBackColor = true;
             this.shuffledButton.Click += new System.EventHandler(this.OnShuffledButtonClick);
@@ -539,14 +505,18 @@ namespace SteemSoftware
             this.playListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.titleColumnHeader,
             this.authorColumnHeader});
+            this.playListView.ContextMenuStrip = this.jukeboxContextMenuStrip;
             this.playListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playListView.FullRowSelect = true;
             this.playListView.Location = new System.Drawing.Point(3, 28);
+            this.playListView.MultiSelect = false;
             this.playListView.Name = "playListView";
             this.playListView.Size = new System.Drawing.Size(285, 82);
-            this.playListView.TabIndex = 0;
+            this.playListView.TabIndex = 4;
             this.playListView.UseCompatibleStateImageBehavior = false;
             this.playListView.View = System.Windows.Forms.View.Details;
             this.playListView.SelectedIndexChanged += new System.EventHandler(this.OnPlayListViewSelectedIndexChanged);
+            this.playListView.DoubleClick += new System.EventHandler(this.OnPlayListViewDoubleClick);
             // 
             // titleColumnHeader
             // 
@@ -557,6 +527,39 @@ namespace SteemSoftware
             // 
             this.authorColumnHeader.Text = "Author";
             this.authorColumnHeader.Width = 150;
+            // 
+            // jukeboxContextMenuStrip
+            // 
+            this.jukeboxContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playToolStripMenuItem,
+            this.nextToolStripMenuItem,
+            this.prevToolStripMenuItem});
+            this.jukeboxContextMenuStrip.Name = "jukeboxContextMenuStrip";
+            this.jukeboxContextMenuStrip.Size = new System.Drawing.Size(99, 70);
+            // 
+            // playToolStripMenuItem
+            // 
+            this.playToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("playToolStripMenuItem.Image")));
+            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.playToolStripMenuItem.Text = "&Play";
+            this.playToolStripMenuItem.Click += new System.EventHandler(this.OnPlayToolStripMenuItemClick);
+            // 
+            // nextToolStripMenuItem
+            // 
+            this.nextToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("nextToolStripMenuItem.Image")));
+            this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
+            this.nextToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.nextToolStripMenuItem.Text = "&Next";
+            this.nextToolStripMenuItem.Click += new System.EventHandler(this.OnNextToolStripMenuItemClick);
+            // 
+            // prevToolStripMenuItem
+            // 
+            this.prevToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("prevToolStripMenuItem.Image")));
+            this.prevToolStripMenuItem.Name = "prevToolStripMenuItem";
+            this.prevToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.prevToolStripMenuItem.Text = "P&rev";
+            this.prevToolStripMenuItem.Click += new System.EventHandler(this.OnPrevToolStripMenuItemClick);
             // 
             // jukeboxPlaylistLabel
             // 
@@ -602,7 +605,7 @@ namespace SteemSoftware
             this.firstButton.Location = new System.Drawing.Point(3, 3);
             this.firstButton.Name = "firstButton";
             this.firstButton.Size = new System.Drawing.Size(35, 29);
-            this.firstButton.TabIndex = 0;
+            this.firstButton.TabIndex = 10;
             this.firstButton.UseVisualStyleBackColor = true;
             this.firstButton.Click += new System.EventHandler(this.OnFirstButtonClick);
             // 
@@ -613,7 +616,7 @@ namespace SteemSoftware
             this.prevButton.Location = new System.Drawing.Point(44, 3);
             this.prevButton.Name = "prevButton";
             this.prevButton.Size = new System.Drawing.Size(35, 29);
-            this.prevButton.TabIndex = 1;
+            this.prevButton.TabIndex = 8;
             this.prevButton.UseVisualStyleBackColor = true;
             this.prevButton.Click += new System.EventHandler(this.OnPrevButtonClick);
             // 
@@ -624,7 +627,7 @@ namespace SteemSoftware
             this.nextButton.Location = new System.Drawing.Point(208, 3);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(35, 29);
-            this.nextButton.TabIndex = 2;
+            this.nextButton.TabIndex = 7;
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.OnNextButtonClick);
             // 
@@ -635,7 +638,7 @@ namespace SteemSoftware
             this.lastButton.Location = new System.Drawing.Point(249, 3);
             this.lastButton.Name = "lastButton";
             this.lastButton.Size = new System.Drawing.Size(39, 29);
-            this.lastButton.TabIndex = 3;
+            this.lastButton.TabIndex = 9;
             this.lastButton.UseVisualStyleBackColor = true;
             this.lastButton.Click += new System.EventHandler(this.OnLastButtonClick);
             // 
@@ -647,7 +650,7 @@ namespace SteemSoftware
             this.nowPlayingTextBox.Multiline = true;
             this.nowPlayingTextBox.Name = "nowPlayingTextBox";
             this.nowPlayingTextBox.Size = new System.Drawing.Size(35, 29);
-            this.nowPlayingTextBox.TabIndex = 4;
+            this.nowPlayingTextBox.TabIndex = 5;
             this.nowPlayingTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // loopButton
@@ -658,7 +661,7 @@ namespace SteemSoftware
             this.loopButton.Location = new System.Drawing.Point(167, 3);
             this.loopButton.Name = "loopButton";
             this.loopButton.Size = new System.Drawing.Size(35, 29);
-            this.loopButton.TabIndex = 5;
+            this.loopButton.TabIndex = 11;
             this.loopButton.UseVisualStyleBackColor = true;
             this.loopButton.Click += new System.EventHandler(this.OnLoopButtonClick);
             // 
@@ -702,11 +705,16 @@ namespace SteemSoftware
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.jukeboxContextMenuStrip.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+        private System.Windows.Forms.ToolStripMenuItem prevToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nextToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip jukeboxContextMenuStrip;
     }
 }

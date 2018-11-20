@@ -87,37 +87,26 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
-        }
+            // Clear list text box
+            this.listTextBox.Clear();
 
-        /// <summary>
-        /// Handles the open tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
-        }
+            // Clear now playing text box
+            this.nowPlayingTextBox.Clear();
 
-        /// <summary>
-        /// Handles the save tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnSaveToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
-        }
+            // Clear jukebox playlist
+            this.jukeboxPlayList.Clear();
 
-        /// <summary>
-        /// Handles the save as tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnSaveAsToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
+            // Clear play list view
+            this.playListView.Items.Clear();
+
+            // Reset progress bar
+            this.progressToolStripProgressBar.Value = 0;
+
+            // Reset status
+            this.statusToolStripStatusLabel.Text = "Waiting...";
+
+            // Focus list text box
+            this.listTextBox.Focus();
         }
 
         /// <summary>
@@ -695,13 +684,53 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Ons the play list view selected index changed.
+        /// Handles the play list view selected index changed event.
         /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">E.</param>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
         private void OnPlayListViewSelectedIndexChanged(object sender, EventArgs e)
         {
+            // TODO Add code
+        }
 
+        /// <summary>
+        /// Handles the play list view double click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnPlayListViewDoubleClick(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Handles the play tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        void OnPlayToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Handles the next tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        void OnNextToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Handles the previous tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        void OnPrevToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO Add code
         }
     }
 }

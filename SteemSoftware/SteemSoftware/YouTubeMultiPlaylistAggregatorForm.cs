@@ -8,12 +8,15 @@ namespace SteemSoftware
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.IO;
     using System.Linq;
+    using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
     using Microsoft.VisualBasic;
     using YoutubeExplode;
     using YoutubeExplode.Models;
+    using YoutubeExplode.Models.MediaStreams;
 
     /// <summary>
     /// Description of YouTubeMultiPlaylistAggregatorForm.
@@ -137,7 +140,6 @@ namespace SteemSoftware
             this.m3uButton.Enabled = enabledState;
         }
 
-
         /// <summary>
         /// Gets the video lists.
         /// </summary>
@@ -253,6 +255,9 @@ namespace SteemSoftware
 
                 // Update progress bar
                 this.progressToolStripProgressBar.Value = (int)(l + 1 * 100 / this.listTextBox.Lines.Length);
+
+                // Update status
+                this.statusToolStripStatusLabel.Text = $"Fetching video data ({l}/{this.listTextBox.Lines.Length})...";
             }
 
             /* Append or prepend alternating video list */
@@ -285,14 +290,17 @@ namespace SteemSoftware
             // Disable controls
             this.DisableEnableControls(false);
 
+            // Clear video list
+            this.videoList.Clear();
+
+            // Clear play list items
+            this.playListView.Items.Clear();
+
             // Update status
             this.statusToolStripStatusLabel.Text = "Fetching video data...";
 
             // Reset progress bar
             this.progressToolStripProgressBar.Value = 0;
-
-            // Clear play list items
-            this.playListView.Items.Clear();
         }
 
         /// <summary>
@@ -521,16 +529,117 @@ namespace SteemSoftware
             this.FetchAfterCode();
         }
 
-        private void OnPlsButtonClick(object sender, EventArgs e)
+        /// <summary>
+        /// Handles the pls button click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private async void OnPlsButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Check there's something to work with
+            if (this.videoList.Count == 0)
+            {
+                // Halt flow
+                return;
+            }
+
+            // Reset progress bar
+            this.progressToolStripProgressBar.Value = 0;
+
+            // Inform user
+            this.statusToolStripStatusLabel.Text = "Fetching media stream info...";
+
+            // Set YouTube Client
+            var youTubeClient = new YoutubeClient();
+
+            // Declare pls data string builder
+            var plsDataStringBuilder = new StringBuilder();
+
+            // Add pls header
+            plsDataStringBuilder.AppendLine("[playlist]");
+
+            // Fetched count
+            var fetchedCount = 0;
+
+            // Iterate video list
+            for (int i = 0; i < this.videoList.Count; i++)
+            {
+                try
+                {
+                    // Get media stream info set
+                    var mediaStreamInfoSet = await youTubeClient.GetVideoMediaStreamInfosAsync(this.videoList[i].Id);
+
+                    // Set stream info url
+                    var streamInfoUrl = (this.videoRadioButton.Checked ? mediaStreamInfoSet.Muxed.WithHighestVideoQuality().Url : mediaStreamInfoSet.Audio.WithHighestBitrate().Url);
+
+                    // Append file (url)
+                    plsDataStringBuilder.AppendLine($"File{fetchedCount + 1}={streamInfoUrl}");
+
+                    // Append title
+                    plsDataStringBuilder.AppendLine($"Title{fetchedCount + 1}={this.videoList[i].Title}");
+
+                    // Separator
+                    plsDataStringBuilder.AppendLine();
+
+                    // Rise fetched count
+                    fetchedCount++;
+                }
+                finally
+                {
+                    //  Let it fall through
+                }
+
+                // Update progress bar
+                this.progressToolStripProgressBar.Value = (int)(i + 1 * 100 / this.videoList.Count);
+
+                // Update status
+                this.statusToolStripStatusLabel.Text = $"Fetching media stream info ({i}/{this.videoList.Count})...";
+            }
+
+            // Append pls footer
+            plsDataStringBuilder.AppendLine($"NumberOfEntries = {fetchedCount - 1}");
+            plsDataStringBuilder.AppendLine("Version = 2");
+
+            /* Save to PLS file */
+
+            // Set default ext
+            this.saveFileDialog.DefaultExt = "pls";
+
+            // Set filter
+            this.saveFileDialog.Filter = "PLS Files (*.pls)|*.pls|All files (*.*)|*.*";
+
+            // Set file name
+            this.saveFileDialog.FileName = $"playlist.pls";
+
+            // Open save file dialog
+            if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
+            {
+                // Save playlist file
+                File.WriteAllText(this.saveFileDialog.FileName, plsDataStringBuilder.ToString(), Encoding.UTF8);
+            }
+
+            // Update progress bar
+            this.progressToolStripProgressBar.Value = 100;
+
+            // Inform user
+            this.statusToolStripStatusLabel.Text = "PLS playlist saved!";
         }
 
+        /// <summary>
+        /// Handles the xspf button click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
         private void OnXspfButtonClick(object sender, EventArgs e)
         {
             // TODO Add code
         }
 
+        /// <summary>
+        /// Handles the m3u button click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
         private void OnM3uButtonClick(object sender, EventArgs e)
         {
             // TODO Add code

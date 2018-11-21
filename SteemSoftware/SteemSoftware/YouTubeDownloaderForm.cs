@@ -135,7 +135,7 @@ namespace SteemSoftware
                 // Get video info
                 var videoInfo = await youTubeClient.GetVideoAsync(id);
 
-                // Set safe tifle
+                // Set safe title
                 safeTitle = string.Join(string.Empty, videoInfo.Title.Split(Path.GetInvalidFileNameChars()));
             }
             catch (Exception)

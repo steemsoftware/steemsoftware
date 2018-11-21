@@ -110,7 +110,7 @@ namespace SteemSoftware
             // Audio
             var audioModuleInfoList = new List<ModuleInfo>()
             {
-                new ModuleInfo("YouTube MultiPlaylist Jukebox", "Audio-only Jukebox for YouTube playlists and videos.", typeof(YoutubeMultiplaylistJukeboxForm)),
+                new ModuleInfo("YouTube MultiPlaylist Aggregator", "Aggregate YouTube playlists and videos into PLS, XSPF or M3U file.", typeof(YouTubeMultiPlaylistAggregatorForm)),
             };
 
             // Compression

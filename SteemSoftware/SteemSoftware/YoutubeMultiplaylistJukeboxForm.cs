@@ -9,12 +9,14 @@ namespace SteemSoftware
     using System.Collections.Generic;
     using System.Drawing;
     using System.Linq;
+    using System.Media;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using System.Windows.Forms;
     using Microsoft.VisualBasic;
     using YoutubeExplode;
     using YoutubeExplode.Models;
+    using YoutubeExplode.Models.MediaStreams;
 
     /// <summary>
     /// Description of YoutubeMultiplaylistJukeboxForm.
@@ -47,9 +49,16 @@ namespace SteemSoftware
         private int loopMode = 0;
 
         /// <summary>
+        /// The play pause flag.
+        /// </summary>
+        private bool playPauseFlag = true;
+
+        /// <summary>
         /// The resources.
         /// </summary>
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YoutubeMultiplaylistJukeboxForm));
+
+        private SoundPlayer player;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.YoutubeMultiplaylistJukeboxForm"/> class.
@@ -704,7 +713,7 @@ namespace SteemSoftware
                     this.loopMode++;
 
                     // Change check box image
-                    this.loopCheckBox.Image = ((System.Drawing.Image)(resources.GetObject("loopOne15b.Image")));
+                    this.loopCheckBox.Image = ((System.Drawing.Image)(resources.GetObject("loopOne15b")));
 
                     // Halt flow
                     break;
@@ -753,7 +762,95 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnPlayPauseButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Toggle flag
+            this.playPauseFlag = !this.playPauseFlag;
+
+            // True = Play. False = Pause.
+            if (this.playPauseFlag)
+            {
+                // Set play image
+                this.playPauseButton.Image = ((System.Drawing.Image)(resources.GetObject("playPauseButton.Image")));
+            }
+            else
+            {
+                // Set pause image
+                this.playPauseButton.Image = ((System.Drawing.Image)(resources.GetObject("pause")));
+            }
+
+            //#
+            this.PlayVideoAudio("C3N4LUbX4fM");
+        }
+
+        /// <summary>
+        /// Plays the video audio.
+        /// </summary>
+        /// <param name="id">Video identifier.</param>
+        private async void PlayVideoAudio(string videoId)
+        {
+            try
+            {
+
+                /*var client = new YoutubeClient();
+                var streamInfoSet = await client.GetVideoMediaStreamInfosAsync(videoId);
+
+                AudioStreamInfo streamInfo = null;
+
+                foreach (var audioStreamInfo in streamInfoSet.Audio)
+                {
+                    if (audioStreamInfo.AudioEncoding.ToString().ToLower() == "aac")
+                    {
+                        MessageBox.Show(audioStreamInfo.AudioEncoding.ToString()
+                                        + Environment.NewLine +
+                                        audioStreamInfo.Container.GetFileExtension()
+                                        + Environment.NewLine +
+                                        audioStreamInfo.Url
+                                       );
+
+                        streamInfo = audioStreamInfo;
+                        break;
+                    }
+                }*/
+
+                /*var audioFileName = $"downloaded_audio.{streamInfo.Container.GetFileExtension()}";
+                await client.DownloadMediaStreamAsync(streamInfo, audioFileName);*/
+
+                /*System.Media.SoundPlayer player = new System.Media.SoundPlayer(audioFileName);
+                player.Play();*/
+
+                /*if (this.StreamStarted != null)
+                    this.StreamStarted(this, EventArgs.Empty);
+
+                MediaFoundationReader reader = new MediaFoundationReader(streamInfo.Url);
+                WaveOut player = new WaveOut();
+                player.Init(reader);
+                player.Play();
+
+                /*while (player.PlaybackState != PlaybackState.Stopped)
+                {
+                    if (this.StreamPositionChanged != null)
+                        this.StreamPositionChanged(this, new ProgressEventArgs(reader.CurrentTime.Seconds * reader.TotalTime.Seconds / 100));
+                    Thread.Sleep(1000);
+                }
+
+                if (this.StreamFinished != null)
+                    this.StreamFinished(this, EventArgs.Empty);
+
+                player.Dispose();
+*/
+                /*using (var vorbisStream = new NAudio.Vorbis.VorbisWaveReader("Example.ogg"))
+                using (var waveOut = new NAudio.Wave.WaveOutEvent())
+                {
+                    waveOut.Init(vorbisStream);
+                    waveOut.Play();
+
+                    // wait here until playback stops or should stop
+                }*/
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>

@@ -254,10 +254,10 @@ namespace SteemSoftware
             continueNext:
 
                 // Update progress bar
-                this.progressToolStripProgressBar.Value = (int)(l + 1 * 100 / this.listTextBox.Lines.Length);
+                this.progressToolStripProgressBar.Value = (int)(((l + 1) * 100) / this.listTextBox.Lines.Length);
 
                 // Update status
-                this.statusToolStripStatusLabel.Text = $"Fetching video data ({l}/{this.listTextBox.Lines.Length})...";
+                this.statusToolStripStatusLabel.Text = $"Fetching video data ({l + 1}/{this.listTextBox.Lines.Length})...";
             }
 
             /* Append or prepend alternating video list */
@@ -536,12 +536,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private async void OnPlsButtonClick(object sender, EventArgs e)
         {
-            // Check there's something to work with
+            // Check for no videos in list
             if (this.videoList.Count == 0)
             {
                 // Halt flow
                 return;
             }
+
+            // Disable controls
+            this.DisableEnableControls(false);
 
             // Reset progress bar
             this.progressToolStripProgressBar.Value = 0;
@@ -552,11 +555,11 @@ namespace SteemSoftware
             // Set YouTube Client
             var youTubeClient = new YoutubeClient();
 
-            // Declare pls data string builder
-            var plsDataStringBuilder = new StringBuilder();
+            // Set playlist string builder
+            var playlistStringBuilder = new StringBuilder();
 
-            // Add pls header
-            plsDataStringBuilder.AppendLine("[playlist]");
+            // Add header
+            playlistStringBuilder.AppendLine("[playlist]");
 
             // Fetched count
             var fetchedCount = 0;
@@ -573,13 +576,13 @@ namespace SteemSoftware
                     var streamInfoUrl = (this.videoRadioButton.Checked ? mediaStreamInfoSet.Muxed.WithHighestVideoQuality().Url : mediaStreamInfoSet.Audio.WithHighestBitrate().Url);
 
                     // Append file (url)
-                    plsDataStringBuilder.AppendLine($"File{fetchedCount + 1}={streamInfoUrl}");
+                    playlistStringBuilder.AppendLine($"File{fetchedCount + 1}={streamInfoUrl}");
 
                     // Append title
-                    plsDataStringBuilder.AppendLine($"Title{fetchedCount + 1}={this.videoList[i].Title}");
+                    playlistStringBuilder.AppendLine($"Title{fetchedCount + 1}={this.videoList[i].Title}");
 
                     // Separator
-                    plsDataStringBuilder.AppendLine();
+                    playlistStringBuilder.AppendLine();
 
                     // Rise fetched count
                     fetchedCount++;
@@ -590,17 +593,17 @@ namespace SteemSoftware
                 }
 
                 // Update progress bar
-                this.progressToolStripProgressBar.Value = (int)(i + 1 * 100 / this.videoList.Count);
+                this.progressToolStripProgressBar.Value = (int)(((i + 1) * 100) / this.videoList.Count);
 
                 // Update status
-                this.statusToolStripStatusLabel.Text = $"Fetching media stream info ({i}/{this.videoList.Count})...";
+                this.statusToolStripStatusLabel.Text = $"Fetching media stream info ({i + 1}/{this.videoList.Count})...";
             }
 
-            // Append pls footer
-            plsDataStringBuilder.AppendLine($"NumberOfEntries = {fetchedCount - 1}");
-            plsDataStringBuilder.AppendLine("Version = 2");
+            // Append footer
+            playlistStringBuilder.AppendLine($"NumberOfEntries = {fetchedCount - 1}");
+            playlistStringBuilder.AppendLine("Version = 2");
 
-            /* Save to PLS file */
+            /* Save playlist to file */
 
             // Set default ext
             this.saveFileDialog.DefaultExt = "pls";
@@ -615,7 +618,7 @@ namespace SteemSoftware
             if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
             {
                 // Save playlist file
-                File.WriteAllText(this.saveFileDialog.FileName, plsDataStringBuilder.ToString(), Encoding.UTF8);
+                File.WriteAllText(this.saveFileDialog.FileName, playlistStringBuilder.ToString(), Encoding.UTF8);
             }
 
             // Update progress bar
@@ -623,6 +626,9 @@ namespace SteemSoftware
 
             // Inform user
             this.statusToolStripStatusLabel.Text = "PLS playlist saved!";
+
+            // Enable controls
+            this.DisableEnableControls(true);
         }
 
         /// <summary>
@@ -640,9 +646,94 @@ namespace SteemSoftware
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnM3uButtonClick(object sender, EventArgs e)
+        private async void OnM3uButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Check for no videos in list
+            if (this.videoList.Count == 0)
+            {
+                // Halt flow
+                return;
+            }
+
+            // Disable controls
+            this.DisableEnableControls(false);
+
+            // Reset progress bar
+            this.progressToolStripProgressBar.Value = 0;
+
+            // Inform user
+            this.statusToolStripStatusLabel.Text = "Fetching media stream info...";
+
+            // Set YouTube Client
+            var youTubeClient = new YoutubeClient();
+
+            // Set playlist string builder
+            var playlistStringBuilder = new StringBuilder();
+
+            // Add header
+            playlistStringBuilder.AppendLine("#EXTM3U");
+
+            // Fetched count
+            var fetchedCount = 0;
+
+            // Iterate video list
+            for (int i = 0; i < this.videoList.Count; i++)
+            {
+                try
+                {
+                    // Get media stream info set
+                    var mediaStreamInfoSet = await youTubeClient.GetVideoMediaStreamInfosAsync(this.videoList[i].Id);
+
+                    // Set stream info url
+                    var streamInfoUrl = (this.videoRadioButton.Checked ? mediaStreamInfoSet.Muxed.WithHighestVideoQuality().Url : mediaStreamInfoSet.Audio.WithHighestBitrate().Url);
+
+                    // Append info
+                    playlistStringBuilder.AppendLine($"#EXTINF:-1,{this.videoList[i].Title}");
+
+                    // Append url
+                    playlistStringBuilder.AppendLine($"{streamInfoUrl}");
+
+                    // Rise fetched count
+                    fetchedCount++;
+                }
+                finally
+                {
+                    //  Let it fall through
+                }
+
+                // Update progress bar
+                this.progressToolStripProgressBar.Value = (int)(((i + 1) * 100) / this.videoList.Count);
+
+                // Update status
+                this.statusToolStripStatusLabel.Text = $"Fetching media stream info ({i + 1}/{this.videoList.Count})...";
+            }
+
+            /* Save playlist to file */
+
+            // Set default ext
+            this.saveFileDialog.DefaultExt = "m3u";
+
+            // Set filter
+            this.saveFileDialog.Filter = "M3U Files (*.m3u)|*.m3u|All files (*.*)|*.*";
+
+            // Set file name
+            this.saveFileDialog.FileName = $"playlist.m3u";
+
+            // Open save file dialog
+            if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
+            {
+                // TODO Save playlist file [Consider M3U8 extension since it's UTF8-encoded]
+                File.WriteAllText(this.saveFileDialog.FileName, playlistStringBuilder.ToString(), Encoding.UTF8);
+            }
+
+            // Update progress bar
+            this.progressToolStripProgressBar.Value = 100;
+
+            // Inform user
+            this.statusToolStripStatusLabel.Text = "M3U playlist saved!";
+
+            // Enable controls
+            this.DisableEnableControls(true);
         }
 
         /// <summary>

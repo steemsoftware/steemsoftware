@@ -315,7 +315,7 @@ namespace SteemSoftware
             if (e.EventType == ZipProgressEventType.Saving_AfterWriteEntry)
             {
                 // Update tool strip progress bar
-                this.progressToolStripProgressBar.Value = (int)(e.EntriesSaved * 100 / e.EntriesTotal);
+                this.progressToolStripProgressBar.Value = (int)((e.EntriesSaved * 100) / e.EntriesTotal);
             }
         }
 
@@ -330,7 +330,7 @@ namespace SteemSoftware
             if (e.EventType == ZipProgressEventType.Extracting_AfterExtractEntry)
             {
                 // Update tool strip progress bar
-                this.progressToolStripProgressBar.Value = (int)(e.EntriesExtracted * 100 / e.EntriesTotal);
+                this.progressToolStripProgressBar.Value = (int)((e.EntriesExtracted * 100) / e.EntriesTotal);
             }
         }
     }

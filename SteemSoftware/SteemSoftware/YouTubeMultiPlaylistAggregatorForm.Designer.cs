@@ -35,7 +35,6 @@ namespace SteemSoftware
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YouTubeMultiPlaylistAggregatorForm));
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
@@ -64,11 +63,6 @@ namespace SteemSoftware
             this.customValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jukeboxContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.prevToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.progressToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -91,7 +85,6 @@ namespace SteemSoftware
             this.videoRadioButton = new System.Windows.Forms.RadioButton();
             this.audioRadioButton = new System.Windows.Forms.RadioButton();
             this.mainMenuStrip.SuspendLayout();
-            this.jukeboxContextMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -318,41 +311,6 @@ namespace SteemSoftware
             this.aboutToolStripMenuItem.Text = "&About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnAboutToolStripMenuItemClick);
             // 
-            // jukeboxContextMenuStrip
-            // 
-            this.jukeboxContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                    this.playToolStripMenuItem,
-                                    this.nextToolStripMenuItem,
-                                    this.prevToolStripMenuItem});
-            this.jukeboxContextMenuStrip.Name = "jukeboxContextMenuStrip";
-            this.jukeboxContextMenuStrip.Size = new System.Drawing.Size(99, 70);
-            // 
-            // playToolStripMenuItem
-            // 
-            this.playToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("playToolStripMenuItem.Image")));
-            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.playToolStripMenuItem.Text = "&Play";
-            // 
-            // nextToolStripMenuItem
-            // 
-            this.nextToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("nextToolStripMenuItem.Image")));
-            this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
-            this.nextToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.nextToolStripMenuItem.Text = "&Next";
-            // 
-            // prevToolStripMenuItem
-            // 
-            this.prevToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("prevToolStripMenuItem.Image")));
-            this.prevToolStripMenuItem.Name = "prevToolStripMenuItem";
-            this.prevToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.prevToolStripMenuItem.Text = "P&rev";
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.DefaultExt = "txt";
-            this.openFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
-            // 
             // mainStatusStrip
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -493,7 +451,6 @@ namespace SteemSoftware
             this.playListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
                                     this.titleColumnHeader,
                                     this.authorColumnHeader});
-            this.playListView.ContextMenuStrip = this.jukeboxContextMenuStrip;
             this.playListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.playListView.FullRowSelect = true;
             this.playListView.Location = new System.Drawing.Point(3, 28);
@@ -544,7 +501,7 @@ namespace SteemSoftware
             this.plsButton.Name = "plsButton";
             this.plsButton.Size = new System.Drawing.Size(96, 29);
             this.plsButton.TabIndex = 0;
-            this.plsButton.Text = "PLS";
+            this.plsButton.Text = "&PLS";
             this.plsButton.UseVisualStyleBackColor = true;
             this.plsButton.Click += new System.EventHandler(this.OnPlsButtonClick);
             // 
@@ -556,7 +513,7 @@ namespace SteemSoftware
             this.xspfButton.Name = "xspfButton";
             this.xspfButton.Size = new System.Drawing.Size(96, 29);
             this.xspfButton.TabIndex = 1;
-            this.xspfButton.Text = "XSPF";
+            this.xspfButton.Text = "&XSPF";
             this.xspfButton.UseVisualStyleBackColor = true;
             this.xspfButton.Click += new System.EventHandler(this.OnXspfButtonClick);
             // 
@@ -568,7 +525,7 @@ namespace SteemSoftware
             this.m3uButton.Name = "m3uButton";
             this.m3uButton.Size = new System.Drawing.Size(98, 29);
             this.m3uButton.TabIndex = 2;
-            this.m3uButton.Text = "M3U";
+            this.m3uButton.Text = "&M3U";
             this.m3uButton.UseVisualStyleBackColor = true;
             this.m3uButton.Click += new System.EventHandler(this.OnM3uButtonClick);
             // 
@@ -627,7 +584,6 @@ namespace SteemSoftware
             this.Text = "YouTube MultiPlaylist Aggregator";
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
-            this.jukeboxContextMenuStrip.ResumeLayout(false);
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -660,11 +616,6 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripStatusLabel statusToolStripStatusLabel;
         private System.Windows.Forms.ToolStripProgressBar progressToolStripProgressBar;
         private System.Windows.Forms.StatusStrip mainStatusStrip;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.ToolStripMenuItem prevToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nextToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem playToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip jukeboxContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customValueToolStripMenuItem;

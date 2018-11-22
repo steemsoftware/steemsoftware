@@ -64,7 +64,9 @@ namespace SteemSoftware
                 $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
                 $"Youtube Explode:{Environment.NewLine}https://github.com/Tyrrrz/YoutubeExplode/blob/master/License.txt{Environment.NewLine}{Environment.NewLine}" +
                 $"AngleSharp:{Environment.NewLine}https://raw.githubusercontent.com/AngleSharp/AngleSharp/master/LICENSE{Environment.NewLine}{Environment.NewLine}" +
-                $"Newtonsoft.Json{Environment.NewLine}https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md{Environment.NewLine}{Environment.NewLine}";
+                $"Newtonsoft.Json{Environment.NewLine}https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md{Environment.NewLine}{Environment.NewLine}" +
+                $"escalera, barajar, intercambio, descargar{Environment.NewLine}Icons made by Freepik @ https://www.freepik.com/{Environment.NewLine}from https://www.flaticon.com/{Environment.NewLine}Licensed by Creative Commons BY 3.0 (CC 3.0 BY){Environment.NewLine}http://creativecommons.org/licenses/by/3.0/{Environment.NewLine}{Environment.NewLine}" +
+                $"altoparlante, rollo-de-pelicula{Environment.NewLine}Icons made by Smashicons @ https://www.flaticon.es/autores/smashicons{Environment.NewLine}from https://www.flaticon.com/{Environment.NewLine}Licensed by Creative Commons BY 3.0 (CC 3.0 BY){Environment.NewLine}http://creativecommons.org/licenses/by/3.0/";
 
             // Set about form
             var aboutForm = new AboutForm(
@@ -200,17 +202,17 @@ namespace SteemSoftware
                         var maxVideoCount = (this.playlistMaxVideoCount == 0 ? playlist.Videos.Count : this.playlistMaxVideoCount);
 
                         // Declare current video list
-                        var videoList = new List<Video>();
+                        var currentVideoList = new List<Video>();
 
                         // Add videos to video list
                         for (int v = 0; v < Math.Min(maxVideoCount, playlist.Videos.Count); v++)
                         {
                             // Add current video
-                            videoList.Add(playlist.Videos[v]);
+                            currentVideoList.Add(playlist.Videos[v]);
                         }
 
                         // Add current video list 
-                        videoListList.Add(videoList);
+                        videoListList.Add(currentVideoList);
                     }
                     finally
                     {

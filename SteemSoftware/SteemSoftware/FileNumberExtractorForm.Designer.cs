@@ -155,12 +155,12 @@ namespace SteemSoftware
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
                                     this.statusToolStripStatusLabel});
-            this.mainStatusStrip.Location = new System.Drawing.Point(0, 172);
+            this.mainStatusStrip.Location = new System.Drawing.Point(0, 170);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(284, 22);
             this.mainStatusStrip.TabIndex = 2;
             // 
-            // toolStripStatusLabel1
+            // statusToolStripStatusLabel
             // 
             this.statusToolStripStatusLabel.Name = "statusToolStripStatusLabel";
             this.statusToolStripStatusLabel.Size = new System.Drawing.Size(130, 17);
@@ -193,7 +193,7 @@ namespace SteemSoftware
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(284, 148);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(284, 146);
             this.mainTableLayoutPanel.TabIndex = 3;
             // 
             // fileLabel
@@ -202,7 +202,7 @@ namespace SteemSoftware
             this.fileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fileLabel.Location = new System.Drawing.Point(3, 0);
             this.fileLabel.Name = "fileLabel";
-            this.fileLabel.Size = new System.Drawing.Size(88, 37);
+            this.fileLabel.Size = new System.Drawing.Size(88, 36);
             this.fileLabel.TabIndex = 0;
             this.fileLabel.Text = "&File(s)";
             this.fileLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -211,9 +211,9 @@ namespace SteemSoftware
             // 
             this.suffixLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.suffixLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suffixLabel.Location = new System.Drawing.Point(3, 37);
+            this.suffixLabel.Location = new System.Drawing.Point(3, 36);
             this.suffixLabel.Name = "suffixLabel";
-            this.suffixLabel.Size = new System.Drawing.Size(88, 37);
+            this.suffixLabel.Size = new System.Drawing.Size(88, 36);
             this.suffixLabel.TabIndex = 2;
             this.suffixLabel.Text = "&Suffix";
             this.suffixLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -222,9 +222,9 @@ namespace SteemSoftware
             // 
             this.folderLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.folderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.folderLabel.Location = new System.Drawing.Point(3, 74);
+            this.folderLabel.Location = new System.Drawing.Point(3, 72);
             this.folderLabel.Name = "folderLabel";
-            this.folderLabel.Size = new System.Drawing.Size(88, 37);
+            this.folderLabel.Size = new System.Drawing.Size(88, 36);
             this.folderLabel.TabIndex = 4;
             this.folderLabel.Text = "&Folder";
             this.folderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -233,9 +233,9 @@ namespace SteemSoftware
             // 
             this.extensionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.extensionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.extensionLabel.Location = new System.Drawing.Point(3, 111);
+            this.extensionLabel.Location = new System.Drawing.Point(3, 108);
             this.extensionLabel.Name = "extensionLabel";
-            this.extensionLabel.Size = new System.Drawing.Size(88, 37);
+            this.extensionLabel.Size = new System.Drawing.Size(88, 38);
             this.extensionLabel.TabIndex = 6;
             this.extensionLabel.Text = "Extension(s)";
             this.extensionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -243,9 +243,12 @@ namespace SteemSoftware
             // openFileButton
             // 
             this.openFileButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.openFileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.openFileButton.Image = ((System.Drawing.Image)(resources.GetObject("openFileButton.Image")));
+            this.openFileButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.openFileButton.Location = new System.Drawing.Point(97, 3);
             this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(184, 31);
+            this.openFileButton.Size = new System.Drawing.Size(184, 30);
             this.openFileButton.TabIndex = 1;
             this.openFileButton.Text = "&Open file(s)";
             this.openFileButton.UseVisualStyleBackColor = true;
@@ -254,9 +257,12 @@ namespace SteemSoftware
             // browseForFolderButton
             // 
             this.browseForFolderButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.browseForFolderButton.Location = new System.Drawing.Point(97, 77);
+            this.browseForFolderButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.browseForFolderButton.Image = ((System.Drawing.Image)(resources.GetObject("browseForFolderButton.Image")));
+            this.browseForFolderButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.browseForFolderButton.Location = new System.Drawing.Point(97, 75);
             this.browseForFolderButton.Name = "browseForFolderButton";
-            this.browseForFolderButton.Size = new System.Drawing.Size(184, 31);
+            this.browseForFolderButton.Size = new System.Drawing.Size(184, 30);
             this.browseForFolderButton.TabIndex = 5;
             this.browseForFolderButton.Text = "&Browse for folder";
             this.browseForFolderButton.UseVisualStyleBackColor = true;
@@ -265,7 +271,7 @@ namespace SteemSoftware
             // suffixTextBox
             // 
             this.suffixTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.suffixTextBox.Location = new System.Drawing.Point(97, 45);
+            this.suffixTextBox.Location = new System.Drawing.Point(97, 44);
             this.suffixTextBox.Name = "suffixTextBox";
             this.suffixTextBox.Size = new System.Drawing.Size(184, 20);
             this.suffixTextBox.TabIndex = 3;
@@ -275,7 +281,7 @@ namespace SteemSoftware
             // extensionTextBox
             // 
             this.extensionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.extensionTextBox.Location = new System.Drawing.Point(97, 114);
+            this.extensionTextBox.Location = new System.Drawing.Point(97, 111);
             this.extensionTextBox.Name = "extensionTextBox";
             this.extensionTextBox.Size = new System.Drawing.Size(184, 20);
             this.extensionTextBox.TabIndex = 7;
@@ -286,7 +292,7 @@ namespace SteemSoftware
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 194);
+            this.ClientSize = new System.Drawing.Size(284, 192);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Controls.Add(this.mainStatusStrip);
             this.Controls.Add(this.mainMenuStrip);

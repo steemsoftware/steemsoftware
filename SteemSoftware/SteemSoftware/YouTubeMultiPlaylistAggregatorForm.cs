@@ -172,15 +172,15 @@ namespace SteemSoftware
                 }
                 else
                 {
-                    // Assume playlist
+                    // Assume playlist (use "/watch" instead of "/playlist" for proper validation)
                     line = $"https://www.youtube.com/watch?list={line}";
                 }
 
                 // Fix playlist link
-                if (line.Contains("playlist"))
+                if (line.Contains("/playlist"))
                 {
                     // Make it watch
-                    line.Replace("playlist", "watch");
+                    line.Replace("/playlist", "/watch");
                 }
 
                 // Declare id

@@ -133,9 +133,6 @@ namespace SteemSoftware
             // PLS button
             this.plsButton.Enabled = enabledState;
 
-            // XSPF button
-            this.xspfButton.Enabled = enabledState;
-
             // M3U
             this.m3uButton.Enabled = enabledState;
         }
@@ -176,7 +173,14 @@ namespace SteemSoftware
                 else
                 {
                     // Assume playlist
-                    line = $"https://www.youtube.com/playlist?list={line}";
+                    line = $"https://www.youtube.com/watch?list={line}";
+                }
+
+                // Fix playlist link
+                if (line.Contains("playlist"))
+                {
+                    // Make it watch
+                    line.Replace("playlist", "watch");
                 }
 
                 // Declare id
@@ -626,113 +630,6 @@ namespace SteemSoftware
 
             // Inform user
             this.statusToolStripStatusLabel.Text = "PLS playlist saved!";
-
-            // Enable controls
-            this.DisableEnableControls(true);
-        }
-
-        /// <summary>
-        /// Handles the xspf button click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private async void OnXspfButtonClick(object sender, EventArgs e)
-        {
-            // Check for no videos in list
-            if (this.videoList.Count == 0)
-            {
-                // Halt flow
-                return;
-            }
-
-            // Disable controls
-            this.DisableEnableControls(false);
-
-            // Reset progress bar
-            this.progressToolStripProgressBar.Value = 0;
-
-            // Inform user
-            this.statusToolStripStatusLabel.Text = "Fetching media stream info...";
-
-            // Set YouTube Client
-            var youTubeClient = new YoutubeClient();
-
-            // Set playlist string builder
-            var playlistStringBuilder = new StringBuilder();
-
-            // Add header
-            playlistStringBuilder.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-            playlistStringBuilder.AppendLine("<playlist version=\"1\" xmlns=\"http://xspf.org/ns/0/\">");
-            playlistStringBuilder.AppendLine("  <trackList>");
-
-            // Fetched count
-            var fetchedCount = 0;
-
-            // Iterate video list
-            for (int i = 0; i < this.videoList.Count; i++)
-            {
-                try
-                {
-                    // Get media stream info set
-                    var mediaStreamInfoSet = await youTubeClient.GetVideoMediaStreamInfosAsync(this.videoList[i].Id);
-
-                    // Set stream info url
-                    var streamInfoUrl = (this.videoRadioButton.Checked ? mediaStreamInfoSet.Muxed.WithHighestVideoQuality().Url : mediaStreamInfoSet.Audio.WithHighestBitrate().Url);
-
-                    // Open track tag
-                    playlistStringBuilder.AppendLine("    <track>");
-
-                    // Append title
-                    playlistStringBuilder.AppendLine($"      <title>{this.videoList[i].Title}</title>");
-
-                    // Append location
-                    playlistStringBuilder.AppendLine($"      <location>{streamInfoUrl}</location>");
-
-                    // Close track tag
-                    playlistStringBuilder.AppendLine("    </track>");
-
-                    // Rise fetched count
-                    fetchedCount++;
-                }
-                finally
-                {
-                    //  Let it fall through
-                }
-
-                // Update progress bar
-                this.progressToolStripProgressBar.Value = (int)(((i + 1) * 100) / this.videoList.Count);
-
-                // Update status
-                this.statusToolStripStatusLabel.Text = $"Fetching media stream info ({i + 1}/{this.videoList.Count})...";
-            }
-
-            // Add footer
-            playlistStringBuilder.AppendLine("  </trackList>");
-            playlistStringBuilder.AppendLine("</playlist>");
-
-            /* Save playlist to file */
-
-            // Set default ext
-            this.saveFileDialog.DefaultExt = "xspf";
-
-            // Set filter
-            this.saveFileDialog.Filter = "XSPF Files (*.xspf)|*.xspf|All files (*.*)|*.*";
-
-            // Set file name
-            this.saveFileDialog.FileName = $"playlist.xspf";
-
-            // Open save file dialog
-            if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
-            {
-                // Save playlist file
-                File.WriteAllText(this.saveFileDialog.FileName, playlistStringBuilder.ToString(), Encoding.UTF8);
-            }
-
-            // Update progress bar
-            this.progressToolStripProgressBar.Value = 100;
-
-            // Inform user
-            this.statusToolStripStatusLabel.Text = "XSPF playlist saved!";
 
             // Enable controls
             this.DisableEnableControls(true);

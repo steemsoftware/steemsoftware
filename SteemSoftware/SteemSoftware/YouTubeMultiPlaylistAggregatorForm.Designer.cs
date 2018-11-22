@@ -79,7 +79,6 @@ namespace SteemSoftware
             this.authorColumnHeader = new System.Windows.Forms.ColumnHeader();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.plsButton = new System.Windows.Forms.Button();
-            this.xspfButton = new System.Windows.Forms.Button();
             this.m3uButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.videoRadioButton = new System.Windows.Forms.RadioButton();
@@ -97,6 +96,7 @@ namespace SteemSoftware
             // 
             this.saveFileDialog.DefaultExt = "txt";
             this.saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
+            this.saveFileDialog.Title = "Save playlist";
             // 
             // mainMenuStrip
             // 
@@ -107,7 +107,7 @@ namespace SteemSoftware
                                     this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(314, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(324, 24);
             this.mainMenuStrip.TabIndex = 2;
             // 
             // fileToolStripMenuItem
@@ -318,7 +318,7 @@ namespace SteemSoftware
                                     this.statusToolStripStatusLabel});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 340);
             this.mainStatusStrip.Name = "mainStatusStrip";
-            this.mainStatusStrip.Size = new System.Drawing.Size(314, 22);
+            this.mainStatusStrip.Size = new System.Drawing.Size(324, 22);
             this.mainStatusStrip.TabIndex = 3;
             this.mainStatusStrip.Text = "statusStrip1";
             // 
@@ -345,7 +345,7 @@ namespace SteemSoftware
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(314, 316);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(324, 316);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -366,7 +366,7 @@ namespace SteemSoftware
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(308, 152);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(318, 152);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // addLabel
@@ -376,7 +376,7 @@ namespace SteemSoftware
             this.addLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addLabel.Location = new System.Drawing.Point(3, 0);
             this.addLabel.Name = "addLabel";
-            this.addLabel.Size = new System.Drawing.Size(302, 25);
+            this.addLabel.Size = new System.Drawing.Size(312, 25);
             this.addLabel.TabIndex = 1;
             this.addLabel.Text = "Add playlists / videos:";
             this.addLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -389,7 +389,7 @@ namespace SteemSoftware
             this.listTextBox.Multiline = true;
             this.listTextBox.Name = "listTextBox";
             this.listTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.listTextBox.Size = new System.Drawing.Size(302, 86);
+            this.listTextBox.Size = new System.Drawing.Size(312, 86);
             this.listTextBox.TabIndex = 0;
             this.listTextBox.WordWrap = false;
             // 
@@ -397,9 +397,12 @@ namespace SteemSoftware
             // 
             this.alternatingButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alternatingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alternatingButton.Location = new System.Drawing.Point(105, 120);
+            this.alternatingButton.Image = ((System.Drawing.Image)(resources.GetObject("alternatingButton.Image")));
+            this.alternatingButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.alternatingButton.Location = new System.Drawing.Point(106, 118);
+            this.alternatingButton.Margin = new System.Windows.Forms.Padding(1);
             this.alternatingButton.Name = "alternatingButton";
-            this.alternatingButton.Size = new System.Drawing.Size(96, 29);
+            this.alternatingButton.Size = new System.Drawing.Size(104, 33);
             this.alternatingButton.TabIndex = 2;
             this.alternatingButton.Text = "&Alternating";
             this.alternatingButton.UseVisualStyleBackColor = true;
@@ -409,9 +412,12 @@ namespace SteemSoftware
             // 
             this.sequentialButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sequentialButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sequentialButton.Location = new System.Drawing.Point(3, 120);
+            this.sequentialButton.Image = ((System.Drawing.Image)(resources.GetObject("sequentialButton.Image")));
+            this.sequentialButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.sequentialButton.Location = new System.Drawing.Point(1, 118);
+            this.sequentialButton.Margin = new System.Windows.Forms.Padding(1);
             this.sequentialButton.Name = "sequentialButton";
-            this.sequentialButton.Size = new System.Drawing.Size(96, 29);
+            this.sequentialButton.Size = new System.Drawing.Size(103, 33);
             this.sequentialButton.TabIndex = 1;
             this.sequentialButton.Text = "&Sequential";
             this.sequentialButton.UseVisualStyleBackColor = true;
@@ -421,9 +427,12 @@ namespace SteemSoftware
             // 
             this.shuffledButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.shuffledButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shuffledButton.Location = new System.Drawing.Point(207, 120);
+            this.shuffledButton.Image = ((System.Drawing.Image)(resources.GetObject("shuffledButton.Image")));
+            this.shuffledButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.shuffledButton.Location = new System.Drawing.Point(212, 118);
+            this.shuffledButton.Margin = new System.Windows.Forms.Padding(1);
             this.shuffledButton.Name = "shuffledButton";
-            this.shuffledButton.Size = new System.Drawing.Size(98, 29);
+            this.shuffledButton.Size = new System.Drawing.Size(105, 33);
             this.shuffledButton.TabIndex = 3;
             this.shuffledButton.Text = "S&huffled";
             this.shuffledButton.UseVisualStyleBackColor = true;
@@ -443,7 +452,7 @@ namespace SteemSoftware
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(308, 152);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(318, 152);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // playListView
@@ -456,7 +465,7 @@ namespace SteemSoftware
             this.playListView.Location = new System.Drawing.Point(3, 28);
             this.playListView.MultiSelect = false;
             this.playListView.Name = "playListView";
-            this.playListView.Size = new System.Drawing.Size(302, 86);
+            this.playListView.Size = new System.Drawing.Size(312, 86);
             this.playListView.TabIndex = 4;
             this.playListView.UseCompatibleStateImageBehavior = false;
             this.playListView.View = System.Windows.Forms.View.Details;
@@ -473,59 +482,48 @@ namespace SteemSoftware
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Controls.Add(this.plsButton, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.xspfButton, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.m3uButton, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.m3uButton, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 117);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(308, 35);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(318, 35);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // plsButton
             // 
             this.plsButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.plsButton.Location = new System.Drawing.Point(3, 3);
+            this.plsButton.Image = ((System.Drawing.Image)(resources.GetObject("plsButton.Image")));
+            this.plsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.plsButton.Location = new System.Drawing.Point(1, 1);
+            this.plsButton.Margin = new System.Windows.Forms.Padding(1);
             this.plsButton.Name = "plsButton";
-            this.plsButton.Size = new System.Drawing.Size(96, 29);
+            this.plsButton.Size = new System.Drawing.Size(157, 33);
             this.plsButton.TabIndex = 0;
-            this.plsButton.Text = "&PLS";
+            this.plsButton.Text = "Save &PLS";
             this.plsButton.UseVisualStyleBackColor = true;
             this.plsButton.Click += new System.EventHandler(this.OnPlsButtonClick);
-            // 
-            // xspfButton
-            // 
-            this.xspfButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xspfButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xspfButton.Location = new System.Drawing.Point(105, 3);
-            this.xspfButton.Name = "xspfButton";
-            this.xspfButton.Size = new System.Drawing.Size(96, 29);
-            this.xspfButton.TabIndex = 1;
-            this.xspfButton.Text = "&XSPF";
-            this.xspfButton.UseVisualStyleBackColor = true;
-            this.xspfButton.Click += new System.EventHandler(this.OnXspfButtonClick);
             // 
             // m3uButton
             // 
             this.m3uButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.m3uButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.m3uButton.Location = new System.Drawing.Point(207, 3);
+            this.m3uButton.Image = ((System.Drawing.Image)(resources.GetObject("m3uButton.Image")));
+            this.m3uButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.m3uButton.Location = new System.Drawing.Point(160, 1);
+            this.m3uButton.Margin = new System.Windows.Forms.Padding(1);
             this.m3uButton.Name = "m3uButton";
-            this.m3uButton.Size = new System.Drawing.Size(98, 29);
+            this.m3uButton.Size = new System.Drawing.Size(157, 33);
             this.m3uButton.TabIndex = 2;
-            this.m3uButton.Text = "&M3U";
+            this.m3uButton.Text = "Save &M3U";
             this.m3uButton.UseVisualStyleBackColor = true;
             this.m3uButton.Click += new System.EventHandler(this.OnM3uButtonClick);
             // 
@@ -542,7 +540,7 @@ namespace SteemSoftware
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(308, 25);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(318, 25);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // videoRadioButton
@@ -550,9 +548,12 @@ namespace SteemSoftware
             this.videoRadioButton.Checked = true;
             this.videoRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.videoRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.videoRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.videoRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("videoRadioButton.Image")));
+            this.videoRadioButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.videoRadioButton.Location = new System.Drawing.Point(3, 1);
+            this.videoRadioButton.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.videoRadioButton.Name = "videoRadioButton";
-            this.videoRadioButton.Size = new System.Drawing.Size(148, 19);
+            this.videoRadioButton.Size = new System.Drawing.Size(153, 23);
             this.videoRadioButton.TabIndex = 0;
             this.videoRadioButton.TabStop = true;
             this.videoRadioButton.Text = "Generate Video";
@@ -563,9 +564,12 @@ namespace SteemSoftware
             // audioRadioButton
             // 
             this.audioRadioButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.audioRadioButton.Location = new System.Drawing.Point(157, 3);
+            this.audioRadioButton.Image = ((System.Drawing.Image)(resources.GetObject("audioRadioButton.Image")));
+            this.audioRadioButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.audioRadioButton.Location = new System.Drawing.Point(162, 1);
+            this.audioRadioButton.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.audioRadioButton.Name = "audioRadioButton";
-            this.audioRadioButton.Size = new System.Drawing.Size(148, 19);
+            this.audioRadioButton.Size = new System.Drawing.Size(153, 23);
             this.audioRadioButton.TabIndex = 1;
             this.audioRadioButton.Text = "Generate Audio";
             this.audioRadioButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -576,7 +580,7 @@ namespace SteemSoftware
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 362);
+            this.ClientSize = new System.Drawing.Size(324, 362);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.mainMenuStrip);
             this.Controls.Add(this.mainStatusStrip);
@@ -596,7 +600,6 @@ namespace SteemSoftware
             this.PerformLayout();
         }
         private System.Windows.Forms.Button m3uButton;
-        private System.Windows.Forms.Button xspfButton;
         private System.Windows.Forms.Button plsButton;
         private System.Windows.Forms.RadioButton audioRadioButton;
         private System.Windows.Forms.RadioButton videoRadioButton;

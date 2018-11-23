@@ -582,13 +582,13 @@ namespace SteemSoftware
             // Set license text
             var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
                 $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
-                $"Notice: Libraries have separate licenses. Please exercise due diligence.";
+                $"Libraries and icons have separate licenses.";
 
             // Set about form
             var aboutForm = new AboutForm(
                 "About SteemSoftware",
                 $"SteemSoftware {this.semanticVersion}",
-                "Week #46 @ November 2018",
+                "Week #47 @ November 2018",
                 licenseText,
                 this.Icon.ToBitmap());
 

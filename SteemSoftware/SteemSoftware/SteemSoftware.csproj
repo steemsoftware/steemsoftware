@@ -60,9 +60,6 @@
       <HintPath>Libraries\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="CSCore">
-      <HintPath>Libraries\CSCore.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutForm.cs" />
@@ -97,10 +94,6 @@
     <Compile Include="YouTubeMultiPlaylistAggregatorForm.Designer.cs">
       <DependentUpon>YouTubeMultiPlaylistAggregatorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="YoutubeMultiplaylistJukeboxForm.cs" />
-    <Compile Include="YoutubeMultiplaylistJukeboxForm.Designer.cs">
-      <DependentUpon>YoutubeMultiplaylistJukeboxForm.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -132,9 +125,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="YouTubeMultiPlaylistAggregatorForm.resx">
       <DependentUpon>YouTubeMultiPlaylistAggregatorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="YoutubeMultiplaylistJukeboxForm.resx">
-      <DependentUpon>YoutubeMultiplaylistJukeboxForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

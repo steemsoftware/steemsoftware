@@ -420,7 +420,7 @@ namespace SteemSoftware
                     return videoId;
                 }
             }
-            finally
+            catch (Exception)
             {
                 // Let it fall through
             }

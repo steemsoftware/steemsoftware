@@ -88,10 +88,10 @@ namespace SteemSoftware
         private void OnVideoRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             // Make video font bold
-            this.videoRadioButton.Font = new Font(videoRadioButton.Font, videoRadioButton.Font.Style | FontStyle.Bold);
+            this.videoRadioButton.Font = new Font(this.videoRadioButton.Font, this.videoRadioButton.Font.Style | FontStyle.Bold);
 
             // Make audio font normal
-            this.audioRadioButton.Font = new Font(audioRadioButton.Font, audioRadioButton.Font.Style & ~FontStyle.Bold);
+            this.audioRadioButton.Font = new Font(this.audioRadioButton.Font, this.audioRadioButton.Font.Style & ~FontStyle.Bold);
         }
 
         /// <summary>
@@ -102,10 +102,10 @@ namespace SteemSoftware
         private void OnAudioRadioButtonCheckedChanged(object sender, EventArgs e)
         {
             // Make audio font bold
-            this.audioRadioButton.Font = new Font(audioRadioButton.Font, audioRadioButton.Font.Style | FontStyle.Bold);
+            this.audioRadioButton.Font = new Font(this.audioRadioButton.Font, this.audioRadioButton.Font.Style | FontStyle.Bold);
 
             // Make video font normal
-            this.videoRadioButton.Font = new Font(videoRadioButton.Font, videoRadioButton.Font.Style & ~FontStyle.Bold);
+            this.videoRadioButton.Font = new Font(this.videoRadioButton.Font, this.videoRadioButton.Font.Style & ~FontStyle.Bold);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace SteemSoftware
                         var playlist = await client.GetPlaylistAsync(id);
 
                         // Set (custom) max video count
-                        var maxVideoCount = (this.playlistMaxVideoCount == 0 ? playlist.Videos.Count : this.playlistMaxVideoCount);
+                        var maxVideoCount = this.playlistMaxVideoCount == 0 ? playlist.Videos.Count : this.playlistMaxVideoCount;
 
                         // Declare current video list
                         var currentVideoList = new List<Video>();
@@ -214,7 +214,7 @@ namespace SteemSoftware
                         // Add current video list 
                         videoListList.Add(currentVideoList);
                     }
-                    finally
+                    catch
                     {
                         // Let it fall through
                     }
@@ -247,7 +247,7 @@ namespace SteemSoftware
                             alternatingVideoList.Add(video);
                         }
                     }
-                    finally
+                    catch
                     {
                         // Let it fall through
                     }
@@ -579,7 +579,7 @@ namespace SteemSoftware
                     var mediaStreamInfoSet = await youTubeClient.GetVideoMediaStreamInfosAsync(this.videoList[i].Id);
 
                     // Set stream info url
-                    var streamInfoUrl = (this.videoRadioButton.Checked ? mediaStreamInfoSet.Muxed.WithHighestVideoQuality().Url : mediaStreamInfoSet.Audio.WithHighestBitrate().Url);
+                    var streamInfoUrl = this.videoRadioButton.Checked ? mediaStreamInfoSet.Muxed.WithHighestVideoQuality().Url : mediaStreamInfoSet.Audio.WithHighestBitrate().Url;
 
                     // Append file (url)
                     playlistStringBuilder.AppendLine($"File{fetchedCount + 1}={streamInfoUrl}");
@@ -593,9 +593,9 @@ namespace SteemSoftware
                     // Rise fetched count
                     fetchedCount++;
                 }
-                finally
+                catch
                 {
-                    //  Let it fall through
+                    // Let it fall through
                 }
 
                 // Update progress bar
@@ -681,7 +681,7 @@ namespace SteemSoftware
                     var mediaStreamInfoSet = await youTubeClient.GetVideoMediaStreamInfosAsync(this.videoList[i].Id);
 
                     // Set stream info url
-                    var streamInfoUrl = (this.videoRadioButton.Checked ? mediaStreamInfoSet.Muxed.WithHighestVideoQuality().Url : mediaStreamInfoSet.Audio.WithHighestBitrate().Url);
+                    var streamInfoUrl = this.videoRadioButton.Checked ? mediaStreamInfoSet.Muxed.WithHighestVideoQuality().Url : mediaStreamInfoSet.Audio.WithHighestBitrate().Url;
 
                     // Append info
                     playlistStringBuilder.AppendLine($"#EXTINF:-1,{this.videoList[i].Title}");
@@ -692,9 +692,9 @@ namespace SteemSoftware
                     // Rise fetched count
                     fetchedCount++;
                 }
-                finally
+                catch
                 {
-                    //  Let it fall through
+                    // Let it fall through
                 }
 
                 // Update progress bar

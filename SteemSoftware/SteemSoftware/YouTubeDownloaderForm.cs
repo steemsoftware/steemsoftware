@@ -78,7 +78,11 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Clear video text box
+            this.videoTextBox.Clear();
+
+            // Reset status text
+            this.mainToolStripStatusLabel.Text = "Waiting for video...";
         }
 
         /// <summary>
@@ -88,7 +92,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnExitToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Close module
+            this.Close();
         }
 
         /// <summary>

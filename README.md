@@ -37,7 +37,7 @@ Unzip and execute **SteemSoftware.exe**
 1. Set functionality.
 1. Hit launch.
 
-[![SteemSoftware instructions](http://img.youtube.com/vi/A5rMNl05t4s/0.jpg)](http://www.youtube.com/watch?v=https://youtu.be/A5rMNl05t4s "SteemSoftware instructions")  
+[![SteemSoftware instructions](http://img.youtube.com/vi/A5rMNl05t4s/0.jpg)](http://www.youtube.com/watch?v=A5rMNl05t4s "SteemSoftware instructions")  
 (Click for [YouTube video](http://www.youtube.com/watch?v=A5rMNl05t4s "SteemSoftware Instructions"))
 
 ## Releases:

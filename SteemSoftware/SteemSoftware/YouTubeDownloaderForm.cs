@@ -26,7 +26,7 @@ namespace SteemSoftware
         /// <summary>
         /// The semantic version.
         /// </summary>
-        private string semanticVersion = "0.1.3";
+        private string semanticVersion = "0.1.4";
 
         /// <summary>
         /// The last selected path.
@@ -97,6 +97,26 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Handles the video text box text changed event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnVideoTextBoxTextChanged(object sender, EventArgs e)
+        {
+            // Check length
+            if (this.videoTextBox.Text.Length > 0)
+            {
+                // Suggest download
+                this.mainToolStripStatusLabel.Text = "Press download button";
+            }
+            else
+            {
+                // Reset status text
+                this.mainToolStripStatusLabel.Text = "Waiting for video...";
+            }
+        }
+
+        /// <summary>
         /// Handles the download button click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
@@ -107,7 +127,7 @@ namespace SteemSoftware
             if (this.videoTextBox.Text.Length == 0)
             {
                 // Set status
-                this.mainToolStripStatusLabel.Text = "Please enter video to fetch";
+                this.mainToolStripStatusLabel.Text = "Please enter video";
 
                 // Halt flow
                 return;
@@ -120,7 +140,7 @@ namespace SteemSoftware
             if (id.Length == 0)
             {
                 // Set status
-                this.mainToolStripStatusLabel.Text = "No valid video ID to fetch";
+                this.mainToolStripStatusLabel.Text = "Invalid video ID";
 
                 // Halt flow
                 return;

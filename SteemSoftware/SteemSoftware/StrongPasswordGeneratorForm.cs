@@ -36,7 +36,7 @@ namespace SteemSoftware
             /* Populate length combo box */
 
             // Add 16 to 128
-            this.lengthComboBox.Items.AddRange(Enumerable.Range(16, 112).Cast<object>().ToArray());
+            this.lengthComboBox.Items.AddRange(Enumerable.Range(16, 113).Cast<object>().ToArray());
 
             // Add 256+ doublings
             for (int i = 256; i <= 2048; i = i * 2)

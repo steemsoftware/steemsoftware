@@ -35,221 +35,264 @@ namespace SteemSoftware
         /// </summary>
         private void InitializeComponent()
         {
-        	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YouTubeDownloaderForm));
-        	this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-        	this.idLabel = new System.Windows.Forms.Label();
-        	this.videoTextBox = new System.Windows.Forms.TextBox();
-        	this.downloadButton = new System.Windows.Forms.Button();
-        	this.mainToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-        	this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
-        	this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-        	this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-        	this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.pasteOnFocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.tableLayoutPanel1.SuspendLayout();
-        	this.mainStatusStrip.SuspendLayout();
-        	this.mainMenuStrip.SuspendLayout();
-        	this.SuspendLayout();
-        	// 
-        	// tableLayoutPanel1
-        	// 
-        	this.tableLayoutPanel1.ColumnCount = 3;
-        	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.87952F));
-        	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.24096F));
-        	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.87952F));
-        	this.tableLayoutPanel1.Controls.Add(this.idLabel, 0, 0);
-        	this.tableLayoutPanel1.Controls.Add(this.videoTextBox, 0, 1);
-        	this.tableLayoutPanel1.Controls.Add(this.downloadButton, 1, 2);
-        	this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
-        	this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-        	this.tableLayoutPanel1.RowCount = 3;
-        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-        	this.tableLayoutPanel1.Size = new System.Drawing.Size(280, 82);
-        	this.tableLayoutPanel1.TabIndex = 5;
-        	// 
-        	// idLabel
-        	// 
-        	this.tableLayoutPanel1.SetColumnSpan(this.idLabel, 3);
-        	this.idLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.idLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.idLabel.Location = new System.Drawing.Point(3, 0);
-        	this.idLabel.Name = "idLabel";
-        	this.idLabel.Size = new System.Drawing.Size(274, 23);
-        	this.idLabel.TabIndex = 0;
-        	this.idLabel.Text = "URL / Short link / Video id:";
-        	this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-        	// 
-        	// videoTextBox
-        	// 
-        	this.tableLayoutPanel1.SetColumnSpan(this.videoTextBox, 3);
-        	this.videoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.videoTextBox.Location = new System.Drawing.Point(3, 26);
-        	this.videoTextBox.Name = "videoTextBox";
-        	this.videoTextBox.Size = new System.Drawing.Size(274, 20);
-        	this.videoTextBox.TabIndex = 1;
-        	this.videoTextBox.Click += new System.EventHandler(this.OnVideoTextBoxEnter);
-        	this.videoTextBox.Enter += new System.EventHandler(this.OnVideoTextBoxEnter);
-        	// 
-        	// downloadButton
-        	// 
-        	this.downloadButton.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.downloadButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.downloadButton.Location = new System.Drawing.Point(58, 52);
-        	this.downloadButton.Name = "downloadButton";
-        	this.downloadButton.Size = new System.Drawing.Size(162, 27);
-        	this.downloadButton.TabIndex = 2;
-        	this.downloadButton.Text = "&Download";
-        	this.downloadButton.UseVisualStyleBackColor = true;
-        	this.downloadButton.Click += new System.EventHandler(this.OnDownloadButtonClick);
-        	// 
-        	// mainToolStripStatusLabel
-        	// 
-        	this.mainToolStripStatusLabel.Name = "mainToolStripStatusLabel";
-        	this.mainToolStripStatusLabel.Size = new System.Drawing.Size(107, 17);
-        	this.mainToolStripStatusLabel.Text = "Waiting for video...";
-        	// 
-        	// mainStatusStrip
-        	// 
-        	this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.mainToolStripStatusLabel});
-        	this.mainStatusStrip.Location = new System.Drawing.Point(0, 106);
-        	this.mainStatusStrip.Name = "mainStatusStrip";
-        	this.mainStatusStrip.Size = new System.Drawing.Size(280, 22);
-        	this.mainStatusStrip.TabIndex = 4;
-        	// 
-        	// mainMenuStrip
-        	// 
-        	this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.editToolStripMenuItem,
-        	        	        	this.toolsToolStripMenuItem,
-        	        	        	this.helpToolStripMenuItem});
-        	this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
-        	this.mainMenuStrip.Name = "mainMenuStrip";
-        	this.mainMenuStrip.Size = new System.Drawing.Size(280, 24);
-        	this.mainMenuStrip.TabIndex = 3;
-        	// 
-        	// editToolStripMenuItem
-        	// 
-        	this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.cutToolStripMenuItem,
-        	        	        	this.copyToolStripMenuItem,
-        	        	        	this.pasteToolStripMenuItem,
-        	        	        	this.toolStripSeparator4,
-        	        	        	this.selectAllToolStripMenuItem});
-        	this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-        	this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-        	this.editToolStripMenuItem.Text = "&Edit";
-        	// 
-        	// cutToolStripMenuItem
-        	// 
-        	this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
-        	this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-        	this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-        	this.cutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-        	this.cutToolStripMenuItem.Text = "Cu&t";
-        	this.cutToolStripMenuItem.Click += new System.EventHandler(this.OnCutToolStripMenuItemClick);
-        	// 
-        	// copyToolStripMenuItem
-        	// 
-        	this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
-        	this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-        	this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-        	this.copyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-        	this.copyToolStripMenuItem.Text = "&Copy";
-        	this.copyToolStripMenuItem.Click += new System.EventHandler(this.OnCopyToolStripMenuItemClick);
-        	// 
-        	// pasteToolStripMenuItem
-        	// 
-        	this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
-        	this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-        	this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-        	this.pasteToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-        	this.pasteToolStripMenuItem.Text = "&Paste";
-        	this.pasteToolStripMenuItem.Click += new System.EventHandler(this.OnPasteToolStripMenuItemClick);
-        	// 
-        	// toolStripSeparator4
-        	// 
-        	this.toolStripSeparator4.Name = "toolStripSeparator4";
-        	this.toolStripSeparator4.Size = new System.Drawing.Size(119, 6);
-        	// 
-        	// selectAllToolStripMenuItem
-        	// 
-        	this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-        	this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-        	this.selectAllToolStripMenuItem.Text = "Select &All";
-        	this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.OnSelectAllToolStripMenuItemClick);
-        	// 
-        	// toolsToolStripMenuItem
-        	// 
-        	this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.optionsToolStripMenuItem});
-        	this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-        	this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-        	this.toolsToolStripMenuItem.Text = "&Tools";
-        	// 
-        	// optionsToolStripMenuItem
-        	// 
-        	this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.pasteOnFocusToolStripMenuItem});
-        	this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-        	this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-        	this.optionsToolStripMenuItem.Text = "&Options";
-        	this.optionsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnOptionsToolStripMenuItemDropDownItemClicked);
-        	// 
-        	// helpToolStripMenuItem
-        	// 
-        	this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        	        	        	this.aboutToolStripMenuItem});
-        	this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-        	this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-        	this.helpToolStripMenuItem.Text = "&Help";
-        	// 
-        	// aboutToolStripMenuItem
-        	// 
-        	this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-        	this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-        	this.aboutToolStripMenuItem.Text = "&About...";
-        	this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnAboutToolStripMenuItemClick);
-        	// 
-        	// pasteOnFocusToolStripMenuItem
-        	// 
-        	this.pasteOnFocusToolStripMenuItem.Checked = true;
-        	this.pasteOnFocusToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-        	this.pasteOnFocusToolStripMenuItem.Name = "pasteOnFocusToolStripMenuItem";
-        	this.pasteOnFocusToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-        	this.pasteOnFocusToolStripMenuItem.Text = "&Paste on focus";
-        	// 
-        	// YouTubeDownloaderForm
-        	// 
-        	this.AcceptButton = this.downloadButton;
-        	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        	this.ClientSize = new System.Drawing.Size(280, 128);
-        	this.Controls.Add(this.tableLayoutPanel1);
-        	this.Controls.Add(this.mainStatusStrip);
-        	this.Controls.Add(this.mainMenuStrip);
-        	this.Name = "YouTubeDownloaderForm";
-        	this.Text = "YouTube Downloader";
-        	this.tableLayoutPanel1.ResumeLayout(false);
-        	this.tableLayoutPanel1.PerformLayout();
-        	this.mainStatusStrip.ResumeLayout(false);
-        	this.mainStatusStrip.PerformLayout();
-        	this.mainMenuStrip.ResumeLayout(false);
-        	this.mainMenuStrip.PerformLayout();
-        	this.ResumeLayout(false);
-        	this.PerformLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YouTubeDownloaderForm));
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.videoTextBox = new System.Windows.Forms.TextBox();
+            this.downloadButton = new System.Windows.Forms.Button();
+            this.mainToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteOnFocusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.mainStatusStrip.SuspendLayout();
+            this.mainMenuStrip.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.87952F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.24096F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.87952F));
+            this.tableLayoutPanel1.Controls.Add(this.idLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.videoTextBox, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.downloadButton, 1, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 96);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // idLabel
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.idLabel, 3);
+            this.idLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.idLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idLabel.Location = new System.Drawing.Point(3, 0);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(278, 23);
+            this.idLabel.TabIndex = 0;
+            this.idLabel.Text = "URL / Short link / Video id:";
+            this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // videoTextBox
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.videoTextBox, 3);
+            this.videoTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoTextBox.Location = new System.Drawing.Point(3, 26);
+            this.videoTextBox.Name = "videoTextBox";
+            this.videoTextBox.Size = new System.Drawing.Size(278, 20);
+            this.videoTextBox.TabIndex = 1;
+            this.videoTextBox.Click += new System.EventHandler(this.OnVideoTextBoxEnter);
+            this.videoTextBox.Enter += new System.EventHandler(this.OnVideoTextBoxEnter);
+            // 
+            // downloadButton
+            // 
+            this.downloadButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.downloadButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.downloadButton.Image = ((System.Drawing.Image)(resources.GetObject("downloadButton.Image")));
+            this.downloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.downloadButton.Location = new System.Drawing.Point(59, 52);
+            this.downloadButton.Name = "downloadButton";
+            this.downloadButton.Size = new System.Drawing.Size(165, 41);
+            this.downloadButton.TabIndex = 2;
+            this.downloadButton.Text = "&Download";
+            this.downloadButton.UseVisualStyleBackColor = true;
+            this.downloadButton.Click += new System.EventHandler(this.OnDownloadButtonClick);
+            // 
+            // mainToolStripStatusLabel
+            // 
+            this.mainToolStripStatusLabel.Name = "mainToolStripStatusLabel";
+            this.mainToolStripStatusLabel.Size = new System.Drawing.Size(107, 17);
+            this.mainToolStripStatusLabel.Text = "Waiting for video...";
+            // 
+            // mainStatusStrip
+            // 
+            this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.mainToolStripStatusLabel});
+            this.mainStatusStrip.Location = new System.Drawing.Point(0, 120);
+            this.mainStatusStrip.Name = "mainStatusStrip";
+            this.mainStatusStrip.Size = new System.Drawing.Size(284, 22);
+            this.mainStatusStrip.TabIndex = 4;
+            // 
+            // mainMenuStrip
+            // 
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.fileToolStripMenuItem,
+                                    this.editToolStripMenuItem,
+                                    this.toolsToolStripMenuItem,
+                                    this.helpToolStripMenuItem});
+            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Size = new System.Drawing.Size(284, 24);
+            this.mainMenuStrip.TabIndex = 3;
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.newToolStripMenuItem,
+                                    this.toolStripSeparator2,
+                                    this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.OnNewToolStripMenuItemClick);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.OnExitToolStripMenuItemClick);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.cutToolStripMenuItem,
+                                    this.copyToolStripMenuItem,
+                                    this.pasteToolStripMenuItem,
+                                    this.toolStripSeparator4,
+                                    this.selectAllToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
+            this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.cutToolStripMenuItem.Text = "Cu&t";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.OnCutToolStripMenuItemClick);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
+            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.copyToolStripMenuItem.Text = "&Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.OnCopyToolStripMenuItemClick);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
+            this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.pasteToolStripMenuItem.Text = "&Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.OnPasteToolStripMenuItemClick);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(119, 6);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.selectAllToolStripMenuItem.Text = "Select &All";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.OnSelectAllToolStripMenuItemClick);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.optionsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "&Tools";
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.pasteOnFocusToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnOptionsToolStripMenuItemDropDownItemClicked);
+            // 
+            // pasteOnFocusToolStripMenuItem
+            // 
+            this.pasteOnFocusToolStripMenuItem.Checked = true;
+            this.pasteOnFocusToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.pasteOnFocusToolStripMenuItem.Name = "pasteOnFocusToolStripMenuItem";
+            this.pasteOnFocusToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.pasteOnFocusToolStripMenuItem.Text = "&Paste on focus";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnAboutToolStripMenuItemClick);
+            // 
+            // YouTubeDownloaderForm
+            // 
+            this.AcceptButton = this.downloadButton;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 142);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.mainStatusStrip);
+            this.Controls.Add(this.mainMenuStrip);
+            this.Name = "YouTubeDownloaderForm";
+            this.Text = "YouTube Downloader";
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.mainStatusStrip.ResumeLayout(false);
+            this.mainStatusStrip.PerformLayout();
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteOnFocusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;

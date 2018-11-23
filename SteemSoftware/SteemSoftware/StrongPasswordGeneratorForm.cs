@@ -23,7 +23,7 @@ namespace SteemSoftware
         /// <summary>
         /// The semantic version.
         /// </summary>
-        private string semanticVersion = "0.1.0";
+        private string semanticVersion = "0.1.1";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.StrongPasswordGeneratorForm"/> class.
@@ -61,7 +61,7 @@ namespace SteemSoftware
             var aboutForm = new AboutForm(
                 $"About {this.moduleName}",
                 $"{this.moduleName} {this.semanticVersion}",
-                "Week #42 @ October 2018",
+                "Week #47 @ November 2018",
                 licenseText,
                 this.Icon.ToBitmap());
 

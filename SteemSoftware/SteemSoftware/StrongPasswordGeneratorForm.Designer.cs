@@ -51,9 +51,11 @@ namespace SteemSoftware
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StrongPasswordGeneratorForm));
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,8 +79,8 @@ namespace SteemSoftware
             // mainMenuStrip
             // 
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
+                                    this.fileToolStripMenuItem,
+                                    this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(271, 24);
@@ -87,32 +89,39 @@ namespace SteemSoftware
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.exitToolStripMenuItem});
+                                    this.newToolStripMenuItem,
+                                    this.toolStripSeparator2,
+                                    this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // newToolStripMenuItem
             // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.OnNewToolStripMenuItemClick);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.exitToolStripMenuItem.Text = "&Exit";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.OnExitToolStripMenuItemClick);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+                                    this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "&Help";
@@ -121,14 +130,14 @@ namespace SteemSoftware
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.OnAboutToolStripMenuItemClick);
             // 
             // mainStatusStrip
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainToolStripStatusLabel});
+                                    this.mainToolStripStatusLabel});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 168);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Size = new System.Drawing.Size(271, 22);
@@ -161,9 +170,9 @@ namespace SteemSoftware
             // generateTableLayoutPanel
             // 
             this.generateTableLayoutPanel.ColumnCount = 3;
-            this.generateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.generateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.generateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.generateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.generateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76F));
+            this.generateTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.generateTableLayoutPanel.Controls.Add(this.generatePasswordButton, 1, 0);
             this.generateTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.generateTableLayoutPanel.Location = new System.Drawing.Point(0, 25);
@@ -178,9 +187,11 @@ namespace SteemSoftware
             // 
             this.generatePasswordButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.generatePasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.generatePasswordButton.Location = new System.Drawing.Point(48, 3);
+            this.generatePasswordButton.Image = ((System.Drawing.Image)(resources.GetObject("generatePasswordButton.Image")));
+            this.generatePasswordButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.generatePasswordButton.Location = new System.Drawing.Point(35, 3);
             this.generatePasswordButton.Name = "generatePasswordButton";
-            this.generatePasswordButton.Size = new System.Drawing.Size(174, 44);
+            this.generatePasswordButton.Size = new System.Drawing.Size(199, 44);
             this.generatePasswordButton.TabIndex = 0;
             this.generatePasswordButton.Text = "Generate Password";
             this.generatePasswordButton.UseVisualStyleBackColor = true;
@@ -189,6 +200,7 @@ namespace SteemSoftware
             // passwordTextBox
             // 
             this.passwordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTextBox.Location = new System.Drawing.Point(3, 78);
             this.passwordTextBox.Multiline = true;
             this.passwordTextBox.Name = "passwordTextBox";
@@ -218,6 +230,7 @@ namespace SteemSoftware
             // lengthComboBox
             // 
             this.lengthComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lengthComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lengthComboBox.FormattingEnabled = true;
             this.lengthComboBox.Location = new System.Drawing.Point(70, 3);
             this.lengthComboBox.Name = "lengthComboBox";
@@ -228,6 +241,7 @@ namespace SteemSoftware
             // lengthLabel
             // 
             this.lengthLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lengthLabel.Location = new System.Drawing.Point(3, 0);
             this.lengthLabel.Name = "lengthLabel";
             this.lengthLabel.Size = new System.Drawing.Size(61, 25);
@@ -241,6 +255,7 @@ namespace SteemSoftware
             this.clipboardCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.settingsTableLayoutPanel.SetColumnSpan(this.clipboardCheckBox, 2);
             this.clipboardCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clipboardCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clipboardCheckBox.Location = new System.Drawing.Point(137, 3);
             this.clipboardCheckBox.Name = "clipboardCheckBox";
             this.clipboardCheckBox.Size = new System.Drawing.Size(131, 19);
@@ -270,7 +285,7 @@ namespace SteemSoftware
             this.settingsTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

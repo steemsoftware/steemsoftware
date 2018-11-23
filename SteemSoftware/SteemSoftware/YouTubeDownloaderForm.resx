@@ -117,13 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="downloadButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAClAAAApQFwxN5VAAAAGXRFWHRTb2Z0d2FyZQB3d3cu
+        aW5rc2NhcGUub3Jnm+48GgAAAmJJREFUSEu11ltIFGEUB/CxTIzICHyIHsOIMhKRLtimJiQsRkEijbUS
+        hFDZhfBJH/LBetig8KUguhEEERa9LKFEgoXl7AR52bLIXWXn0sZubazlbNuu/fObnK9mL3OpfDgwDMP5
+        zZw558wwYBwVP5jK/lmmElZCZtbBSoSZ0miMKXMxdpKTG7CSXLuGIIyVu9auSS2thbRyqy3EFEgu34VP
+        53ogDwQQFBJ45o2D56Yxdt8HcVW1KWYIKFuOQOJlBKUkDQJowXlnEGjqNERyAsnieoijEZr4fd84hMAM
+        Ta4hQ7wCocSZE8kJhK8+psml4TBmFzmQKGHx+sy9DOTlI8EekMqvgjCpUEAeEmkLkw6RNrDg+iMUes7H
+        IRWWZUWyPsG39c26uqcDBAkt2YSRy08pMll3wjqgbGs1BQgycegiBfyuLutAsqjOEAgt3oi3p67r3oW4
+        usY6oE7sk7m+n29PWqK87ZDX7IW3V9Il93Jf7L1kAig7TiIofv+FBBOItXTjw10uo4NIu/oPu+0DBIl2
+        3NKVimB/Dho59t3m/27QtP3z1dkOcexjxiSTAXvXduXfVgVdcoU7ES9vwbTLjTfuBwjsa4e0YrNpctJp
+        pssufdvaWdeGwMO1ThzbzeJsVQOEohrdJNtBfj/B3K753HYNkW4P/Od70NTYjP2NLjUuHO1Qz5MY8UwY
+        xqubg5DzS2n5KJAqqEbkUh9CnlH47gyAnU9OgK7Tnep5Ei8Go4Yx3DsFaVlFJpBe6xvle3Cg4SCO17MY
+        L679DyXK8tGPFTiQytP/DNipv/qSF/yjv9C/LT8BPRF9dzhsJawAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="mainStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>257, 17</value>
   </metadata>
   <metadata name="mainMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>388, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cutToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

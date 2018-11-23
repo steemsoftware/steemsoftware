@@ -317,7 +317,8 @@ namespace SteemSoftware
                 $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
                 $"Youtube Explode:{Environment.NewLine}https://github.com/Tyrrrz/YoutubeExplode/blob/master/License.txt{Environment.NewLine}{Environment.NewLine}" +
                 $"AngleSharp:{Environment.NewLine}https://raw.githubusercontent.com/AngleSharp/AngleSharp/master/LICENSE{Environment.NewLine}{Environment.NewLine}" +
-                $"Newtonsoft.Json{Environment.NewLine}https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md";
+                $"Newtonsoft.Json{Environment.NewLine}https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md{Environment.NewLine}{Environment.NewLine}" +
+                $"youtube{Environment.NewLine}Icon made by Freepik @ https://www.freepik.com/{Environment.NewLine}from https://www.flaticon.com/{Environment.NewLine}Licensed by Creative Commons BY 3.0 (CC 3.0 BY){Environment.NewLine}http://creativecommons.org/licenses/by/3.0/";
 
             // Set about form
             var aboutForm = new AboutForm(

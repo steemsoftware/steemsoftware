@@ -25,6 +25,11 @@ namespace SteemSoftware
         private string semanticVersion = "0.1.0";
 
         /// <summary>
+        /// The working directory path.
+        /// </summary>
+        private string workingDirectoryPath = string.Empty;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.CompressByPatternForm"/> class.
         /// </summary>
         public CompressByPatternForm()
@@ -157,7 +162,12 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSetWorkingDirectoryButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Show folder browser dialog
+            if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK && this.folderBrowserDialog.SelectedPath.Length > 0)
+            {
+                // Set working directory path
+                this.workingDirectoryPath = this.folderBrowserDialog.SelectedPath;
+            }
         }
 
         /// <summary>

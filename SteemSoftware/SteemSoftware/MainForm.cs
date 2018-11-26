@@ -339,7 +339,7 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnBusyorgBlogToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // Open tag on busy
+            // Open blog on busy
             Process.Start("https://busy.org/@steemsoftware");
         }
 
@@ -350,7 +350,7 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSteemitcomBlogToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // Open tag on steemit
+            // Open blog on steemit
             Process.Start("https://steemit.com/@steemsoftware");
         }
 

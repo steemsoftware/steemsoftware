@@ -162,12 +162,28 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSetWorkingDirectoryButtonClick(object sender, EventArgs e)
         {
+            // Prompt user to set the working directory path
+            this.TrySetWorkingDirectoryPath();
+        }
+
+        /// <summary>
+        /// Tries to set the working directory path.
+        /// </summary>
+        /// <returns><c>true</c>, if working directory path was set, <c>false</c> otherwise.</returns>
+        private bool TrySetWorkingDirectoryPath()
+        {
             // Show folder browser dialog
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK && this.folderBrowserDialog.SelectedPath.Length > 0)
             {
                 // Set working directory path
                 this.workingDirectoryPath = this.folderBrowserDialog.SelectedPath;
+
+                // Return positively
+                return true;
             }
+
+            // Default return
+            return false;
         }
 
         /// <summary>

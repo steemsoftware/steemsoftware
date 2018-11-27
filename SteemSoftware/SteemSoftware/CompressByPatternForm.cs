@@ -6,6 +6,7 @@ namespace SteemSoftware
 {
     // Directives
     using System;
+    using System.Collections.Generic;
     using System.Windows.Forms;
 
     /// <summary>
@@ -177,6 +178,36 @@ namespace SteemSoftware
         private void OnCompressByPatternButtonClick(object sender, EventArgs e)
         {
             // TODO Add code
+        }
+
+        /// <summary>
+        /// Gets the pattern and target row list.
+        /// </summary>
+        /// <returns>The pattern and target row list.</returns>
+        private List<PatternAndTargetRow> GetPatternAndTargetRowList()
+        {
+            // Declare pattern and target row list
+            var patternAndTargetRowList = new List<PatternAndTargetRow>();
+
+            // Populate pattern and target row list
+            for (int i = 0; i < this.dataGridView.Rows.Count; i++)
+            {
+                try
+                {
+                    // Add current row to list
+                    patternAndTargetRowList.Add(new PatternAndTargetRow(
+                        this.dataGridView.Rows[i].Cells[0].Value.ToString(), // Set pattern
+                        this.dataGridView.Rows[i].Cells[1].Value.ToString(), // Set target
+                        Convert.ToBoolean(this.dataGridView.Rows[i].Cells[2].Value))); // Set is regex flag
+                }
+                catch
+                {
+                    // Let it fall through
+                }
+            }
+
+            // Return pattern and target row list
+            return patternAndTargetRowList;
         }
     }
 }

@@ -72,7 +72,11 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnOptionsToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            // TODO Add code
+            // Set clicked item
+            var clickedItem = (ToolStripMenuItem)e.ClickedItem;
+
+            // Toggle clicked item check state
+            clickedItem.Checked = !clickedItem.Checked;
         }
 
         /// <summary>

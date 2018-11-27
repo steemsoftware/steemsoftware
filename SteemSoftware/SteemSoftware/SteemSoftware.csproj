@@ -98,6 +98,7 @@
     <Compile Include="YouTubeMultiPlaylistAggregatorForm.Designer.cs">
       <DependentUpon>YouTubeMultiPlaylistAggregatorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PatternAndTargetRow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

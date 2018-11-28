@@ -333,9 +333,10 @@ namespace SteemSoftware
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.DefaultExt = "zip";
-            this.saveFileDialog.Filter = "Zip Files (*.zip)|*.zip|All files (*.*)|*.*";
-            this.saveFileDialog.Title = "Save ZIP file";
+            this.saveFileDialog.DefaultExt = "txt";
+            this.saveFileDialog.FileName = "PatternTarget.txt";
+            this.saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
+            this.saveFileDialog.Title = "Save pattern file";
             // 
             // openFileDialog
             // 

@@ -10,6 +10,7 @@ namespace SteemSoftware
     using System.IO;
     using System.Windows.Forms;
     using Ionic.Zip;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Description of CompressByPatternForm.
@@ -19,7 +20,7 @@ namespace SteemSoftware
         /// <summary>
         /// The name of the module.
         /// </summary>
-        private string moduleName = "Compress by Pattern";
+        private string moduleName = "Compress By Pattern";
 
         /// <summary>
         /// The semantic version.
@@ -112,7 +113,46 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSaveToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Get pattern and target row list
+            var patternAndTargetRowList = this.GetPatternAndTargetRowList();
+
+            // Check for data to save
+            if (patternAndTargetRowList.Count == 0)
+            {
+                // Halt flow
+                return;
+            }
+
+            // Set file name
+            this.saveFileDialog.FileName = $"PatternTarget.txt";
+
+            // Open save file dialog
+            if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
+            {
+                /* Save to JSON */
+
+                try
+                {
+                    // Write JSON file
+                    using (var streamWriter = new StreamWriter(this.saveFileDialog.FileName))
+                    using (var jsonWriter = new JsonTextWriter(streamWriter))
+                    {
+                        // Declare JSON serializer
+                        var jsonSerializer = new JsonSerializer();
+
+                        // Serialize to file
+                        jsonSerializer.Serialize(jsonWriter, patternAndTargetRowList);
+                    }
+                }
+                catch (Exception)
+                {
+                    // Inform user
+                    this.toolStripStatusLabel.Text = "Save file error";
+                }
+
+                // Inform user
+                this.toolStripStatusLabel.Text = $"Saved to \"{Path.GetFileName(this.saveFileDialog.FileName)}\"";
+            }
         }
 
         /// <summary>

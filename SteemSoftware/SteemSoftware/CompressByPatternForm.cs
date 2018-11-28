@@ -82,43 +82,17 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the cut tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnCutToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
-        }
-
-        /// <summary>
-        /// Handles the copy tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnCopyToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
-        }
-
-        /// <summary>
-        /// Handles the paste tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnPasteToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
-        }
-
-        /// <summary>
         /// Handles the new tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Reset working directory path
+            this.workingDirectoryPath = string.Empty;
+
+            // Clear data grid view
+            this.dataGridView.Rows.Clear();
         }
 
         /// <summary>
@@ -137,16 +111,6 @@ namespace SteemSoftware
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
         private void OnSaveToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO Add code
-        }
-
-        /// <summary>
-        /// Handles the save as tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnSaveAsToolStripMenuItemClick(object sender, EventArgs e)
         {
             // TODO Add code
         }

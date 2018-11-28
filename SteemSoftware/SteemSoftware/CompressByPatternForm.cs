@@ -7,7 +7,9 @@ namespace SteemSoftware
     // Directives
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Windows.Forms;
+    using Ionic.Zip;
 
     /// <summary>
     /// Description of CompressByPatternForm.
@@ -198,6 +200,22 @@ namespace SteemSoftware
         private void OnCompressByPatternButtonClick(object sender, EventArgs e)
         {
             // TODO Add code
+        }
+
+
+        /// <summary>
+        /// Handles the save progress event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event parameters.</param>
+        private void SaveProgress(object sender, SaveProgressEventArgs e)
+        {
+            // Check event type
+            if (e.EventType == ZipProgressEventType.Saving_AfterWriteEntry)
+            {
+                // Update tool strip progress bar
+                this.toolStripProgressBar.Value = (int)((e.EntriesSaved * 100) / e.EntriesTotal);
+            }
         }
 
         /// <summary>

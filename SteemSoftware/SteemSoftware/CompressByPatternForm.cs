@@ -202,6 +202,15 @@ namespace SteemSoftware
             // TODO Add code
         }
 
+        /// <summary>
+        /// Handles the compression level tool strip menu item drop down item clicked event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnCompressionLevelToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            // TODO Add code
+        }
 
         /// <summary>
         /// Handles the save progress event.

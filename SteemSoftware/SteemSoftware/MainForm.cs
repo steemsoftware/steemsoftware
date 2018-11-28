@@ -117,7 +117,7 @@ namespace SteemSoftware
             var compressionModuleInfoList = new List<ModuleInfo>()
             {
                 new ModuleInfo("Compress Directory", "Compress directory to ZIP file. Expand from Zip too.", typeof(CompressDirectoryForm)),
-                new ModuleInfo("Compress by Pattern", "Batch-compress files grouped by patterns in their name.", typeof(CompressByPatternForm)),
+                new ModuleInfo("Compress By Pattern", "Batch-compress files grouped by patterns in their name.", typeof(CompressByPatternForm)),
             };
 
             // File

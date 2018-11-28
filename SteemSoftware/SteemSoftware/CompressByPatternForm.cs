@@ -209,7 +209,18 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnCompressionLevelToolStripMenuItemDropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            // TODO Add code
+            // Uncheck all drop down items
+            foreach (var item in ((ToolStripMenuItem)sender).DropDownItems)
+            {
+                // Uncheck current item
+                ((ToolStripMenuItem)item).Checked = false;
+            }
+
+            // Set clicked item
+            var clickedItem = (ToolStripMenuItem)e.ClickedItem;
+
+            // Toggle check state
+            clickedItem.Checked = true;
         }
 
         /// <summary>

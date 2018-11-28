@@ -103,7 +103,35 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Set initial file name
+            this.saveFileDialog.FileName = "PatternTarget.txt";
+
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                /* Populate data grid view */
+
+                try
+                {
+                    // Get JSON from file
+                    var jsonString = File.ReadAllText(this.openFileDialog.FileName);
+
+                    // Deserialize JSON to variable
+                    var patternAndTargetRowList = JsonConvert.DeserializeObject<List<PatternAndTargetRow>>(jsonString);
+
+                    // Iterate row list
+                    foreach (var patternAndTargetRow in patternAndTargetRowList)
+                    {
+                        // Add to data grid view
+                        this.dataGridView.Rows.Add(new object[] { patternAndTargetRow.Pattern, patternAndTargetRow.Target, patternAndTargetRow.IsRegex });
+                    }
+                }
+                catch (Exception)
+                {
+                    // Inform user
+                    this.toolStripStatusLabel.Text = "Open file error";
+                }
+            }
         }
 
         /// <summary>
@@ -124,12 +152,12 @@ namespace SteemSoftware
             }
 
             // Set file name
-            this.saveFileDialog.FileName = $"PatternTarget.txt";
+            this.saveFileDialog.FileName = "PatternTarget.txt";
 
             // Open save file dialog
             if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
             {
-                /* Save to JSON */
+                /* Save to JSON file */
 
                 try
                 {

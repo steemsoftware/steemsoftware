@@ -331,6 +331,10 @@ namespace SteemSoftware
             this.compressByPatternButton.UseVisualStyleBackColor = true;
             this.compressByPatternButton.Click += new System.EventHandler(this.OnCompressByPatternButtonClick);
             // 
+            // folderBrowserDialog
+            // 
+            this.folderBrowserDialog.Description = "Set working directory";
+            // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "txt";

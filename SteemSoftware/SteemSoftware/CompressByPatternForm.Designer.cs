@@ -54,7 +54,6 @@ namespace SteemSoftware
             this.optimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchSubdirectoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateIntoworkingDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generateSinglezipFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -67,6 +66,7 @@ namespace SteemSoftware
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.preserveDirectoryHierarchyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -87,7 +87,6 @@ namespace SteemSoftware
             // 
             this.toolStripProgressBar.Name = "toolStripProgressBar";
             this.toolStripProgressBar.Size = new System.Drawing.Size(100, 16);
-            this.toolStripProgressBar.Visible = false;
             // 
             // toolStripStatusLabel
             // 
@@ -172,7 +171,7 @@ namespace SteemSoftware
                                     this.compressionLevelToolStripMenuItem,
                                     this.searchSubdirectoriesToolStripMenuItem,
                                     this.generateIntoworkingDirectoryToolStripMenuItem,
-                                    this.generateSinglezipFileToolStripMenuItem});
+                                    this.preserveDirectoryHierarchyToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "&Options";
@@ -224,12 +223,6 @@ namespace SteemSoftware
             this.generateIntoworkingDirectoryToolStripMenuItem.Name = "generateIntoworkingDirectoryToolStripMenuItem";
             this.generateIntoworkingDirectoryToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.generateIntoworkingDirectoryToolStripMenuItem.Text = "Generate into &working directory";
-            // 
-            // generateSinglezipFileToolStripMenuItem
-            // 
-            this.generateSinglezipFileToolStripMenuItem.Name = "generateSinglezipFileToolStripMenuItem";
-            this.generateSinglezipFileToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.generateSinglezipFileToolStripMenuItem.Text = "Generate single &zip file";
             // 
             // helpToolStripMenuItem
             // 
@@ -331,10 +324,6 @@ namespace SteemSoftware
             this.compressByPatternButton.UseVisualStyleBackColor = true;
             this.compressByPatternButton.Click += new System.EventHandler(this.OnCompressByPatternButtonClick);
             // 
-            // folderBrowserDialog
-            // 
-            this.folderBrowserDialog.Description = "Set working directory";
-            // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "txt";
@@ -347,6 +336,12 @@ namespace SteemSoftware
             this.openFileDialog.DefaultExt = "txt";
             this.openFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
             this.openFileDialog.Title = "Open pattern file";
+            // 
+            // preserveDirectoryHierarchyToolStripMenuItem
+            // 
+            this.preserveDirectoryHierarchyToolStripMenuItem.Name = "preserveDirectoryHierarchyToolStripMenuItem";
+            this.preserveDirectoryHierarchyToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.preserveDirectoryHierarchyToolStripMenuItem.Text = "&Preserve directory hierarchy";
             // 
             // CompressByPatternForm
             // 
@@ -367,6 +362,7 @@ namespace SteemSoftware
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem preserveDirectoryHierarchyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optimalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noCompressionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fastestToolStripMenuItem;
@@ -374,7 +370,6 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar;
         private System.Windows.Forms.ToolStripMenuItem searchSubdirectoriesToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        private System.Windows.Forms.ToolStripMenuItem generateSinglezipFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateIntoworkingDirectoryToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;

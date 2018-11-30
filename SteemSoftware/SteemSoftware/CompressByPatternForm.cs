@@ -8,6 +8,8 @@ namespace SteemSoftware
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using Ionic.Zip;
     using Newtonsoft.Json;
@@ -31,6 +33,11 @@ namespace SteemSoftware
         /// The working directory path.
         /// </summary>
         private string workingDirectoryPath = string.Empty;
+
+        /// <summary>
+        /// The custom save directory path.
+        /// </summary>
+        private string customSaveDirectoryPath = string.Empty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.CompressByPatternForm"/> class.
@@ -141,7 +148,7 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSaveToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // Get pattern and target row list
+            // Set pattern and target row list
             var patternAndTargetRowList = this.GetPatternAndTargetRowList();
 
             // Check for data to save
@@ -211,6 +218,9 @@ namespace SteemSoftware
         /// <returns><c>true</c>, if working directory path was set, <c>false</c> otherwise.</returns>
         private bool TrySetWorkingDirectoryPath()
         {
+            // Set description
+            this.folderBrowserDialog.Description = "Set working directory";
+
             // Show folder browser dialog
             if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK && this.folderBrowserDialog.SelectedPath.Length > 0)
             {
@@ -232,7 +242,202 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnCompressByPatternButtonClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Set pattern and target row list
+            var patternAndTargetRowList = this.GetPatternAndTargetRowList();
+
+            // Check for rows
+            if (patternAndTargetRowList.Count == 0)
+            {
+                // No rows. Halt flow
+                return;
+            }
+
+            // Check for working directory path
+            if (this.workingDirectoryPath.Length == 0)
+            {
+                // Prompt user
+                if (!this.TrySetWorkingDirectoryPath())
+                {
+                    // No path. halt flow
+                    return;
+                }
+            }
+
+            /* Compress files */
+
+            // Set default file count
+            var fileCount = 0;
+
+            // Set progress value
+            var progressValue = 100;
+
+            // Set status message
+            var statusMessage = string.Empty;
+
+            // Set iteration count
+            var iterationCount = 0;
+
+            // Iterate rows
+            foreach (var row in patternAndTargetRowList)
+            {
+                // Declare current file list
+                var fileList = new List<string>();
+
+                // Rise iteration count
+                iterationCount++;
+
+                // Update overall status 
+                this.toolStripStatusLabel.Text = $"Processing {iterationCount}/{patternAndTargetRowList.Count}";
+
+                try
+                {
+                    // Check for regex flag
+                    if (row.IsRegex)
+                    {
+                        // Add by regex
+                        fileList = Directory.GetFiles(this.workingDirectoryPath, "*.*")
+                                            .Where(filePath => new Regex(row.Pattern).IsMatch(filePath))
+                                            .ToList();
+                    }
+                    else
+                    {
+                        // Add by GetFiles
+                        fileList.AddRange(Directory.GetFiles(this.workingDirectoryPath, row.Pattern, this.searchSubdirectoriesToolStripMenuItem.Checked ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly));
+                    }
+                }
+                catch (Exception)
+                {
+                    // Re-throw
+                    throw;
+                }
+
+                // Check for files to compress
+                if (fileList.Count == 0)
+                {
+                    // Skip to next iteration
+                    continue;
+                }
+
+                /* Compress current one */
+
+                try
+                {
+                    // Use zip file
+                    using (var zip = new ZipFile())
+                    {
+                        // Set save progress event handler
+                        zip.SaveProgress += this.SaveProgress;
+
+                        // Set compression level
+                        foreach (ToolStripMenuItem item in this.compressionLevelToolStripMenuItem.DropDownItems)
+                        {
+                            // Test for checked
+                            if (item.Checked)
+                            {
+                                // Switch name
+                                switch (item.Name)
+                                {
+                                    // Optimal
+                                    case "optimalToolStripMenuItem":
+
+                                        // Set to best
+                                        zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
+
+                                        // Halt flow
+                                        break;
+
+                                    // No compression
+                                    case "noCompressionToolStripMenuItem":
+
+                                        // Set to none
+                                        zip.CompressionLevel = Ionic.Zlib.CompressionLevel.None;
+
+                                        // Halt flow
+                                        break;
+
+                                    // Fastest
+                                    case "fastestToolStripMenuItem":
+
+                                        // Set to best speed
+                                        zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestSpeed;
+
+                                        // Halt flow
+                                        break;
+                                }
+                            }
+                        }
+
+                        // Add collected files
+                        zip.AddFiles(fileList, this.preserveDirectoryHierarchyToolStripMenuItem.Checked, string.Empty);
+
+                        // Save to zip file
+                        if (this.generateIntoworkingDirectoryToolStripMenuItem.Checked)
+                        {
+                            // Save using working directory
+                            zip.Save(Path.Combine(this.workingDirectoryPath, $"{row.Target}.zip"));
+                        }
+                        else
+                        {
+                            // Check for custom save directory path
+                            if (this.customSaveDirectoryPath.Length == 0)
+                            {
+                                // Set description
+                                this.folderBrowserDialog.Description = "Set destination directory";
+
+                                // Show folder browser dialog
+                                if (this.folderBrowserDialog.ShowDialog() == DialogResult.OK && this.folderBrowserDialog.SelectedPath.Length > 0)
+                                {
+                                    // Set custom directory path
+                                    this.workingDirectoryPath = this.folderBrowserDialog.SelectedPath;
+                                }
+                                else
+                                {
+                                    // Reset status label
+                                    this.toolStripStatusLabel.Text = "Enter pattern + target";
+
+                                    // Reset progress bar value
+                                    this.toolStripProgressBar.Value = 0;
+
+                                    // Halt flow
+                                    return;
+                                }
+                            }
+
+                            // Save using custom directory
+                            zip.Save(Path.Combine(this.customSaveDirectoryPath, $"{row.Target}.zip"));
+                        }
+
+                        // Increase file count
+                        fileCount += fileList.Count;
+                    }
+                }
+                catch (Exception)
+                {
+                    // Set progress value
+                    progressValue = 0;
+
+                    // Set status message
+                    statusMessage = "Compress error.";
+
+                    // Exit foreach loop
+                    break;
+                }
+            }
+
+            /* Post-compression */
+
+            // Set progress bar value
+            this.toolStripProgressBar.Value = progressValue;
+
+            // Set success status message
+            if (statusMessage.Length == 0)
+            {
+                // Set according to the total number of compressed files
+                statusMessage = $"Compressed {fileCount} file{(fileCount > 1 ? "s" : string.Empty)}!";
+            }
+
+            // Inform user
+            this.toolStripStatusLabel.Text = statusMessage;
         }
 
         /// <summary>

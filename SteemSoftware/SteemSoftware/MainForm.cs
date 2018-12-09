@@ -140,6 +140,16 @@ namespace SteemSoftware
 
             /* Module info dictionary */
 
+            // All
+            this.moduleInfoDictionary.Add("All", new List<ModuleInfo>()
+                .Concat(audioModuleInfoList)
+                .Concat(compressionModuleInfoList)
+                .Concat(fileModuleInfoList)
+                .Concat(securityModuleInfoList)
+                .Concat(videoModuleInfoList)
+                .ToList()
+            );
+
             // Audio
             this.moduleInfoDictionary.Add("Audio", audioModuleInfoList);
 
@@ -199,6 +209,9 @@ namespace SteemSoftware
                     this.Size = this.steemSoftwareData.WindowSize;
                 }
             }
+
+            // Select "All" category by default
+            this.categoryListBox.SelectedItem = "All";
         }
 
         /// <summary>

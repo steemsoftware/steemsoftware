@@ -67,7 +67,7 @@ namespace SteemSoftware
             var aboutForm = new AboutForm(
                 $"About {this.moduleName}",
                 $"{this.moduleName} {this.semanticVersion}",
-                "Week #49 @ December 2018",
+                "Week #50 @ December 2018",
                 licenseText,
                 this.Icon.ToBitmap());
 
@@ -148,6 +148,9 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSaveToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Commit changes via EndEdit to fix IsRegex == false on save
+            this.dataGridView.EndEdit();
+
             // Set pattern and target row list
             var patternAndTargetRowList = this.GetPatternAndTargetRowList();
 
@@ -164,20 +167,12 @@ namespace SteemSoftware
             // Open save file dialog
             if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
             {
-                /* Save to JSON file */
+                /* Save to JSON */
 
                 try
                 {
                     // Write JSON file
-                    using (var streamWriter = new StreamWriter(this.saveFileDialog.FileName))
-                    using (var jsonWriter = new JsonTextWriter(streamWriter))
-                    {
-                        // Declare JSON serializer
-                        var jsonSerializer = new JsonSerializer();
-
-                        // Serialize to file
-                        jsonSerializer.Serialize(jsonWriter, patternAndTargetRowList);
-                    }
+                    File.WriteAllText(this.saveFileDialog.FileName, JsonConvert.SerializeObject(patternAndTargetRowList));
                 }
                 catch (Exception)
                 {

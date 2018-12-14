@@ -4,7 +4,7 @@ Request-driven Public domain software suite supported by means of the steem cryp
 
 ## Screenshot:
 
-[![SteemSoftware screenshot](https://i.imgsafe.org/82/824df9531e.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
+[![SteemSoftware screenshot](https://i.imgsafe.org/41/411177993f.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
 
 ## Headquarters:
 
@@ -21,9 +21,9 @@ Linux/Mac users can run it using the latest [Mono runtime](https://www.mono-proj
 
 ## Download:
 
-**Direct link:** [SteemSoftware_v0-5-0.zip](https://github.com/steemsoftware/steemsoftware/releases/download/v0.5.0/SteemSoftware_v0-5-0.zip)
+**Direct link:** [SteemSoftware_v0-6-0.zip](https://github.com/steemsoftware/steemsoftware/releases/download/v0.6.0/SteemSoftware_v0-6-0.zip)
 
-[![Latest module](https://i.imgsafe.org/82/824e0e7a94.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.5.0/SteemSoftware_v0-5-0.zip)
+[![Latest module](https://i.imgsafe.org/41/411178e527.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.6.0/SteemSoftware_v0-6-0.zip)
 
 ## Setup:
 
@@ -37,13 +37,14 @@ Unzip and execute **SteemSoftware.exe**
 1. Set functionality.
 1. Hit launch.
 
-[![SteemSoftware instructions](http://img.youtube.com/vi/A5rMNl05t4s/0.jpg)](http://www.youtube.com/watch?v=A5rMNl05t4s "SteemSoftware instructions")  
-(Click for [YouTube video](http://www.youtube.com/watch?v=A5rMNl05t4s "SteemSoftware Instructions"))
+[![SteemSoftware instructions](http://img.youtube.com/vi/MziDZsC_xQ4/0.jpg)](http://www.youtube.com/watch?v=MziDZsC_xQ4 "SteemSoftware instructions")  
+(Click for [YouTube video](http://www.youtube.com/watch?v=MziDZsC_xQ4 "SteemSoftware Instructions"))
 
 ## Releases:
 
 You can track SteemSoftware versions in our [**releases** page](https://github.com/steemsoftware/steemsoftware/releases).
 
+* v0.6.0 – Compress By Pattern
 * v0.5.0 – YouTube MultiPlaylist Aggregator
 * v0.4.0 – Compress Directory
 * v0.3.0 – File Number Extractor

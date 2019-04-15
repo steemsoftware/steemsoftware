@@ -15,6 +15,16 @@ namespace SteemSoftware
     public partial class TodoListNewsTickerForm : Form
     {
         /// <summary>
+        /// The name of the module.
+        /// </summary>
+        private string moduleName = "To-do List News Ticker";
+
+        /// <summary>
+        /// The semantic version.
+        /// </summary>
+        private string semanticVersion = "0.1.0";
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.TodoListNewsTickerForm"/> class.
         /// </summary>
         public TodoListNewsTickerForm()
@@ -30,7 +40,20 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAboutToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Set license text
+            var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
+                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode";
+
+            // Set about form
+            var aboutForm = new AboutForm(
+                 $"About {this.moduleName}",
+                 $"{this.moduleName} {this.semanticVersion}",
+                 "Week #16 @ April 2019",
+                 licenseText,
+                 this.Icon.ToBitmap());
+
+            // Show about form
+            aboutForm.ShowDialog();
         }
 
         /// <summary>

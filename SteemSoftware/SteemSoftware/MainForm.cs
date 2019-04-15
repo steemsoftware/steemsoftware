@@ -126,6 +126,12 @@ namespace SteemSoftware
                 new ModuleInfo("File Number Extractor", "Extracts numbers present in files.", typeof(FileNumberExtractorForm)),
             };
 
+            // Productivity
+            var productivityModuleInfoList = new List<ModuleInfo>()
+            {
+                new ModuleInfo("To-do List News Ticker", "News ticker scrolling your to-do list.", typeof(TodoListNewsTickerForm)),
+            };
+
             // Security
             var securityModuleInfoList = new List<ModuleInfo>()
             {
@@ -140,15 +146,18 @@ namespace SteemSoftware
 
             /* Module info dictionary */
 
-            // All
-            this.moduleInfoDictionary.Add("All", new List<ModuleInfo>()
+            // Set module info list
+            var moduleInfoList = new List<ModuleInfo>()
                 .Concat(audioModuleInfoList)
                 .Concat(compressionModuleInfoList)
                 .Concat(fileModuleInfoList)
+                .Concat(productivityModuleInfoList)
                 .Concat(securityModuleInfoList)
                 .Concat(videoModuleInfoList)
-                .ToList()
-            );
+                .ToList();
+
+            // All
+            this.moduleInfoDictionary.Add("All", moduleInfoList);
 
             // Audio
             this.moduleInfoDictionary.Add("Audio", audioModuleInfoList);
@@ -158,6 +167,9 @@ namespace SteemSoftware
 
             // File
             this.moduleInfoDictionary.Add("File", fileModuleInfoList);
+
+            // Security
+            this.moduleInfoDictionary.Add("Productivity", productivityModuleInfoList);
 
             // Security
             this.moduleInfoDictionary.Add("Security", securityModuleInfoList);
@@ -602,7 +614,7 @@ namespace SteemSoftware
             var aboutForm = new AboutForm(
                 "About SteemSoftware",
                 $"SteemSoftware {this.semanticVersion}",
-                "Week #50 @ December 2018",
+                "Week #16 @ April 2019",
                 licenseText,
                 this.Icon.ToBitmap());
 

@@ -31,6 +31,8 @@ Unzip and execute **SteemSoftware.exe**
 
 ![SteemSoftware Setup](https://i.imgsafe.org/14/1487629ac1.png  "SteemSoftware Setup")
 
+![](https://steemitimages.com/640x0/https://i.imgsafe.org/85/855fa2597a.jpeg) 
+
 ## Usage:
 
 1. Pick category.

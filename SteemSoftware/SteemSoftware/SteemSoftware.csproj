@@ -89,6 +89,10 @@
     <Compile Include="StrongPasswordGeneratorForm.Designer.cs">
       <DependentUpon>StrongPasswordGeneratorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TodoListNewsTickerForm.cs" />
+    <Compile Include="TodoListNewsTickerForm.Designer.cs">
+      <DependentUpon>TodoListNewsTickerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="YouTubeDownloaderForm.cs" />
     <Compile Include="YouTubeDownloaderForm.Designer.cs">
       <DependentUpon>YouTubeDownloaderForm.cs</DependentUpon>
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StrongPasswordGeneratorForm.resx">
       <DependentUpon>StrongPasswordGeneratorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TodoListNewsTickerForm.resx">
+      <DependentUpon>TodoListNewsTickerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YouTubeDownloaderForm.resx">
       <DependentUpon>YouTubeDownloaderForm.cs</DependentUpon>

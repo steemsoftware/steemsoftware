@@ -185,5 +185,55 @@ namespace SteemSoftware
         {
             // TODO add code
         }
+
+        /// <summary>
+        /// Handles the horizontal tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnHorizontalToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO add code
+        }
+
+        /// <summary>
+        /// Handles the vertical tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnVerticalToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO add code
+        }
+
+        /// <summary>
+        /// Handles the separator tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnSeparatorToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO add code
+        }
+
+        /// <summary>
+        /// Handles the foreground tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnForegroundToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO add code
+        }
+
+        /// <summary>
+        /// Handles the background tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnBackgroundToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO add code
+        }
     }
 }

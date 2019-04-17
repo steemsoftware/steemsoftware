@@ -49,7 +49,14 @@ namespace SteemSoftware
         	this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.separatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.textSpeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.paddingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.foregroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.backgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.fullWidthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,24 +64,14 @@ namespace SteemSoftware
         	this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-        	this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-        	this.separatorLabel = new System.Windows.Forms.Label();
-        	this.widthLabel = new System.Windows.Forms.Label();
-        	this.heightLabel = new System.Windows.Forms.Label();
-        	this.speedLabel = new System.Windows.Forms.Label();
-        	this.separatorTextBox = new System.Windows.Forms.TextBox();
-        	this.widthDomainUpDown = new System.Windows.Forms.DomainUpDown();
-        	this.heightDomainUpDown = new System.Windows.Forms.DomainUpDown();
-        	this.speedComboBox = new System.Windows.Forms.ComboBox();
         	this.todoCheckedListBox = new System.Windows.Forms.CheckedListBox();
         	this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
         	this.addButton = new System.Windows.Forms.Button();
         	this.removeButton = new System.Windows.Forms.Button();
-        	this.launchButton = new System.Windows.Forms.Button();
+        	this.showTickerButton = new System.Windows.Forms.Button();
         	this.statusStrip1.SuspendLayout();
         	this.menuStrip1.SuspendLayout();
         	this.tableLayoutPanel1.SuspendLayout();
-        	this.tableLayoutPanel2.SuspendLayout();
         	this.tableLayoutPanel3.SuspendLayout();
         	this.SuspendLayout();
         	// 
@@ -82,9 +79,9 @@ namespace SteemSoftware
         	// 
         	this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
         	        	        	this.mainToolStripStatusLabel});
-        	this.statusStrip1.Location = new System.Drawing.Point(0, 278);
+        	this.statusStrip1.Location = new System.Drawing.Point(0, 251);
         	this.statusStrip1.Name = "statusStrip1";
-        	this.statusStrip1.Size = new System.Drawing.Size(297, 22);
+        	this.statusStrip1.Size = new System.Drawing.Size(279, 22);
         	this.statusStrip1.TabIndex = 0;
         	this.statusStrip1.Text = "statusStrip1";
         	// 
@@ -102,7 +99,7 @@ namespace SteemSoftware
         	        	        	this.helpToolStripMenuItem});
         	this.menuStrip1.Location = new System.Drawing.Point(0, 0);
         	this.menuStrip1.Name = "menuStrip1";
-        	this.menuStrip1.Size = new System.Drawing.Size(297, 24);
+        	this.menuStrip1.Size = new System.Drawing.Size(279, 24);
         	this.menuStrip1.TabIndex = 1;
         	this.menuStrip1.Text = "menuStrip1";
         	// 
@@ -179,7 +176,10 @@ namespace SteemSoftware
         	// 
         	this.customizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
         	        	        	this.fontToolStripMenuItem,
-        	        	        	this.textSpeedToolStripMenuItem});
+        	        	        	this.separatorToolStripMenuItem,
+        	        	        	this.textSpeedToolStripMenuItem,
+        	        	        	this.paddingToolStripMenuItem,
+        	        	        	this.colorsToolStripMenuItem});
         	this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
         	this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
         	this.customizeToolStripMenuItem.Text = "&Customize";
@@ -191,12 +191,65 @@ namespace SteemSoftware
         	this.fontToolStripMenuItem.Text = "&Font";
         	this.fontToolStripMenuItem.Click += new System.EventHandler(this.OnFontToolStripMenuItemClick);
         	// 
+        	// separatorToolStripMenuItem
+        	// 
+        	this.separatorToolStripMenuItem.Name = "separatorToolStripMenuItem";
+        	this.separatorToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+        	this.separatorToolStripMenuItem.Text = "&Separator";
+        	this.separatorToolStripMenuItem.Click += new System.EventHandler(this.OnSeparatorToolStripMenuItemClick);
+        	// 
         	// textSpeedToolStripMenuItem
         	// 
         	this.textSpeedToolStripMenuItem.Name = "textSpeedToolStripMenuItem";
         	this.textSpeedToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
         	this.textSpeedToolStripMenuItem.Text = "&Text speed";
         	this.textSpeedToolStripMenuItem.Click += new System.EventHandler(this.OnTextSpeedToolStripMenuItemClick);
+        	// 
+        	// paddingToolStripMenuItem
+        	// 
+        	this.paddingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+        	        	        	this.horizontalToolStripMenuItem,
+        	        	        	this.verticalToolStripMenuItem});
+        	this.paddingToolStripMenuItem.Name = "paddingToolStripMenuItem";
+        	this.paddingToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+        	this.paddingToolStripMenuItem.Text = "&Padding";
+        	// 
+        	// horizontalToolStripMenuItem
+        	// 
+        	this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
+        	this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+        	this.horizontalToolStripMenuItem.Text = "&Horizontal";
+        	this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.OnHorizontalToolStripMenuItemClick);
+        	// 
+        	// verticalToolStripMenuItem
+        	// 
+        	this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
+        	this.verticalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+        	this.verticalToolStripMenuItem.Text = "&Vertical";
+        	this.verticalToolStripMenuItem.Click += new System.EventHandler(this.OnVerticalToolStripMenuItemClick);
+        	// 
+        	// colorsToolStripMenuItem
+        	// 
+        	this.colorsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+        	        	        	this.foregroundToolStripMenuItem,
+        	        	        	this.backgroundToolStripMenuItem});
+        	this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
+        	this.colorsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+        	this.colorsToolStripMenuItem.Text = "&Colors";
+        	// 
+        	// foregroundToolStripMenuItem
+        	// 
+        	this.foregroundToolStripMenuItem.Name = "foregroundToolStripMenuItem";
+        	this.foregroundToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+        	this.foregroundToolStripMenuItem.Text = "&Foreground";
+        	this.foregroundToolStripMenuItem.Click += new System.EventHandler(this.OnForegroundToolStripMenuItemClick);
+        	// 
+        	// backgroundToolStripMenuItem
+        	// 
+        	this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
+        	this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+        	this.backgroundToolStripMenuItem.Text = "&Background";
+        	this.backgroundToolStripMenuItem.Click += new System.EventHandler(this.OnBackgroundToolStripMenuItemClick);
         	// 
         	// optionsToolStripMenuItem
         	// 
@@ -252,126 +305,16 @@ namespace SteemSoftware
         	// 
         	this.tableLayoutPanel1.ColumnCount = 1;
         	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-        	this.tableLayoutPanel1.Controls.Add(this.todoCheckedListBox, 0, 1);
-        	this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
+        	this.tableLayoutPanel1.Controls.Add(this.todoCheckedListBox, 0, 0);
+        	this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
         	this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
         	this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-        	this.tableLayoutPanel1.RowCount = 3;
-        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+        	this.tableLayoutPanel1.RowCount = 2;
         	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
         	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-        	this.tableLayoutPanel1.Size = new System.Drawing.Size(297, 254);
+        	this.tableLayoutPanel1.Size = new System.Drawing.Size(279, 227);
         	this.tableLayoutPanel1.TabIndex = 2;
-        	// 
-        	// tableLayoutPanel2
-        	// 
-        	this.tableLayoutPanel2.ColumnCount = 4;
-        	this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        	this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        	this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        	this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        	this.tableLayoutPanel2.Controls.Add(this.separatorLabel, 0, 0);
-        	this.tableLayoutPanel2.Controls.Add(this.widthLabel, 1, 0);
-        	this.tableLayoutPanel2.Controls.Add(this.heightLabel, 2, 0);
-        	this.tableLayoutPanel2.Controls.Add(this.speedLabel, 3, 0);
-        	this.tableLayoutPanel2.Controls.Add(this.separatorTextBox, 0, 1);
-        	this.tableLayoutPanel2.Controls.Add(this.widthDomainUpDown, 1, 1);
-        	this.tableLayoutPanel2.Controls.Add(this.heightDomainUpDown, 2, 1);
-        	this.tableLayoutPanel2.Controls.Add(this.speedComboBox, 3, 1);
-        	this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-        	this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-        	this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-        	this.tableLayoutPanel2.RowCount = 2;
-        	this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-        	this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tableLayoutPanel2.Size = new System.Drawing.Size(297, 50);
-        	this.tableLayoutPanel2.TabIndex = 0;
-        	// 
-        	// separatorLabel
-        	// 
-        	this.separatorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.separatorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.separatorLabel.Location = new System.Drawing.Point(3, 0);
-        	this.separatorLabel.Name = "separatorLabel";
-        	this.separatorLabel.Size = new System.Drawing.Size(68, 20);
-        	this.separatorLabel.TabIndex = 0;
-        	this.separatorLabel.Text = "Separator:";
-        	this.separatorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-        	// 
-        	// widthLabel
-        	// 
-        	this.widthLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.widthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.widthLabel.Location = new System.Drawing.Point(77, 0);
-        	this.widthLabel.Name = "widthLabel";
-        	this.widthLabel.Size = new System.Drawing.Size(68, 20);
-        	this.widthLabel.TabIndex = 1;
-        	this.widthLabel.Text = "Width:";
-        	this.widthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-        	// 
-        	// heightLabel
-        	// 
-        	this.heightLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.heightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.heightLabel.Location = new System.Drawing.Point(151, 0);
-        	this.heightLabel.Name = "heightLabel";
-        	this.heightLabel.Size = new System.Drawing.Size(68, 20);
-        	this.heightLabel.TabIndex = 2;
-        	this.heightLabel.Text = "Height:";
-        	this.heightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-        	// 
-        	// speedLabel
-        	// 
-        	this.speedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.speedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.speedLabel.Location = new System.Drawing.Point(225, 0);
-        	this.speedLabel.Name = "speedLabel";
-        	this.speedLabel.Size = new System.Drawing.Size(69, 20);
-        	this.speedLabel.TabIndex = 3;
-        	this.speedLabel.Text = "Speed:";
-        	this.speedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-        	// 
-        	// separatorTextBox
-        	// 
-        	this.separatorTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.separatorTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.separatorTextBox.Location = new System.Drawing.Point(3, 23);
-        	this.separatorTextBox.Name = "separatorTextBox";
-        	this.separatorTextBox.Size = new System.Drawing.Size(68, 20);
-        	this.separatorTextBox.TabIndex = 4;
-        	this.separatorTextBox.Text = "  ||   ";
-        	this.separatorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-        	// 
-        	// widthDomainUpDown
-        	// 
-        	this.widthDomainUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.widthDomainUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.widthDomainUpDown.Location = new System.Drawing.Point(77, 23);
-        	this.widthDomainUpDown.Name = "widthDomainUpDown";
-        	this.widthDomainUpDown.Size = new System.Drawing.Size(68, 20);
-        	this.widthDomainUpDown.TabIndex = 5;
-        	// 
-        	// heightDomainUpDown
-        	// 
-        	this.heightDomainUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.heightDomainUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.heightDomainUpDown.Location = new System.Drawing.Point(151, 23);
-        	this.heightDomainUpDown.Name = "heightDomainUpDown";
-        	this.heightDomainUpDown.Size = new System.Drawing.Size(68, 20);
-        	this.heightDomainUpDown.TabIndex = 6;
-        	// 
-        	// speedComboBox
-        	// 
-        	this.speedComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.speedComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.speedComboBox.FormattingEnabled = true;
-        	this.speedComboBox.Location = new System.Drawing.Point(225, 23);
-        	this.speedComboBox.Name = "speedComboBox";
-        	this.speedComboBox.Size = new System.Drawing.Size(69, 21);
-        	this.speedComboBox.TabIndex = 7;
         	// 
         	// todoCheckedListBox
         	// 
@@ -379,40 +322,43 @@ namespace SteemSoftware
         	this.todoCheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.todoCheckedListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.todoCheckedListBox.FormattingEnabled = true;
-        	this.todoCheckedListBox.Location = new System.Drawing.Point(3, 53);
+        	this.todoCheckedListBox.Location = new System.Drawing.Point(3, 3);
         	this.todoCheckedListBox.Name = "todoCheckedListBox";
-        	this.todoCheckedListBox.Size = new System.Drawing.Size(291, 168);
+        	this.todoCheckedListBox.Size = new System.Drawing.Size(273, 191);
         	this.todoCheckedListBox.TabIndex = 1;
         	this.todoCheckedListBox.DoubleClick += new System.EventHandler(this.OnTodoCheckedListBoxDoubleClick);
         	// 
         	// tableLayoutPanel3
         	// 
         	this.tableLayoutPanel3.ColumnCount = 3;
-        	this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        	this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        	this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+        	this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+        	this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+        	this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
         	this.tableLayoutPanel3.Controls.Add(this.addButton, 0, 0);
         	this.tableLayoutPanel3.Controls.Add(this.removeButton, 1, 0);
-        	this.tableLayoutPanel3.Controls.Add(this.launchButton, 2, 0);
+        	this.tableLayoutPanel3.Controls.Add(this.showTickerButton, 2, 0);
         	this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 225);
+        	this.tableLayoutPanel3.Location = new System.Drawing.Point(1, 198);
         	this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
         	this.tableLayoutPanel3.Name = "tableLayoutPanel3";
         	this.tableLayoutPanel3.RowCount = 1;
         	this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tableLayoutPanel3.Size = new System.Drawing.Size(295, 28);
+        	this.tableLayoutPanel3.Size = new System.Drawing.Size(277, 28);
         	this.tableLayoutPanel3.TabIndex = 2;
         	// 
         	// addButton
         	// 
         	this.addButton.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.addButton.Image = ((System.Drawing.Image)(resources.GetObject("addButton.Image")));
+        	this.addButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
         	this.addButton.Location = new System.Drawing.Point(1, 1);
         	this.addButton.Margin = new System.Windows.Forms.Padding(1);
         	this.addButton.Name = "addButton";
-        	this.addButton.Size = new System.Drawing.Size(71, 26);
+        	this.addButton.Size = new System.Drawing.Size(81, 26);
         	this.addButton.TabIndex = 0;
         	this.addButton.Text = "&Add item";
+        	this.addButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
         	this.addButton.UseVisualStyleBackColor = true;
         	this.addButton.Click += new System.EventHandler(this.OnAddButtonClick);
         	// 
@@ -420,34 +366,37 @@ namespace SteemSoftware
         	// 
         	this.removeButton.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.removeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.removeButton.Location = new System.Drawing.Point(74, 1);
+        	this.removeButton.Image = ((System.Drawing.Image)(resources.GetObject("removeButton.Image")));
+        	this.removeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+        	this.removeButton.Location = new System.Drawing.Point(84, 1);
         	this.removeButton.Margin = new System.Windows.Forms.Padding(1);
         	this.removeButton.Name = "removeButton";
-        	this.removeButton.Size = new System.Drawing.Size(71, 26);
+        	this.removeButton.Size = new System.Drawing.Size(81, 26);
         	this.removeButton.TabIndex = 1;
         	this.removeButton.Text = "&Remove";
+        	this.removeButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
         	this.removeButton.UseVisualStyleBackColor = true;
         	this.removeButton.Click += new System.EventHandler(this.OnRemoveButtonClick);
         	// 
-        	// launchButton
+        	// showTickerButton
         	// 
-        	this.launchButton.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.launchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.launchButton.ForeColor = System.Drawing.Color.Red;
-        	this.launchButton.Location = new System.Drawing.Point(147, 1);
-        	this.launchButton.Margin = new System.Windows.Forms.Padding(1);
-        	this.launchButton.Name = "launchButton";
-        	this.launchButton.Size = new System.Drawing.Size(147, 26);
-        	this.launchButton.TabIndex = 2;
-        	this.launchButton.Text = "Launch!";
-        	this.launchButton.UseVisualStyleBackColor = true;
-        	this.launchButton.Click += new System.EventHandler(this.OnLaunchButtonClick);
+        	this.showTickerButton.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.showTickerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.showTickerButton.ForeColor = System.Drawing.Color.Red;
+        	this.showTickerButton.Location = new System.Drawing.Point(167, 1);
+        	this.showTickerButton.Margin = new System.Windows.Forms.Padding(1);
+        	this.showTickerButton.Name = "showTickerButton";
+        	this.showTickerButton.Size = new System.Drawing.Size(109, 26);
+        	this.showTickerButton.TabIndex = 2;
+        	this.showTickerButton.Text = "Show ticker";
+        	this.showTickerButton.UseVisualStyleBackColor = true;
+        	this.showTickerButton.Click += new System.EventHandler(this.OnLaunchButtonClick);
         	// 
         	// TodoListNewsTickerForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        	this.ClientSize = new System.Drawing.Size(297, 300);
+        	this.ClientSize = new System.Drawing.Size(279, 273);
         	this.Controls.Add(this.tableLayoutPanel1);
         	this.Controls.Add(this.statusStrip1);
         	this.Controls.Add(this.menuStrip1);
@@ -459,32 +408,28 @@ namespace SteemSoftware
         	this.menuStrip1.ResumeLayout(false);
         	this.menuStrip1.PerformLayout();
         	this.tableLayoutPanel1.ResumeLayout(false);
-        	this.tableLayoutPanel2.ResumeLayout(false);
-        	this.tableLayoutPanel2.PerformLayout();
         	this.tableLayoutPanel3.ResumeLayout(false);
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem backgroundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem foregroundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem separatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem paddingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullWidthToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rememberSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textSpeedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alwaysOnTopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem;
-        private System.Windows.Forms.Button launchButton;
+        private System.Windows.Forms.Button showTickerButton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.CheckedListBox todoCheckedListBox;
-        private System.Windows.Forms.ComboBox speedComboBox;
-        private System.Windows.Forms.DomainUpDown heightDomainUpDown;
-        private System.Windows.Forms.DomainUpDown widthDomainUpDown;
-        private System.Windows.Forms.TextBox separatorTextBox;
-        private System.Windows.Forms.Label speedLabel;
-        private System.Windows.Forms.Label heightLabel;
-        private System.Windows.Forms.Label widthLabel;
-        private System.Windows.Forms.Label separatorLabel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;

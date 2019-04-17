@@ -10,7 +10,7 @@ namespace SteemSoftware
     using System.Windows.Forms;
 
     /// <summary>
-    /// Description of TodoListNewsTickerForm.
+    /// Todo list news ticker form.
     /// </summary>
     public partial class TodoListNewsTickerForm : Form
     {

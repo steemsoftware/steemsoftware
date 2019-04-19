@@ -63,7 +63,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnFontToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Show the font dialog
+            mainFontDialog.ShowDialog();
         }
 
         /// <summary>

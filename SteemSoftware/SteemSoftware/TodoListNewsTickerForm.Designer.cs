@@ -36,9 +36,9 @@ namespace SteemSoftware
         private void InitializeComponent()
         {
         	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TodoListNewsTickerForm));
-        	this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+        	this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
         	this.mainToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-        	this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+        	this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
         	this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,21 +69,24 @@ namespace SteemSoftware
         	this.addButton = new System.Windows.Forms.Button();
         	this.removeButton = new System.Windows.Forms.Button();
         	this.showTickerButton = new System.Windows.Forms.Button();
-        	this.statusStrip1.SuspendLayout();
-        	this.menuStrip1.SuspendLayout();
+        	this.mainFontDialog = new System.Windows.Forms.FontDialog();
+        	this.foregroundColorDialog = new System.Windows.Forms.ColorDialog();
+        	this.backgroundColorDialog = new System.Windows.Forms.ColorDialog();
+        	this.mainStatusStrip.SuspendLayout();
+        	this.mainMenuStrip.SuspendLayout();
         	this.tableLayoutPanel1.SuspendLayout();
         	this.tableLayoutPanel3.SuspendLayout();
         	this.SuspendLayout();
         	// 
-        	// statusStrip1
+        	// mainStatusStrip
         	// 
-        	this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+        	this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
         	        	        	this.mainToolStripStatusLabel});
-        	this.statusStrip1.Location = new System.Drawing.Point(0, 251);
-        	this.statusStrip1.Name = "statusStrip1";
-        	this.statusStrip1.Size = new System.Drawing.Size(279, 22);
-        	this.statusStrip1.TabIndex = 0;
-        	this.statusStrip1.Text = "statusStrip1";
+        	this.mainStatusStrip.Location = new System.Drawing.Point(0, 251);
+        	this.mainStatusStrip.Name = "mainStatusStrip";
+        	this.mainStatusStrip.Size = new System.Drawing.Size(279, 22);
+        	this.mainStatusStrip.TabIndex = 0;
+        	this.mainStatusStrip.Text = "statusStrip1";
         	// 
         	// mainToolStripStatusLabel
         	// 
@@ -91,17 +94,16 @@ namespace SteemSoftware
         	this.mainToolStripStatusLabel.Size = new System.Drawing.Size(215, 17);
         	this.mainToolStripStatusLabel.Text = "Tip: edit items by double-clicking them";
         	// 
-        	// menuStrip1
+        	// mainMenuStrip
         	// 
-        	this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+        	this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
         	        	        	this.fileToolStripMenuItem,
         	        	        	this.toolsToolStripMenuItem,
         	        	        	this.helpToolStripMenuItem});
-        	this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-        	this.menuStrip1.Name = "menuStrip1";
-        	this.menuStrip1.Size = new System.Drawing.Size(279, 24);
-        	this.menuStrip1.TabIndex = 1;
-        	this.menuStrip1.Text = "menuStrip1";
+        	this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+        	this.mainMenuStrip.Name = "mainMenuStrip";
+        	this.mainMenuStrip.Size = new System.Drawing.Size(279, 24);
+        	this.mainMenuStrip.TabIndex = 1;
         	// 
         	// fileToolStripMenuItem
         	// 
@@ -392,26 +394,41 @@ namespace SteemSoftware
         	this.showTickerButton.UseVisualStyleBackColor = true;
         	this.showTickerButton.Click += new System.EventHandler(this.OnLaunchButtonClick);
         	// 
+        	// mainFontDialog
+        	// 
+        	this.mainFontDialog.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	// 
+        	// foregroundColorDialog
+        	// 
+        	this.foregroundColorDialog.Color = System.Drawing.Color.Blue;
+        	// 
+        	// backgroundColorDialog
+        	// 
+        	this.backgroundColorDialog.Color = System.Drawing.Color.White;
+        	// 
         	// TodoListNewsTickerForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.ClientSize = new System.Drawing.Size(279, 273);
         	this.Controls.Add(this.tableLayoutPanel1);
-        	this.Controls.Add(this.statusStrip1);
-        	this.Controls.Add(this.menuStrip1);
-        	this.MainMenuStrip = this.menuStrip1;
+        	this.Controls.Add(this.mainStatusStrip);
+        	this.Controls.Add(this.mainMenuStrip);
+        	this.MainMenuStrip = this.mainMenuStrip;
         	this.Name = "TodoListNewsTickerForm";
         	this.Text = "To-do List News Ticker";
-        	this.statusStrip1.ResumeLayout(false);
-        	this.statusStrip1.PerformLayout();
-        	this.menuStrip1.ResumeLayout(false);
-        	this.menuStrip1.PerformLayout();
+        	this.mainStatusStrip.ResumeLayout(false);
+        	this.mainStatusStrip.PerformLayout();
+        	this.mainMenuStrip.ResumeLayout(false);
+        	this.mainMenuStrip.PerformLayout();
         	this.tableLayoutPanel1.ResumeLayout(false);
         	this.tableLayoutPanel3.ResumeLayout(false);
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.ColorDialog backgroundColorDialog;
+        private System.Windows.Forms.ColorDialog foregroundColorDialog;
+        private System.Windows.Forms.FontDialog mainFontDialog;
         private System.Windows.Forms.ToolStripMenuItem backgroundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem foregroundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
@@ -442,8 +459,8 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripStatusLabel mainToolStripStatusLabel;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip mainStatusStrip;
     }
 }

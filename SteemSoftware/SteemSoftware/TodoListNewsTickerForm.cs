@@ -173,7 +173,12 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnRemoveButtonClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Check for a selected item
+            if (this.todoCheckedListBox.SelectedIndex > -1)
+            {
+                // Remove item by index
+                this.todoCheckedListBox.Items.RemoveAt(this.todoCheckedListBox.SelectedIndex);
+            }
         }
 
         /// <summary>

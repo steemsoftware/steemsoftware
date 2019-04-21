@@ -64,7 +64,7 @@ namespace SteemSoftware
         private void OnFontToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Show the font dialog
-            mainFontDialog.ShowDialog();
+            this.mainFontDialog.ShowDialog();
         }
 
         /// <summary>
@@ -224,7 +224,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnForegroundToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Show the foreground color dialog
+            this.foregroundColorDialog.ShowDialog();
         }
 
         /// <summary>

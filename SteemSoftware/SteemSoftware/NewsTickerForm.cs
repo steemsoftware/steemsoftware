@@ -19,11 +19,10 @@ namespace SteemSoftware
         /// </summary>
         /// <param name="newsTickerText">News ticker text.</param>
         /// <param name="newsTickerTextFont">News ticker text font.</param>
-        /// <param name="horizontalPadding">Horizontal padding.</param>
-        /// <param name="verticalPadding">Vertical padding.</param>
+        /// <param name="textSpeed">Text speed.</param>
         /// <param name="foregroundColor">Foreground color.</param>
         /// <param name="backgroundColor">Background color.</param>
-        public NewsTickerForm(string newsTickerText, Font newsTickerTextFont, int horizontalPadding, int verticalPadding, Color foregroundColor, Color backgroundColor)
+        public NewsTickerForm(string newsTickerText, Font newsTickerTextFont, int textSpeed, Color foregroundColor, Color backgroundColor)
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();

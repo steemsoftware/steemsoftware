@@ -8,6 +8,7 @@ namespace SteemSoftware
     using System;
     using System.Drawing;
     using System.Windows.Forms;
+    using Microsoft.VisualBasic;
 
     /// <summary>
     /// Todo list news ticker form.
@@ -154,7 +155,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAddButtonClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Ask user for new list item
+            string listItem = Interaction.InputBox("Set new To-do list item text", "Add item", string.Empty, -1, -1);
+
+            // Check there's something to work with
+            if (listItem.Length > 0)
+            {
+                // Add to To-do list
+                this.todoCheckedListBox.Items.Add(listItem);
+            }
         }
 
         /// <summary>

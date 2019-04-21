@@ -872,7 +872,7 @@ namespace SteemSoftware
                         int customValue;
 
                         // Try to parse
-                        if (int.TryParse(Interaction.InputBox("Set max video count. 0 = Fetch all.", "Playlist max", this.playlistMaxVideoCount.ToString(), 0, 0), out customValue))
+                        if (int.TryParse(Interaction.InputBox("Set max video count. 0 = Fetch all.", "Playlist max", this.playlistMaxVideoCount.ToString(), -1, -1), out customValue))
                         {
                             // Set custom value
                             this.playlistMaxVideoCount = customValue;

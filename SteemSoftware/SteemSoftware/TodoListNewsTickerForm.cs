@@ -235,7 +235,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnBackgroundToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Show the background color dialog
+            this.backgroundColorDialog.ShowDialog();
         }
     }
 }

@@ -95,7 +95,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnRememberSettingsToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Toggle checked state
+            this.rememberSettingsToolStripMenuItem.Checked = !this.rememberSettingsToolStripMenuItem.Checked;
         }
 
         /// <summary>

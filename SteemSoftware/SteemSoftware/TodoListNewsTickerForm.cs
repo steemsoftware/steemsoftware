@@ -85,7 +85,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnAlwaysOnTopToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Toggle checked state
+            this.alwaysOnTopToolStripMenuItem.Checked = !this.alwaysOnTopToolStripMenuItem.Checked;
         }
 
         /// <summary>

@@ -135,7 +135,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnExitToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Exit module
+            this.Close();
         }
 
         /// <summary>

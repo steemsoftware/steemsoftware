@@ -147,16 +147,6 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the todo checked list box double click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnTodoCheckedListBoxDoubleClick(object sender, EventArgs e)
-        {
-            // TODO add code
-        }
-
-        /// <summary>
         /// Handles the add button click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
@@ -206,7 +196,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnFullWidthToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Toggle checked state
+            this.fullWidthToolStripMenuItem.Checked = !this.fullWidthToolStripMenuItem.Checked;
         }
 
         /// <summary>

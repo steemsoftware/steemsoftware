@@ -91,8 +91,8 @@ namespace SteemSoftware
         	// mainToolStripStatusLabel
         	// 
         	this.mainToolStripStatusLabel.Name = "mainToolStripStatusLabel";
-        	this.mainToolStripStatusLabel.Size = new System.Drawing.Size(215, 17);
-        	this.mainToolStripStatusLabel.Text = "Tip: edit items by double-clicking them";
+        	this.mainToolStripStatusLabel.Size = new System.Drawing.Size(176, 17);
+        	this.mainToolStripStatusLabel.Text = "Tip: right-click list item to edit it";
         	// 
         	// mainMenuStrip
         	// 
@@ -328,7 +328,7 @@ namespace SteemSoftware
         	this.todoCheckedListBox.Name = "todoCheckedListBox";
         	this.todoCheckedListBox.Size = new System.Drawing.Size(273, 191);
         	this.todoCheckedListBox.TabIndex = 1;
-        	this.todoCheckedListBox.DoubleClick += new System.EventHandler(this.OnTodoCheckedListBoxDoubleClick);
+        	this.todoCheckedListBox.Click += new System.EventHandler(this.OnTodoCheckedListBoxClick);
         	// 
         	// tableLayoutPanel3
         	// 

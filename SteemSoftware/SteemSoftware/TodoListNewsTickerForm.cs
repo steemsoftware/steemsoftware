@@ -105,7 +105,12 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Check for items, then ask user about clearing them
+            if (this.todoCheckedListBox.Items.Count > 0 && MessageBox.Show("Proceed to clear list items?", "New list", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                // Clear To-do list
+                this.todoCheckedListBox.Items.Clear();
+            }
         }
 
         /// <summary>
@@ -252,6 +257,16 @@ namespace SteemSoftware
         {
             // Show the background color dialog
             this.backgroundColorDialog.ShowDialog();
+        }
+
+        /// <summary>
+        /// Handles the todo checked list box click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnTodoCheckedListBoxClick(object sender, EventArgs e)
+        {
+            // TODO Add code
         }
     }
 }

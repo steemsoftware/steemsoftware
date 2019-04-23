@@ -31,6 +31,11 @@ namespace SteemSoftware
         private int newsTickerTimerInterval;
 
         /// <summary>
+        /// The news ticker separator.
+        /// </summary>
+        private string newsTickerSeparator;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.TodoListNewsTickerForm"/> class.
         /// </summary>
         public TodoListNewsTickerForm()
@@ -42,6 +47,9 @@ namespace SteemSoftware
 
             // News ticker timer interval
             this.newsTickerTimerInterval = 10;
+
+            // News ticker separator
+            this.newsTickerSeparator = "  |  ";
         }
 
         /// <summary>
@@ -248,7 +256,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSeparatorToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Ask user for new separator
+            string separator = Interaction.InputBox("Set To-do list items separator", "Separator", this.newsTickerSeparator, -1, -1);
+
+            // Check there's something to work with
+            if (separator.Length > 0)
+            {
+                // Set new separator
+                this.newsTickerSeparator = separator;
+            }
         }
 
         /// <summary>

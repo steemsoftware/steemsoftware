@@ -179,6 +179,9 @@ namespace SteemSoftware
             {
                 // Add to To-do list
                 this.todoCheckedListBox.Items.Add(listItem);
+
+                // Check added item
+                this.todoCheckedListBox.SetItemChecked(this.todoCheckedListBox.Items.Count - 1, true);
             }
         }
 

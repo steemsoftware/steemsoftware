@@ -253,13 +253,28 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the todo checked list box click event.
+        /// Handles the todo checked list box mouse down event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnTodoCheckedListBoxClick(object sender, EventArgs e)
+        private void OnTodoCheckedListBoxMouseDown(object sender, MouseEventArgs e)
         {
-            // TODO Add code
+            // Set item index
+            int itemIndex = this.todoCheckedListBox.IndexFromPoint(e.Location);
+
+            // Check for an actual item and a right click
+            if (itemIndex > -1 && e.Button == MouseButtons.Right)
+            {
+                // Collect new item text
+                string itemText = Interaction.InputBox("Modify To-do list item text", "Edit text", this.todoCheckedListBox.Items[itemIndex].ToString(), -1, -1);
+
+                // Check there's something to work with
+                if (itemText.Length > 0)
+                {
+                    // Set new item text
+                    this.todoCheckedListBox.Items[itemIndex] = itemText;
+                }
+            }
         }
     }
 }

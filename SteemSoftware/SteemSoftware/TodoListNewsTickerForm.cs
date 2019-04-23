@@ -26,12 +26,22 @@ namespace SteemSoftware
         private string semanticVersion = "0.1.0";
 
         /// <summary>
+        /// The news ticker timer interval.
+        /// </summary>
+        private int newsTickerTimerInterval;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.TodoListNewsTickerForm"/> class.
         /// </summary>
         public TodoListNewsTickerForm()
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            /* Set values */
+
+            // News ticker timer interval
+            this.newsTickerTimerInterval = 10;
         }
 
         /// <summary>
@@ -75,7 +85,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnTextSpeedToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Declare custom value variable
+            int customValue;
+
+            // Try to parse
+            if (int.TryParse(Interaction.InputBox("Set ticker timer interval (milliseconds, less is faster)", "Text speed", this.newsTickerTimerInterval.ToString(), -1, -1), out customValue))
+            {
+                // Set custom value
+                this.newsTickerTimerInterval = customValue;
+            }
         }
 
         /// <summary>

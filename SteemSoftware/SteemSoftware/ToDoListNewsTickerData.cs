@@ -44,12 +44,6 @@ namespace SteemSoftware
         public Font TextFont { get; set; }
 
         /// <summary>
-        /// Gets or sets the text speed.
-        /// </summary>
-        /// <value>The text speed.</value>
-        public int TextSpeed { get; set; }
-
-        /// <summary>
         /// Gets or sets the separator.
         /// </summary>
         /// <value>The separator.</value>
@@ -60,12 +54,6 @@ namespace SteemSoftware
         /// </summary>
         /// <value><c>true</c> if always on top; otherwise, <c>false</c>.</value>
         public bool AlwaysOnTop { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="T:SteemSoftware.ToDoListNewsTickerData"/> remember settings.
-        /// </summary>
-        /// <value><c>true</c> if remember settings; otherwise, <c>false</c>.</value>
-        public bool RememberSettings { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="T:SteemSoftware.ToDoListNewsTickerData"/> full width.

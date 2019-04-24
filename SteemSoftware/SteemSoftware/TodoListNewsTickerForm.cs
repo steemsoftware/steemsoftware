@@ -357,7 +357,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnBottomToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Declare custom value variable
+            int customValue;
+
+            // Try to parse
+            if (int.TryParse(Interaction.InputBox("Set bottom margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.RightMargin.ToString(), -1, -1), out customValue))
+            {
+                // Set custom value
+                this.toDoListNewsTickerData.RightMargin = customValue;
+            }
         }
     }
 }

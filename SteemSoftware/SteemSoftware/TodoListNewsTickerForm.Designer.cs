@@ -51,9 +51,10 @@ namespace SteemSoftware
             this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.separatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textSpeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paddingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.horizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bottomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.foregroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -180,55 +181,63 @@ namespace SteemSoftware
                                     this.fontToolStripMenuItem,
                                     this.separatorToolStripMenuItem,
                                     this.textSpeedToolStripMenuItem,
-                                    this.paddingToolStripMenuItem,
+                                    this.marginsToolStripMenuItem,
                                     this.colorsToolStripMenuItem});
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.customizeToolStripMenuItem.Text = "&Customize";
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.fontToolStripMenuItem.Text = "&Font";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.OnFontToolStripMenuItemClick);
             // 
             // separatorToolStripMenuItem
             // 
             this.separatorToolStripMenuItem.Name = "separatorToolStripMenuItem";
-            this.separatorToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.separatorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.separatorToolStripMenuItem.Text = "&Separator";
             this.separatorToolStripMenuItem.Click += new System.EventHandler(this.OnSeparatorToolStripMenuItemClick);
             // 
             // textSpeedToolStripMenuItem
             // 
             this.textSpeedToolStripMenuItem.Name = "textSpeedToolStripMenuItem";
-            this.textSpeedToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.textSpeedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.textSpeedToolStripMenuItem.Text = "&Text speed";
             this.textSpeedToolStripMenuItem.Click += new System.EventHandler(this.OnTextSpeedToolStripMenuItemClick);
             // 
-            // paddingToolStripMenuItem
+            // marginsToolStripMenuItem
             // 
-            this.paddingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                    this.horizontalToolStripMenuItem,
-                                    this.verticalToolStripMenuItem});
-            this.paddingToolStripMenuItem.Name = "paddingToolStripMenuItem";
-            this.paddingToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.paddingToolStripMenuItem.Text = "&Padding";
+            this.marginsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                                    this.leftToolStripMenuItem,
+                                    this.rightToolStripMenuItem,
+                                    this.bottomToolStripMenuItem});
+            this.marginsToolStripMenuItem.Name = "marginsToolStripMenuItem";
+            this.marginsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.marginsToolStripMenuItem.Text = "&Margins";
             // 
-            // horizontalToolStripMenuItem
+            // leftToolStripMenuItem
             // 
-            this.horizontalToolStripMenuItem.Name = "horizontalToolStripMenuItem";
-            this.horizontalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.horizontalToolStripMenuItem.Text = "&Horizontal";
-            this.horizontalToolStripMenuItem.Click += new System.EventHandler(this.OnHorizontalToolStripMenuItemClick);
+            this.leftToolStripMenuItem.Name = "leftToolStripMenuItem";
+            this.leftToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.leftToolStripMenuItem.Text = "&Left";
+            this.leftToolStripMenuItem.Click += new System.EventHandler(this.OnLeftToolStripMenuItemClick);
             // 
-            // verticalToolStripMenuItem
+            // rightToolStripMenuItem
             // 
-            this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.verticalToolStripMenuItem.Text = "&Vertical";
-            this.verticalToolStripMenuItem.Click += new System.EventHandler(this.OnVerticalToolStripMenuItemClick);
+            this.rightToolStripMenuItem.Name = "rightToolStripMenuItem";
+            this.rightToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rightToolStripMenuItem.Text = "&Right";
+            this.rightToolStripMenuItem.Click += new System.EventHandler(this.OnRightToolStripMenuItemClick);
+            // 
+            // bottomToolStripMenuItem
+            // 
+            this.bottomToolStripMenuItem.Name = "bottomToolStripMenuItem";
+            this.bottomToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bottomToolStripMenuItem.Text = "&Bottom";
+            this.bottomToolStripMenuItem.Click += new System.EventHandler(this.OnBottomToolStripMenuItemClick);
             // 
             // colorsToolStripMenuItem
             // 
@@ -236,7 +245,7 @@ namespace SteemSoftware
                                     this.foregroundToolStripMenuItem,
                                     this.backgroundToolStripMenuItem});
             this.colorsToolStripMenuItem.Name = "colorsToolStripMenuItem";
-            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.colorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.colorsToolStripMenuItem.Text = "&Colors";
             // 
             // foregroundToolStripMenuItem
@@ -260,7 +269,7 @@ namespace SteemSoftware
                                     this.fullWidthToolStripMenuItem,
                                     this.rememberSettingsToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // alwaysOnTopToolStripMenuItem
@@ -426,6 +435,10 @@ namespace SteemSoftware
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem bottomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem leftToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marginsToolStripMenuItem;
         private System.Windows.Forms.ColorDialog backgroundColorDialog;
         private System.Windows.Forms.ColorDialog foregroundColorDialog;
         private System.Windows.Forms.FontDialog mainFontDialog;
@@ -433,9 +446,6 @@ namespace SteemSoftware
         private System.Windows.Forms.ToolStripMenuItem foregroundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem separatorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem horizontalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem paddingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fullWidthToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rememberSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textSpeedToolStripMenuItem;

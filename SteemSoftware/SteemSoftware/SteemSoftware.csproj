@@ -107,6 +107,7 @@
       <DependentUpon>YouTubeMultiPlaylistAggregatorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PatternAndTargetRow.cs" />
+    <Compile Include="ToDoListNewsTickerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

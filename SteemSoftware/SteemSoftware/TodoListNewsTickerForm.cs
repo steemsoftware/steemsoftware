@@ -230,26 +230,6 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the horizontal tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnHorizontalToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO add code
-        }
-
-        /// <summary>
-        /// Handles the vertical tool strip menu item click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnVerticalToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            // TODO add code
-        }
-
-        /// <summary>
         /// Handles the separator tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
@@ -312,6 +292,36 @@ namespace SteemSoftware
                     this.todoCheckedListBox.Items[itemIndex] = itemText;
                 }
             }
+        }
+
+        /// <summary>
+        /// Handlesthe left tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnLeftToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Handlesthe right tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnRightToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO Add code
+        }
+
+        /// <summary>
+        /// Handlesthe bottom tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnBottomToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // TODO Add code
         }
     }
 }

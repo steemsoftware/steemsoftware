@@ -84,13 +84,5 @@ namespace SteemSoftware
         /// </summary>
         /// <value>The color of the background.</value>
         public Color BackgroundColor { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:SteemSoftware.ToDoListNewsTickerData"/> class.
-        /// </summary>
-        public ToDoListNewsTickerData()
-        {
-            // TODO Add constructor code
-        }
     }
 }

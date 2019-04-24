@@ -7,8 +7,10 @@ namespace SteemSoftware
     // Directives
     using System;
     using System.Drawing;
+    using System.IO;
     using System.Windows.Forms;
     using Microsoft.VisualBasic;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Todo list news ticker form.
@@ -26,30 +28,48 @@ namespace SteemSoftware
         private string semanticVersion = "0.1.0";
 
         /// <summary>
-        /// The news ticker timer interval.
+        /// To do list news ticker data.
         /// </summary>
-        private int newsTickerTimerInterval;
-
-        /// <summary>
-        /// The news ticker separator.
-        /// </summary>
-        private string newsTickerSeparator;
+        private ToDoListNewsTickerData toDoListNewsTickerData;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.TodoListNewsTickerForm"/> class.
         /// </summary>
         public TodoListNewsTickerForm()
         {
-            // The InitializeComponent() call is required for Windows Forms designer support.
+            // Required for Windows Forms designer support.
             this.InitializeComponent();
 
-            /* Set values */
+            /* Process data file */
 
-            // News ticker timer interval
-            this.newsTickerTimerInterval = 10;
+            // Set data file name
+            var dataFileName = "ToDoListNewsTickerData.txt";
 
-            // News ticker separator
-            this.newsTickerSeparator = "  |  ";
+            // Check for a previously-saved data file
+            if (File.Exists(dataFileName))
+            {
+                // Get JSON from file
+                var jsonString = File.ReadAllText(dataFileName);
+
+                // Load previous data from file
+                this.toDoListNewsTickerData = JsonConvert.DeserializeObject<ToDoListNewsTickerData>(jsonString);
+            }
+            else
+            {
+                // New ticker data instance with initial values set
+                this.toDoListNewsTickerData = new ToDoListNewsTickerData
+                {
+                    TimerInterval = 10,
+
+                    Separator = "  |  ",
+
+                    TextFont = this.mainFontDialog.Font,
+
+                    ForegroundColor = this.foregroundColorDialog.Color,
+
+                    BackgroundColor = this.backgroundColorDialog.Color,
+                };
+            }
         }
 
         /// <summary>
@@ -97,10 +117,10 @@ namespace SteemSoftware
             int customValue;
 
             // Try to parse
-            if (int.TryParse(Interaction.InputBox("Set ticker timer interval (milliseconds, less is faster)", "Text speed", this.newsTickerTimerInterval.ToString(), -1, -1), out customValue))
+            if (int.TryParse(Interaction.InputBox("Set ticker timer interval (milliseconds, less is faster)", "Text speed", this.toDoListNewsTickerData.TimerInterval.ToString(), -1, -1), out customValue))
             {
                 // Set custom value
-                this.newsTickerTimerInterval = customValue;
+                this.toDoListNewsTickerData.TimerInterval = customValue;
             }
         }
 
@@ -237,13 +257,13 @@ namespace SteemSoftware
         private void OnSeparatorToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Ask user for new separator
-            string separator = Interaction.InputBox("Set To-do list items separator", "Separator", this.newsTickerSeparator, -1, -1);
+            string separator = Interaction.InputBox("Set To-do list items separator", "Separator", this.toDoListNewsTickerData.Separator, -1, -1);
 
             // Check there's something to work with
             if (separator.Length > 0)
             {
                 // Set new separator
-                this.newsTickerSeparator = separator;
+                this.toDoListNewsTickerData.Separator = separator;
             }
         }
 

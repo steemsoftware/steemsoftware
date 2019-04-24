@@ -321,7 +321,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnLeftToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Declare custom value variable
+            int customValue;
+
+            // Try to parse
+            if (int.TryParse(Interaction.InputBox("Set left margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.LeftMargin.ToString(), -1, -1), out customValue))
+            {
+                // Set custom value
+                this.toDoListNewsTickerData.LeftMargin = customValue;
+            }
         }
 
         /// <summary>

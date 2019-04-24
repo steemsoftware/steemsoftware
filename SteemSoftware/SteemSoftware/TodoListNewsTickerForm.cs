@@ -113,11 +113,14 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnTextSpeedToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Variable to hold user input
+            int parsedInt;
+
             // Try to parse
-            if (int.TryParse(Interaction.InputBox("Set ticker timer interval (milliseconds, less is faster)", "Text speed", this.toDoListNewsTickerData.TimerInterval.ToString(), -1, -1), out int customValue))
+            if (int.TryParse(Interaction.InputBox("Set ticker timer interval (milliseconds, less is faster)", "Text speed", this.toDoListNewsTickerData.TimerInterval.ToString(), -1, -1), out parsedInt))
             {
                 // Set custom value
-                this.toDoListNewsTickerData.TimerInterval = customValue;
+                this.toDoListNewsTickerData.TimerInterval = parsedInt;
             }
         }
 
@@ -318,11 +321,14 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnLeftToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Variable to hold user input
+            int parsedInt;
+
             // Try to parse
-            if (int.TryParse(Interaction.InputBox("Set left margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.LeftMargin.ToString(), -1, -1), out int customValue))
+            if (int.TryParse(Interaction.InputBox("Set left margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.LeftMargin.ToString(), -1, -1), out parsedInt))
             {
                 // Set custom value
-                this.toDoListNewsTickerData.LeftMargin = customValue;
+                this.toDoListNewsTickerData.LeftMargin = parsedInt;
             }
         }
 
@@ -333,11 +339,14 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnRightToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Variable to hold user input
+            int parsedInt;
+
             // Try to parse
-            if (int.TryParse(Interaction.InputBox("Set right margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.RightMargin.ToString(), -1, -1), out int customValue))
+            if (int.TryParse(Interaction.InputBox("Set right margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.RightMargin.ToString(), -1, -1), out parsedInt))
             {
                 // Set custom value
-                this.toDoListNewsTickerData.RightMargin = customValue;
+                this.toDoListNewsTickerData.RightMargin = parsedInt;
             }
         }
 
@@ -348,11 +357,14 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnBottomToolStripMenuItemClick(object sender, EventArgs e)
         {
+            // Variable to hold user input
+            int parsedInt;
+
             // Try to parse
-            if (int.TryParse(Interaction.InputBox("Set bottom margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.RightMargin.ToString(), -1, -1), out int customValue))
+            if (int.TryParse(Interaction.InputBox("Set bottom margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.RightMargin.ToString(), -1, -1), out parsedInt))
             {
                 // Set custom value
-                this.toDoListNewsTickerData.RightMargin = customValue;
+                this.toDoListNewsTickerData.RightMargin = parsedInt;
             }
         }
     }

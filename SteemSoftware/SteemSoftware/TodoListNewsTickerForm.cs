@@ -315,7 +315,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handlesthe left tool strip menu item click event.
+        /// Handles the left tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
@@ -333,17 +333,25 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handlesthe right tool strip menu item click event.
+        /// Handle the right tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
         private void OnRightToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Declare custom value variable
+            int customValue;
+
+            // Try to parse
+            if (int.TryParse(Interaction.InputBox("Set right margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.RightMargin.ToString(), -1, -1), out customValue))
+            {
+                // Set custom value
+                this.toDoListNewsTickerData.RightMargin = customValue;
+            }
         }
 
         /// <summary>
-        /// Handlesthe bottom tool strip menu item click event.
+        /// Handles the bottom tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>

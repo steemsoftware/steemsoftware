@@ -361,10 +361,10 @@ namespace SteemSoftware
             int parsedInt;
 
             // Try to parse
-            if (int.TryParse(Interaction.InputBox("Set bottom margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.RightMargin.ToString(), -1, -1), out parsedInt))
+            if (int.TryParse(Interaction.InputBox("Set bottom margin (in pixels)", "Ticker form margin", this.toDoListNewsTickerData.BottomMargin.ToString(), -1, -1), out parsedInt))
             {
                 // Set custom value
-                this.toDoListNewsTickerData.RightMargin = parsedInt;
+                this.toDoListNewsTickerData.BottomMargin = parsedInt;
             }
         }
     }

@@ -417,6 +417,16 @@ namespace SteemSoftware
         	// 
         	this.backgroundColorDialog.Color = System.Drawing.Color.White;
         	// 
+        	// openFileDialog
+        	// 
+        	this.openFileDialog.DefaultExt = "txt";
+        	this.openFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
+        	// 
+        	// saveFileDialog
+        	// 
+        	this.saveFileDialog.DefaultExt = "txt";
+        	this.saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
+        	// 
         	// TodoListNewsTickerForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

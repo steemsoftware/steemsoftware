@@ -33,6 +33,11 @@ namespace SteemSoftware
         private ToDoListNewsTickerData toDoListNewsTickerData;
 
         /// <summary>
+        /// The data file path.
+        /// </summary>
+        private string dataFilePath = Path.Combine(Application.StartupPath, "Data", "Settings", "ToDoListNewsTickerData.txt");
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.TodoListNewsTickerForm"/> class.
         /// </summary>
         public TodoListNewsTickerForm()
@@ -42,14 +47,11 @@ namespace SteemSoftware
 
             /* Process data file */
 
-            // Set data file name
-            var dataFileName = "ToDoListNewsTickerData.txt";
-
             // Check for a previously-saved data file
-            if (File.Exists(dataFileName))
+            if (File.Exists(this.dataFilePath))
             {
                 // Get JSON from file
-                var jsonString = File.ReadAllText(dataFileName);
+                var jsonString = File.ReadAllText(this.dataFilePath);
 
                 // Load previous data from file
                 this.toDoListNewsTickerData = JsonConvert.DeserializeObject<ToDoListNewsTickerData>(jsonString);
@@ -178,7 +180,28 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnSaveToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Set file name
+            this.saveFileDialog.FileName = Path.GetFileNameWithoutExtension(this.dataFilePath);
+
+            // Open save file dialog
+            if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
+            {
+                /* Save to JSON  */
+
+                try
+                {
+                    // Write JSON file
+                    File.WriteAllText(this.saveFileDialog.FileName, JsonConvert.SerializeObject(this.toDoListNewsTickerData));
+                }
+                catch (Exception)
+                {
+                    // Inform user
+                    this.mainToolStripStatusLabel.Text = "Save file error";
+                }
+
+                // Inform user
+                this.mainToolStripStatusLabel.Text = $"Saved to \"{Path.GetFileName(this.saveFileDialog.FileName)}\"";
+            }
         }
 
         /// <summary>

@@ -170,7 +170,28 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Set initial file name
+            this.saveFileDialog.FileName = Path.GetFileNameWithoutExtension(this.dataFilePath);
+
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                /* Populate data grid view */
+
+                try
+                {
+                    // Get JSON from file
+                    var jsonString = File.ReadAllText(this.openFileDialog.FileName);
+
+                    // Deserialize JSON to variable
+                    this.toDoListNewsTickerData = JsonConvert.DeserializeObject<ToDoListNewsTickerData>(jsonString);
+                }
+                catch (Exception)
+                {
+                    // Inform user
+                    this.mainToolStripStatusLabel.Text = "Open file error";
+                }
+            }
         }
 
         /// <summary>

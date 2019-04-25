@@ -185,6 +185,27 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Sets the To-do list news ticker data.
+        /// </summary>
+        private void SetToDoListNewsTickerData()
+        {
+            // Font
+            this.toDoListNewsTickerData.TextFont = this.mainFontDialog.Font;
+
+            // Always on top
+            this.toDoListNewsTickerData.AlwaysOnTop = this.alwaysOnTopToolStripMenuItem.Checked;
+
+            // Full width
+            this.toDoListNewsTickerData.FullWidth = this.fullWidthToolStripMenuItem.Checked;
+
+            // Foreground color
+            this.toDoListNewsTickerData.ForegroundColor = this.foregroundColorDialog.Color;
+
+            // Background color
+            this.toDoListNewsTickerData.BackgroundColor = this.backgroundColorDialog.Color;
+        }
+
+        /// <summary>
         /// Handles the open tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>

@@ -438,6 +438,7 @@ namespace SteemSoftware
         	this.MainMenuStrip = this.mainMenuStrip;
         	this.Name = "TodoListNewsTickerForm";
         	this.Text = "To-do List News Ticker";
+        	this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnTodoListNewsTickerFormFormClosing);
         	this.mainStatusStrip.ResumeLayout(false);
         	this.mainStatusStrip.PerformLayout();
         	this.mainMenuStrip.ResumeLayout(false);

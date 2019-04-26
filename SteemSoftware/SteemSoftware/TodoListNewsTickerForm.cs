@@ -315,16 +315,6 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the launch button click event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnLaunchButtonClick(object sender, EventArgs e)
-        {
-            // TODO add code
-        }
-
-        /// <summary>
         /// Handles the full width tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
@@ -373,31 +363,6 @@ namespace SteemSoftware
         {
             // Show the background color dialog
             this.backgroundColorDialog.ShowDialog();
-        }
-
-        /// <summary>
-        /// Handles the todo checked list box mouse down event.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">Event arguments.</param>
-        private void OnTodoCheckedListBoxMouseDown(object sender, MouseEventArgs e)
-        {
-            // Set item index
-            int itemIndex = this.todoCheckedListBox.IndexFromPoint(e.Location);
-
-            // Check for an actual item and a right click
-            if (itemIndex > -1 && e.Button == MouseButtons.Right)
-            {
-                // Collect new item text
-                string itemText = Interaction.InputBox("Modify To-do list item text", "Edit text", this.todoCheckedListBox.Items[itemIndex].ToString(), -1, -1);
-
-                // Check there's something to work with
-                if (itemText.Length > 0)
-                {
-                    // Set new item text
-                    this.todoCheckedListBox.Items[itemIndex] = itemText;
-                }
-            }
         }
 
         /// <summary>
@@ -452,6 +417,59 @@ namespace SteemSoftware
                 // Set custom value
                 this.toDoListNewsTickerData.BottomMargin = parsedInt;
             }
+        }
+
+        /// <summary>
+        /// Handles the todo list news ticker form form closing eve.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnTodoListNewsTickerFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Check if must remember settings 
+            if (this.rememberSettingsToolStripMenuItem.Checked)
+            {
+                // Set data
+                this.SetToDoListNewsTickerData();
+
+                // Write JSON file
+                File.WriteAllText(this.dataFilePath, JsonConvert.SerializeObject(this.toDoListNewsTickerData));
+            }
+        }
+
+        /// <summary>
+        /// Handles the todo checked list box mouse down event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnTodoCheckedListBoxMouseDown(object sender, MouseEventArgs e)
+        {
+            // Set item index
+            int itemIndex = this.todoCheckedListBox.IndexFromPoint(e.Location);
+
+            // Check for an actual item and a right click
+            if (itemIndex > -1 && e.Button == MouseButtons.Right)
+            {
+                // Collect new item text
+                string itemText = Interaction.InputBox("Modify To-do list item text", "Edit text", this.todoCheckedListBox.Items[itemIndex].ToString(), -1, -1);
+
+                // Check there's something to work with
+                if (itemText.Length > 0)
+                {
+                    // Set new item text
+                    this.todoCheckedListBox.Items[itemIndex] = itemText;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles the launch button click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnLaunchButtonClick(object sender, EventArgs e)
+        {
+            // TODO add code
         }
     }
 }

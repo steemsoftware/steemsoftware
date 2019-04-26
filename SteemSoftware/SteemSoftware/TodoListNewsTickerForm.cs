@@ -53,8 +53,11 @@ namespace SteemSoftware
                 // Get JSON from file
                 var jsonString = File.ReadAllText(this.dataFilePath);
 
-                // Load previous data from file
+                // Load previous data
                 this.toDoListNewsTickerData = JsonConvert.DeserializeObject<ToDoListNewsTickerData>(jsonString);
+
+                // Bring data to life in GUI
+                this.LoadToDoListNewsTickerData();
             }
             else
             {
@@ -227,6 +230,9 @@ namespace SteemSoftware
 
                     // Deserialize JSON to variable
                     this.toDoListNewsTickerData = JsonConvert.DeserializeObject<ToDoListNewsTickerData>(jsonString);
+
+                    // Load data
+                    this.LoadToDoListNewsTickerData();
                 }
                 catch (Exception)
                 {
@@ -434,6 +440,11 @@ namespace SteemSoftware
 
                 // Write JSON file
                 File.WriteAllText(this.dataFilePath, JsonConvert.SerializeObject(this.toDoListNewsTickerData));
+            }
+            else
+            {
+                // Delete data file
+                File.Delete(this.dataFilePath);
             }
         }
 

@@ -41,7 +41,7 @@ namespace SteemSoftware
         /// Gets or sets the text font.
         /// </summary>
         /// <value>The text font.</value>
-        public Font TextFont { get; set; }
+        public string TextFont { get; set; }
 
         /// <summary>
         /// Gets or sets the separator.

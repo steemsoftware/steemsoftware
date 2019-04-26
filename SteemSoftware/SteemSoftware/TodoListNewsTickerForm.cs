@@ -38,6 +38,11 @@ namespace SteemSoftware
         private string dataFilePath = Path.Combine(Application.StartupPath, "Data", "Settings", "ToDoListNewsTickerData.txt");
 
         /// <summary>
+        /// The font converter.
+        /// </summary>
+        private FontConverter fontConverter = new FontConverter();
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.TodoListNewsTickerForm"/> class.
         /// </summary>
         public TodoListNewsTickerForm()
@@ -68,7 +73,7 @@ namespace SteemSoftware
 
                     Separator = "  |  ",
 
-                    TextFont = this.mainFontDialog.Font,
+                    TextFont = fontConverter.ConvertToInvariantString(this.mainFontDialog.Font),
 
                     ForegroundColor = this.foregroundColorDialog.Color,
 
@@ -172,7 +177,7 @@ namespace SteemSoftware
         private void LoadToDoListNewsTickerData()
         {
             // Font
-            this.mainFontDialog.Font = this.toDoListNewsTickerData.TextFont;
+            this.mainFontDialog.Font = (Font)fontConverter.ConvertFromInvariantString(this.toDoListNewsTickerData.TextFont);
 
             // Always on top
             this.alwaysOnTopToolStripMenuItem.Checked = this.toDoListNewsTickerData.AlwaysOnTop;
@@ -193,7 +198,7 @@ namespace SteemSoftware
         private void SetToDoListNewsTickerData()
         {
             // Font
-            this.toDoListNewsTickerData.TextFont = this.mainFontDialog.Font;
+            this.toDoListNewsTickerData.TextFont = fontConverter.ConvertToInvariantString(this.mainFontDialog.Font);
 
             // Always on top
             this.toDoListNewsTickerData.AlwaysOnTop = this.alwaysOnTopToolStripMenuItem.Checked;

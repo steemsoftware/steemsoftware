@@ -65,11 +65,11 @@ namespace SteemSoftware
         	this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-        	this.todoCheckedListBox = new System.Windows.Forms.CheckedListBox();
         	this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
         	this.addButton = new System.Windows.Forms.Button();
         	this.removeButton = new System.Windows.Forms.Button();
         	this.showTickerButton = new System.Windows.Forms.Button();
+        	this.todoListBox = new System.Windows.Forms.ListBox();
         	this.mainFontDialog = new System.Windows.Forms.FontDialog();
         	this.foregroundColorDialog = new System.Windows.Forms.ColorDialog();
         	this.backgroundColorDialog = new System.Windows.Forms.ColorDialog();
@@ -318,8 +318,8 @@ namespace SteemSoftware
         	// 
         	this.tableLayoutPanel1.ColumnCount = 1;
         	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tableLayoutPanel1.Controls.Add(this.todoCheckedListBox, 0, 0);
         	this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
+        	this.tableLayoutPanel1.Controls.Add(this.todoListBox, 0, 0);
         	this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
         	this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -328,18 +328,6 @@ namespace SteemSoftware
         	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
         	this.tableLayoutPanel1.Size = new System.Drawing.Size(279, 227);
         	this.tableLayoutPanel1.TabIndex = 2;
-        	// 
-        	// todoCheckedListBox
-        	// 
-        	this.todoCheckedListBox.CheckOnClick = true;
-        	this.todoCheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.todoCheckedListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.todoCheckedListBox.FormattingEnabled = true;
-        	this.todoCheckedListBox.Location = new System.Drawing.Point(3, 3);
-        	this.todoCheckedListBox.Name = "todoCheckedListBox";
-        	this.todoCheckedListBox.Size = new System.Drawing.Size(273, 191);
-        	this.todoCheckedListBox.TabIndex = 1;
-        	this.todoCheckedListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnTodoCheckedListBoxMouseDown);
         	// 
         	// tableLayoutPanel3
         	// 
@@ -405,6 +393,19 @@ namespace SteemSoftware
         	this.showTickerButton.UseVisualStyleBackColor = true;
         	this.showTickerButton.Click += new System.EventHandler(this.OnLaunchButtonClick);
         	// 
+        	// todoListBox
+        	// 
+        	this.todoListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.todoListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.todoListBox.FormattingEnabled = true;
+        	this.todoListBox.ItemHeight = 20;
+        	this.todoListBox.Location = new System.Drawing.Point(3, 3);
+        	this.todoListBox.Name = "todoListBox";
+        	this.todoListBox.Size = new System.Drawing.Size(273, 191);
+        	this.todoListBox.Sorted = true;
+        	this.todoListBox.TabIndex = 3;
+        	this.todoListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnTodoListBoxMouseDown);
+        	// 
         	// mainFontDialog
         	// 
         	this.mainFontDialog.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -419,13 +420,13 @@ namespace SteemSoftware
         	// 
         	// openFileDialog
         	// 
-        	this.openFileDialog.DefaultExt = "txt";
-        	this.openFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
+        	this.openFileDialog.DefaultExt = "bin";
+        	this.openFileDialog.Filter = "Bin Files (*.bin)|*.bin|All files (*.*)|*.*";
         	// 
         	// saveFileDialog
         	// 
-        	this.saveFileDialog.DefaultExt = "txt";
-        	this.saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All files (*.*)|*.*";
+        	this.saveFileDialog.DefaultExt = "bin";
+        	this.saveFileDialog.Filter = "Bin Files (*.bin)|*.bin|All files (*.*)|*.*";
         	// 
         	// TodoListNewsTickerForm
         	// 
@@ -448,6 +449,7 @@ namespace SteemSoftware
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.ListBox todoListBox;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem bottomToolStripMenuItem;
@@ -471,7 +473,6 @@ namespace SteemSoftware
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.CheckedListBox todoCheckedListBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;

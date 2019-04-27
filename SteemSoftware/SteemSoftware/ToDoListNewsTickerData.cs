@@ -6,11 +6,14 @@ namespace SteemSoftware
 {
     // Directives
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
+    using System.Windows.Forms;
 
     /// <summary>
     /// To do list news ticker data.
     /// </summary>
+    [Serializable]
     public class ToDoListNewsTickerData
     {
         /// <summary>
@@ -72,5 +75,11 @@ namespace SteemSoftware
         /// </summary>
         /// <value>The color of the background.</value>
         public Color BackgroundColor { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list items.
+        /// </summary>
+        /// <value>The list items.</value>
+        public List<string> ListItems { get; set; }
     }
 }

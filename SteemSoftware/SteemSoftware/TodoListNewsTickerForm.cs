@@ -6,11 +6,14 @@ namespace SteemSoftware
 {
     // Directives
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
     using System.IO;
+    using System.Linq;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
     using System.Windows.Forms;
     using Microsoft.VisualBasic;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// Todo list news ticker form.
@@ -35,7 +38,7 @@ namespace SteemSoftware
         /// <summary>
         /// The data file path.
         /// </summary>
-        private string dataFilePath = Path.Combine(Application.StartupPath, "Data", "Settings", "ToDoListNewsTickerData.txt");
+        private string dataFilePath = Path.Combine(Application.StartupPath, "Data", "Settings", "ToDoListNewsTickerData.bin");
 
         /// <summary>
         /// The font converter.
@@ -55,11 +58,8 @@ namespace SteemSoftware
             // Check for a previously-saved data file
             if (File.Exists(this.dataFilePath))
             {
-                // Get JSON from file
-                var jsonString = File.ReadAllText(this.dataFilePath);
-
-                // Load previous data
-                this.toDoListNewsTickerData = JsonConvert.DeserializeObject<ToDoListNewsTickerData>(jsonString);
+                // Read previous data from binary file
+                this.toDoListNewsTickerData = this.ReadTickerDataFromFile(this.dataFilePath);
 
                 // Bring data to life in GUI
                 this.LoadToDoListNewsTickerData();
@@ -73,13 +73,46 @@ namespace SteemSoftware
 
                     Separator = "  |  ",
 
-                    TextFont = fontConverter.ConvertToInvariantString(this.mainFontDialog.Font),
+                    TextFont = this.fontConverter.ConvertToInvariantString(this.mainFontDialog.Font),
 
                     ForegroundColor = this.foregroundColorDialog.Color,
 
                     BackgroundColor = this.backgroundColorDialog.Color,
                 };
             }
+        }
+
+        /// <summary>
+        /// Reads the ticker data from file.
+        /// </summary>
+        /// <returns>The ticker data from file.</returns>
+        /// <param name="tickerDataFilePath">Ticker data file path.</param>
+        private ToDoListNewsTickerData ReadTickerDataFromFile(string tickerDataFilePath)
+        {
+            // Variable to hold read ticker data
+            ToDoListNewsTickerData tickerData;
+
+            // Read data from binary file
+            IFormatter formatter = new BinaryFormatter();
+            Stream binaryFileStream = new FileStream(tickerDataFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            tickerData = (ToDoListNewsTickerData)formatter.Deserialize(binaryFileStream);
+            binaryFileStream.Close();
+
+            // Return read ticker data
+            return tickerData;
+        }
+
+        /// <summary>
+        /// Writes the ticker data to file.
+        /// </summary>
+        /// <param name="tickerDataFilePath">Ticker data file path.</param>
+        private void WriteTickerDataToFile(string tickerDataFilePath)
+        {
+            // Save ticker data to binary file
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(tickerDataFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, this.toDoListNewsTickerData);
+            stream.Close();
         }
 
         /// <summary>
@@ -164,10 +197,10 @@ namespace SteemSoftware
         private void OnNewToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Check for items, then ask user about clearing them
-            if (this.todoCheckedListBox.Items.Count > 0 && MessageBox.Show("Proceed to clear list items?", "New list", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (this.todoListBox.Items.Count > 0 && MessageBox.Show("Proceed to clear list items?", "New list", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 // Clear To-do list
-                this.todoCheckedListBox.Items.Clear();
+                this.todoListBox.Items.Clear();
             }
         }
 
@@ -177,7 +210,7 @@ namespace SteemSoftware
         private void LoadToDoListNewsTickerData()
         {
             // Font
-            this.mainFontDialog.Font = (Font)fontConverter.ConvertFromInvariantString(this.toDoListNewsTickerData.TextFont);
+            this.mainFontDialog.Font = (Font)this.fontConverter.ConvertFromInvariantString(this.toDoListNewsTickerData.TextFont);
 
             // Always on top
             this.alwaysOnTopToolStripMenuItem.Checked = this.toDoListNewsTickerData.AlwaysOnTop;
@@ -190,6 +223,12 @@ namespace SteemSoftware
 
             // Background color
             this.backgroundColorDialog.Color = this.toDoListNewsTickerData.BackgroundColor;
+
+            // Clear To-do list
+            this.todoListBox.Items.Clear();
+
+            // Load items
+            this.todoListBox.Items.AddRange(this.toDoListNewsTickerData.ListItems.Cast<object>().ToArray());
         }
 
         /// <summary>
@@ -198,7 +237,7 @@ namespace SteemSoftware
         private void SetToDoListNewsTickerData()
         {
             // Font
-            this.toDoListNewsTickerData.TextFont = fontConverter.ConvertToInvariantString(this.mainFontDialog.Font);
+            this.toDoListNewsTickerData.TextFont = this.fontConverter.ConvertToInvariantString(this.mainFontDialog.Font);
 
             // Always on top
             this.toDoListNewsTickerData.AlwaysOnTop = this.alwaysOnTopToolStripMenuItem.Checked;
@@ -211,6 +250,9 @@ namespace SteemSoftware
 
             // Background color
             this.toDoListNewsTickerData.BackgroundColor = this.backgroundColorDialog.Color;
+
+            // Set new list (blank slate)
+            this.toDoListNewsTickerData.ListItems = new List<string>(this.todoListBox.Items.Cast<string>());
         }
 
         /// <summary>
@@ -230,11 +272,8 @@ namespace SteemSoftware
 
                 try
                 {
-                    // Get JSON from file
-                    var jsonString = File.ReadAllText(this.openFileDialog.FileName);
-
-                    // Deserialize JSON to variable
-                    this.toDoListNewsTickerData = JsonConvert.DeserializeObject<ToDoListNewsTickerData>(jsonString);
+                    // Deserialize to variable
+                    this.toDoListNewsTickerData = this.ReadTickerDataFromFile(this.openFileDialog.FileName);
 
                     // Load data
                     this.LoadToDoListNewsTickerData();
@@ -264,8 +303,11 @@ namespace SteemSoftware
 
                 try
                 {
-                    // Write JSON file
-                    File.WriteAllText(this.saveFileDialog.FileName, JsonConvert.SerializeObject(this.toDoListNewsTickerData));
+                    // Set data
+                    this.SetToDoListNewsTickerData();
+
+                    // Write data to file
+                    this.WriteTickerDataToFile(this.saveFileDialog.FileName);
                 }
                 catch (Exception)
                 {
@@ -303,10 +345,7 @@ namespace SteemSoftware
             if (listItem.Length > 0)
             {
                 // Add to To-do list
-                this.todoCheckedListBox.Items.Add(listItem);
-
-                // Check added item
-                this.todoCheckedListBox.SetItemChecked(this.todoCheckedListBox.Items.Count - 1, true);
+                this.todoListBox.Items.Add(listItem);
             }
         }
 
@@ -318,10 +357,10 @@ namespace SteemSoftware
         private void OnRemoveButtonClick(object sender, EventArgs e)
         {
             // Check for a selected item
-            if (this.todoCheckedListBox.SelectedIndex > -1)
+            if (this.todoListBox.SelectedIndex > -1)
             {
                 // Remove item by index
-                this.todoCheckedListBox.Items.RemoveAt(this.todoCheckedListBox.SelectedIndex);
+                this.todoListBox.Items.RemoveAt(this.todoListBox.SelectedIndex);
             }
         }
 
@@ -443,8 +482,8 @@ namespace SteemSoftware
                 // Set data
                 this.SetToDoListNewsTickerData();
 
-                // Write JSON file
-                File.WriteAllText(this.dataFilePath, JsonConvert.SerializeObject(this.toDoListNewsTickerData));
+                // Write data to disk
+                this.WriteTickerDataToFile(this.dataFilePath);
             }
             else
             {
@@ -454,26 +493,26 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the todo checked list box mouse down event.
+        /// Handles the todo list box mouse down event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnTodoCheckedListBoxMouseDown(object sender, MouseEventArgs e)
+        private void OnTodoListBoxMouseDown(object sender, MouseEventArgs e)
         {
             // Set item index
-            int itemIndex = this.todoCheckedListBox.IndexFromPoint(e.Location);
+            int itemIndex = this.todoListBox.IndexFromPoint(e.Location);
 
             // Check for an actual item and a right click
             if (itemIndex > -1 && e.Button == MouseButtons.Right)
             {
                 // Collect new item text
-                string itemText = Interaction.InputBox("Modify To-do list item text", "Edit text", this.todoCheckedListBox.Items[itemIndex].ToString(), -1, -1);
+                string itemText = Interaction.InputBox("Modify To-do list item text", "Edit text", this.todoListBox.Items[itemIndex].ToString(), -1, -1);
 
                 // Check there's something to work with
                 if (itemText.Length > 0)
                 {
                     // Set new item text
-                    this.todoCheckedListBox.Items[itemIndex] = itemText;
+                    this.todoListBox.Items[itemIndex] = itemText;
                 }
             }
         }

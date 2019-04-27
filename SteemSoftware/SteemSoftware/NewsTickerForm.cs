@@ -88,7 +88,8 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnNewsTickerFormShown(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Enable news ticker timer
+            this.newsTickerTimer.Enabled = true;
         }
     }
 }

@@ -587,8 +587,11 @@ namespace SteemSoftware
                 this.newsTickerForm.Left = this.toDoListNewsTickerData.LeftMargin;
             }
 
-            // Top
+            // Adjust top
             this.newsTickerForm.Top = workingAreaHeight - this.newsTickerForm.Height - this.toDoListNewsTickerData.BottomMargin;
+
+            // Handle always on top
+            this.newsTickerForm.TopMost = this.alwaysOnTopToolStripMenuItem.Checked;
 
             // Show news ticker
             this.newsTickerForm.Show();

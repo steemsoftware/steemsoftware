@@ -15,6 +15,31 @@ namespace SteemSoftware
     public partial class NewsTickerForm : Form
     {
         /// <summary>
+        /// The form graphics.
+        /// </summary>
+        private Graphics formGraphics;
+
+        /// <summary>
+        /// The news ticker text font.
+        /// </summary>
+        private Font newsTickerTextFont;
+
+        /// <summary>
+        /// The news ticker text.
+        /// </summary>
+        private string newsTickerText;
+
+        /// <summary>
+        /// The xpos.
+        /// </summary>
+        private int xpos;
+
+        /// <summary>
+        /// The color of the foreground.
+        /// </summary>
+        private Color foregroundColor;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.NewsTickerForm"/> class.
         /// </summary>
         /// <param name="newsTickerText">News ticker text.</param>
@@ -26,6 +51,24 @@ namespace SteemSoftware
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            // Set form control graphics
+            this.formGraphics = this.CreateGraphics();
+
+            // Set ticker text
+            this.newsTickerText = newsTickerText;
+
+            // Set ticker font
+            this.newsTickerTextFont = newsTickerTextFont;
+
+            // Set ticker text speed
+            this.newsTickerTimer.Interval = textSpeed;
+
+            // Set form's background color
+            this.BackColor = backgroundColor;
+
+            // Set ticker font color
+            this.foregroundColor = foregroundColor;
         }
 
         /// <summary>

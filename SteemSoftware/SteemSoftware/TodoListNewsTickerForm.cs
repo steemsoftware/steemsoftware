@@ -570,7 +570,7 @@ namespace SteemSoftware
             // Declare new ticker form
             this.newsTickerForm = new NewsTickerForm(string.Join(this.toDoListNewsTickerData.Separator, this.todoListBox.Items), newsTickerFont, this.toDoListNewsTickerData.TimerInterval, this.toDoListNewsTickerData.ForegroundColor, this.toDoListNewsTickerData.BackgroundColor)
             {
-                // Set ticker height using font's height plus padding
+                // Set ticker height using font's height plus 10 pixels for padding
                 Height = newsTickerFont.Height + 10,
 
                 // Set ticker width

@@ -83,6 +83,10 @@ namespace SteemSoftware
                     ForegroundColor = this.foregroundColorDialog.Color,
 
                     BackgroundColor = this.backgroundColorDialog.Color,
+
+                    LeftMargin = 50,
+
+                    RightMargin = 50,
                 };
             }
         }

@@ -35,26 +35,27 @@ namespace SteemSoftware
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.newsTickerTimer = new System.Windows.Forms.Timer(this.components);
-            this.SuspendLayout();
-            // 
-            // newsTickerTimer
-            // 
-            this.newsTickerTimer.Interval = 20;
-            this.newsTickerTimer.Tick += new System.EventHandler(this.NewsTickerTimerTick);
-            // 
-            // NewsTickerForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(10, 10);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "NewsTickerForm";
-            this.ShowInTaskbar = false;
-            this.Text = "To-do List News Ticker";
-            this.Shown += new System.EventHandler(this.OnNewsTickerFormShown);
-            this.ResumeLayout(false);
+        	this.components = new System.ComponentModel.Container();
+        	this.newsTickerTimer = new System.Windows.Forms.Timer(this.components);
+        	this.SuspendLayout();
+        	// 
+        	// newsTickerTimer
+        	// 
+        	this.newsTickerTimer.Interval = 20;
+        	this.newsTickerTimer.Tick += new System.EventHandler(this.NewsTickerTimerTick);
+        	// 
+        	// NewsTickerForm
+        	// 
+        	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+        	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        	this.ClientSize = new System.Drawing.Size(10, 10);
+        	this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+        	this.Name = "NewsTickerForm";
+        	this.ShowInTaskbar = false;
+        	this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+        	this.Text = "To-do List News Ticker";
+        	this.Shown += new System.EventHandler(this.OnNewsTickerFormShown);
+        	this.ResumeLayout(false);
         }
         private System.Windows.Forms.Timer newsTickerTimer;
     }

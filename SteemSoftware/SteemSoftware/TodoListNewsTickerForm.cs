@@ -46,6 +46,11 @@ namespace SteemSoftware
         private FontConverter fontConverter = new FontConverter();
 
         /// <summary>
+        /// The news ticker form.
+        /// </summary>
+        private NewsTickerForm newsTickerForm;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.TodoListNewsTickerForm"/> class.
         /// </summary>
         public TodoListNewsTickerForm()
@@ -518,13 +523,71 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the launch button click event.
+        /// Handles the show ticker button click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>
-        private void OnLaunchButtonClick(object sender, EventArgs e)
+        private void OnShowTickerButtonClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Check for list items
+            if (this.todoListBox.Items.Count == 0)
+            {
+                // Halt flow
+                return;
+            }
+
+            // Check button text
+            if (this.showTickerButton.Text.StartsWith("&C", StringComparison.InvariantCulture))
+            {
+                // Close news ticker form
+                this.newsTickerForm.Close();
+
+                // Set text back
+                this.showTickerButton.Text = "&Show ticker";
+
+                // Halt flow
+                return;
+            }
+            else
+            {
+                // Update text
+                this.showTickerButton.Text = "&Close ticker";
+            }
+
+            // Set working area width
+            var workingAreaWidth = Screen.FromControl(this).WorkingArea.Width;
+
+            // Set working area height
+            var workingAreaHeight = Screen.FromControl(this).WorkingArea.Height;
+
+            // Set news ticker font
+            var newsTickerFont = (Font)this.fontConverter.ConvertFromInvariantString(this.toDoListNewsTickerData.TextFont);
+
+            // Declare new ticker form
+            this.newsTickerForm = new NewsTickerForm(string.Join(this.toDoListNewsTickerData.Separator, this.todoListBox.Items), newsTickerFont, this.toDoListNewsTickerData.TimerInterval, this.toDoListNewsTickerData.ForegroundColor, this.toDoListNewsTickerData.BackgroundColor)
+            {
+                // Set ticker height using font's height plus padding
+                Height = newsTickerFont.Height + 10,
+
+                // Set ticker width
+                Width = workingAreaWidth
+            };
+
+            // Check for full width
+            if (!this.fullWidthToolStripMenuItem.Checked)
+            {
+                // Subtract from width
+                this.newsTickerForm.Width -= this.toDoListNewsTickerData.LeftMargin + this.toDoListNewsTickerData.RightMargin;
+
+                // Adjust left
+                this.newsTickerForm.Left = this.toDoListNewsTickerData.LeftMargin;
+            }
+
+            // Top
+            this.newsTickerForm.Top = workingAreaHeight - this.newsTickerForm.Height - this.toDoListNewsTickerData.BottomMargin;
+
+            // Show news ticker
+            this.newsTickerForm.Show();
         }
     }
 }

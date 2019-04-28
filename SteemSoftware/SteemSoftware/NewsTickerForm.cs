@@ -40,6 +40,11 @@ namespace SteemSoftware
         private Color foregroundColor;
 
         /// <summary>
+        /// The size of the text.
+        /// </summary>
+        private Size textSize;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.NewsTickerForm"/> class.
         /// </summary>
         /// <param name="newsTickerText">News ticker text.</param>
@@ -61,6 +66,9 @@ namespace SteemSoftware
             // Set ticker font
             this.newsTickerTextFont = newsTickerTextFont;
 
+            // Measure string.
+            this.textSize = TextRenderer.MeasureText(newsTickerText, newsTickerTextFont);
+
             // Set ticker text speed
             this.newsTickerTimer.Interval = textSpeed;
 
@@ -69,6 +77,9 @@ namespace SteemSoftware
 
             // Set ticker font color
             this.foregroundColor = foregroundColor;
+
+            // Set xpos to the rightmost point
+            this.xpos = this.DisplayRectangle.Width;
         }
 
         /// <summary>
@@ -78,7 +89,20 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void NewsTickerTimerTick(object sender, EventArgs e)
         {
-            // TODO Add code
+            // Check if text finished displaying
+            if (this.xpos < (this.textSize.Width * -1))
+            {
+                // Reset text position to the rightmost point
+                this.xpos = this.DisplayRectangle.Width;
+            }
+            else
+            {
+                // Make text move to the left smoothly i.e. one pixel at a time
+                this.xpos -= 1;
+            }
+
+            // Force redraw
+            this.Invalidate();
         }
 
         /// <summary>

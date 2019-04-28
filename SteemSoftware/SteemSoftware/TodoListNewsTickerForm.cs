@@ -133,13 +133,14 @@ namespace SteemSoftware
         {
             // Set license text
             var licenseText = $"CC0 1.0 Universal (CC0 1.0) - Public Domain Dedication{Environment.NewLine}" +
-                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode";
+                $"https://creativecommons.org/publicdomain/zero/1.0/legalcode{Environment.NewLine}{Environment.NewLine}" +
+                $"plus, minus{Environment.NewLine}Icons made by Smashicons @ https://www.flaticon.com/authors/smashicons{Environment.NewLine}from https://www.flaticon.com/{Environment.NewLine}Licensed by Creative Commons BY 3.0 (CC 3.0 BY){Environment.NewLine}http://creativecommons.org/licenses/by/3.0/";
 
             // Set about form
             var aboutForm = new AboutForm(
                  $"About {this.moduleName}",
                  $"{this.moduleName} {this.semanticVersion}",
-                 "Week #16 @ April 2019",
+                 "Week #17 @ April 2019",
                  licenseText,
                  this.Icon.ToBitmap());
 

@@ -568,7 +568,7 @@ namespace SteemSoftware
             var newsTickerFont = (Font)this.fontConverter.ConvertFromInvariantString(this.toDoListNewsTickerData.TextFont);
 
             // Declare new ticker form
-            this.newsTickerForm = new NewsTickerForm(string.Join(this.toDoListNewsTickerData.Separator, this.todoListBox.Items), newsTickerFont, this.toDoListNewsTickerData.TimerInterval, this.toDoListNewsTickerData.ForegroundColor, this.toDoListNewsTickerData.BackgroundColor)
+            this.newsTickerForm = new NewsTickerForm(string.Join(this.toDoListNewsTickerData.Separator, this.todoListBox.Items.Cast<string>()), newsTickerFont, this.toDoListNewsTickerData.TimerInterval, this.toDoListNewsTickerData.ForegroundColor, this.toDoListNewsTickerData.BackgroundColor)
             {
                 // Set ticker height using font's height plus 10 pixels for padding
                 Height = newsTickerFont.Height + 10,

@@ -30,9 +30,9 @@ namespace SteemSoftware
         private string newsTickerText;
 
         /// <summary>
-        /// The xpos.
+        /// The position in the x axis.
         /// </summary>
-        private int xpos;
+        private int xPos;
 
         /// <summary>
         /// The color of the foreground.
@@ -78,8 +78,33 @@ namespace SteemSoftware
             // Set ticker font color
             this.foregroundColor = foregroundColor;
 
-            // Set xpos to the rightmost point
-            this.xpos = this.DisplayRectangle.Width;
+            // Set xPos to the rightmost point
+            this.xPos = this.DisplayRectangle.Width;
+        }
+
+        /// <summary>
+        /// Handles the form's paint event.
+        /// </summary>
+        /// <param name="e">Paint event arguments.</param>
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // Set current buffered graphics context
+            BufferedGraphicsContext currentContext = BufferedGraphicsManager.Current;
+
+            // Set buffered graphics
+            BufferedGraphics bufferedGraphics = currentContext.Allocate(e.Graphics, this.DisplayRectangle);
+
+            // Clear graphics
+            bufferedGraphics.Graphics.Clear(this.BackColor);
+
+            // Draw news ticker text. 5 = half padding
+            bufferedGraphics.Graphics.DrawString(this.newsTickerText, this.newsTickerTextFont, new SolidBrush(this.foregroundColor), this.xPos, 5);
+
+            // Make it happen
+            bufferedGraphics.Render();
+
+            // Free resources
+            bufferedGraphics.Dispose();
         }
 
         /// <summary>
@@ -90,15 +115,15 @@ namespace SteemSoftware
         private void NewsTickerTimerTick(object sender, EventArgs e)
         {
             // Check if text finished displaying
-            if (this.xpos < (this.textSize.Width * -1))
+            if (this.xPos < (this.textSize.Width * -1))
             {
                 // Reset text position to the rightmost point
-                this.xpos = this.DisplayRectangle.Width;
+                this.xPos = this.DisplayRectangle.Width;
             }
             else
             {
                 // Make text move to the left smoothly i.e. one pixel at a time
-                this.xpos -= 1;
+                this.xPos -= 1;
             }
 
             // Force redraw

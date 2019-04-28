@@ -277,7 +277,7 @@ namespace SteemSoftware
             // Show open file dialog
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                /* Populate data grid view */
+                /* Populate ticker data */
 
                 try
                 {
@@ -308,7 +308,7 @@ namespace SteemSoftware
             // Open save file dialog
             if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
             {
-                /* Save to JSON  */
+                /* Save ticker data */
 
                 try
                 {
@@ -498,6 +498,13 @@ namespace SteemSoftware
             {
                 // Delete data file
                 File.Delete(this.dataFilePath);
+            }
+
+            // Finally, check for an active ticker form
+            if (this.newsTickerForm != null)
+            {
+                // Close ticker form
+                this.newsTickerForm.Close();
             }
         }
 

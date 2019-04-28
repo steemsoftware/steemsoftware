@@ -614,7 +614,7 @@ namespace SteemSoftware
             var aboutForm = new AboutForm(
                 "About SteemSoftware",
                 $"SteemSoftware {this.semanticVersion}",
-                "Week #16 @ April 2019",
+                "Week #17 @ April 2019",
                 licenseText,
                 this.Icon.ToBitmap());
 

@@ -4,7 +4,7 @@ Request-driven Public domain software suite supported by means of the steem cryp
 
 ## Screenshot:
 
-[![SteemSoftware screenshot](https://i.imgsafe.org/41/411177993f.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
+[![SteemSoftware screenshot](https://i.imgsafe.org/5a/5a47350633.png  "SteemSoftware screenshot")](https://github.com/steemsoftware/steemsoftware/releases)
 
 ## Headquarters:
 
@@ -21,9 +21,9 @@ Linux/Mac users can run it using the latest [Mono runtime](https://www.mono-proj
 
 ## Download:
 
-**Direct link:** [SteemSoftware_v0-6-0.zip](https://github.com/steemsoftware/steemsoftware/releases/download/v0.6.0/SteemSoftware_v0-6-0.zip)
+**Direct link:** [SteemSoftware_v0-7-0.zip](https://github.com/steemsoftware/steemsoftware/releases/download/v0.7.0/SteemSoftware_v0-7-0.zip)
 
-[![Latest module](https://i.imgsafe.org/41/411178e527.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.6.0/SteemSoftware_v0-6-0.zip)
+[![Latest module](https://i.imgsafe.org/5a/5a4736c4c4.png)](https://github.com/steemsoftware/steemsoftware/releases/download/v0.7.0/SteemSoftware_v0-7-0.zip)
 
 ## Setup:
 
@@ -46,6 +46,7 @@ Unzip and execute **SteemSoftware.exe**
 
 You can track SteemSoftware versions in our [**releases** page](https://github.com/steemsoftware/steemsoftware/releases).
 
+* v0.7.0 – To-do List News Ticker
 * v0.6.0 – Compress By Pattern
 * v0.5.0 – YouTube MultiPlaylist Aggregator
 * v0.4.0 – Compress Directory

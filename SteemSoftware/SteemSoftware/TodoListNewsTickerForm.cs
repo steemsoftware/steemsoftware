@@ -558,6 +558,9 @@ namespace SteemSoftware
                 this.showTickerButton.Text = "&Close ticker";
             }
 
+            // Set ticker data
+            this.SetToDoListNewsTickerData();
+
             // Set working area width
             var workingAreaWidth = Screen.FromControl(this).WorkingArea.Width;
 

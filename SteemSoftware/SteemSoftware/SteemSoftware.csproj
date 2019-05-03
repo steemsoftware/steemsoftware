@@ -113,6 +113,7 @@
     <Compile Include="PatternAndTargetRow.cs" />
     <Compile Include="ToDoListNewsTickerData.cs" />
     <Compile Include="CheckedListItem.cs" />
+    <Compile Include="SecondScreenViewerData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

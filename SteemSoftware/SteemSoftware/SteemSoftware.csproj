@@ -89,6 +89,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecondScreenViewerForm.cs" />
+    <Compile Include="SecondScreenViewerForm.Designer.cs">
+      <DependentUpon>SecondScreenViewerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StrongPasswordGeneratorForm.cs" />
     <Compile Include="StrongPasswordGeneratorForm.Designer.cs">
       <DependentUpon>StrongPasswordGeneratorForm.cs</DependentUpon>
@@ -137,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewsTickerForm.resx">
       <DependentUpon>NewsTickerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SecondScreenViewerForm.resx">
+      <DependentUpon>SecondScreenViewerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StrongPasswordGeneratorForm.resx">
       <DependentUpon>StrongPasswordGeneratorForm.cs</DependentUpon>

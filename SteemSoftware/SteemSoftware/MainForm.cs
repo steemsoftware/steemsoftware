@@ -142,6 +142,7 @@ namespace SteemSoftware
             var videoModuleInfoList = new List<ModuleInfo>()
             {
                 new ModuleInfo("YouTube Downloader", "Download videos from YouTube.com", typeof(YouTubeDownloaderForm)),
+                new ModuleInfo("Second Screen Viewer", "Continuous windowed capture of secondary screen.", typeof(SecondScreenViewerForm)),
             };
 
             /* Module info dictionary */

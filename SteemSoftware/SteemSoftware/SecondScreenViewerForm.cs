@@ -8,6 +8,8 @@ namespace SteemSoftware
     using System;
     using System.Drawing;
     using System.IO;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
     using System.Windows.Forms;
     using Microsoft.VisualBasic;
 
@@ -34,8 +36,6 @@ namespace SteemSoftware
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
 
-            /* Process data file */
-
             // Check for a previously-saved data file
             if (File.Exists(this.dataFilePath))
             {
@@ -54,6 +54,26 @@ namespace SteemSoftware
                     ClickToClose = false
                 };
             }
+        }
+
+        /// <summary>
+        /// Reads the viewer data from file.
+        /// </summary>
+        /// <returns>The viewer data from file.</returns>
+        /// <param name="viewerDataFilePath">Viewer data file path.</param>
+        private SecondScreenViewerData ReadViewerDataFromFile(string viewerDataFilePath)
+        {
+            // Variable to hold read viewer data
+            SecondScreenViewerData viewerData;
+
+            // Read data from binary file
+            IFormatter formatter = new BinaryFormatter();
+            Stream binaryFileStream = new FileStream(viewerDataFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            viewerData = (SecondScreenViewerData)formatter.Deserialize(binaryFileStream);
+            binaryFileStream.Close();
+
+            // Return read viewer data
+            return viewerData;
         }
 
         /// <summary>

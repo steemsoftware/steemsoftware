@@ -197,5 +197,35 @@ namespace SteemSoftware
             // Exit module
             this.Close();
         }
+
+        /// <summary>
+        /// Handles the open tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Set initial file name
+            this.openFileDialog.FileName = Path.GetFileNameWithoutExtension(this.dataFilePath);
+
+            // Show open file dialog
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Populate screen viewer data
+                try
+                {
+                    // Deserialize to variable
+                    this.secondScreenViewerData = this.ReadViewerDataFromFile(this.openFileDialog.FileName);
+
+                    // Load data
+                    this.LoadViewerData();
+                }
+                catch (Exception)
+                {
+                    // Inform user
+                    this.toolStripStatusLabel.Text = "Open file error";
+                }
+            }
+        }
     }
 }

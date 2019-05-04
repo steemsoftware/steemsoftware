@@ -63,6 +63,7 @@ namespace SteemSoftware
         	this.instructionsLabel = new System.Windows.Forms.Label();
         	this.screenListView = new System.Windows.Forms.ListView();
         	this.previewTimer = new System.Windows.Forms.Timer(this.components);
+        	this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
         	this.mainStatusStrip.SuspendLayout();
         	this.mainMenuStrip.SuspendLayout();
         	this.mainTableLayoutPanel.SuspendLayout();
@@ -127,11 +128,12 @@ namespace SteemSoftware
         	this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
         	this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.openToolStripMenuItem.Text = "&Open";
+        	this.openToolStripMenuItem.Click += new System.EventHandler(this.OnOpenToolStripMenuItemClick);
         	// 
         	// toolStripSeparator
         	// 
         	this.toolStripSeparator.Name = "toolStripSeparator";
-        	this.toolStripSeparator.Size = new System.Drawing.Size(149, 6);
+        	this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
         	// 
         	// saveToolStripMenuItem
         	// 
@@ -139,18 +141,18 @@ namespace SteemSoftware
         	this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
         	this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
         	this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-        	this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
         	this.saveToolStripMenuItem.Text = "&Save";
         	// 
         	// toolStripSeparator1
         	// 
         	this.toolStripSeparator1.Name = "toolStripSeparator1";
-        	this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+        	this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
         	// 
         	// exitToolStripMenuItem
         	// 
         	this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-        	this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
         	this.exitToolStripMenuItem.Text = "E&xit";
         	this.exitToolStripMenuItem.Click += new System.EventHandler(this.OnExitToolStripMenuItemClick);
         	// 
@@ -286,6 +288,11 @@ namespace SteemSoftware
         	this.screenListView.TabIndex = 1;
         	this.screenListView.UseCompatibleStateImageBehavior = false;
         	// 
+        	// openFileDialog
+        	// 
+        	this.openFileDialog.DefaultExt = "bin";
+        	this.openFileDialog.Filter = "Bin Files (*.bin)|*.bin|All files (*.*)|*.*";
+        	// 
         	// SecondScreenViewerForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,6 +312,7 @@ namespace SteemSoftware
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem rememberSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clickToCloseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem keepAspectRatioToolStripMenuItem;

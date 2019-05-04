@@ -77,6 +77,19 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Writes the viewer data to file.
+        /// </summary>
+        /// <param name="viewerDataFilePath">Viewer data file path.</param>
+        private void WriteViewerDataToFile(string viewerDataFilePath)
+        {
+            // Save viewer data to binary file
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(viewerDataFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, this.secondScreenViewerData);
+            stream.Close();
+        }
+
+        /// <summary>
         /// Handles the about tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>

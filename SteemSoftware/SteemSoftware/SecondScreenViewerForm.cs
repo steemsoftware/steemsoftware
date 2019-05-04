@@ -186,5 +186,16 @@ namespace SteemSoftware
         {
             // TODO add code
         }
+
+        /// <summary>
+        /// Handles the exit tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnExitToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Exit module
+            this.Close();
+        }
     }
 }

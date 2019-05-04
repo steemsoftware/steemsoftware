@@ -480,7 +480,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Handles the todo list news ticker form form closing eve.
+        /// Handles the todo list news ticker form form closing event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
         /// <param name="e">Event arguments.</param>

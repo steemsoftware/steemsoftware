@@ -129,6 +129,7 @@ namespace SteemSoftware
             // Productivity
             var productivityModuleInfoList = new List<ModuleInfo>()
             {
+                new ModuleInfo("Second Screen Viewer", "Continuous windowed capture of secondary screen.", typeof(SecondScreenViewerForm)),
                 new ModuleInfo("To-do List News Ticker", "News ticker scrolling your to-do list.", typeof(TodoListNewsTickerForm)),
             };
 
@@ -142,7 +143,6 @@ namespace SteemSoftware
             var videoModuleInfoList = new List<ModuleInfo>()
             {
                 new ModuleInfo("YouTube Downloader", "Download videos from YouTube.com", typeof(YouTubeDownloaderForm)),
-                new ModuleInfo("Second Screen Viewer", "Continuous windowed capture of secondary screen.", typeof(SecondScreenViewerForm)),
             };
 
             /* Module info dictionary */

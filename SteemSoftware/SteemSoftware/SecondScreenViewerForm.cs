@@ -39,7 +39,11 @@ namespace SteemSoftware
             // Check for a previously-saved data file
             if (File.Exists(this.dataFilePath))
             {
-                // TODO data file processing
+                // Read previous data from binary file
+                this.secondScreenViewerData = this.ReadViewerDataFromFile(this.dataFilePath);
+
+                // Bring data to life in GUI
+                this.LoadViewerData();
             }
             else
             {
@@ -48,7 +52,7 @@ namespace SteemSoftware
                 {
                     TimerInterval = 200,
                     InitialWidth = 0,
-                    InitialHeight = 0,
+                    InitialHeight = 480,
                     AlwaysOnTop = true,
                     KeepAspectRatio = true,
                     ClickToClose = false

@@ -158,7 +158,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnInitialwidthToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Variable to hold user input
+            int parsedInt;
+
+            // Try to parse
+            if (int.TryParse(Interaction.InputBox("Set screen capture window initial width (0 = autosize)", "Initial Width", this.secondScreenViewerData.InitialWidth.ToString(), -1, -1), out parsedInt))
+            {
+                // Set custom value
+                this.secondScreenViewerData.InitialWidth = parsedInt;
+            }
         }
 
         /// <summary>

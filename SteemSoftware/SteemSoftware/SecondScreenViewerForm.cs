@@ -7,7 +7,9 @@ namespace SteemSoftware
     // Directives
     using System;
     using System.Drawing;
+    using System.IO;
     using System.Windows.Forms;
+    using Microsoft.VisualBasic;
 
     /// <summary>
     /// Description of SecondScreenMonitorForm.
@@ -15,12 +17,43 @@ namespace SteemSoftware
     public partial class SecondScreenViewerForm : Form
     {
         /// <summary>
+        /// The second screen viewer data.
+        /// </summary>
+        private SecondScreenViewerData secondScreenViewerData;
+
+        /// <summary>
+        /// The data file path.
+        /// </summary>
+        private string dataFilePath = Path.Combine(Application.StartupPath, "Data", "Settings", "SecondScreenViewerData.bin");
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:SteemSoftware.SecondScreenViewerForm"/> class event.
         /// </summary>
         public SecondScreenViewerForm()
         {
             // The InitializeComponent() call is required for Windows Forms designer support.
             this.InitializeComponent();
+
+            /* Process data file */
+
+            // Check for a previously-saved data file
+            if (File.Exists(this.dataFilePath))
+            {
+                // TODO data file processing
+            }
+            else
+            {
+                // New second screen viewer data instance with initial values set
+                this.secondScreenViewerData = new SecondScreenViewerData
+                {
+                    TimerInterval = 200,
+                    InitialWidth = 0,
+                    InitialHeight = 0,
+                    AlwaysOnTop = true,
+                    KeepAspectRatio = true,
+                    ClickToClose = false
+                };
+            }
         }
 
         /// <summary>

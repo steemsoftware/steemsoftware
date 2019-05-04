@@ -111,7 +111,7 @@ namespace SteemSoftware
         private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Set initial file name
-            this.saveFileDialog.FileName = "PatternTarget.txt";
+            this.openFileDialog.FileName = "PatternTarget.txt";
 
             // Show open file dialog
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)

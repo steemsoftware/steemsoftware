@@ -273,7 +273,7 @@ namespace SteemSoftware
         private void OnOpenToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Set initial file name
-            this.saveFileDialog.FileName = Path.GetFileNameWithoutExtension(this.dataFilePath);
+            this.openFileDialog.FileName = Path.GetFileNameWithoutExtension(this.dataFilePath);
 
             // Show open file dialog
             if (this.openFileDialog.ShowDialog() == DialogResult.OK)

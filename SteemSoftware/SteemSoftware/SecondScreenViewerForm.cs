@@ -50,9 +50,9 @@ namespace SteemSoftware
                 // New second screen viewer data instance with initial values set
                 this.secondScreenViewerData = new SecondScreenViewerData
                 {
-                    TimerInterval = 200,
+                    TimerInterval = 100,
                     InitialWidth = 0,
-                    InitialHeight = 480,
+                    InitialHeight = 0,
                     AlwaysOnTop = true,
                     KeepAspectRatio = true,
                     ClickToClose = false
@@ -140,7 +140,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnScreenCaptureIntervalToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Variable to hold user input
+            int parsedInt;
+
+            // Try to parse
+            if (int.TryParse(Interaction.InputBox("Set screen capture timer interval (milliseconds, less is faster)", "Capture Interval", this.secondScreenViewerData.TimerInterval.ToString(), -1, -1), out parsedInt))
+            {
+                // Set custom value
+                this.secondScreenViewerData.TimerInterval = parsedInt;
+            }
         }
 
         /// <summary>

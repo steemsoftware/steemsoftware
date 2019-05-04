@@ -90,7 +90,7 @@ namespace SteemSoftware
         }
 
         /// <summary>
-        /// Loads the viewer data.
+        /// Loads the viewer data to the GUI.
         /// </summary>
         private void LoadViewerData()
         {
@@ -102,6 +102,21 @@ namespace SteemSoftware
 
             // Click to close
             this.clickToCloseToolStripMenuItem.Checked = this.secondScreenViewerData.ClickToClose;
+        }
+
+        /// <summary>
+        /// Sets the viewer data from the GUI.
+        /// </summary>
+        private void SetViewerData()
+        {
+            // Always on top
+            this.secondScreenViewerData.AlwaysOnTop = this.alwaysOnTopToolStripMenuItem.Checked;
+
+            // Keep aspect ratio
+            this.secondScreenViewerData.KeepAspectRatio = this.keepAspectRatioToolStripMenuItem.Checked;
+
+            // Click to close
+            this.secondScreenViewerData.ClickToClose = this.clickToCloseToolStripMenuItem.Checked;
         }
 
         /// <summary>

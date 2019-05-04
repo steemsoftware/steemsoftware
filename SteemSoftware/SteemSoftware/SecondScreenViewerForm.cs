@@ -227,5 +227,38 @@ namespace SteemSoftware
                 }
             }
         }
+
+        /// <summary>
+        /// Handles the save tool strip menu item click event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnSaveToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Set file name
+            this.saveFileDialog.FileName = Path.GetFileNameWithoutExtension(this.dataFilePath);
+
+            // Open save file dialog
+            if (this.saveFileDialog.ShowDialog() == DialogResult.OK && this.saveFileDialog.FileName.Length > 0)
+            {
+                // Save ticker data
+                try
+                {
+                    // Set data
+                    this.SetViewerData();
+
+                    // Write data to file
+                    this.WriteViewerDataToFile(this.saveFileDialog.FileName);
+                }
+                catch (Exception)
+                {
+                    // Inform user
+                    this.toolStripStatusLabel.Text = "Save file error";
+                }
+
+                // Inform user
+                this.toolStripStatusLabel.Text = $"Saved to \"{Path.GetFileName(this.saveFileDialog.FileName)}\"";
+            }
+        }
     }
 }

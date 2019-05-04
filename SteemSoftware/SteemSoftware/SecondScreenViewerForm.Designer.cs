@@ -64,6 +64,7 @@ namespace SteemSoftware
         	this.screenListView = new System.Windows.Forms.ListView();
         	this.previewTimer = new System.Windows.Forms.Timer(this.components);
         	this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+        	this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
         	this.mainStatusStrip.SuspendLayout();
         	this.mainMenuStrip.SuspendLayout();
         	this.mainTableLayoutPanel.SuspendLayout();
@@ -126,7 +127,7 @@ namespace SteemSoftware
         	this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
         	this.openToolStripMenuItem.Name = "openToolStripMenuItem";
         	this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-        	this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
         	this.openToolStripMenuItem.Text = "&Open";
         	this.openToolStripMenuItem.Click += new System.EventHandler(this.OnOpenToolStripMenuItemClick);
         	// 
@@ -141,8 +142,9 @@ namespace SteemSoftware
         	this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
         	this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
         	this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-        	this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+        	this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
         	this.saveToolStripMenuItem.Text = "&Save";
+        	this.saveToolStripMenuItem.Click += new System.EventHandler(this.OnSaveToolStripMenuItemClick);
         	// 
         	// toolStripSeparator1
         	// 
@@ -293,6 +295,11 @@ namespace SteemSoftware
         	this.openFileDialog.DefaultExt = "bin";
         	this.openFileDialog.Filter = "Bin Files (*.bin)|*.bin|All files (*.*)|*.*";
         	// 
+        	// saveFileDialog
+        	// 
+        	this.saveFileDialog.DefaultExt = "bin";
+        	this.saveFileDialog.Filter = "Bin Files (*.bin)|*.bin|All files (*.*)|*.*";
+        	// 
         	// SecondScreenViewerForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,6 +319,7 @@ namespace SteemSoftware
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem rememberSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clickToCloseToolStripMenuItem;

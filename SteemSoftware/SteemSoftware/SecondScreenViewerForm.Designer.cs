@@ -117,7 +117,7 @@ namespace SteemSoftware
         	this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
         	this.newToolStripMenuItem.Name = "newToolStripMenuItem";
         	this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-        	this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
         	this.newToolStripMenuItem.Text = "&New";
         	this.newToolStripMenuItem.Click += new System.EventHandler(this.OnNewToolStripMenuItemClick);
         	// 
@@ -142,7 +142,7 @@ namespace SteemSoftware
         	this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
         	this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
         	this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-        	this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+        	this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
         	this.saveToolStripMenuItem.Text = "&Save";
         	this.saveToolStripMenuItem.Click += new System.EventHandler(this.OnSaveToolStripMenuItemClick);
         	// 
@@ -311,6 +311,7 @@ namespace SteemSoftware
         	this.MainMenuStrip = this.mainMenuStrip;
         	this.Name = "SecondScreenViewerForm";
         	this.Text = "Second Screen Viewer";
+        	this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnSecondScreenViewerFormFormClosing);
         	this.mainStatusStrip.ResumeLayout(false);
         	this.mainStatusStrip.PerformLayout();
         	this.mainMenuStrip.ResumeLayout(false);

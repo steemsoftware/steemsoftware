@@ -188,6 +188,29 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Handles the second screen viewer form form closing event.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnSecondScreenViewerFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Check if must remember settings
+            if (this.rememberSettingsToolStripMenuItem.Checked)
+            {
+                // Set data
+                this.SetViewerData();
+
+                // Write data to disk
+                this.WriteViewerDataToFile(this.dataFilePath);
+            }
+            else
+            {
+                // Delete data file
+                File.Delete(this.dataFilePath);
+            }
+        }
+
+        /// <summary>
         /// Handles the options tool strip menu item drop down item clicked event.
         /// </summary>
         /// <param name="sender">Sender object.</param>

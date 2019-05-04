@@ -176,7 +176,15 @@ namespace SteemSoftware
         /// <param name="e">Event arguments.</param>
         private void OnInitialheightToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // TODO add code
+            // Variable to hold user input
+            int parsedInt;
+
+            // Try to parse
+            if (int.TryParse(Interaction.InputBox("Set screen capture window initial height (0 = autosize)", "Initial Height", this.secondScreenViewerData.InitialHeight.ToString(), -1, -1), out parsedInt))
+            {
+                // Set custom value
+                this.secondScreenViewerData.InitialHeight = parsedInt;
+            }
         }
 
         /// <summary>

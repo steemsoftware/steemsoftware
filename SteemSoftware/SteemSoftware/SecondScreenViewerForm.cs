@@ -90,6 +90,21 @@ namespace SteemSoftware
         }
 
         /// <summary>
+        /// Loads the viewer data.
+        /// </summary>
+        private void LoadViewerData()
+        {
+            // Always on top
+            this.alwaysOnTopToolStripMenuItem.Checked = this.secondScreenViewerData.AlwaysOnTop;
+
+            // Keep aspect ratio
+            this.keepAspectRatioToolStripMenuItem.Checked = this.secondScreenViewerData.KeepAspectRatio;
+
+            // Click to close
+            this.clickToCloseToolStripMenuItem.Checked = this.secondScreenViewerData.ClickToClose;
+        }
+
+        /// <summary>
         /// Handles the about tool strip menu item click event.
         /// </summary>
         /// <param name="sender">Sender object.</param>
